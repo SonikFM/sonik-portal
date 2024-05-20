@@ -1,7 +1,14 @@
+import { useSelector } from 'react-redux';
 import './App.css'
 import { Button } from '@/components/ui/button';
+import { useGetTodosQuery } from '@/apis/todos';
 
 function App() {
+
+  const state = useSelector(state => state.app)
+  const { data, error, isLoading } = useGetTodosQuery()
+  console.log({state, data, error, isLoading})
+
  return (
    <>
      <Button>Secondary</Button> <br /><br />
