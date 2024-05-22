@@ -16,13 +16,16 @@ import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useTranslation } from "react-i18next";
+import { fakeAuthProvider } from "@/lib/auth";
+import { redirect, useNavigate } from "react-router-dom";
 
 const schema = object({
-	email: string().email().required(),
-	passowrd: string().required(),
+	email: string().email(),
+	passowrd: string(),
 });
 
 const Auth = () => {
+	const navigate = useNavigate();
 	const {t} = useTranslation('auth')
 	const form = useForm({
 		resolver: yupResolver(schema),
@@ -32,10 +35,12 @@ const Auth = () => {
 		},
 	});
 
-	const onSubmit = (data) => {
+	const onSubmit = async (data) => {
 		console.log({ data });
-	};
+		const a = await fakeAuthProvider.signin('qasim')
+		// navigate('/dashboard')
 
+	};
 	return (
 		<Form {...form}>
 			<form
@@ -58,7 +63,7 @@ const Auth = () => {
 						<Input name="password" />
 					</CardContent>
 					<CardFooter>
-						<Button className="mx-auto">{t('submit')}</Button>
+						<Button className="mx-auto" type="submit" >{t('submit')}</Button>
 					</CardFooter>
 				</Card>
 			</form>

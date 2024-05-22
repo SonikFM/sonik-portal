@@ -13,10 +13,13 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1440px",
       },
     },
     extend: {
+      maxWidth: {
+        '272': '17rem',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -24,7 +27,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#6E3FF3",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -51,6 +54,22 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        grey: {
+          DEFAULT: "#717784",
+          light: "#2B303B",
+          dark: "#0E121B",
+          100: "#99A0AE",
+          200: "#181B25"
+        },
+        pink: {
+          DEFAULT: "#E255F2"
+        },
+        warning: {
+          DEFAULT: "#FFECC0"
+        },
+        error: {
+          DEFAULT: "#E93544"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
