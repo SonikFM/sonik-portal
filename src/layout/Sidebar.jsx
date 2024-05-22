@@ -1,6 +1,10 @@
 import { OrganizationDropdown } from "@/components/OrganizationDropdown";
 import { UserDropdown } from "@/components/UserDropdown";
-import { FAVS_NAVIGATION, MAIN_NAVIGATION, SETTINGS_NAVIGATION } from "@/contants/navigation";
+import {
+	FAVS_NAVIGATION,
+	MAIN_NAVIGATION,
+	SETTINGS_NAVIGATION,
+} from "@/contants/navigation";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import React from "react";
@@ -23,16 +27,18 @@ const Sidebar = () => {
 						</div>
 						<div className="flex flex-col gap-1">
 							{MAIN_NAVIGATION.map((navigate) => {
-								const navCls = `flex gap-2 px-3 text-sm font-medium items-center rounded-lg h-9 relative hover:bg-grey-200 ${
+								const navCls = cn(
+									"flex gap-2 px-3 text-sm font-medium items-center rounded-lg h-9 relative hover:bg-grey-200",
 									activeRoute === navigate.url
 										? "text-white bg-grey-200 before:block before:absolute before:w-1 before:h-5 before:bg-primary before:-left-5 before:rounded-r"
 										: "text-grey-100"
-								}`;
-								const iconCls = ` h-5 w-5 ${
+								);
+								const iconCls = cn(
+									"h-5 w-5",
 									activeRoute === navigate.url
 										? "text-primary"
 										: "text-grey-100"
-								}`;
+								);
 								return (
 									<Link key={navigate.id} to={navigate.url} className={navCls}>
 										<navigate.icon className={iconCls} /> {navigate.label}{" "}
@@ -45,21 +51,28 @@ const Sidebar = () => {
 								);
 							})}
 						</div>
-                        <div className="p-1 mt-5 mb-2">
+						<div className="p-1 mt-5 mb-2">
 							<h2 className="text-xs font-medium text-grey">FAVS</h2>
 						</div>
 						<div className="flex flex-col gap-1">
 							{FAVS_NAVIGATION.map((navigate, index) => {
-								const navCls = `flex gap-2 px-3 text-sm font-medium items-center rounded-lg h-9 relative hover:bg-grey-200 ${
+								const navCls = cn(
+									"flex gap-2 px-3 text-sm font-medium items-center rounded-lg h-9 relative hover:bg-grey-200",
 									activeRoute === navigate.url
 										? "text-white bg-grey-200 before:block before:absolute before:w-1 before:h-5 before:bg-primary before:-left-5 before:rounded-r"
 										: "text-grey-100"
-								}`;
+								);
 								return (
 									<Link key={navigate.id} to={navigate.url} className={navCls}>
-										<div className={cn("w-3 h-3 border-2 border-transparent rounded-full", navigate.icon)}></div> {navigate.label}{" "}
+										<div
+											className={cn(
+												"w-3 h-3 border-2 border-transparent rounded-full",
+												navigate.icon
+											)}
+										></div>{" "}
+										{navigate.label}{" "}
 										<span className="absolute w-8 h-5 text-center border-2 rounded right-3 border-grey-200">
-                                            ⌘{index+1}
+											⌘{index + 1}
 										</span>
 									</Link>
 								);
