@@ -46,9 +46,7 @@ export function UserDropdown() {
 			</PopoverTrigger>
 			<PopoverContent className="w-[200px] p-0">
 				<Command>
-					<CommandInput placeholder="Search framework..." />
-					<CommandEmpty>No framework found.</CommandEmpty>
-					<CommandGroup></CommandGroup>
+					<CommandGroup >User profile</CommandGroup>
 				</Command>
 			</PopoverContent>
 		</Popover>
