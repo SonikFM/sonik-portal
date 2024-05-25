@@ -1,6 +1,6 @@
 import Dashboard from "./Dashboard";
-import Auth from "./Auth";
-import Layout from "@/layout";
+import Auth from "./Login";
+import Layout, { AuthLayout } from "@/layout";
 import { createBrowserRouter, redirect } from "react-router-dom";
 import { fakeAuthProvider } from "@/lib/auth";
 import Events from "./Events";
@@ -13,6 +13,10 @@ import Organization from "./Organization";
 import Support from "./Support";
 import SupportAndTickets from "./SupportAndTickets";
 import Settings from "./Settings";
+import Login from "./Login";
+import SignUp from "./SignUp";
+import ForgetPassword from "./ForgetPassword";
+import Verification from "./Verification";
 
 export const router = createBrowserRouter([
 	{
@@ -22,11 +26,11 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				async action() {
-					await fakeAuthProvider.signin('qasim');
-					return redirect("/dashboard");
-				},
-				loader: loginLoader,
+				// async action() {
+				// 	await fakeAuthProvider.signin('qasim');
+				// 	return redirect("/dashboard");
+				// },
+				// loader: loginLoader,
 				Component: Dashboard,
 			},
 			{
@@ -37,7 +41,7 @@ export const router = createBrowserRouter([
 				path: "/calendar",
 				Component: Calendar,
 			},
-			
+
 			{
 				path: "/attendee-accounts",
 				Component: Attendee,
@@ -71,20 +75,42 @@ export const router = createBrowserRouter([
 				Component: Support,
 			},
 			{
+				path: "/dashboard",
+				Component: Dashboard,
+			},
+			{
 				path: "/login",
 				action: loginAction,
 				loader: loginLoader,
-				Component: Auth,
+				Component: Login,
 			},
 			{
-				path: "/dashboard",
-				Component: Dashboard,
+				path: "/register",
+				action: loginAction,
+				loader: loginLoader,
+				Component: SignUp,
+			},
+			{
+				path: "/forget-password",
+				Component: ForgetPassword,
+			},
+			{
+				path: "/verification",
+				Component: Verification,
 			},
 			// {
 			// 	path: "/dashboard",
 			// 	loader: protectedLoader,
 			// 	Component: Dashboard,
 			// },
+		],
+	},
+	{
+		id: "user",
+		path: "/",
+		Component: AuthLayout,
+		children: [
+			
 		],
 	},
 	{

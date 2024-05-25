@@ -6,17 +6,23 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-export const Layout = () => {
+export const DashboardLayout = () => {
 	const state = useSelector((state) => state.app);
 	const { data, error, isLoading } = useGetTodosQuery();
 	const {i18n} = useTranslation();
 
+	const handleLanguageChange = () => {
+        i18n.changeLanguage(i18n.language === "en"? "fr": "en")
+    };
 	return (
-		<div className="flex min-h-screen bg-grey-dark">
-			{/* <Sidebar/> */}
-			<Outlet/>
+		<div className="h-full">
+			<Sidebar/>
+			<div className="p-10 text-white">
+				<Button onClick={handleLanguageChange} >Change language</Button>
+				<Outlet />
+			</div>
 		</div>
 	);
 };
 
-export default Layout;
+export default DashboardLayout;

@@ -1,9 +1,27 @@
-import React from 'react'
+import { useGetTodosQuery } from "@/apis/todos";
+import { Button } from "@/components/ui/button";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import pattren from "@/assets/images/bg-pattren.png";
+import Header from "./Header";
+import Footer from "./Footer";
 
-export const AuthLayout = () => {
-  return (
-    <div>AuthLayout</div>
-  )
-}
+export const AuthLayout = ({ children }) => {
+	const state = useSelector((state) => state.app);
+	const { data, error, isLoading } = useGetTodosQuery();
 
-export default AuthLayout
+	return (
+		<div className="relative flex items-center justify-center w-full min-h-screen ">
+			<img
+				className="absolute top-0 bottom-0 left-0 right-0 w-full max-w-6xl m-auto "
+				src={pattren}
+				alt="bg-pattren"
+			></img>
+			<div className="relative w-full max-w-md py-16 z-1">{children}</div>
+			<Footer/>
+		</div>
+	);
+};
+
+export default AuthLayout;
