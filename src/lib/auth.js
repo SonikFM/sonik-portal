@@ -1,6 +1,6 @@
 
 export const fakeAuthProvider = {
-	isAuthenticated: false,
+	isAuthenticated: true,
 	username: null,
 	async signin(username) {
 		await new Promise((r) => setTimeout(r, 500)); // fake delay

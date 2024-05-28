@@ -1,8 +1,13 @@
+import {
+	createBrowserRouter,
+	RouterProvider,
+	Navigate,
+} from "react-router-dom";
 import Dashboard from "./Dashboard";
-import Auth from "./Login";
-import Layout, { AuthLayout } from "@/layout";
-import { createBrowserRouter, redirect } from "react-router-dom";
-import { fakeAuthProvider } from "@/lib/auth";
+import Login from "./Login";
+import SignUp from "./SignUp";
+import ForgetPassword from "./ForgetPassword";
+import Verification from "./Verification";
 import Events from "./Events";
 import Tickets from "./Tickets";
 import Attendee from "./Attendee";
@@ -13,150 +18,48 @@ import Organization from "./Organization";
 import Support from "./Support";
 import SupportAndTickets from "./SupportAndTickets";
 import Settings from "./Settings";
-import Login from "./Login";
-import SignUp from "./SignUp";
-import ForgetPassword from "./ForgetPassword";
-import Verification from "./Verification";
+import { AuthLayout, DashboardLayout } from "@/layout";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
 	{
-		id: "root",
 		path: "/",
-		Component: Layout,
+		element: <ProtectedRoute />,
 		children: [
 			{
-				index: true,
-				// async action() {
-				// 	await fakeAuthProvider.signin('qasim');
-				// 	return redirect("/dashboard");
-				// },
-				// loader: loginLoader,
-				Component: Dashboard,
+				path: "/",
+				element: <DashboardLayout />,
+				children: [
+					{ path: "dashboard", element: <Dashboard /> },
+					{ path: "events", element: <Events /> },
+					{ path: "calendar", element: <Calendar /> },
+					{ path: "attendee-accounts", element: <Attendee /> },
+					{ path: "producer-accounts", element: <Producer /> },
+					{ path: "tickets", element: <Tickets /> },
+					{ path: "venues", element: <Venues /> },
+					{ path: "organization", element: <Organization /> },
+					{ path: "support-ticketing", element: <SupportAndTickets /> },
+					{ path: "settings", element: <Settings /> },
+					{ path: "support", element: <Support /> },
+				],
 			},
-			{
-				path: "/events",
-				Component: Events,
-			},
-			{
-				path: "/calendar",
-				Component: Calendar,
-			},
-
-			{
-				path: "/attendee-accounts",
-				Component: Attendee,
-			},
-			{
-				path: "/producer-accounts",
-				Component: Producer,
-			},
-			{
-				path: "/tickets",
-				Component: Tickets,
-			},
-			{
-				path: "/venues",
-				Component: Venues,
-			},
-			{
-				path: "/organization",
-				Component: Organization,
-			},
-			{
-				path: "/support-ticketing",
-				Component: SupportAndTickets,
-			},
-			{
-				path: "/settings",
-				Component: Settings,
-			},
-			{
-				path: "/support",
-				Component: Support,
-			},
-			{
-				path: "/dashboard",
-				Component: Dashboard,
-			},
-			{
-				path: "/login",
-				action: loginAction,
-				loader: loginLoader,
-				Component: Login,
-			},
-			{
-				path: "/register",
-				action: loginAction,
-				loader: loginLoader,
-				Component: SignUp,
-			},
-			{
-				path: "/forget-password",
-				Component: ForgetPassword,
-			},
-			{
-				path: "/verification",
-				Component: Verification,
-			},
-			// {
-			// 	path: "/dashboard",
-			// 	loader: protectedLoader,
-			// 	Component: Dashboard,
-			// },
 		],
 	},
 	{
-		id: "user",
 		path: "/",
-		Component: AuthLayout,
+		element: <AuthLayout />,
 		children: [
-			
+			{ path: "login", element: <Login /> },
+			{ path: "register", element: <SignUp /> },
+			{ path: "forget-password", element: <ForgetPassword /> },
+			{ path: "verification", element: <Verification /> },
 		],
 	},
 	{
 		path: "/logout",
-		async action() {
+		action: async () => {
 			await fakeAuthProvider.signout();
-			return redirect("/login");
+			return Navigate({ to: "/login" });
 		},
 	},
 ]);
-
-function protectedLoader({ request }) {
-	if (!fakeAuthProvider.isAuthenticated) {
-		let params = new URLSearchParams();
-		params.set("from", new URL(request.url).pathname);
-		return redirect("/?" + params.toString());
-	}
-	return null;
-}
-
-async function loginAction({ request }) {
-	let formData = await request.formData();
-	let username = formData.get("username");
-	console.log({ a: localStorage.getItem("i18nextLng") });
-
-	if (!username) {
-		return {
-			error: "You must provide a username to log in",
-		};
-	}
-
-	try {
-		await fakeAuthProvider.signin(username);
-	} catch (error) {
-		return {
-			error: "Invalid login attempt",
-		};
-	}
-
-	let redirectTo = formData.get("redirectTo");
-	return redirect(redirectTo || "/");
-}
-
-async function loginLoader() {
-	if (fakeAuthProvider.isAuthenticated) {
-		return redirect("/dashboard");
-	}
-	return null;
-}

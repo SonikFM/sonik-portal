@@ -90,7 +90,7 @@ const ForgetPassword = () => {
 							<CardDescription className="mt-6 mb-1 text-sm text-center">
 								{t("dont_have_access_anymore")}
 							</CardDescription>
-							<Link to="/forgot-password" className="border-b">
+							<Link to="/forget-password" className="border-b">
 								{t("try_another")}
 							</Link>
 						</CardFooter>
