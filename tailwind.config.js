@@ -65,7 +65,7 @@ module.exports = {
           DEFAULT: "#E255F2"
         },
         warning: {
-          DEFAULT: "#FFECC0"
+          DEFAULT: "#E97135"
         },
         error: {
           DEFAULT: "#E93544"

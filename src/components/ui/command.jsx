@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
-import { Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
+import SearchIcon from "@/svgs/SearchIcon"
 
 const Command = React.forwardRef(({ className, ...props }, ref) => (
   <CommandPrimitive
@@ -34,7 +34,7 @@ const CommandDialog = ({
 
 const CommandInput = React.forwardRef(({ className, ...props }, ref) => (
   <div className="flex items-center px-3 border-b" cmdk-input-wrapper="">
-    <Search className="w-4 h-4 mr-2 opacity-50 shrink-0" />
+    <SearchIcon className="w-4 h-4 mr-2 opacity-50 shrink-0" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(

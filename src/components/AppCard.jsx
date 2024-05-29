@@ -7,16 +7,32 @@ import {
 	CardHeader,
 	CardTitle,
 } from "./ui/card";
+import { Button } from "./ui/button";
+import { Command, CommandInput } from "./ui/command";
+import SearchInput from "./SearchInput";
+import EventsTable from "./EventsTable";
 
-const AppCard = () => {
+const AppCard = ({ icon, title, hasSearch=true, buttonLabel = "" }) => {
+	console.log({ buttonLabel });
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>Card Title</CardTitle>
-				<CardDescription>Card Description</CardDescription>
+		<Card className="bg-dark">
+			<CardHeader className="flex flex-row items-center justify-between">
+				<CardTitle className="flex items-center gap-2 text-base font-medium text-white ">
+					{icon} {title}
+				</CardTitle>
+				<div className="flex gap-3">
+					{hasSearch ? (
+						<SearchInput placeholder="Search for Event..." />
+					) : null}
+					{buttonLabel ? (
+						<Button variant="outline" size="sm" className="px-2.5" >
+							{buttonLabel}
+						</Button>
+					) : null}
+				</div>
 			</CardHeader>
 			<CardContent>
-				<p>Card Content</p>
+				<EventsTable/>
 			</CardContent>
 			<CardFooter>
 				<p>Card Footer</p>

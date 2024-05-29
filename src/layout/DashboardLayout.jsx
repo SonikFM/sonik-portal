@@ -20,7 +20,9 @@ export const DashboardLayout = () => {
 			<Sidebar />
 			<div className="w-[calc(100%-272px)] h-full flex flex-col pt-[88px]">
 				<DashboardHeader />
-				<Outlet />
+				<div className="px-8" >
+					<Outlet />
+				</div>
 			</div>
 		</div>
 	);
