@@ -20,6 +20,7 @@ import SupportAndTickets from "./SupportAndTickets";
 import Settings from "./Settings";
 import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
+import CreateEvent from "@/containers/Event";
 
 export const router = createBrowserRouter([
 	{
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
 				element: <DashboardLayout />,
 				children: [
 					{ path: "", element: <Dashboard />, index: true },
+					{ path: "event/create-event", element: <CreateEvent /> },
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
 					{ path: "attendee-accounts", element: <Attendee /> },
