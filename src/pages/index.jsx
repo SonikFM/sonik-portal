@@ -21,6 +21,7 @@ import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
 import CreateEvent from "@/containers/Event";
 import AttendeeAccount from "./AttendeeAccount";
+import OrganizerAccount from "@/containers/OrganizerAccount";
 
 export const router = createBrowserRouter([
 	{
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
 					{ path: "attendee-accounts", element: <AttendeeAccount /> },
-					{ path: "producer-accounts", element: <Producer /> },
+					{ path: "producer-accounts", element: <OrganizerAccount /> },
 					{ path: "tickets", element: <Tickets /> },
 					{ path: "venues", element: <Venues /> },
 					{ path: "organization", element: <Organization /> },
