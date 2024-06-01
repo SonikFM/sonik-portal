@@ -12,6 +12,7 @@ import {
 	CommandGroup,
 	CommandInput,
 	CommandItem,
+	CommandList,
 } from "@/components/ui/command";
 import {
 	Popover,
@@ -19,11 +20,12 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { portals } from "@/contants/portals";
 
 export function OrganizationDropdown() {
 	const [open, setOpen] = React.useState(false);
-	const [value, setValue] = React.useState("");
-
+	const [value, setValue] = React.useState("internal");
+	const currentPortal = portals.find((i) => i.value === value) || {};
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
@@ -38,8 +40,10 @@ export function OrganizationDropdown() {
 						<AvatarFallback>SO</AvatarFallback>
 					</Avatar>
 					<div className="flex flex-col text-left w-[calc(100%-80px)] truncate shrink">
-						<h3 className="text-sm font-medium">Sonik</h3>
-						<p className="mt-1 text-xs text-grey-100">Internal Portala</p>
+						<h3 className="text-sm font-medium">{currentPortal.label}</h3>
+						<p className="mt-1 text-xs capitalize text-grey-100">
+							{currentPortal.value}
+						</p>
 					</div>
 					<ChevronsUpDown className="w-6 h-6 p-[2px] border rounded-md text-grey-100 shrink-0 border-grey-100" />
 				</Button>
@@ -47,8 +51,22 @@ export function OrganizationDropdown() {
 			<PopoverContent className="w-[200px] p-0">
 				<Command>
 					<CommandInput placeholder="Search framework..." />
-					<CommandEmpty>No framework found.</CommandEmpty>
-					<CommandGroup></CommandGroup>
+					<CommandList>
+						<CommandEmpty>No results found.</CommandEmpty>
+						<CommandGroup>
+							{portals.map((portal) => (
+								<CommandItem
+									onSelect={() => {
+										setValue(portal.value);
+										setOpen(false);
+									}}
+								>
+									{portal.label}
+									<span className="capitalize">({portal.key})</span>
+								</CommandItem>
+							))}
+						</CommandGroup>
+					</CommandList>
 				</Command>
 			</PopoverContent>
 		</Popover>

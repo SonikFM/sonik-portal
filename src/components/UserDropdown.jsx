@@ -1,7 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { BadgeCheckIcon, Check, ChevronRight, ChevronsUpDown } from "lucide-react";
+import {
+	BadgeCheckIcon,
+	Check,
+	ChevronRight,
+	ChevronsUpDown,
+} from "lucide-react";
 import profile from "@/assets/images/profile.png";
 
 import { cn } from "@/lib/utils";
@@ -12,6 +17,7 @@ import {
 	CommandGroup,
 	CommandInput,
 	CommandItem,
+	CommandList,
 } from "@/components/ui/command";
 import {
 	Popover,
@@ -38,7 +44,10 @@ export function UserDropdown() {
 						<AvatarFallback>SO</AvatarFallback>
 					</Avatar>
 					<div className="flex flex-col text-left w-[calc(100%-80px)] truncate shrink">
-						<h3 className="flex text-sm font-medium gap-1.5 ">Sophia Williams <BadgeCheckIcon className="w-5 h-5 stroke-grey-dark fill-pink" /> </h3>
+						<h3 className="flex text-sm font-medium gap-1.5 ">
+							Sophia Williams
+							<BadgeCheckIcon className="w-5 h-5 stroke-grey-dark fill-pink" />
+						</h3>
 						<p className="mt-1 text-xs text-grey-100">sophia@alignui.com</p>
 					</div>
 					<ChevronRight className="w-6 h-6 p-[2px] text-grey-100 shrink-0" />
@@ -46,7 +55,13 @@ export function UserDropdown() {
 			</PopoverTrigger>
 			<PopoverContent className="w-[200px] p-0">
 				<Command>
-					<CommandGroup >User profile</CommandGroup>
+					<CommandGroup>
+						<CommandList>
+							<CommandItem>Porfile</CommandItem>
+							<CommandItem>Settings</CommandItem>
+							<CommandItem>Logout</CommandItem>
+						</CommandList>
+					</CommandGroup>
 				</Command>
 			</PopoverContent>
 		</Popover>

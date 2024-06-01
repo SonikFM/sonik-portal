@@ -68,7 +68,8 @@ module.exports = {
           DEFAULT: "#E97135"
         },
         error: {
-          DEFAULT: "#E93544"
+          DEFAULT: "#E93544",
+          dark: "#DF1C41"
         }
       },
       borderRadius: {
