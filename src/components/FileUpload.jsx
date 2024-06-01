@@ -1,20 +1,32 @@
+import { cn } from "@/lib/utils";
 import UploadIcon from "@/svgs/UploadIcon";
 import React, { useState, useRef } from "react";
 
-const FileUpload = ({ children, title, description, allowedFormats = ["jpeg", "png"], ...rest }) => {
+const FileUpload = ({
+	children,
+	title,
+	description,
+	className,
+	allowedFormats = ["jpeg", "png"],
+	...rest
+}) => {
 	const [file, setFile] = useState(null);
-    const [error, setError] = useState(null);
-    const fileInputRef = useRef(null);
-  
-    const validateFile = (file) => {
-      const fileType = file.type.split("/")[1];
-      if (!allowedFormats.includes(fileType)) {
-        setError(`Invalid file format. Only ${allowedFormats.join(", ")} files are allowed.`);
-        return false;
-      }
-      setError(null);
-      return true;
-    };
+	const [error, setError] = useState(null);
+	const fileInputRef = useRef(null);
+
+	const validateFile = (file) => {
+		const fileType = file.type.split("/")[1];
+		if (!allowedFormats.includes(fileType)) {
+			setError(
+				`Invalid file format. Only ${allowedFormats.join(
+					", "
+				)} files are allowed.`
+			);
+			return false;
+		}
+		setError(null);
+		return true;
+	};
 
 	const handleFileChange = (event) => {
 		const selectedFile = event.target.files[0];
@@ -24,9 +36,9 @@ const FileUpload = ({ children, title, description, allowedFormats = ["jpeg", "p
 					preview: URL.createObjectURL(selectedFile),
 				})
 			);
-            if(error){
-                setError(null)
-            }
+			if (error) {
+				setError(null);
+			}
 		}
 	};
 
@@ -43,15 +55,18 @@ const FileUpload = ({ children, title, description, allowedFormats = ["jpeg", "p
 					preview: URL.createObjectURL(droppedFile),
 				})
 			);
-            if(error){
-                setError(null)
-            }
+			if (error) {
+				setError(null);
+			}
 		}
 	};
 
 	return (
 		<div
-			className="w-full h-full p-6 text-center border border-dashed rounded-md cursor-pointer border-grey-100"
+			className={cn(
+				"w-full h-full p-6 text-center border border-dashed rounded-md cursor-pointer border-grey-100",
+				className
+			)}
 			onDragOver={handleDragOver}
 			onDrop={handleDrop}
 			onClick={() => fileInputRef.current.click()}
@@ -64,8 +79,8 @@ const FileUpload = ({ children, title, description, allowedFormats = ["jpeg", "p
 				accept="image/jpeg"
 				{...rest}
 			/>
-			{!file ? (
-				children || (
+			{children ||
+				(!file ? (
 					<div className="flex flex-col items-center justify-center w-full h-full">
 						<UploadIcon className="text-grey-100" />
 						<h3 className="mt-5 text-sm font-medium text-white">
@@ -75,22 +90,17 @@ const FileUpload = ({ children, title, description, allowedFormats = ["jpeg", "p
 							{description ||
 								"JPEG file only & size should be (768x768) pixels"}
 						</p>
-                        {error && 
-                            <p className="text-xs text-warning mt-1.5">
-                                {error}
-                            </p>
-                        }
+						{error && <p className="text-xs text-warning mt-1.5">{error}</p>}
 					</div>
-				)
-			) : (
-				<div className="w-full h-full">
-					<img
-						src={file.preview}
-						alt="Preview"
-						className="object-cover w-full h-full rounded-md"
-					/>
-				</div>
-			)}
+				) : (
+					<div className="w-full h-full">
+						<img
+							src={file.preview}
+							alt="Preview"
+							className="object-cover w-full h-full rounded-md"
+						/>
+					</div>
+				))}
 		</div>
 	);
 };

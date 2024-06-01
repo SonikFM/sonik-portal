@@ -10,7 +10,6 @@ import ForgetPassword from "./ForgetPassword";
 import Verification from "./Verification";
 import Events from "./Events";
 import Tickets from "./Tickets";
-import Attendee from "./Attendee";
 import Producer from "./Producer";
 import Calendar from "./Calendar";
 import Venues from "./Venues";
@@ -21,6 +20,7 @@ import Settings from "./Settings";
 import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
 import CreateEvent from "@/containers/Event";
+import AttendeeAccount from "./AttendeeAccount";
 
 export const router = createBrowserRouter([
 	{
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
 					{ path: "event/create-event", element: <CreateEvent /> },
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
-					{ path: "attendee-accounts", element: <Attendee /> },
+					{ path: "attendee-accounts", element: <AttendeeAccount /> },
 					{ path: "producer-accounts", element: <Producer /> },
 					{ path: "tickets", element: <Tickets /> },
 					{ path: "venues", element: <Venues /> },

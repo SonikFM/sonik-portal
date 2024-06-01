@@ -22,13 +22,13 @@ export function AppDatePicker({ icon, className, dateFormat="PPP", ...rest }) {
 				<Button
 					variant={"outline"}
 					className={cn(
-						"w-full justify-start text-left font-normal px-2 text-sm hover:bg-grey-200",
+						"w-full justify-start text-left font-normal px-2 text-sm hover:bg-grey-200 font-normal",
 						!date && "text-grey-100",
 						className
 					)}
                     {...rest}
 				>
-					{icon || <CalendarIcon className="w-4 h-4 mr-3" />}
+					{icon}
 					{date ? format(date, dateFormat) : <span className="text-sm font-normal text-grey-100" >Pick a date</span>}
 				</Button>
 			</PopoverTrigger>

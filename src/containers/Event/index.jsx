@@ -26,6 +26,8 @@ import { Switch } from "@/components/ui/switch";
 import DollarIcon from "@/svgs/DollarIcon";
 import Guest from "./elements/Guest";
 import SearchSuggestionInput from "./elements/SearchSuggestionInput";
+import SearchIcon from "@/svgs/SearchIcon";
+import BellIcon from "@/svgs/BellIcon";
 
 const CreateEvent = () => {
 	const [t, i18n] = useTranslation("dashboard");
@@ -39,7 +41,14 @@ const CreateEvent = () => {
 				title="Create an Event"
 				description="Add your event deatails below"
 				icon={<FoldersIcon className="w-5 h-5 text-grey-100" />}
-			/>
+			>
+				<div className="flex items-center justify-center w-10 shrink-0">
+					<SearchIcon />
+				</div>
+				<div className="flex items-center justify-center w-10 shrink-0">
+					<BellIcon />
+				</div>
+			</DashboardHeader>
 			<div className="p-8">
 				<div className="pb-4 mb-6 border-b border-grey-light">
 					<h3 className="font-medium text-white">Basic</h3>
@@ -525,7 +534,9 @@ const CreateEvent = () => {
 					/>
 				</div>
 				<div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
-					<Button variant="outline" className="w-40" >Cancel</Button>
+					<Button variant="outline" className="w-40">
+						Cancel
+					</Button>
 					<Button className="w-40">Continue</Button>
 				</div>
 			</div>
