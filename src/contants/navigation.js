@@ -16,12 +16,12 @@ export const MAIN_NAVIGATION = [
         url: "/",
         icon: DashboardIcon
     },
-    {
-        id: "calendar",
-        label: "Calendar",
-        url: "/calendar",
-        icon: CalendarIcon
-    },
+    // {
+    //     id: "calendar",
+    //     label: "Calendar",
+    //     url: "/calendar",
+    //     icon: CalendarIcon
+    // },
     {
         id: "events",
         label: "Events",
@@ -72,12 +72,12 @@ export const SETTINGS_NAVIGATION = [
         url: "/settings",
         icon: SettingsIcon
     },
-    {
-        id: "support",
-        label: "Support",
-        url: "/support",
-        icon: HeadphonesIcon
-    },
+    // {
+    //     id: "support",
+    //     label: "Support",
+    //     url: "/support",
+    //     icon: HeadphonesIcon
+    // },
 ]
 export const FAVS_NAVIGATION = [
     {
