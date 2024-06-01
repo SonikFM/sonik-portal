@@ -51,7 +51,7 @@ const Sidebar = () => {
 								);
 							})}
 						</div>
-						<div className="p-1 mt-5 mb-2">
+						{/* <div className="p-1 mt-5 mb-2">
 							<h2 className="text-xs font-medium text-grey">FAVS</h2>
 						</div>
 						<div className="flex flex-col gap-1">
@@ -77,7 +77,7 @@ const Sidebar = () => {
 									</Link>
 								);
 							})}
-						</div>
+						</div> */}
 					</div>
 					<div className="flex flex-col gap-1 mt-5">
 						{SETTINGS_NAVIGATION.map((navigate) => {

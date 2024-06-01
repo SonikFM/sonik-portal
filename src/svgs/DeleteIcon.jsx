@@ -1,6 +1,6 @@
 import React from "react";
 
-const DeletIcon = (props) => {
+const DeleteIcon = (props) => {
 	return (
 		<svg
 			width="20"
@@ -18,4 +18,4 @@ const DeletIcon = (props) => {
 	);
 };
 
-export default DeletIcon;
+export default DeleteIcon;
