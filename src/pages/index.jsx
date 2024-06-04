@@ -21,6 +21,7 @@ import Settings from "./Settings";
 import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
 import CreateEvent from "@/containers/Event";
+import CreateVenue from "./CreateVenue"
 
 export const router = createBrowserRouter([
 	{
@@ -33,12 +34,13 @@ export const router = createBrowserRouter([
 				children: [
 					{ path: "", element: <Dashboard />, index: true },
 					{ path: "event/create-event", element: <CreateEvent /> },
+					{ path: "venue/create-venue", element: <CreateVenue /> },
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
 					{ path: "attendee-accounts", element: <Attendee /> },
 					{ path: "producer-accounts", element: <Producer /> },
 					{ path: "tickets", element: <Tickets /> },
-					{ path: "venues", element: <Venues /> },
+					{ path: "venues", element: <CreateVenue /> },
 					{ path: "organization", element: <Organization /> },
 					{ path: "support-ticketing", element: <SupportAndTickets /> },
 					{ path: "settings", element: <Settings /> },
