@@ -11,7 +11,7 @@ import Verification from "./Verification";
 import Events from "./Events";
 import Tickets from "./Tickets";
 import Attendee from "./Attendee";
-import Producer from "./Producer";
+import ProducerAccounts from "./ProducerAccounts";
 import Calendar from "./Calendar";
 import Venues from "./Venues";
 import Organization from "./Organization";
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
 					{ path: "attendee-accounts", element: <Attendee /> },
-					{ path: "producer-accounts", element: <Producer /> },
+					{ path: "producer-accounts", element: <ProducerAccounts /> },
 					{ path: "tickets", element: <Tickets /> },
 					{ path: "organization", element: <Organization /> },
 					{ path: "support-ticketing", element: <SupportAndTickets /> },
