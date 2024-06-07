@@ -1,9 +1,10 @@
 import React from 'react'
+import Events from "@/containers/Events"
 
-const Events = () => {
+const Index = () => {
   return (
-    <div>Events</div>
+    <div><Events/></div>
   )
 }
 
-export default Events
+export default Index
