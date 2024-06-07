@@ -101,30 +101,6 @@ const CreateVenue = () => {
 						</div>
 					</div>
 					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Country<span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Select
-								placeholder="Select Country"
-								hasSearch
-								icon={<SearchIcon />}
-								options={[{ label: "Pakistan", value: "pakistan" }]}
-							/>
-						</div>
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="text-white">
-								Region <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter region"
-							/>
-						</div>
-					</div>
-					<div className="flex gap-6 ">
 						<div className="flex flex-col w-full gap-1">
 							<Label className="flex justify-between text-white">
 								<span>
@@ -135,44 +111,6 @@ const CreateVenue = () => {
 								icon={<SearchIcon />}
 								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
 								placeholder="Search Address"
-							/>
-						</div>
-					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="text-white">
-								phone number <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="+12-234-5678-9"
-							/>
-						</div>
-
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="text-white">
-								Zip code <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter zip code"
-							/>
-						</div>
-					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-full gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Venue description
-									<span className="ml-1 text-primary">*</span>
-								</span>
-								<span className="text-xs font-medium text-grey-100">
-									50/250
-								</span>
-							</Label>
-							<Textarea
-								placeholder="Type your message here."
-								className="bg-transparent border-grey-light"
 							/>
 						</div>
 					</div>
@@ -200,6 +138,70 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								Zip code <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="Enter zip code"
+							/>
+						</div>
+
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								Region <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="Enter region"
+							/>
+						</div>
+					</div>
+
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="flex justify-between text-white">
+								<span>
+									Country<span className="text-primary">*</span>
+								</span>
+							</Label>
+							<Select
+								placeholder="Select Country"
+								hasSearch
+								icon={<SearchIcon />}
+								options={[{ label: "Pakistan", value: "pakistan" }]}
+							/>
+						</div>
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								phone number <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="+12-234-5678-9"
+							/>
+						</div>
+					</div>
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-full gap-1">
+							<Label className="flex justify-between text-white">
+								<span>
+									Venue description
+									<span className="ml-1 text-primary">*</span>
+								</span>
+								<span className="text-xs font-medium text-grey-100">
+									50/250
+								</span>
+							</Label>
+							<Textarea
+								placeholder="Type your message here."
+								className="bg-transparent border-grey-light"
+							/>
+						</div>
+					</div>
+
 					<div className="flex flex-wrap gap-6 ">
 						<div className="flex flex-col w-full gap-1">
 							<div className="flex justify-between w-1/2 px-4 py-4 mt-2 bg-grey-200 rounded-2xl h-fit">
