@@ -35,6 +35,7 @@ export const router = createBrowserRouter([
 					{ path: "", element: <Dashboard />, index: true },
 					{ path: "event/create-event", element: <CreateEvent /> },
 					{ path: "venue/create-venue", element: <CreateVenue /> },
+					{ path: "events/create-event", element: <CreateEvent /> },
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
 					{ path: "attendee-accounts", element: <Attendee /> },
