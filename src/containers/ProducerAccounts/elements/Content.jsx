@@ -8,7 +8,7 @@ const Content = ({table}) => {
 		<Table>
 			<TableHeader className="border-0" >
 				{table.getHeaderGroups().map((headerGroup) => (
-					<TableRow key={headerGroup.id} className="px-3 !border-0 h-9 bg-grey-200" >
+					<TableRow key={headerGroup.id} className="px-3 !border-0 h-9 bg-grey-200 hover:bg-grey-200" >
 						{headerGroup.headers.map((header, index) => {
 							return (
 								<TableHead key={header.id} className={`${index === 0? "rounded-l-lg":""}`} >

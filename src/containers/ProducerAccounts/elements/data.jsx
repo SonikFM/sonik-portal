@@ -17,2179 +17,2690 @@ import CheckedIcon from "@/svgs/CheckedIcon";
 import ClockIcon from "@/svgs/ClockIcon";
 
 export const data = [
-
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i1",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i2",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i3",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i4",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i5",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i6",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i7",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i8",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i9",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Doncert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i10",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i11",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i12",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i13",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i14",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "pending",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i15",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "completed",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
 	},
 	{
 		id: "m5gr84i16",
-		event_id: "E-32348",
-		event: {
+		producer_id: "E-32348",
+		producer: {
 			image: event_img,
 			name: "Concert For Charity Goodlayers.com",
 		},
-		organizer: {
-			name: "James Brown",
+		organization: {
+			name: "James Organization",
 			email: "james@gmail.com",
 		},
+		role: {
+			title: "Marketing Manager",
+			date: "Aug, 2021",
+		},
 		status: "success",
-		email: "ken99@yahoo.com",
+		email: "jamesbrown@alignui.com",
 		date: "12-15 Mar 2023",
 		description:
 			"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,",
@@ -2204,7 +2715,7 @@ export const columns = [
 				className="flex items-center gap-1"
 				onClick={() => table.toggleSorting(table.getIsSorted() === "asc")}
 			>
-				<div className="capitalize">Event Name</div>
+				<div className="capitalize">Producer Accounts</div>
 				<CaretUpDownIcon />
 			</div>
 		),
@@ -2218,10 +2729,10 @@ export const columns = [
 						className="border-grey-light"
 					/>
 					<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-grey-light shrink-0">
-						<img src={event_img} alt="event image" />
+						<img src={organizer_img} alt="event image" />
 					</div>
 					<h3 className="font-medium truncate shrink-1">
-						{row.original.event.name}
+						{row.original.producer.name}
 					</h3>
 				</div>
 			);
@@ -2230,27 +2741,24 @@ export const columns = [
 		enableHiding: false,
 	},
 	{
-		accessorKey: "organizer",
+		accessorKey: "organization",
 		header: ({ table }) => (
 			<div
 				className="flex items-center gap-1"
 				onClick={() => table.toggleSorting(table.getIsSorted() === "asc")}
 			>
-				<div className="capitalize">Organizer</div>
+				<div className="capitalize">Organization</div>
 				<CaretUpDownIcon />
 			</div>
 		),
 		cell: ({ row }) => (
 			<div className="flex items-center gap-3 w-36">
-				<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-grey-light shrink-0">
-					<img src={organizer_img} alt="organizer image" />
-				</div>
 				<div className="shrink-1">
 					<h4 className="font-medium truncate">
-						{row.original.organizer.name}
+						{row.original.organization.name}
 					</h4>
 					<p className="text-xs font-normal truncate text-grey-100">
-						{row.original.organizer.email}
+						{row.original.organization.email}
 					</p>
 				</div>
 			</div>
@@ -2259,46 +2767,56 @@ export const columns = [
 		enableHiding: false,
 	},
 	{
-		accessorKey: "event_id",
-		header: ({ row }) => (
-			<div
-				className="flex items-center gap-1 min-w-fit whitespace-nowrap"
-				onClick={() => row.toggleSorting(row.getIsSorted() === "asc")}
-			>
-				<div className="capitalize">Event ID</div>
-				<CaretUpDownIcon />
-			</div>
-		),
-		cell: ({ row }) => (
-			<span className="text-sm">{row.getValue("event_id")}</span>
-		),
-		enableSorting: true,
-		enableHiding: false,
-	},
-	{
-		accessorKey: "event_date",
+		accessorKey: "role",
 		header: ({ row }) => (
 			<div
 				className="flex items-center gap-1 min-w-fit whitespace-nowrap "
 				onClick={() => row.toggleSorting(row.getIsSorted() === "asc")}
 			>
-				<div className="capitalize">Event Date</div>
+				<div className="capitalize">Roles</div>
 				<CaretUpDownIcon />
 			</div>
 		),
 		cell: ({ row }) => (
-			<span className="text-sm whitespace-nowrap">{row.original.date}</span>
+			<div className="text-sm w-28 whitespace-nowrap">
+				<div className="shrink-1">
+					<h4 className="font-medium truncate">
+						{row.original.role.title}
+					</h4>
+					<p className="text-xs font-normal truncate text-grey-100">
+						Since {row.original.role.date}
+					</p>
+				</div>
+			</div>
 		),
 		enableSorting: true,
 		enableHiding: false,
 	},
 	{
-		accessorKey: "description",
-		header: "Description",
+		accessorKey: "email",
+		header: "Email",
 		cell: ({ row }) => (
-			<div className="w-48 truncate">{row.getValue("description")}</div>
+			<div className="text-sm font-medium truncate w-36">{row.getValue("email")}</div>
 		),
 	},
+	{
+		accessorKey: "producer_id",
+		header: ({ row }) => (
+			<div
+				className="flex items-center gap-1 min-w-fit whitespace-nowrap"
+				onClick={() => row.toggleSorting(row.getIsSorted() === "asc")}
+			>
+				<div className="capitalize">Producer ID</div>
+				<CaretUpDownIcon />
+			</div>
+		),
+		cell: ({ row }) => (
+			<span className="text-sm w-28">{row.getValue("producer_id")}</span>
+		),
+		enableSorting: true,
+		enableHiding: false,
+	},
+	
 	{
 		accessorKey: "status",
 		header: () => (
@@ -2314,7 +2832,7 @@ export const columns = [
 			const status = row.getValue("status");
 
 			return (
-				<div className="font-medium">
+				<div className="w-20 font-medium">
 					<Button
 						variant="oultined"
 						className="h-6 gap-1.5 text-xs border-grey-light text-grey-100 rounded-md border px-2"
@@ -2334,30 +2852,6 @@ export const columns = [
 						)}
 					</Button>
 				</div>
-			);
-		},
-	},
-	{
-		id: "actions",
-		enableHiding: false,
-		cell: ({ row }) => {
-			const payment = row.original;
-
-			return (
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Button variant="ghost" className="w-8 h-8 p-0 hover:bg-grey-dark hover:text-white">
-							<span className="sr-only">Open menu</span>
-							<MoreVertical className="w-4 h-4" />
-						</Button>
-					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end">
-						<DropdownMenuLabel>Actions</DropdownMenuLabel>
-						<DropdownMenuItem>Edit</DropdownMenuItem>
-						<DropdownMenuItem>View</DropdownMenuItem>
-						<DropdownMenuItem>Delete</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
 			);
 		},
 	},
