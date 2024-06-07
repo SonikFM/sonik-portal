@@ -33,6 +33,7 @@ import MapIcon from "@/svgs/MapIcon";
 import Details from "./elements/Details";
 import UploadIcon from "@/svgs/UploadIcon";
 import bg from "@/assets/images/map-placeholder.png";
+import SearchIcon from "@/svgs/SearchIcon";
 
 const CreateVenue = () => {
 	const [t, i18n] = useTranslation("dashboard");
@@ -75,13 +76,87 @@ const CreateVenue = () => {
 								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
 								placeholder="Enter place name"
 							/>
-							{/* <MultiSelect
-								className="h-10 "
-								placeholder="Event Type"
-								onChange={(event) => console.log({ event })}
-								value={""}
-								showSuggesstions={false}
-							/> */}
+						</div>
+					</div>
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="flex justify-between text-white">
+								<span>
+									Venue Capacity <span className="text-primary">*</span>
+								</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="100"
+							/>
+						</div>
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								Venue Email <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="example@mail.com"
+							/>
+						</div>
+					</div>
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="flex justify-between text-white">
+								<span>
+									Country<span className="text-primary">*</span>
+								</span>
+							</Label>
+							<Select
+								placeholder="Select Country"
+								hasSearch
+								icon={<SearchIcon />}
+								options={[{ label: "Pakistan", value: "pakistan" }]}
+							/>
+						</div>
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								Region <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="Enter region"
+							/>
+						</div>
+					</div>
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-full gap-1">
+							<Label className="flex justify-between text-white">
+								<span>
+									Search Address<span className="text-primary">*</span>
+								</span>
+							</Label>
+							<InputWithIcon
+								icon={<SearchIcon />}
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="Search Address"
+							/>
+						</div>
+					</div>
+					<div className="flex gap-6 ">
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								phone number <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="+12-234-5678-9"
+							/>
+						</div>
+
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="text-white">
+								Zip code <span className="text-primary">*</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="Enter zip code"
+							/>
 						</div>
 					</div>
 					<div className="flex gap-6 ">
@@ -105,36 +180,7 @@ const CreateVenue = () => {
 						<div className="flex flex-col w-1/2 gap-1">
 							<Label className="flex justify-between text-white">
 								<span>
-									Venue Capacity <span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="100"
-							/>
-						</div>
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="text-white">
-								Venue Email <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="example@mail.com"
-							/>
-							{/* <MultiSelect
-								className="h-10 "
-								placeholder="Event Type"
-								onChange={(event) => console.log({ event })}
-								value={""}
-								showSuggesstions={false}
-							/> */}
-						</div>
-					</div>
-					<div className="flex flex-wrap gap-6 ">
-						<div className="flex flex-col w-full gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Venue Phone Number <span className="text-primary">*</span>
+									Address Line 1<span className="text-primary">*</span>
 								</span>
 							</Label>
 							<Input
@@ -142,6 +188,19 @@ const CreateVenue = () => {
 								placeholder="+92-343-8831954"
 							/>
 						</div>
+						<div className="flex flex-col w-1/2 gap-1">
+							<Label className="flex justify-between text-white">
+								<span>
+									Address Line 2<span className="text-primary">*</span>
+								</span>
+							</Label>
+							<Input
+								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+								placeholder="+92-343-8831954"
+							/>
+						</div>
+					</div>
+					<div className="flex flex-wrap gap-6 ">
 						<div className="flex flex-col w-full gap-1">
 							<div className="flex justify-between w-1/2 px-4 py-4 mt-2 bg-grey-200 rounded-2xl h-fit">
 								<div>
@@ -154,62 +213,6 @@ const CreateVenue = () => {
 							</div>
 						</div>
 					</div>
-					{/* <div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Built Year <span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter year"
-							/>
-						</div>
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Capacity <span className="text-primary">*</span>
-								</span>
-							</Label>
-							<InputWithIcon
-								icon={<UsersIcon />}
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter year"
-							/>
-						</div>
-					</div> */}
-					{/* <div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="flex text-white justify-betweeb">
-								Artist<span className="text-primary">*</span>
-							</Label>
-							<SearchInput
-								className="h-10 "
-								placeholder="Search"
-								onChange={(event) => console.log({ event })}
-								value={""}
-								showSuggesstions={false}
-							/>
-							<div className="px-4 py-1 mt-2 bg-grey-200 rounded-2xl">
-								<Artist className="py-4 border-b border-grey-light " />
-								<Artist className="py-4 border-b border-grey-light " />
-								<Artist className="" />
-							</div>
-						</div>
-						<div className="flex flex-col w-1/2 gap-1">
-							<Label className="text-white">
-								Genre <span className="text-primary">*</span>
-							</Label>
-							<SearchInput
-								className="h-10 "
-								placeholder="The Great Hall"
-								onChange={(event) => console.log({ event })}
-								value={""}
-								showSuggesstions={false}
-							/>
-						</div>
-					</div> */}
 				</div>
 				{/* <div className="pb-4 mt-10 mb-6 border-b border-grey-light">
 					<h3 className="font-medium text-white">Venue Address</h3>
