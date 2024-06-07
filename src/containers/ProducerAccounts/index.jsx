@@ -102,7 +102,7 @@ const ProducerAccounts = () => {
 				<TabsContent value="active">
 					<Content table={table} />
 				</TabsContent>
-				<TabsContent value="absent">
+				<TabsContent value="inactive">
 					<Content table={table} />
 				</TabsContent>
 				<div className="flex items-center justify-end gap-3 py-3">

@@ -37,8 +37,8 @@ const Header = ({ table }) => {
 						<TabsTrigger className="w-24 rounded-md" value="active">
 							Active
 						</TabsTrigger>
-						<TabsTrigger className="w-24 rounded-md" value="absent">
-							Absend
+						<TabsTrigger className="w-24 rounded-md" value="inactive">
+							Inactive
 						</TabsTrigger>
 					</TabsList>
 				</div>
