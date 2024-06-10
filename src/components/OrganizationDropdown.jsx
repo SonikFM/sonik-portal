@@ -56,6 +56,7 @@ export function OrganizationDropdown() {
 						<CommandGroup>
 							{portals.map((portal) => (
 								<CommandItem
+									key={portal.value}
 									onSelect={() => {
 										setValue(portal.value);
 										setOpen(false);

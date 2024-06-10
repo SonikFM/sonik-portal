@@ -2,14 +2,7 @@ import { cn } from "@/lib/utils";
 import UploadIcon from "@/svgs/UploadIcon";
 import React, { useState, useRef } from "react";
 
-const FileUpload = ({
-	children,
-	title,
-	description,
-	className,
-	allowedFormats = ["jpeg", "png"],
-	...rest
-}) => {
+const FileUpload = ({ children, title, description, allowedFormats = ["jpeg", "png"],wrapperClass, ...rest }) => {
 	const [file, setFile] = useState(null);
 	const [error, setError] = useState(null);
 	const fileInputRef = useRef(null);
@@ -63,10 +56,7 @@ const FileUpload = ({
 
 	return (
 		<div
-			className={cn(
-				"w-full h-full p-6 text-center border border-dashed rounded-md cursor-pointer border-grey-100",
-				className
-			)}
+			className={cn("w-full h-full p-6 text-center border border-dashed rounded-md cursor-pointer border-grey-100", wrapperClass)}
 			onDragOver={handleDragOver}
 			onDrop={handleDrop}
 			onClick={() => fileInputRef.current.click()}
