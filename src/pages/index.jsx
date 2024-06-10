@@ -10,8 +10,8 @@ import ForgetPassword from "./ForgetPassword";
 import Verification from "./Verification";
 import Events from "./Events";
 import Tickets from "./Tickets";
-import Attendee from "./Attendee";
-import ProducerAccounts from "./ProducerAccounts";
+import Producers from "./ProducerAccounts";
+// import Attendee from "./Attendee";
 import Calendar from "./Calendar";
 import Venues from "./Venues";
 import Organization from "./Organization";
@@ -21,6 +21,8 @@ import Settings from "./Settings";
 import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
 import CreateEvent from "@/containers/Event";
+import AttendeeAccount from "./AttendeeAccount";
+import OrganizerAccount from "@/containers/OrganizerAccount";
 import CreateVenue from "./CreateVenue"
 
 export const router = createBrowserRouter([
@@ -38,8 +40,11 @@ export const router = createBrowserRouter([
 					{ path: "events/create-event", element: <CreateEvent /> },
 					{ path: "events", element: <Events /> },
 					{ path: "calendar", element: <Calendar /> },
-					{ path: "attendee-accounts", element: <Attendee /> },
-					{ path: "producer-accounts", element: <ProducerAccounts /> },
+					{ path: "attendees", element: <AttendeeAccount /> },
+					// { path: "producer-accounts", element: <OrganizerAccount /> },
+					// { path: "attendee-accounts", element: <Attendee /> },
+					{ path: "producers", element: <Producers /> },
+					{ path: "producers/create", element: <OrganizerAccount /> },
 					{ path: "tickets", element: <Tickets /> },
 					{ path: "venues", element: <CreateVenue /> },
 					{ path: "organization", element: <Organization /> },

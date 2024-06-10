@@ -70,7 +70,7 @@ const ProducerAccounts = () => {
 	});
 	const navigate = useNavigate();
 	const redirectToCreateEvent = () => {
-		navigate("/events/create-event");
+		navigate("/producers/create");
 	};
 
 	const pc =
@@ -84,7 +84,7 @@ const ProducerAccounts = () => {
 	return (
 		<>
 			<DashboardHeader
-				title="Create an Venue"
+				title="February 04, 2024"
 				hasNotifications={false}
 				hasSearch={true}
 			>

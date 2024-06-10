@@ -1,4 +1,3 @@
-import { useGetTodosQuery } from "@/apis/todos";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -18,7 +17,6 @@ export const DashboardHeader = ({
 	children
 }) => {
 	const state = useSelector((state) => state.app);
-	const { data, error, isLoading } = useGetTodosQuery();
 	const { i18n } = useTranslation();
 
 	const handleLanguageChange = () => {

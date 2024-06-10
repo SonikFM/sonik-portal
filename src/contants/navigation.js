@@ -31,13 +31,13 @@ export const MAIN_NAVIGATION = [
     {
         id: "attendee-accounts",
         label: "Attendee Accounts",
-        url: "/attendee-accounts",
+        url: "/attendees",
         icon: UsersIcon
     },
     {
         id: "producer-accounts",
         label: "Producer Accounts",
-        url: "/producer-accounts",
+        url: "/producers",
         icon: AccountIcon
     },
     {
