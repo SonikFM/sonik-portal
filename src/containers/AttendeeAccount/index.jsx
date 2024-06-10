@@ -1,4 +1,3 @@
-"use client";
 import { Select } from "@/components/Select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,19 +10,28 @@ import { Button } from "@/components/ui/button";
 import FileUpload from "@/components/FileUpload";
 import Profile from "./elements/Profile";
 import UploadIcon from "@/svgs/UploadIcon";
+import { useNavigate } from "react-router-dom";
 
 const AttendeeAccount = () => {
 	const [t, i18n] = useTranslation("dashboard");
 	const [checked, setChecked] = useState(false);
 	const onChange = () => {
-		setChecked(!true);
+		startTransition(() => {
+			setChecked(!checked);
+		});
 	};
+
+	const navigate = useNavigate()
+	const onIconClick=()=>{
+		navigate(-1)
+	}
 	return (
 		<>
 			<DashboardHeader
 				title="Attendee Account"
 				description="For create an account full-fill the required informations"
 				icon={<ChevronLeft className="w-5 h-5 text-grey-100" />}
+				onIconClick={onIconClick}
 			>
 				<Button variant="outline"> Cancel </Button>
 				<Button> Create Account </Button>

@@ -1,4 +1,4 @@
-"use client";
+
 import SearchInput from "@/components/SearchInput";
 import { Select } from "@/components/Select";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -28,6 +28,7 @@ import Guest from "./elements/Guest";
 import SearchSuggestionInput from "./elements/SearchSuggestionInput";
 import SearchIcon from "@/svgs/SearchIcon";
 import BellIcon from "@/svgs/BellIcon";
+import { useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
 	const [t, i18n] = useTranslation("dashboard");
@@ -35,12 +36,17 @@ const CreateEvent = () => {
 	const onChange = () => {
 		setChecked(!true);
 	};
+	const navigate = useNavigate()
+	const onIconClick=()=>{
+		navigate(-1)
+	}
 	return (
 		<>
 			<DashboardHeader
 				title="Create an Event"
 				description="Add your event deatails below"
 				icon={<FoldersIcon className="w-5 h-5 text-grey-100" />}
+				onIconClick={onIconClick}
 			>
 				<div className="flex items-center justify-center w-10 shrink-0">
 					<SearchIcon />

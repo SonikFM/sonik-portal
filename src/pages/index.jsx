@@ -1,8 +1,14 @@
 import {
 	createBrowserRouter,
-	RouterProvider,
 	Navigate,
 } from "react-router-dom";
+import {
+	AuthLayout,
+	DashboardLayout,
+} from "@/layout";
+import ProtectedRoute from "./ProtectedRoute";
+
+// PAGES
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -11,21 +17,45 @@ import Verification from "./Verification";
 import Events from "./Events";
 import Tickets from "./Tickets";
 import Producers from "./ProducerAccounts";
-// import Attendee from "./Attendee";
 import Calendar from "./Calendar";
-import Venues from "./Venues";
 import Organization from "./Organization";
 import Support from "./Support";
 import SupportAndTickets from "./SupportAndTickets";
 import Settings from "./Settings";
-import { AuthLayout, DashboardLayout } from "@/layout";
-import ProtectedRoute from "./ProtectedRoute";
-import CreateEvent from "@/containers/Event";
 import AttendeeAccount from "./AttendeeAccount";
-import OrganizerAccount from "@/containers/OrganizerAccount";
-import CreateVenue from "./CreateVenue"
+import CreateVenue from "./CreateVenue";
+import AttendeeAccounts from "./AttendeeAccounts";
 
-export const router = createBrowserRouter([
+// CONATINERS
+
+import CreateEvent from "@/containers/Event";
+import OrganizerAccount from "@/containers/OrganizerAccount";
+
+const dashboardRoutes = [
+	{ path: "", element: <Dashboard />, index: true },
+	{ path: "events", element: <Events /> },
+	{ path: "events/create-event", element: <CreateEvent /> },
+	{ path: "attendees", element: <AttendeeAccounts /> },
+	{ path: "attendees/create-attendee", element: <AttendeeAccount /> },
+	{ path: "producers", element: <Producers /> },
+	{ path: "producers/create-producer", element: <OrganizerAccount /> },
+	{ path: "venues", element: <CreateVenue /> },
+	{ path: "calendar", element: <Calendar /> },
+	{ path: "tickets", element: <Tickets /> },
+	{ path: "organization", element: <Organization /> },
+	{ path: "support-ticketing", element: <SupportAndTickets /> },
+	{ path: "settings", element: <Settings /> },
+	{ path: "support", element: <Support /> },
+];
+
+const authRoutes = [
+	{ path: "login", element: <Login /> },
+	{ path: "register", element: <SignUp /> },
+	{ path: "forget-password", element: <ForgetPassword /> },
+	{ path: "verification", element: <Verification /> },
+];
+
+const routes = [
 	{
 		path: "/",
 		element: <ProtectedRoute />,
@@ -33,37 +63,14 @@ export const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <DashboardLayout />,
-				children: [
-					{ path: "", element: <Dashboard />, index: true },
-					{ path: "event/create-event", element: <CreateEvent /> },
-					{ path: "venue/create-venue", element: <CreateVenue /> },
-					{ path: "events/create-event", element: <CreateEvent /> },
-					{ path: "events", element: <Events /> },
-					{ path: "calendar", element: <Calendar /> },
-					{ path: "attendees", element: <AttendeeAccount /> },
-					// { path: "producer-accounts", element: <OrganizerAccount /> },
-					// { path: "attendee-accounts", element: <Attendee /> },
-					{ path: "producers", element: <Producers /> },
-					{ path: "producers/create", element: <OrganizerAccount /> },
-					{ path: "tickets", element: <Tickets /> },
-					{ path: "venues", element: <CreateVenue /> },
-					{ path: "organization", element: <Organization /> },
-					{ path: "support-ticketing", element: <SupportAndTickets /> },
-					{ path: "settings", element: <Settings /> },
-					{ path: "support", element: <Support /> },
-				],
+				children: dashboardRoutes,
 			},
 		],
 	},
 	{
 		path: "/",
 		element: <AuthLayout />,
-		children: [
-			{ path: "login", element: <Login /> },
-			{ path: "register", element: <SignUp /> },
-			{ path: "forget-password", element: <ForgetPassword /> },
-			{ path: "verification", element: <Verification /> },
-		],
+		children: authRoutes,
 	},
 	{
 		path: "/logout",
@@ -72,4 +79,6 @@ export const router = createBrowserRouter([
 			return Navigate({ to: "/login" });
 		},
 	},
-]);
+];
+
+export const router = createBrowserRouter(routes);

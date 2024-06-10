@@ -1,4 +1,4 @@
-"use client";
+
 
 import * as React from "react";
 import {
@@ -9,13 +9,9 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
 	DropdownMenu,
-	DropdownMenuCheckboxItem,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuLabel,
@@ -35,7 +31,6 @@ import DotsIcon from "@/svgs/DotsIcon";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import userImg from "@/assets/images/users/1.png";
 import ClockIcon from "@/svgs/ClockIcon";
-import VerifiedIcon from "@/svgs/VerifiedIcon";
 import { cn } from "@/lib/utils";
 import SearchInput from "./SearchInput";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";

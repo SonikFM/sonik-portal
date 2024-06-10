@@ -1,4 +1,4 @@
-"use client";
+
 
 import React, { useState } from "react";
 import {
@@ -83,7 +83,7 @@ const Events = () => {
 	return (
 		<>
 			<DashboardHeader
-				title="Create an Venue"
+				title="February 04, 2024"
 				hasNotifications={false}
 				hasSearch={false}
 			>

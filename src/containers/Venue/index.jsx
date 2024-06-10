@@ -1,4 +1,4 @@
-"use client";
+
 import SearchInput from "@/components/SearchInput";
 import { Select } from "@/components/Select";
 import { Checkbox } from "@/components/ui/checkbox";
