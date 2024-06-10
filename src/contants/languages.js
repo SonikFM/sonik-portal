@@ -1,8 +1,8 @@
 export const languages = [
     {
-        value: 'fr',
-        label: 'french',
-        key: "fre"
+        value: 'es',
+        label: 'spanish ',
+        key: "apa"
     },
     {
         value: 'en',

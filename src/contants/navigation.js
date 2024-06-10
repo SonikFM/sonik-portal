@@ -99,3 +99,7 @@ export const FAVS_NAVIGATION = [
         icon: 'bg-pink'
     },
 ]
+
+
+
+// ES
