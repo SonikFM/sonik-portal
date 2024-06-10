@@ -14,20 +14,21 @@ export const DashboardHeader = ({
 	icon,
 	hasNotifications = true,
 	hasSearch = true,
+	onIconClick,
 	children
 }) => {
-	const state = useSelector((state) => state.app);
 	const { i18n } = useTranslation();
 
 	const handleLanguageChange = () => {
 		i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
 	};
+	
 	return (
 		<div className=" fixed top-0 left-[272px] w-[calc(100%-272px)] bg-grey-dark z-50  px-8">
 			<div className="border-b border-grey-light flex items-center justify-between h-[88px] gap-5 bg-grey-dark w-full">
 				<div className="flex items-center gap-3 shrink-0">
 					{icon && (
-						<div className="flex items-center justify-center w-12 h-12 border rounded-full border-grey-light shrink-0">
+						<div className="flex items-center justify-center w-12 h-12 border rounded-full cursor-pointer border-grey-light shrink-0 " onClick={onIconClick} >
 							{icon}
 						</div>
 					)}

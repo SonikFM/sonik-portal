@@ -32,7 +32,7 @@ import { generatePageNumbers } from "@/lib/utils";
 import { PaginationMenu } from "./elements/PaginationMenu";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 
-const ProducerAccounts = () => {
+const AttendeeAccounts = () => {
 	const [sorting, setSorting] = useState([]);
 	const [columnFilters, setColumnFilters] = useState([]);
 	const [columnVisibility, setColumnVisibility] = useState({});
@@ -70,10 +70,7 @@ const ProducerAccounts = () => {
 	});
 	const navigate = useNavigate();
 	const handleRedirect = () => {
-		navigate("/producers/create-producer");
-	};
-	const onIconClick = () => {
-		navigate(-1);
+		navigate("/attendees/create-attendee");
 	};
 
 	const pc =
@@ -90,10 +87,9 @@ const ProducerAccounts = () => {
 				title="February 04, 2024"
 				hasNotifications={false}
 				hasSearch={true}
-				onIconClick={onIconClick}
 			>
 				<Button className="flex gap-1" onClick={handleRedirect}>
-					<PlusIcon /> Add New Producer
+					<PlusIcon /> Add Attendee Account
 				</Button>
 			</DashboardHeader>
 
@@ -179,4 +175,4 @@ const ProducerAccounts = () => {
 	);
 };
 
-export default ProducerAccounts;
+export default AttendeeAccounts;

@@ -1,4 +1,4 @@
-"use client";
+
 import SearchInput from "@/components/SearchInput";
 import { Select } from "@/components/Select";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -30,6 +30,7 @@ import SearchIcon from "@/svgs/SearchIcon";
 import BellIcon from "@/svgs/BellIcon";
 import Profile from "./elements/Profile";
 import UploadIcon from "@/svgs/UploadIcon";
+import { useNavigate } from "react-router-dom";
 
 const OrganizerAccount = () => {
 	const [t, i18n] = useTranslation("dashboard");
@@ -37,14 +38,20 @@ const OrganizerAccount = () => {
 	const onChange = () => {
 		setChecked(!true);
 	};
+
+	const navigate = useNavigate()
+	const onIconClick=()=>{
+		navigate(-1)
+	}
 	return (
 		<>
 			<DashboardHeader
 				title="Add Orgranizer Profile"
 				description="Let attendees know who is hosting events"
 				icon={<ChevronLeft className="w-5 h-5 text-grey-100" />}
+				onIconClick={onIconClick}
 			>
-				<Button variant="outline"> Cancel </Button>
+				{/* <Button variant="outline"> Cancel </Button> */}
 				<Button> Save </Button>
 			</DashboardHeader>
 			<div className="p-8 space-y-6">
