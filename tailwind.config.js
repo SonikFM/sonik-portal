@@ -59,7 +59,8 @@ module.exports = {
           light: "#2B303B",
           dark: "#0E121B",
           100: "#99A0AE",
-          200: "#181B25"
+          200: "#181B25",
+          300: "#222530"
         },
         pink: {
           DEFAULT: "#E255F2"

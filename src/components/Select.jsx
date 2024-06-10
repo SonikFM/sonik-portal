@@ -37,7 +37,7 @@ export function Select({ icon, className, hasSearch, options=[], placeholder, ..
 					)}
 					{...rest}
 				>
-					<div className="flex text-left w-[calc(100%-80px)] truncate shrink gap-2">
+					<div className="flex text-left w-[calc(100%-80px)] truncate shrink gap-2 text-grey-100">
 						{icon} <h3 className="text-sm font-medium">{value?.label || placeholder || "Select"}</h3>
 					</div>
 					<ChevronDown className="w-5 h-5 text-grey-100 shrink-0 border-grey-100" />
