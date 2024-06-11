@@ -2702,7 +2702,7 @@ export const columns = [
 			return (
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<Button variant="ghost" className="w-8 h-8 p-0 hover:bg-grey-dark hover:text-white">
+						<Button variant="ghost" className="float-right w-8 h-8 p-0 hover:bg-grey-dark hover:text-white">
 							<span className="sr-only">Open menu</span>
 							<MoreVertical className="w-4 h-4" />
 						</Button>

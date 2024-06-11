@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { format, isToday, isYesterday } from 'date-fns';
 
 export function cn(...inputs) {
 	return twMerge(clsx(inputs));
@@ -40,3 +41,15 @@ export const generatePageNumbers = (table) => {
 	}
 	return pages;
 };
+
+export const formatDate = (date) => {
+	const parsedDate = new Date(date);
+	
+	if (isToday(parsedDate)) {
+	  return `Today, ${format(parsedDate, 'h:mm a')}`;
+	} else if (isYesterday(parsedDate)) {
+	  return `Yesterday, ${format(parsedDate, 'h:mm a')}`;
+	} else {
+	  return format(parsedDate, 'MMM d, yyyy \'at\' h:mm a');
+	}
+  };
