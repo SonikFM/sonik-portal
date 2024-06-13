@@ -10,8 +10,7 @@ import SearchDropdown from "./SearchDropdown";
 
 const TeamTab = () => {
 	const [active, setActive] = useState("users");
-  const [searchTerm, setSearchTerm] = useState("")
-  console.log({searchTerm})
+	const [searchTerm, setSearchTerm] = useState("");
 	return (
 		<>
 			<div className="mb-10">
@@ -33,16 +32,9 @@ const TeamTab = () => {
 								</TabsTrigger>
 							</TabsList>
 							<div className="flex gap-3">
-                <div className="relative" >
-                    <SearchDropdown value={searchTerm} onValueChange={(e)=>{console.log(e);setSearchTerm(e)}} />
-                  {/* <InputWithIcon
-                    icon={<SearchIcon />}
-                    placeholder="Search ..."
-                    className="rounded-lg h-9 w-80"
-                    value={searchTerm}
-                    onChange={(e)=>setSearchTerm(e.target.value)}
-                  /> */}
-                </div>
+								{/* <div className="relative" >
+									<SearchDropdown value={searchTerm} onValueChange={(e)=>{console.log(e);setSearchTerm(e)}} />
+								</div> */}
 								{active === "roles" && (
 									<Button variant="pink" size="sm">
 										Assign Role
