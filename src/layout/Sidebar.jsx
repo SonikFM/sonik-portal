@@ -6,16 +6,47 @@ import {
 	SETTINGS_NAVIGATION,
 } from "@/contants/navigation";
 import { cn } from "@/lib/utils";
+import { toggleSidebar } from "@/store/global/slice";
 import { ChevronRight } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ className, ...rest }) => {
+	const ref = useRef(null);
+
+	const { sidebar } = useSelector((state) => state.app);
+	const dispatch = useDispatch();
 	const location = useLocation();
 	const activeRoute = location?.pathname;
-	console.log({ location, activeRoute });
+	const handleClick = () => {
+		if (sidebar) {
+			dispatch(toggleSidebar());
+		}
+	};
+
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (ref.current && !ref.current.contains(event.target)) {
+				handleClick();
+			}
+		}
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	return (
-		<div className="w-full border-r max-w-272 border-r-grey-light">
+		<div
+			ref={ref}
+			className={cn(
+				"w-full border-r border-r-grey-light fixed z-[99999] h-auto min-h-screen lg:block max-w-272 lg:relative bg-grey-dark transition ease-in",
+				sidebar ? "lg:left-0 !left-0" : "lg:left-0 -left-[400px]",
+				className
+			)}
+			{...rest}
+		>
 			<div className="p-3">
 				<OrganizationDropdown />
 			</div>
@@ -40,7 +71,12 @@ const Sidebar = () => {
 										: "text-grey-100"
 								);
 								return (
-									<Link key={navigate.id} to={navigate.url} className={navCls}>
+									<Link
+										key={navigate.id}
+										to={navigate.url}
+										onClick={handleClick}
+										className={navCls}
+									>
 										<navigate.icon className={iconCls} /> {navigate.label}{" "}
 										<span className="absolute right-3">
 											{navigate.id == "dashboard" && (
@@ -90,7 +126,12 @@ const Sidebar = () => {
 								activeRoute === navigate.url ? "text-primary" : "text-grey-100"
 							}`;
 							return (
-								<Link key={navigate.id} to={navigate.url} className={navCls}>
+								<Link
+									key={navigate.id}
+									to={navigate.url}
+									onClick={handleClick}
+									className={navCls}
+								>
 									<navigate.icon className={iconCls} /> {navigate.label}{" "}
 								</Link>
 							);
