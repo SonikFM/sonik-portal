@@ -36,7 +36,7 @@ const AttendeeAccount = () => {
 				<Button variant="outline"> Cancel </Button>
 				<Button> Create Account </Button>
 			</DashboardHeader>
-			<div className="p-8 space-y-6">
+			<div className="p-4 space-y-6  md:p-8">
 				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 ">
 					<div className="grid gap-1">
 						<Label className="flex justify-between text-white">

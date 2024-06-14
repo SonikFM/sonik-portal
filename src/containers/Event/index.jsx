@@ -26,7 +26,6 @@ import DollarIcon from "@/svgs/DollarIcon";
 import Guest from "./elements/Guest";
 import SearchSuggestionInput from "./elements/SearchSuggestionInput";
 import { useNavigate } from "react-router-dom";
-import Container from "@/components/Container";
 
 const CreateEvent = () => {
 	const [t, i18n] = useTranslation("dashboard");
@@ -53,7 +52,7 @@ const CreateEvent = () => {
 				onIconClick={onIconClick}
 				toggleDrawer={toggleDrawer}
 			></DashboardHeader>
-			<Container>
+			<div className="p-4 md:p-8" >
 				<div className="pb-4 mb-6 border-b border-grey-light">
 					<h3 className="font-medium text-white">Basic</h3>
 					<p className="text-grey-100">
@@ -543,7 +542,7 @@ const CreateEvent = () => {
 					</Button>
 					<Button className="w-40">Continue</Button>
 				</div>
-			</Container>
+			</div>
 		</>
 	);
 };
