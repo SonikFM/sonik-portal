@@ -25,10 +25,8 @@ import { Switch } from "@/components/ui/switch";
 import DollarIcon from "@/svgs/DollarIcon";
 import Guest from "./elements/Guest";
 import SearchSuggestionInput from "./elements/SearchSuggestionInput";
-import SearchIcon from "@/svgs/SearchIcon";
-import BellIcon from "@/svgs/BellIcon";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "@/layout/Sidebar";
+import Container from "@/components/Container";
 
 const CreateEvent = () => {
 	const [t, i18n] = useTranslation("dashboard");
@@ -55,7 +53,7 @@ const CreateEvent = () => {
 				onIconClick={onIconClick}
 				toggleDrawer={toggleDrawer}
 			></DashboardHeader>
-			<div className="p-8">
+			<Container>
 				<div className="pb-4 mb-6 border-b border-grey-light">
 					<h3 className="font-medium text-white">Basic</h3>
 					<p className="text-grey-100">
@@ -64,7 +62,7 @@ const CreateEvent = () => {
 				</div>
 				<div className="space-y-8">
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Event ID <span className="text-primary">*</span>
@@ -80,7 +78,7 @@ const CreateEvent = () => {
 								Must include a special character
 							</span>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Type <span className="text-primary">*</span>
 							</Label>
@@ -97,7 +95,7 @@ const CreateEvent = () => {
 						</div>
 					</div>
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Title<span className="text-primary">*</span>
@@ -113,7 +111,7 @@ const CreateEvent = () => {
 								Must include a special character
 							</span>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Genre <span className="text-primary">*</span>
 							</Label>
@@ -150,7 +148,7 @@ const CreateEvent = () => {
 						</div>
 					</div>
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex text-white justify-betweeb">
 								Artist<span className="text-primary">*</span>
 							</Label>
@@ -167,7 +165,7 @@ const CreateEvent = () => {
 								<Artist className="" />
 							</div>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Genre <span className="text-primary">*</span>
 							</Label>
@@ -190,7 +188,7 @@ const CreateEvent = () => {
 				</div>
 				<div className="space-y-8">
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Timezone <span className="text-primary">*</span>
@@ -206,7 +204,7 @@ const CreateEvent = () => {
 								Must include a special character
 							</span>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Announcement <span className="text-primary">*</span>
 							</Label>
@@ -218,7 +216,7 @@ const CreateEvent = () => {
 						</div>
 					</div>
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Event on sale <span className="text-primary">*</span>
 							</Label>
@@ -228,7 +226,7 @@ const CreateEvent = () => {
 								placeholder="Fri, Apr 16,2024 12:00 PM"
 							/>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Event off sale <span className="text-primary">*</span>
 							</Label>
@@ -240,7 +238,7 @@ const CreateEvent = () => {
 						</div>
 					</div>
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Event start <span className="text-primary">*</span>
 							</Label>
@@ -250,7 +248,7 @@ const CreateEvent = () => {
 								placeholder="Fri, Apr 16,2024 12:00 PM"
 							/>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Event end<span className="text-primary">*</span>
 							</Label>
@@ -270,7 +268,7 @@ const CreateEvent = () => {
 					</p>
 				</div>
 				<div className="space-y-8">
-					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
+					<div className="flex flex-wrap gap-6 xl:flex-nowrap ">
 						<div className="flex flex-col w-full gap-1 xl:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
@@ -308,7 +306,7 @@ const CreateEvent = () => {
 				</div>
 				<div className="space-y-8">
 					<Tabs defaultValue="a1" className="w-full ">
-						<TabsList className="flex w-full p-1 rounded-md bg-grey-200 h-9 w-fit ml-o ">
+						<TabsList className="flex flex-wrap justify-start w-full h-auto p-1 rounded-md bg-grey-200 w-fit ml-o ">
 							<TabsTrigger className="px-4 rounded-md" value="a1">
 								Billboard
 							</TabsTrigger>
@@ -327,31 +325,31 @@ const CreateEvent = () => {
 						</TabsList>
 						<TabsContent
 							value="a1"
-							className="h-[448px] w-full bg-grey-200 rounded-xl mt-4"
+							className="h-[448px] w-full bg-grey-200 rounded-lg mt-4"
 						>
 							<FileUpload />
 						</TabsContent>
 						<TabsContent
 							value="a2"
-							className="h-[448px] w-full bg-grey-200 rounded-xl mt-4"
+							className="h-[448px] w-full bg-grey-200 rounded-lg mt-4"
 						>
 							<FileUpload />
 						</TabsContent>
 						<TabsContent
 							value="a3"
-							className="h-[448px] w-full bg-grey-200 rounded-xl mt-4"
+							className="h-[448px] w-full bg-grey-200 rounded-lg mt-4"
 						>
 							<FileUpload />
 						</TabsContent>
 						<TabsContent
 							value="a4"
-							className="h-[448px] w-full bg-grey-200 rounded-xl mt-4"
+							className="h-[448px] w-full bg-grey-200 rounded-lg mt-4"
 						>
 							<FileUpload />
 						</TabsContent>
 						<TabsContent
 							value="a5"
-							className="h-[448px] w-full bg-grey-200 rounded-xl mt-4"
+							className="h-[448px] w-full bg-grey-200 rounded-lg mt-4"
 						>
 							<FileUpload />
 						</TabsContent>
@@ -395,7 +393,7 @@ const CreateEvent = () => {
 						/>
 					</div>
 					<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex text-white">
 								<span>
 									Age Limit <span className="text-primary">*</span>
@@ -406,7 +404,7 @@ const CreateEvent = () => {
 								placeholder="This is 21+ event"
 							/>
 						</div>
-						<div className="flex flex-col w-full gap-1 xl:w-1/2">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Presented by <span className="text-primary">*</span>
 							</Label>
@@ -456,7 +454,7 @@ const CreateEvent = () => {
 				</div>
 
 				<div className="flex flex-wrap gap-6 md:flex-nowrap ">
-					<div className="flex justify-between w-full px-6 py-1 py-4 mt-2 xl:w-1/2 bg-grey-200 rounded-2xl h-fit">
+					<div className="flex justify-between w-full px-6 py-1 py-4 mt-2 lg:w-1/2 bg-grey-200 rounded-2xl h-fit">
 						<div>
 							<Label className="text-white">This is a seated event</Label>
 							<p className="text-xs text-grey-100">
@@ -465,7 +463,7 @@ const CreateEvent = () => {
 						</div>
 						<Switch id="take-seat" />
 					</div>
-					<div className="flex flex-col w-full gap-1 xl:w-1/2">
+					<div className="flex flex-col w-full gap-1 lg:w-1/2">
 						<Label className="text-white">
 							Currency<span className="text-primary">*</span>
 						</Label>
@@ -505,7 +503,7 @@ const CreateEvent = () => {
 					</p>
 				</div>
 				<div className="flex flex-wrap gap-6 mb-6 md:flex-nowrap">
-					<div className="flex flex-col w-full gap-1 xl:w-1/2">
+					<div className="flex flex-col w-full gap-1 lg:w-1/2">
 						<Label className="text-white">
 							Genre <span className="text-primary">*</span>
 						</Label>
@@ -517,7 +515,7 @@ const CreateEvent = () => {
 							showSuggesstions={false}
 						/>
 					</div>
-					<div className="flex flex-col w-full gap-1 xl:w-1/2">
+					<div className="flex flex-col w-full gap-1 lg:w-1/2">
 						<Label className="flex text-white justify-betweeb">
 							Guest Access<span className="text-primary">*</span>
 						</Label>
@@ -545,7 +543,7 @@ const CreateEvent = () => {
 					</Button>
 					<Button className="w-40">Continue</Button>
 				</div>
-			</div>
+			</Container>
 		</>
 	);
 };

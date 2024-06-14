@@ -33,9 +33,9 @@ export const DashboardHeader = ({
 		dispatch(toggleSidebar())
 	}
 	return (
-		<div className=" fixed top-0 left-0 lg:left-[272px] w-full lg:w-[calc(100%-272px)] bg-grey-dark z-50  px-8">
+		<div className=" fixed top-0 left-0 lg:left-[272px] w-full lg:w-[calc(100%-272px)] bg-grey-dark z-[48]  px-8">
 			<div className="border-b border-grey-light flex items-center justify-between h-[88px] gap-5 bg-grey-dark w-full">
-				<div className="flex items-center gap-3 shrink-1">
+				<div className="flex items-center gap-3 shrink">
 					<div
 						className="flex items-center justify-center w-10 h-12 text-white border rounded-md cursor-pointer lg:hidden border-grey-light shrink-0"
 						onClick={toggleDrawer}
@@ -51,7 +51,7 @@ export const DashboardHeader = ({
 							{icon}
 						</div>
 					)}
-					<div className="shrink-1">
+					<div className="shrink">
 						<h4 className="h-6 overflow-hidden text-lg font-medium leading-5 text-white ">
 							{title}
 						</h4>

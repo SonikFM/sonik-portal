@@ -14,7 +14,7 @@ const Artist = ({ className, ...rest }) => {
 				<AvatarImage src="https://github.com/shadcn.png" />
 				<AvatarFallback>CN</AvatarFallback>
 			</Avatar>
-			<Label className="w-full font-medium text-white shrink-1">Shophia Williams</Label>
+			<Label className="w-full font-medium text-white shrink">Shophia Williams</Label>
 			<StarIcon className="text-grey-100 shrink-0" />{" "}
 			<DeleteIcon className="text-grey-100 shrink-0" />
 		</div>

@@ -15,7 +15,7 @@ const Ticket = ({ className, ...rest }) => {
 			<div className="flex items-center justify-center w-10 h-10 rounded-full bg-grey-dark shrink-0">
 				<TicketIcon className="w-5 h-5 text-pink" />
 			</div>
-			<div className="w-full shrink-1">
+			<div className="w-full shrink">
 				<p className="text-xs text-grey-100"></p>
 				<Label className="font-medium text-white">
 					General addmission presale
