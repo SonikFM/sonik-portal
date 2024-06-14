@@ -41,7 +41,7 @@ const Sidebar = ({ className, ...rest }) => {
 		<div
 			ref={ref}
 			className={cn(
-				"w-full border-r border-r-grey-light fixed z-[99999] h-auto min-h-screen lg:block max-w-272 lg:relative bg-grey-dark transition ease-in",
+				"w-full border-r border-r-grey-light fixed z-[99999] h-auto min-h-screen lg:block max-w-272 lg:relative bg-grey-dark transition-all ease-in",
 				sidebar ? "lg:left-0 !left-0" : "lg:left-0 -left-[400px]",
 				className
 			)}
