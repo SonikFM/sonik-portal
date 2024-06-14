@@ -35,13 +35,13 @@ const Sidebar = ({ className, ...rest }) => {
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, []);
+	}, [sidebar,handleClick]);
 
 	return (
 		<div
 			ref={ref}
 			className={cn(
-				"w-full border-r border-r-grey-light fixed z-[99999] h-auto min-h-screen lg:block w-272 lg:relative bg-grey-dark transition-all ease-in",
+				"w-full border-r border-r-grey-light fixed z-[49] h-screen min-h-screen lg:block w-272 bg-grey-dark transition-all ease-in",
 				sidebar ? "lg:left-0 !left-0" : "lg:left-0 -left-[400px]",
 				className
 			)}
