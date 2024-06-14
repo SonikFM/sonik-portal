@@ -1,0 +1,81 @@
+{
+    "main": "PRINCIPAL",
+    "mainNavigation": [
+        {
+            "id": "dashboard",
+            "label": "Tablero",
+            "url": "/",
+            "icon": "DashboardIcon"
+        },
+        {
+            "id": "events",
+            "label": "Eventos",
+            "url": "/events",
+            "icon": "EventsIcon"
+        },
+        {
+            "id": "attendee-accounts",
+            "label": "Cuentas de Asistentes",
+            "url": "/attendees",
+            "icon": "UsersIcon"
+        },
+        {
+            "id": "producer-accounts",
+            "label": "Cuentas de Productores",
+            "url": "/producers",
+            "icon": "AccountIcon"
+        },
+        {
+            "id": "tickets",
+            "label": "Boletos",
+            "url": "/tickets",
+            "icon": "TicketIcon"
+        },
+        {
+            "id": "venues",
+            "label": "Lugares",
+            "url": "/venues",
+            "icon": "BuildingIcon"
+        },
+        {
+            "id": "organization",
+            "label": "Organización",
+            "url": "/organization",
+            "icon": "OrganizationIcon"
+        },
+        {
+            "id": "support-ticketing",
+            "label": "Soporte de Boletos",
+            "url": "/support-ticketing",
+            "icon": "ChatIcon"
+        }
+    ],
+    "settingsNavigation": [
+        {
+            "id": "settings",
+            "label": "Configuraciones",
+            "url": "/settings",
+            "icon": "SettingsIcon"
+        }
+    ],
+    "favsNavigation": [
+        {
+            "id": "user-1",
+            "label": "Reunión Anual de Yamaha",
+            "url": "/user/1",
+            "icon": "bg-primary"
+        },
+        {
+            "id": "user-2",
+            "label": "Evento de Lanzamiento de Producto",
+            "url": "/user/2",
+            "icon": "bg-error"
+        },
+        {
+            "id": "user-3",
+            "label": "Concierto de Año Nuevo",
+            "url": "/user/3",
+            "icon": "bg-pink"
+        }
+    ]
+}

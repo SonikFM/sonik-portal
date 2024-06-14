@@ -42,14 +42,14 @@ const Login = () => {
 	const onSubmit = async (data) => {
 		console.log({ data });
 		// const a = await fakeAuthProvider.signin("qasim");
-		navigate('/dashboard')
+		navigate("/dashboard");
 	};
 
 	const actionButton = () => (
 		<>
-			<p>{t('dont_have_an_account')}</p>
+			<p>{t("dont_have_an_account")}</p>
 			<Link to="/register" className="border-b text-primary border-primary">
-				{t('register')}
+				{t("register")}
 			</Link>
 		</>
 	);
@@ -79,7 +79,7 @@ const Login = () => {
 									{t("email_address")}
 								</Label>
 								<InputWithIcon
-									icon={<MailIcon/>}
+									icon={<MailIcon />}
 									name="email"
 									placeholder="hello@alignui.com"
 								/>
@@ -87,7 +87,7 @@ const Login = () => {
 									{t("password")}
 								</Label>
 								<InputWithIcon
-									icon={<LockIcon/>}
+									icon={<LockIcon />}
 									name="password"
 									type="password"
 									placeholder="• • • • • • • • • •"
@@ -97,14 +97,14 @@ const Login = () => {
 								<div className="flex items-center w-full gap-2">
 									<Checkbox id="terms1" className="border-grey-light" />
 									<label htmlFor="terms1" className="text-sm">
-										{t('accept_terms_and_conditions')}
+										{t("accept_terms_and_conditions")}
 									</label>
 								</div>
 								<Link
 									to="/forget-password"
 									className="text-sm border-b h-max text-grey-100 border-grey-100 min-w-max"
 								>
-									{t('forget_password')}
+									{t("forget_password")}
 								</Link>
 							</div>
 						</CardContent>

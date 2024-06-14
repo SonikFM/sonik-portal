@@ -1,12 +1,12 @@
 export const languages = [
     {
-        value: 'fr',
-        label: 'french',
-        key: "fre"
+        value: 'es',
+        label: 'Spanish ',
+        key: "spa"
     },
     {
         value: 'en',
-        label: 'english',
+        label: 'English',
         key: "eng"
     }
 ]

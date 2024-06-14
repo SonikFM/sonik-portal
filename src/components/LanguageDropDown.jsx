@@ -5,6 +5,7 @@ import { ChevronDown, GlobeIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	Command,
+	CommandEmpty,
 	CommandGroup,
 	CommandItem,
 	CommandList,
@@ -51,8 +52,8 @@ export function LanguageDropDown() {
 					<ChevronDown className="w-5 h-5 p-[2px] rounded-md text-grey-100 shrink-0" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w-[150px] p-0 border border-grey-light bg-grey-dark ">
-				<Command className="overflow-hidden bg-grey-dark">
+			<PopoverContent className="w-[150px] p-0 border border-grey-light bg-grey-100">
+				<Command className="overflow-hidden bg-grey-100">
 					<CommandGroup>
 						<CommandList>
 							<CommandEmpty>No results found.</CommandEmpty>
