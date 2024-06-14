@@ -16,7 +16,7 @@ export const DashboardLayout = () => {
 	return (
 		<div className="flex h-auto min-h-screen bg-grey-dark">
 			<Sidebar />
-			<div className="w-full lg:w-[calc(100%-272px)] h-full flex flex-col pt-[88px]">
+			<div className="w-full h-full flex flex-col pt-[88px]">
 				<Outlet />
 			</div>
 		</div>

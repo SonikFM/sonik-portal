@@ -2220,7 +2220,7 @@ export const columns = [
 					<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-grey-light shrink-0">
 						<img src={event_img} alt="event image" />
 					</div>
-					<h3 className="font-medium truncate shrink-1">
+					<h3 className="font-medium truncate shrink">
 						{row.original.event.name}
 					</h3>
 				</div>
@@ -2245,7 +2245,7 @@ export const columns = [
 				<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-grey-light shrink-0">
 					<img src={organizer_img} alt="organizer image" />
 				</div>
-				<div className="shrink-1">
+				<div className="shrink">
 					<h4 className="font-medium truncate">
 						{row.original.organizer.name}
 					</h4>

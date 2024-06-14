@@ -48,7 +48,7 @@ export function OrganizationDropdown() {
 					<ChevronsUpDown className="w-6 h-6 p-[2px] border rounded-md text-grey-100 shrink-0 border-grey-100" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w-[200px] p-0">
+			<PopoverContent className="w-[200px] p-0 ">
 				<Command>
 					<CommandInput placeholder="Search framework..." />
 					<CommandList>

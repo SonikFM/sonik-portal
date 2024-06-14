@@ -15,7 +15,7 @@ const Guest = ({ className, ...rest }) => {
 			<div className="flex items-center justify-center w-10 h-10 rounded-full bg-grey-dark shrink-0">
 				<MessageIcon className="w-5 h-5 text-pink" />
 			</div>
-			<div className="w-full shrink-1">
+			<div className="w-full shrink">
 				<Label className="font-medium text-white">Add your first guest</Label>
 				<p className="text-xs text-grey-100">
 					Invite guests to collaborate in this event

@@ -11,7 +11,7 @@ const Profile = ({ className, ...rest }) => {
 				<AvatarFallback>CN</AvatarFallback>
 			</Avatar>
 			<div className="grid gap-1" >
-				<Label className="w-full text-base font-medium text-white shrink-1">
+				<Label className="w-full text-base font-medium text-white shrink">
 					Image
 				</Label>
 				<p className="text-sm text-grey-100">Upload a photo of you</p>
