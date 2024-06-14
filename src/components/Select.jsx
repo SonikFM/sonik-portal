@@ -67,8 +67,9 @@ export function Select({
 					<CommandList>
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandGroup>
-							{options.map((option) => (
+							{options.map((option, index) => (
 								<CommandItem
+									key={`item-${option.value}-${index}`}
 									onSelect={() => {
 										setOpen(false);
 										setValue(option.value);
