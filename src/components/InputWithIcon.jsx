@@ -9,7 +9,7 @@ const InputWithIcon = ({ type, icon, className, ...rest }) => {
 		<div className="relative flex items-center">
 			<div className="absolute left-3 read-only text-grey-100">{icon}</div>
 			<Input
-				className={cn("!pl-10 border-grey-light bg-grey-dark", type === "password"? "pr-10" : "", className)}
+				className={cn("!pl-10 border-grey-light text-grey-100 bg-grey-dark", type === "password"? "pr-10" : "", className)}
 				{...rest}
 				type={show ? "text" : type}
 			/>

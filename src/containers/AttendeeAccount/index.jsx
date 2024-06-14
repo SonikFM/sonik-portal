@@ -133,7 +133,7 @@ const AttendeeAccount = () => {
 				<div>
 					<FileUpload className="h-20">
 						<div className="flex items-center justify-between w-full h-full">
-							<div className="flex w-full gap-4 shrink-1">
+							<div className="flex w-full gap-4 shrink">
 								<div className="flex items-center justify-center w-10 h-10 border rounded-full border-grey-light shrink-0 bg-grey-light">
 									<UploadIcon className="text-grey-100" />
 								</div>

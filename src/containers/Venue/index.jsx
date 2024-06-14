@@ -56,8 +56,8 @@ const CreateVenue = () => {
 					</p>
 				</div>
 				<div className="space-y-8">
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Venue ID <span className="text-primary">*</span>
@@ -68,7 +68,7 @@ const CreateVenue = () => {
 								placeholder="Enter a unique Id..."
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Venue name <span className="text-primary">*</span>
 							</Label>
@@ -78,8 +78,8 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Venue Capacity <span className="text-primary">*</span>
@@ -90,7 +90,7 @@ const CreateVenue = () => {
 								placeholder="100"
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Venue Email <span className="text-primary">*</span>
 							</Label>
@@ -100,7 +100,7 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
 						<div className="flex flex-col w-full gap-1">
 							<Label className="flex justify-between text-white">
 								<span>
@@ -114,8 +114,8 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Address Line 1<span className="text-primary">*</span>
@@ -126,7 +126,7 @@ const CreateVenue = () => {
 								placeholder="+92-343-8831954"
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Address Line 2<span className="text-primary">*</span>
@@ -138,8 +138,8 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Zip code <span className="text-primary">*</span>
 							</Label>
@@ -149,7 +149,7 @@ const CreateVenue = () => {
 							/>
 						</div>
 
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Region <span className="text-primary">*</span>
 							</Label>
@@ -160,8 +160,8 @@ const CreateVenue = () => {
 						</div>
 					</div>
 
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Country<span className="text-primary">*</span>
@@ -174,7 +174,7 @@ const CreateVenue = () => {
 								options={[{ label: "Pakistan", value: "pakistan" }]}
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								phone number <span className="text-primary">*</span>
 							</Label>
@@ -184,7 +184,7 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
 						<div className="flex flex-col w-full gap-1">
 							<Label className="flex justify-between text-white">
 								<span>
@@ -204,7 +204,7 @@ const CreateVenue = () => {
 
 					<div className="flex flex-wrap gap-6 ">
 						<div className="flex flex-col w-full gap-1">
-							<div className="flex justify-between w-1/2 px-4 py-4 mt-2 bg-grey-200 rounded-2xl h-fit">
+							<div className="flex justify-between w-full px-4 py-4 mt-2 lg:w-1/2 bg-grey-200 rounded-2xl h-fit">
 								<div>
 									<Label className="text-white">Venue Status</Label>
 									<p className="text-xs text-grey-100">
@@ -221,8 +221,8 @@ const CreateVenue = () => {
 					<p className="text-grey-100">Help users to find your Venue</p>
 				</div>
 				<div className="space-y-8">
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Country <span className="text-primary">*</span>
@@ -234,7 +234,7 @@ const CreateVenue = () => {
 								// icon={<TimerIcon className="text-grey-100" />}
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								Street Address <span className="text-primary">*</span>
 							</Label>
@@ -245,8 +245,8 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Street Address Line 2 <span className="text-primary">*</span>
@@ -258,7 +258,7 @@ const CreateVenue = () => {
 								placeholder="Apt, suite, unit, building, floor, etc..."
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="text-white">
 								City <span className="text-primary">*</span>
 							</Label>
@@ -268,8 +268,8 @@ const CreateVenue = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex gap-6 ">
-						<div className="flex flex-col w-1/2 gap-1">
+					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									Postcode/ZipCode <span className="text-primary">*</span>
@@ -280,7 +280,7 @@ const CreateVenue = () => {
 								placeholder="California"
 							/>
 						</div>
-						<div className="flex flex-col w-1/2 gap-1">
+						<div className="flex flex-col w-full gap-1 lg:w-1/2">
 							<Label className="flex justify-between text-white">
 								<span>
 									State <span className="text-primary">*</span>

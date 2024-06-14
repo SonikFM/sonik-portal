@@ -2,19 +2,20 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: 0,
-  products: []
+  products: [],
+  sidebar: false
 }
 
 export const globalSlice = createSlice({
   name: 'app/global',
   initialState,
   reducers: {
-    updateAppState: (state) => {
-      state.value += 1
+    toggleSidebar: (state) => {
+      state.sidebar = !state.sidebar
     },
   },
 })
 
-export const { updateAppState } = globalSlice.actions
+export const { toggleSidebar } = globalSlice.actions
 
 export default globalSlice.reducer

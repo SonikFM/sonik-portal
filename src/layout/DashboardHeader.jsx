@@ -1,11 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@/svgs/SearchIcon";
 import BellIcon from "@/svgs/BellIcon";
 import CalendarCheckIcon from "@/svgs/CalendarCheckIcon";
 import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
+import MenuIcon from "@/svgs/MenuIcon";
+import { toggleSidebar } from "@/store/global/slice";
 
 export const DashboardHeader = ({
 	hasActionButton = false,
@@ -15,7 +17,7 @@ export const DashboardHeader = ({
 	hasNotifications = true,
 	hasSearch = true,
 	onIconClick,
-	children
+	children,
 }) => {
 	const { i18n } = useTranslation();
 
@@ -23,21 +25,40 @@ export const DashboardHeader = ({
 		i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
 	};
 	
+	const dispatch = useDispatch()
+	const {app:{sidebar}} = useSelector(state=>state) 
+	console.log({sidebar})
+
+	const toggleDrawer = () => {
+		dispatch(toggleSidebar())
+	}
 	return (
-		<div className=" fixed top-0 left-[272px] w-[calc(100%-272px)] bg-grey-dark z-50  px-8">
+		<div className=" fixed top-0 left-0 lg:left-[272px] w-full lg:w-[calc(100%-272px)] bg-grey-dark z-[48]  px-8">
 			<div className="border-b border-grey-light flex items-center justify-between h-[88px] gap-5 bg-grey-dark w-full">
-				<div className="flex items-center gap-3 shrink-0">
+				<div className="flex items-center gap-3 shrink">
+					<div
+						className="flex items-center justify-center w-10 h-12 text-white border rounded-md cursor-pointer lg:hidden border-grey-light shrink-0"
+						onClick={toggleDrawer}
+					>
+						<MenuIcon />
+					</div>
+
 					{icon && (
-						<div className="flex items-center justify-center w-12 h-12 border rounded-full cursor-pointer border-grey-light shrink-0 " onClick={onIconClick} >
+						<div
+							className="items-center justify-center hidden w-12 h-12 border rounded-full cursor-pointer lg:flex border-grey-light shrink-0 "
+							onClick={onIconClick}
+						>
 							{icon}
 						</div>
 					)}
-					<div>
-						<h4 className="text-lg font-medium leading-5 text-white">
+					<div className="shrink">
+						<h4 className="h-6 overflow-hidden text-lg font-medium leading-5 text-white ">
 							{title}
 						</h4>
 						{description && (
-							<p className="mt-1 text-sm text-grey-100">{description}</p>
+							<p className="h-5 overflow-hidden text-sm text-grey-100">
+								{description}
+							</p>
 						)}
 					</div>
 				</div>

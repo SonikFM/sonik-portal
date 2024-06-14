@@ -62,11 +62,15 @@ module.exports = {
           200: "#181B25",
           300: "#222530"
         },
+        success: {
+          DEFAULT: "#1DAF61",
+        },
         pink: {
           DEFAULT: "#E255F2"
         },
         warning: {
-          DEFAULT: "#E97135"
+          DEFAULT: "#E97135",
+          light: "#FF9147"
         },
         error: {
           DEFAULT: "#E93544",

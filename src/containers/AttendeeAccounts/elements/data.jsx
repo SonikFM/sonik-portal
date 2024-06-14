@@ -2603,7 +2603,7 @@ export const columns = [
 					<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-grey-light shrink-0">
 						<img src={organizer_img} alt="event image" />
 					</div>
-					<h3 className="font-medium truncate shrink-1">
+					<h3 className="font-medium truncate shrink">
 						{row.original.member.name}
 					</h3>
 				</div>
@@ -2623,7 +2623,7 @@ export const columns = [
 		),
 		cell: ({ row }) => (
 			<div className="flex items-center w-24 gap-3 ">
-				<div className="shrink-1">
+				<div className="shrink">
 					<p className="font-medium text-white truncate">
 						{row.original.phone}
 					</p>
@@ -2702,7 +2702,7 @@ export const columns = [
 			return (
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<Button variant="ghost" className="w-8 h-8 p-0 hover:bg-grey-dark hover:text-white">
+						<Button variant="ghost" className="float-right w-8 h-8 p-0 hover:bg-grey-dark hover:text-white">
 							<span className="sr-only">Open menu</span>
 							<MoreVertical className="w-4 h-4" />
 						</Button>

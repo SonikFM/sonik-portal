@@ -2731,7 +2731,7 @@ export const columns = [
 					<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-grey-light shrink-0">
 						<img src={organizer_img} alt="event image" />
 					</div>
-					<h3 className="font-medium truncate shrink-1">
+					<h3 className="font-medium truncate shrink">
 						{row.original.producer.name}
 					</h3>
 				</div>
@@ -2753,7 +2753,7 @@ export const columns = [
 		),
 		cell: ({ row }) => (
 			<div className="flex items-center gap-3 w-36">
-				<div className="shrink-1">
+				<div className="shrink">
 					<h4 className="font-medium truncate">
 						{row.original.organization.name}
 					</h4>
@@ -2779,7 +2779,7 @@ export const columns = [
 		),
 		cell: ({ row }) => (
 			<div className="text-sm w-28 whitespace-nowrap">
-				<div className="shrink-1">
+				<div className="shrink">
 					<h4 className="font-medium truncate">
 						{row.original.role.title}
 					</h4>
