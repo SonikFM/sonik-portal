@@ -30,6 +30,7 @@ import AttendeeAccounts from "./AttendeeAccounts";
 
 import CreateEvent from "@/containers/Event";
 import OrganizerAccount from "@/containers/OrganizerAccount";
+import Organizations from "@/containers/Organizations";
 
 const dashboardRoutes = [
 	{ path: "", element: <Dashboard />, index: true },
@@ -42,7 +43,8 @@ const dashboardRoutes = [
 	{ path: "venues", element: <CreateVenue /> },
 	{ path: "calendar", element: <Calendar /> },
 	{ path: "tickets", element: <Tickets /> },
-	{ path: "organization", element: <Organization /> },
+	{ path: "organization", element: <Organizations /> },
+	{ path: "organization/create-organization", element: <Organization /> },
 	{ path: "support-ticketing", element: <SupportAndTickets /> },
 	{ path: "settings", element: <Settings /> },
 	{ path: "support", element: <Support /> },
