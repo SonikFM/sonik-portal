@@ -1,11 +1,5 @@
-import {
-	createBrowserRouter,
-	Navigate,
-} from "react-router-dom";
-import {
-	AuthLayout,
-	DashboardLayout,
-} from "@/layout";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
 
 // PAGES
@@ -25,6 +19,7 @@ import Settings from "./Settings";
 import AttendeeAccount from "./AttendeeAccount";
 import CreateVenue from "./CreateVenue";
 import AttendeeAccounts from "./AttendeeAccounts";
+import Venues from "./Venues";
 
 // CONATINERS
 
@@ -40,7 +35,8 @@ const dashboardRoutes = [
 	{ path: "attendees/create-attendee", element: <AttendeeAccount /> },
 	{ path: "producers", element: <Producers /> },
 	{ path: "producers/create-producer", element: <OrganizerAccount /> },
-	{ path: "venues", element: <CreateVenue /> },
+	{ path: "venues", element: <Venues /> },
+	{ path: "venues/create-venue", element: <CreateVenue /> },
 	{ path: "calendar", element: <Calendar /> },
 	{ path: "tickets", element: <Tickets /> },
 	{ path: "organization", element: <Organizations /> },
