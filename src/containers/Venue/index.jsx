@@ -1,38 +1,15 @@
 
-import SearchInput from "@/components/SearchInput";
 import { Select } from "@/components/Select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DashboardHeader from "@/layout/DashboardHeader";
-import FoldersIcon from "@/svgs/FoldersIcon";
-import InformationIcon from "@/svgs/InformationIcon";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Artist from "./elements/Artist";
-import FlashLightIcon from "@/svgs/FlashLightIcon";
-import TimerIcon from "@/svgs/TimerIcon";
 import InputWithIcon from "@/components/InputWithIcon";
-import CalendarIcon from "@/svgs/CalendarIcon";
-import { AppDatePicker } from "@/components/AppDatePicker";
-import ArtistTime from "./elements/ArtistTime";
-import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import FileUpload from "@/components/FileUpload";
 import { Textarea } from "@/components/ui/textarea";
-import Ticket from "./elements/Ticket";
 import { Switch } from "@/components/ui/switch";
-import DollarIcon from "@/svgs/DollarIcon";
-import Guest from "./elements/Guest";
-import SearchSuggestionInput from "./elements/SearchSuggestionInput";
 import BuildingIcon from "@/svgs/BuildingIcon";
-import MultiSelect from "@/components/MutliSelect";
-import UsersIcon from "@/svgs/UsersIcon";
-import MapIcon from "@/svgs/MapIcon";
-import Details from "./elements/Details";
-import UploadIcon from "@/svgs/UploadIcon";
-import bg from "@/assets/images/map-placeholder.png";
 import SearchIcon from "@/svgs/SearchIcon";
 
 const CreateVenue = () => {
@@ -48,7 +25,7 @@ const CreateVenue = () => {
 				description="Add your venue deatails below"
 				icon={<BuildingIcon className="w-5 h-5 text-grey-100" />}
 			/>
-			<div className="p-8">
+			<div className="px-4 py-8 md:px-8">
 				<div className="pb-4 mb-6 border-b border-grey-light">
 					<h3 className="font-medium text-white">Basic</h3>
 					<p className="text-grey-100">

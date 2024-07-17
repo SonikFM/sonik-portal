@@ -26,7 +26,7 @@ const Oranization = () => {
 					<PlusIcon /> Create Organizer Profile
 				</Button>
 			</DashboardHeader>
-			<Tabs className="px-8 py-6" defaultValue={active} onValueChange={setActive} >
+			<Tabs className="px-4 py-6 md:px-8" defaultValue={active} onValueChange={setActive} >
 				<div className="relative">
 					<TabsList className="relative flex gap-6 justify-start bg-transparent rounded-none z-[2]">
 						<TabsTrigger

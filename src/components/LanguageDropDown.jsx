@@ -1,5 +1,3 @@
-
-
 import * as React from "react";
 import { ChevronDown, GlobeIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,6 +57,7 @@ export function LanguageDropDown() {
 							<CommandEmpty>No results found.</CommandEmpty>
 							{[...languages].map((language) => (
 								<CommandItem
+									key={language.value}
 									onSelect={() => {
 										handleLanguageChange(language.value);
 										setValue(language.value);

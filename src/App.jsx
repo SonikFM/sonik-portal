@@ -1,9 +1,23 @@
 import "./App.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./pages";
+import { refreshToken } from "./store/global/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Suspense, useEffect } from "react";
+import AppLoader from "./components/AppLoader";
 
 function App() {
-	return <RouterProvider router={router} />;
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(refreshToken());
+	}, []);
+
+	return (
+		<Suspense fallback={<AppLoader/>}>
+			<RouterProvider router={router} />
+		</Suspense>
+	);
 }
 
 export default App;

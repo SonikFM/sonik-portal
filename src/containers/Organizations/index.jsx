@@ -94,7 +94,7 @@ const Organizations = () => {
 					<PlusIcon /> New Organizer Profile
 				</Button>
 			</DashboardHeader>
-			<div className="w-full px-8 py-6">
+			<div className="w-full px-4 py-6 md:px-8">
 				<Header toggleView={toggleView} view={view} />
 				<div className="">
 					<Content table={table} view={view} />

@@ -20,6 +20,7 @@ import AttendeeAccount from "./AttendeeAccount";
 import CreateVenue from "./CreateVenue";
 import AttendeeAccounts from "./AttendeeAccounts";
 import Venues from "./Venues";
+import ResetPassword from "./ResetPassword";
 
 // CONATINERS
 
@@ -29,6 +30,7 @@ import Organizations from "@/containers/Organizations";
 
 const dashboardRoutes = [
 	{ path: "", element: <Dashboard />, index: true },
+	{ path: "/dashboard", element: <Dashboard /> },
 	{ path: "events", element: <Events /> },
 	{ path: "events/create-event", element: <CreateEvent /> },
 	{ path: "attendees", element: <AttendeeAccounts /> },
@@ -51,6 +53,7 @@ const authRoutes = [
 	{ path: "register", element: <SignUp /> },
 	{ path: "forget-password", element: <ForgetPassword /> },
 	{ path: "verification", element: <Verification /> },
+	{ path: "reset-password", element: <ResetPassword /> },
 ];
 
 const routes = [

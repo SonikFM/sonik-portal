@@ -1,6 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import SearchIcon from "@/svgs/SearchIcon";
 import BellIcon from "@/svgs/BellIcon";
 import CalendarCheckIcon from "@/svgs/CalendarCheckIcon";
@@ -19,19 +18,13 @@ export const DashboardHeader = ({
 	onIconClick,
 	children,
 }) => {
-	const { i18n } = useTranslation();
 
-	const handleLanguageChange = () => {
-		i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
-	};
-	
-	const dispatch = useDispatch()
-	const {app:{sidebar}} = useSelector(state=>state) 
-	console.log({sidebar})
+	const dispatch = useDispatch();
 
 	const toggleDrawer = () => {
-		dispatch(toggleSidebar())
-	}
+		dispatch(toggleSidebar());
+	};
+	
 	return (
 		<div className=" fixed top-0 left-0 lg:left-[272px] w-full lg:w-[calc(100%-272px)] bg-grey-dark z-[48]  px-4 md:px-8">
 			<div className="border-b border-grey-light flex items-center justify-between h-[88px] gap-5 bg-grey-dark w-full">

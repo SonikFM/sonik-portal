@@ -92,7 +92,7 @@ const Venues = () => {
 					<PlusIcon /> Add Venue
 				</Button>
 			</DashboardHeader>
-			<div className="w-full px-8 py-6">
+			<div className="w-full px-4 py-6 md:px-8">
 				<Header view={view} />
 				<div className="">
 					<Content table={table} view={view} />

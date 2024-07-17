@@ -9,8 +9,6 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 
 export const AuthLayout = ({ children }) => {
-	const state = useSelector((state) => state.app);
-	const { data, error, isLoading } = useGetTodosQuery();
 
 	return (
 		<div className="relative flex items-center justify-center w-full h-auto min-h-screen bg-grey-dark ">
