@@ -29,8 +29,9 @@ import ChevronLefttIcon from "@/svgs/ChevronLefttIcon";
 import { generatePageNumbers } from "@/lib/utils";
 import { PaginationMenu } from "./elements/PaginationMenu";
 import OrganizationIcon from "@/svgs/OrganizationIcon";
+import BuildingIcon from "@/svgs/BuildingIcon";
 
-const Organizations = () => {
+const Venues = () => {
 	const [sorting, setSorting] = useState([]);
 	const [columnFilters, setColumnFilters] = useState([]);
 	const [columnVisibility, setColumnVisibility] = useState({});
@@ -68,11 +69,8 @@ const Organizations = () => {
 		},
 	});
 	const navigate = useNavigate();
-	const redirectToCreateEvent = () => {
-		navigate("/organization/create-organization");
-	};
-	const toggleView = (v) => {
-		setView(v);
+	const handleRedirect = () => {
+		navigate("/venues/create-venue");
 	};
 
 	const pc =
@@ -86,16 +84,16 @@ const Organizations = () => {
 	return (
 		<>
 			<DashboardHeader
-				title="Organization"
-				description="From here your can customize your organization’s data"
-				icon={<OrganizationIcon className="text-grey-100" />}
+				title="Explore Venues"
+				description="See all our venues listed for arrange events"
+				icon={<BuildingIcon className="text-grey-100" />}
 			>
-				<Button className="flex gap-1" onClick={redirectToCreateEvent}>
-					<PlusIcon /> New Organizer Profile
+				<Button className="flex gap-1" onClick={handleRedirect}>
+					<PlusIcon /> Add Venue
 				</Button>
 			</DashboardHeader>
 			<div className="w-full px-4 py-6 md:px-8">
-				<Header toggleView={toggleView} view={view} />
+				<Header view={view} />
 				<div className="">
 					<Content table={table} view={view} />
 				</div>
@@ -171,4 +169,4 @@ const Organizations = () => {
 	);
 };
 
-export default Organizations;
+export default Venues;

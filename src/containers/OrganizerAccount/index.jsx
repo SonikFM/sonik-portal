@@ -54,7 +54,7 @@ const OrganizerAccount = () => {
 				{/* <Button variant="outline"> Cancel </Button> */}
 				<Button> Save </Button>
 			</DashboardHeader>
-			<div className="p-8 space-y-6">
+			<div className="px-4 py-8 space-y-6 md:px-8">
 				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 ">
 					<div className="grid gap-1">
 						<Label className="flex justify-between text-white">

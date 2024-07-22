@@ -91,7 +91,7 @@ const Events = () => {
 					<PlusIcon /> New Event
 				</Button>
 			</DashboardHeader>
-			<div className="w-full px-8 py-6">
+			<div className="w-full px-4 py-6 md:px-8">
 				<Header table={table} />
 				<div className="">
 					<Content table={table} />

@@ -1,9 +1,10 @@
+import Venues from '@/containers/Venues'
 import React from 'react'
 
-const Venues = () => {
+const Index = () => {
   return (
-    <div>Venues</div>
+    <Venues/>
   )
 }
 
-export default Venues
+export default Index

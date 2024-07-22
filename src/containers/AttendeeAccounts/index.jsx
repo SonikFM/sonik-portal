@@ -93,7 +93,7 @@ const AttendeeAccounts = () => {
 				</Button>
 			</DashboardHeader>
 
-			<Tabs defaultValue="all" className="w-full px-8 py-6">
+			<Tabs defaultValue="all" className="w-full px-4 py-6 md:px-8">
 				<Header table={table} />
 
 				<TabsContent value="all">

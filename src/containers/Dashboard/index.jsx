@@ -20,8 +20,8 @@ const Dashboard = () => {
 				hasActionButton
 				icon={<CalendarIcon className="w-5 h-5 text-grey-100" />}
 			/>
-			<div className="px-8">
-				<div className="flex gap-6 py-4 text-white">
+			<div className="px-4 md:px-8">
+				<div className="flex gap-6 py-4 text-white w-[calc(100%-24px)]">
 					<div className="flex flex-col w-4/6 gap-6 ">
 						<EventsTable
 							title="Events"

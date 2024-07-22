@@ -8,9 +8,9 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
+import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -24,28 +24,58 @@ import MailIcon from "@/svgs/MailIcon";
 import LockIcon from "@/svgs/LockIcon";
 import InformationIcon from "@/svgs/InformationIcon";
 import NameIcon from "@/svgs/NameIcon";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { signup } from "@/store/global/actions";
+import { useDispatch, useSelector } from "react-redux";
+import ErrorIcon from "@/svgs/ErrorIcon";
+import { resetError } from "@/store/global/slice";
+import { Loader2 } from "lucide-react";
 
-const schema = object({
-	fullName: string().required(),
-	email: string().email().required(),
-	passowrd: string(),
+const schema = z.object({
+	fullName: z.string(),
+	email: z.string().email(),
+	password: z
+		.string()
+		.min(8, { message: "Password must be at least 8 characters." })
+		.regex(/[A-Z]/, {
+			message: "Password must contain at least one uppercase letter.",
+		})
+		.regex(/[0-9]/, { message: "Password must contain at least one number." }),
 });
 
 const SignUp = () => {
+	const { error, isLoading } = useSelector((state) => state.app);
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { t } = useTranslation("auth");
 	const form = useForm({
-		resolver: yupResolver(schema),
+		resolver: zodResolver(schema),
 		defaultValues: {
 			fullName: "",
 			email: "",
-			passowrd: "",
+			password: "",
 		},
 	});
+	const { formState, errors } = form;
+
+	useEffect(() => {
+		dispatch(resetError());
+	}, []);
 
 	const onSubmit = async (data) => {
-		const a = await fakeAuthProvider.signin("qasim");
-		navigate('/dashboard')
+		function generateRandomPhoneNumber() {
+			const getRandomDigit = () => Math.floor(Math.random() * 10);
+
+			let phoneNumber = "";
+
+			for (let i = 0; i < 10; i++) {
+				phoneNumber += getRandomDigit();
+			}
+
+			return phoneNumber;
+		}
+		dispatch(signup({ ...data, phone_number: generateRandomPhoneNumber() }));
 	};
 
 	const actionButton = () => (
@@ -77,34 +107,67 @@ const SignUp = () => {
 						</CardHeader>
 						<CardContent className="flex flex-col gap-6 p-0 text-left ">
 							<div className="flex flex-col gap-3">
-								<Label className="font-medium" htmlFor="name">
-									{t("full_name")}
-									<span className="text-primary"> *</span>
-								</Label>
-								<InputWithIcon
-									icon={<NameIcon />}
-									name="name"
-									placeholder="John doe"
+								<FormField
+									control={form.control}
+									name="fullName"
+									render={({ field }) => (
+										<FormItem>
+											<Label className="font-medium" htmlFor="fullName">
+												{t("full_name")}
+												<span className="text-primary"> *</span>
+											</Label>
+											<InputWithIcon
+												icon={<NameIcon />}
+												error={errors?.fullName}
+												placeholder="John doe"
+												{...field}
+											/>
+											<FormMessage />
+										</FormItem>
+									)}
 								/>
-								<Label className="font-medium" htmlFor="email">
-									{t("email_address")}
-									<span className="text-primary"> *</span>
-								</Label>
-								<InputWithIcon
-									icon={<MailIcon />}
+								<FormField
+									control={form.control}
 									name="email"
-									placeholder="hello@alignui.com"
+									render={({ field }) => (
+										<FormItem>
+											<Label className="font-medium" htmlFor="email">
+												{t("email_address")}
+												<span className="text-primary"> *</span>
+											</Label>
+											<InputWithIcon
+												icon={<MailIcon />}
+												error={errors?.email}
+												name="email"
+												placeholder="hello@alignui.com"
+												{...field}
+											/>
+											<FormMessage />
+										</FormItem>
+									)}
 								/>
-								<Label className="font-medium" htmlFor="password">
-									{t("password")}
-									<span className="text-primary"> *</span>
-								</Label>
-								<InputWithIcon
-									icon={<LockIcon />}
+								<FormField
+									control={form.control}
 									name="password"
-									type="password"
-									placeholder="• • • • • • • • • •"
+									render={({ field }) => (
+										<FormItem>
+											<Label className="font-medium" htmlFor="password">
+												{t("password")}
+												<span className="text-primary"> *</span>
+											</Label>
+											<InputWithIcon
+												icon={<LockIcon />}
+												error={errors?.password}
+												name="password"
+												type="password"
+												placeholder="• • • • • • • • • •"
+												{...field}
+											/>
+											<FormMessage />
+										</FormItem>
+									)}
 								/>
+
 								<div className="flex items-center w-full gap-2">
 									<InformationIcon className="text-grey" />
 									<p className="text-xs text-grey-100 ">
@@ -113,14 +176,26 @@ const SignUp = () => {
 								</div>
 							</div>
 						</CardContent>
+						{error && (
+							<p className="flex items-center gap-3 p-2 rounded-md text-error">
+								<ErrorIcon /> {error?.message}
+							</p>
+						)}
 						<CardFooter className="flex flex-col p-0">
-							<Button className="w-full h-10" type="submit">
+							<Button
+								className="w-full h-10"
+								type="submit"
+								disabled={!formState.isValid || isLoading}
+							>
+								{isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
 								{t("submit")}
 							</Button>
 							<CardDescription className="mt-6 mb-1 text-sm">
 								{t("by_clicking_register_you_agree_to_accept_apex_financials")}
 							</CardDescription>
-							<Link to="/forget-password" className="border-b" >{t('forget_password')}</Link>
+							<Link to="/forget-password" className="border-b">
+								{t("forget_password")}
+							</Link>
 						</CardFooter>
 					</Card>
 				</form>

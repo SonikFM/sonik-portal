@@ -5,7 +5,13 @@ import { Icon } from "@/svgs";
 import { ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { toggleSidebar } from "@/store/global/slice";
-import React, { useEffect, useRef } from "react";
+import React, {
+	useEffect,
+	useRef,
+	useState,
+	useCallback,
+	startTransition,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
@@ -17,13 +23,14 @@ const Sidebar = ({ className, ...rest }) => {
 	const location = useLocation();
 	const activeRoute = location?.pathname;
 	const { t } = useTranslation("navigations");
+
 	const navigations = t("mainNavigation", { returnObjects: true });
 	const settings = t("settingsNavigation", { returnObjects: true });
-	const handleClick = () => {
+	const handleClick = useCallback(() => {
 		if (sidebar) {
 			dispatch(toggleSidebar());
 		}
-	};
+	}, [sidebar, dispatch]);
 
 	useEffect(() => {
 		function handleClickOutside(event) {
@@ -35,7 +42,7 @@ const Sidebar = ({ className, ...rest }) => {
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [sidebar,handleClick]);
+	}, [sidebar, handleClick]);
 
 	return (
 		<div
@@ -80,7 +87,7 @@ const Sidebar = ({ className, ...rest }) => {
 										<Icon className={iconCls} name={navigate.icon} />{" "}
 										{navigate.label}
 										<span className="absolute right-3">
-											{navigate.id == "dashboard" && (
+											{navigate.id === "dashboard" && (
 												<ChevronRight className="h-4 text-grey-100" />
 											)}
 										</span>

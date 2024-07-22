@@ -1,11 +1,5 @@
-import {
-	createBrowserRouter,
-	Navigate,
-} from "react-router-dom";
-import {
-	AuthLayout,
-	DashboardLayout,
-} from "@/layout";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { AuthLayout, DashboardLayout } from "@/layout";
 import ProtectedRoute from "./ProtectedRoute";
 
 // PAGES
@@ -25,6 +19,8 @@ import Settings from "./Settings";
 import AttendeeAccount from "./AttendeeAccount";
 import CreateVenue from "./CreateVenue";
 import AttendeeAccounts from "./AttendeeAccounts";
+import Venues from "./Venues";
+import ResetPassword from "./ResetPassword";
 
 // CONATINERS
 
@@ -34,13 +30,15 @@ import Organizations from "@/containers/Organizations";
 
 const dashboardRoutes = [
 	{ path: "", element: <Dashboard />, index: true },
+	{ path: "/dashboard", element: <Dashboard /> },
 	{ path: "events", element: <Events /> },
 	{ path: "events/create-event", element: <CreateEvent /> },
 	{ path: "attendees", element: <AttendeeAccounts /> },
 	{ path: "attendees/create-attendee", element: <AttendeeAccount /> },
 	{ path: "producers", element: <Producers /> },
 	{ path: "producers/create-producer", element: <OrganizerAccount /> },
-	{ path: "venues", element: <CreateVenue /> },
+	{ path: "venues", element: <Venues /> },
+	{ path: "venues/create-venue", element: <CreateVenue /> },
 	{ path: "calendar", element: <Calendar /> },
 	{ path: "tickets", element: <Tickets /> },
 	{ path: "organization", element: <Organizations /> },
@@ -55,6 +53,7 @@ const authRoutes = [
 	{ path: "register", element: <SignUp /> },
 	{ path: "forget-password", element: <ForgetPassword /> },
 	{ path: "verification", element: <Verification /> },
+	{ path: "reset-password", element: <ResetPassword /> },
 ];
 
 const routes = [

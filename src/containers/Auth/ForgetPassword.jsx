@@ -8,38 +8,43 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
+import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { object, string } from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
-import { fakeAuthProvider } from "@/lib/auth";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "@/layout/Header";
 import InputWithIcon from "@/components/InputWithIcon";
 import MailIcon from "@/svgs/MailIcon";
 import DoorLockIcon from "@/svgs/DoorLockIcon";
+import { useDispatch, useSelector } from "react-redux";
+import { requestReset } from "@/store/global/actions";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import ErrorIcon from "@/svgs/ErrorIcon";
 
-const schema = object({
-	email: string().email().required(),
+const schema = z.object({
+	email: z.string().email("Invalid email"),
 });
 
 const ForgetPassword = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const { t } = useTranslation("auth");
+	const { isLoading, message, error } = useSelector((state) => state.app);
 	const form = useForm({
-		resolver: yupResolver(schema),
+		resolver: zodResolver(schema),
 		defaultValues: {
 			email: "",
 		},
 	});
 
+	const { formState, errors } = form;
+
 	const onSubmit = async (data) => {
-		console.log({ data });
-		const a = await fakeAuthProvider.signin("qasim");
-		navigate('/verification')
+		dispatch(requestReset(data));
 	};
 
 	const actionButton = () => (
@@ -50,6 +55,8 @@ const ForgetPassword = () => {
 			</Link>
 		</>
 	);
+	console.log({ message, isLoading });
+
 	return (
 		<div className="">
 			<Header actionButton={actionButton()}></Header>
@@ -70,21 +77,52 @@ const ForgetPassword = () => {
 								{t("enter_your_email_to_reset_your_password")}
 							</CardDescription>
 						</CardHeader>
+						{(!isLoading || message) && (
+							<div className="flex">
+								<Label
+									className="font-normal text-center text-primary "
+									htmlFor="message"
+								>
+									{message}
+								</Label>
+							</div>
+						)}
 						<CardContent className="flex flex-col gap-6 p-0 text-left ">
 							<div className="flex flex-col gap-3">
-								<Label className="font-medium" htmlFor="email">
-									{t("email_address")}
-									<span className="text-primary"> *</span>
-								</Label>
-								<InputWithIcon
-									icon={<MailIcon />}
+								<FormField
+									control={form.control}
 									name="email"
-									placeholder="hello@alignui.com"
+									render={({ field }) => (
+										<FormItem>
+											<Label className="font-medium" htmlFor="email">
+												{t("email_address")}
+												<span className="text-primary"> *</span>
+											</Label>
+											<InputWithIcon
+												icon={<MailIcon />}
+												name="email"
+												placeholder="hello@alignui.com"
+												{...field}
+												error={errors?.email}
+											/>
+											<FormMessage />
+										</FormItem>
+									)}
 								/>
 							</div>
 						</CardContent>
+						{error && (
+							<p className="flex items-center gap-3 p-2 rounded-md text-error">
+								<ErrorIcon /> {error?.message}
+							</p>
+						)}
 						<CardFooter className="flex flex-col p-0">
-							<Button className="w-full h-10" type="submit">
+							<Button
+								className="w-full h-10"
+								type="submit"
+								disabled={!formState.isValid || isLoading}
+							>
+								{isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
 								{t("reset_password")}
 							</Button>
 							<CardDescription className="mt-6 mb-1 text-sm text-center">

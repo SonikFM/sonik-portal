@@ -3,13 +3,18 @@ import { Input } from "./ui/input";
 import { EyeIcon, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const InputWithIcon = ({ type, icon, className, ...rest }) => {
+const InputWithIcon = ({ type, icon, className, error, ...rest }) => {
 	const [show, setShow] = useState(false);
 	return (
 		<div className="relative flex items-center">
 			<div className="absolute left-3 read-only text-grey-100">{icon}</div>
 			<Input
-				className={cn("!pl-10 border-grey-light text-grey-100 bg-grey-dark", type === "password"? "pr-10" : "", className)}
+				className={cn(
+					"!pl-10  text-grey-100 bg-grey-dark",
+					type === "password" ? "pr-10" : "",
+					error ? "border-error" : "border-grey-light",
+					className
+				)}
 				{...rest}
 				type={show ? "text" : type}
 			/>
