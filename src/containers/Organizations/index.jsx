@@ -69,7 +69,7 @@ const Organizations = () => {
 	});
 	const navigate = useNavigate();
 	const redirectToCreateEvent = () => {
-		navigate("/events/create-event");
+		navigate("/organization/create-organization");
 	};
 	const toggleView = (v) => {
 		setView(v);
