@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       maxWidth: {
-        '272': '17rem',
+        272: "17rem",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,28 +60,28 @@ module.exports = {
           dark: "#0E121B",
           100: "#99A0AE",
           200: "#181B25",
-          300: "#222530"
+          300: "#222530",
         },
         success: {
           DEFAULT: "#1DAF61",
         },
         pink: {
-          DEFAULT: "#E255F2"
+          DEFAULT: "#E255F2",
         },
         warning: {
           DEFAULT: "#E97135",
-          light: "#FF9147"
+          light: "#FF9147",
         },
         error: {
           DEFAULT: "#E93544",
-          dark: "#DF1C41"
-        }
+          dark: "#DF1C41",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        5: "20px"
+        5: "20px",
       },
       keyframes: {
         "accordion-down": {
@@ -95,7 +95,7 @@ module.exports = {
         "caret-blink": {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
-        }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -105,4 +105,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

@@ -1,10 +1,11 @@
-import React from 'react'
-import Organizations from "@/containers/Organizations"
+import Organizations from "@/containers/Organizations";
 
 const Index = () => {
   return (
-    <div><Organizations/></div>
-  )
-}
+    <div>
+      <Organizations />
+    </div>
+  );
+};
 
-export default Index
+export default Index;

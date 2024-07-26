@@ -1,10 +1,7 @@
-import Oranization from '@/containers/Organization'
-import React from 'react'
+import Oranization from "@/containers/Organization";
 
 const Index = () => {
-  return (
-    <Oranization/>
-  )
-}
+  return <Oranization />;
+};
 
-export default Index
+export default Index;
