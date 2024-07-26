@@ -1,5 +1,7 @@
-const Venues = () => {
-  return <div>Venues</div>;
+import Venues from "@/containers/Venues";
+
+const Index = () => {
+  return <Venues />;
 };
 
-export default Venues;
+export default Index;

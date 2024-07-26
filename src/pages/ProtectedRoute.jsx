@@ -1,11 +1,17 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { fakeAuthProvider } from "@/lib/auth";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import AppLoader from "@/components/AppLoader";
 
 const ProtectedRoute = () => {
-  return fakeAuthProvider.isAuthenticated ? (
+  const { user, isLoading } = useSelector(state => state.app);
+  const { pathname } = useLocation();
+  if (!user?.id && isLoading) {
+    return <AppLoader />;
+  }
+  return user?._id ? (
     <Outlet />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to={pathname ? `/login?redirect=${pathname}` : "/login"} />
   );
 };
 

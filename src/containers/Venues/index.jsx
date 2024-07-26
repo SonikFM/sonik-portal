@@ -25,9 +25,9 @@ import ChevronRightIcon from "@/svgs/ChevronRightIcon";
 import ChevronLefttIcon from "@/svgs/ChevronLefttIcon";
 import { generatePageNumbers } from "@/lib/utils";
 import { PaginationMenu } from "./elements/PaginationMenu";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
+import BuildingIcon from "@/svgs/BuildingIcon";
 
-const AttendeeAccounts = () => {
+const Venues = () => {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -65,7 +65,7 @@ const AttendeeAccounts = () => {
   });
   const navigate = useNavigate();
   const handleRedirect = () => {
-    navigate("/attendees/create-attendee");
+    navigate("/venues/create-venue");
   };
 
   const pc =
@@ -79,27 +79,19 @@ const AttendeeAccounts = () => {
   return (
     <>
       <DashboardHeader
-        title="February 04, 2024"
-        hasNotifications={false}
-        hasSearch={true}
+        title="Explore Venues"
+        description="See all our venues listed for arrange events"
+        icon={<BuildingIcon className="text-grey-100" />}
       >
         <Button className="flex gap-1" onClick={handleRedirect}>
-          <PlusIcon /> Add Attendee Account
+          <PlusIcon /> Add Venue
         </Button>
       </DashboardHeader>
-
-      <Tabs defaultValue="all" className="w-full px-4 py-6 md:px-8">
-        <Header table={table} />
-
-        <TabsContent value="all">
-          <Content table={table} />
-        </TabsContent>
-        <TabsContent value="active">
-          <Content table={table} />
-        </TabsContent>
-        <TabsContent value="inactive">
-          <Content table={table} />
-        </TabsContent>
+      <div className="w-full px-4 py-6 md:px-8">
+        <Header view={"list"} />
+        <div className="">
+          <Content table={table} view={"list"} />
+        </div>
         <div className="flex items-center justify-end gap-3 py-3">
           <div className="text-sm text-grey-100">
             Page {currentPage} of {totalPages}
@@ -165,9 +157,9 @@ const AttendeeAccounts = () => {
             />
           </div>
         </div>
-      </Tabs>
+      </div>
     </>
   );
 };
 
-export default AttendeeAccounts;
+export default Venues;

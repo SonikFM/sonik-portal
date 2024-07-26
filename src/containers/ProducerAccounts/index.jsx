@@ -6,9 +6,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
-
 import Content from "./elements/Content";
 import Header from "./elements/Header";
 import { data, columns } from "./elements/data";
@@ -94,7 +92,7 @@ const ProducerAccounts = () => {
         </Button>
       </DashboardHeader>
 
-      <Tabs defaultValue="all" className="w-full px-8 py-6">
+      <Tabs defaultValue="all" className="w-full px-4 py-6 md:px-8">
         <Header table={table} />
 
         <TabsContent value="all">

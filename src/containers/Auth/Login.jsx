@@ -8,41 +8,51 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Form } from "@/components/ui/form";
+import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
-import { object, string } from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox";
 import Header from "@/layout/Header";
 import InputWithIcon from "@/components/InputWithIcon";
 import MailIcon from "@/svgs/MailIcon";
 import LockIcon from "@/svgs/LockIcon";
 import UserIcon from "@/svgs/UserIcon";
+import { login } from "@/store/global/actions";
+import { useDispatch, useSelector } from "react-redux";
+import ErrorIcon from "@/svgs/ErrorIcon";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { resetError } from "@/store/global/slice";
+import { Loader2 } from "lucide-react";
+import { useEffect } from "react";
 
-const schema = object({
-  email: string().email(),
-  passowrd: string(),
+const schema = z.object({
+  password: z.string(),
+  email: z.string().email("Invalid email"),
 });
 
 const Login = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation("auth");
+  const { error, isLoading } = useSelector(state => state.app);
   const form = useForm({
-    resolver: yupResolver(schema),
+    resolver: zodResolver(schema),
     defaultValues: {
       email: "",
       passowrd: "",
     },
   });
+  const { formState, errors } = form;
 
   const onSubmit = async data => {
-    console.log({ data });
-    // const a = await fakeAuthProvider.signin("qasim");
-    navigate("/dashboard");
+    dispatch(login(data));
   };
+
+  useEffect(() => {
+    dispatch(resetError());
+  }, []);
 
   const actionButton = () => (
     <>
@@ -74,29 +84,49 @@ const Login = () => {
             </CardHeader>
             <CardContent className="flex flex-col gap-6 p-0 text-left ">
               <div className="flex flex-col gap-3">
-                <Label className="font-medium" htmlFor="email">
-                  {t("email_address")}
-                </Label>
-                <InputWithIcon
-                  icon={<MailIcon />}
+                <FormField
+                  control={form.control}
                   name="email"
-                  placeholder="hello@alignui.com"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Label className="font-medium" htmlFor="email">
+                        {t("email_address")}
+                      </Label>
+                      <InputWithIcon
+                        icon={<MailIcon />}
+                        error={errors?.email}
+                        placeholder="hello@alignui.com"
+                        {...field}
+                      />
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <Label className="font-medium" htmlFor="password">
-                  {t("password")}
-                </Label>
-                <InputWithIcon
-                  icon={<LockIcon />}
+                <FormField
+                  control={form.control}
                   name="password"
-                  type="password"
-                  placeholder="• • • • • • • • • •"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Label className="font-medium" htmlFor="password">
+                        {t("password")}
+                      </Label>
+                      <InputWithIcon
+                        icon={<LockIcon />}
+                        error={errors?.password}
+                        type="password"
+                        placeholder="• • • • • • • • • •"
+                        {...field}
+                      />
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
               <div className="flex gap-3 items-top">
                 <div className="flex items-center w-full gap-2">
                   <Checkbox id="terms1" className="border-grey-light" />
                   <label htmlFor="terms1" className="text-sm">
-                    {t("accept_terms_and_conditions")}
+                    {t("remember_me")}
                   </label>
                 </div>
                 <Link
@@ -107,8 +137,20 @@ const Login = () => {
                 </Link>
               </div>
             </CardContent>
+            {error && (
+              <p className="flex items-center gap-3 p-2 rounded-md text-error">
+                {" "}
+                <ErrorIcon /> {error?.message}
+              </p>
+            )}
+
             <CardFooter className="p-0">
-              <Button className="w-full h-10" type="submit">
+              <Button
+                className="w-full h-10"
+                type="submit"
+                disabled={!formState.isValid || isLoading}
+              >
+                {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
                 {t("submit")}
               </Button>
             </CardFooter>

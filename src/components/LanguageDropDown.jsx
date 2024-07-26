@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ChevronDown, GlobeIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,13 +14,14 @@ import {
 } from "@/components/ui/popover";
 import { languages } from "@/contants/languages";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
 
 export function LanguageDropDown() {
   const { i18n } = useTranslation();
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(i18n.language);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(i18n.language);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (i18n.language && i18n.language !== value) {
       setValue(i18n.language);
     }

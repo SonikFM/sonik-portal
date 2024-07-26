@@ -17,7 +17,7 @@ const CreateVenue = () => {
         description="Add your venue deatails below"
         icon={<BuildingIcon className="w-5 h-5 text-grey-100" />}
       />
-      <div className="p-8">
+      <div className="px-4 py-8 md:px-8">
         <div className="pb-4 mb-6 border-b border-grey-light">
           <h3 className="font-medium text-white">Basic</h3>
           <p className="text-grey-100">

@@ -26,7 +26,7 @@ const Oranization = () => {
         </Button>
       </DashboardHeader>
       <Tabs
-        className="px-8 py-6"
+        className="px-4 py-6 md:px-8"
         defaultValue={active}
         onValueChange={setActive}
       >

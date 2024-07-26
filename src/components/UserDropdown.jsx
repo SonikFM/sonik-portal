@@ -1,26 +1,29 @@
 import { BadgeCheckIcon, ChevronRight } from "lucide-react";
 import profile from "@/assets/images/profile.png";
 import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useDispatch } from "react-redux";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { logout } from "@/store/global/actions";
 import { useState } from "react";
 
 export function UserDropdown() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const handleLogout = e => {
+    e.stopPropagation();
+    dispatch(logout());
+  };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
           role="combobox"
@@ -40,18 +43,13 @@ export function UserDropdown() {
           </div>
           <ChevronRight className="w-6 h-6 p-[2px] text-grey-100 shrink-0" />
         </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandGroup>
-            <CommandList>
-              <CommandItem>Porfile</CommandItem>
-              <CommandItem>Settings</CommandItem>
-              <CommandItem>Logout</CommandItem>
-            </CommandList>
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-[200px]">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuItem>Porfile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
