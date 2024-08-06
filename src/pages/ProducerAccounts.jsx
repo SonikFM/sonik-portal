@@ -1,10 +1,7 @@
-import ProducerAccounts from '@/containers/ProducerAccounts'
-import React from 'react'
+import ProducerAccounts from "@/containers/ProducerAccounts";
 
 const Index = () => {
-  return (
-    <ProducerAccounts/>
-  )
-}
+  return <ProducerAccounts />;
+};
 
-export default Index
+export default Index;

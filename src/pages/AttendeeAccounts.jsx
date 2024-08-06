@@ -1,10 +1,7 @@
-import AttendeeAccounts from '@/containers/AttendeeAccounts'
-import React from 'react'
+import AttendeeAccounts from "@/containers/AttendeeAccounts";
 
 const Index = () => {
-  return (
-    <AttendeeAccounts/>
-  )
-}
+  return <AttendeeAccounts />;
+};
 
-export default Index
+export default Index;

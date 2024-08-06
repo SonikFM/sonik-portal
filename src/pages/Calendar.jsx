@@ -1,10 +1,12 @@
-import Dashboard from '@/containers/Dashboard'
-import React from 'react'
+import Dashboard from "@/containers/Dashboard";
 
 const Calendar = () => {
   return (
-    <div> <Dashboard /></div>
-  )
-}
+    <div>
+      {" "}
+      <Dashboard />
+    </div>
+  );
+};
 
-export default Calendar
+export default Calendar;

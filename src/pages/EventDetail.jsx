@@ -1,9 +1,7 @@
-import EventDetail from '@/containers/EventDetail'
+import EventDetail from "@/containers/EventDetail";
 
 const Index = () => {
-  return (
-    <EventDetail/>
-  )
-}
+  return <EventDetail />;
+};
 
-export default Index
+export default Index;

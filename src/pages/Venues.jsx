@@ -1,10 +1,7 @@
-import Venues from '@/containers/Venues'
-import React from 'react'
+import Venues from "@/containers/Venues";
 
 const Index = () => {
-  return (
-    <Venues/>
-  )
-}
+  return <Venues />;
+};
 
-export default Index
+export default Index;

@@ -1,10 +1,7 @@
-import CreateEvent from '@/containers/Event'
-import React from 'react'
+import CreateEvent from "@/containers/Event";
 
 const Index = () => {
-  return (
-    <CreateEvent/>
-  )
-}
+  return <CreateEvent />;
+};
 
-export default Index
+export default Index;
