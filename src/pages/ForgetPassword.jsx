@@ -1,8 +1,7 @@
 import ForgetPassword from "@/containers/Auth/ForgetPassword";
-import React from "react";
 
 const Index = () => {
-	return <ForgetPassword />;
+  return <ForgetPassword />;
 };
 
 export default Index;

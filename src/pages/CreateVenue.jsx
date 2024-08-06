@@ -1,10 +1,7 @@
-import CreateVenue from '@/containers/Venue'
-import React from 'react'
+import CreateVenue from "@/containers/Venue";
 
 const Index = () => {
-  return (
-    <CreateVenue/>
-  )
-}
+  return <CreateVenue />;
+};
 
-export default Index
+export default Index;

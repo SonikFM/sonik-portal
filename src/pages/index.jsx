@@ -29,57 +29,56 @@ import OrganizerAccount from "@/containers/OrganizerAccount";
 import Organizations from "@/containers/Organizations";
 
 const dashboardRoutes = [
-	{ path: "", element: <Dashboard />, index: true },
-	{ path: "/dashboard", element: <Dashboard /> },
-	{ path: "events", element: <Events /> },
-	{ path: "events/create-event", element: <CreateEvent /> },
-	{ path: "attendees", element: <AttendeeAccounts /> },
-	{ path: "attendees/create-attendee", element: <AttendeeAccount /> },
-	{ path: "producers", element: <Producers /> },
-	{ path: "producers/create-producer", element: <OrganizerAccount /> },
-	{ path: "venues", element: <Venues /> },
-	{ path: "venues/create-venue", element: <CreateVenue /> },
-	{ path: "calendar", element: <Calendar /> },
-	{ path: "tickets", element: <Tickets /> },
-	{ path: "organization", element: <Organizations /> },
-	{ path: "organization/create-organization", element: <Organization /> },
-	{ path: "support-ticketing", element: <SupportAndTickets /> },
-	{ path: "settings", element: <Settings /> },
-	{ path: "support", element: <Support /> },
+  { path: "", element: <Dashboard />, index: true },
+  { path: "/dashboard", element: <Dashboard /> },
+  { path: "events", element: <Events /> },
+  { path: "events/create-event", element: <CreateEvent /> },
+  { path: "attendees", element: <AttendeeAccounts /> },
+  { path: "attendees/create-attendee", element: <AttendeeAccount /> },
+  { path: "producers", element: <Producers /> },
+  { path: "producers/create-producer", element: <OrganizerAccount /> },
+  { path: "venues", element: <Venues /> },
+  { path: "venues/create-venue", element: <CreateVenue /> },
+  { path: "calendar", element: <Calendar /> },
+  { path: "tickets", element: <Tickets /> },
+  { path: "organization", element: <Organizations /> },
+  { path: "organization/create-organization", element: <Organization /> },
+  { path: "support-ticketing", element: <SupportAndTickets /> },
+  { path: "settings", element: <Settings /> },
+  { path: "support", element: <Support /> },
 ];
 
 const authRoutes = [
-	{ path: "login", element: <Login /> },
-	{ path: "register", element: <SignUp /> },
-	{ path: "forget-password", element: <ForgetPassword /> },
-	{ path: "verification", element: <Verification /> },
-	{ path: "reset-password", element: <ResetPassword /> },
+  { path: "login", element: <Login /> },
+  { path: "register", element: <SignUp /> },
+  { path: "forget-password", element: <ForgetPassword /> },
+  { path: "verification", element: <Verification /> },
+  { path: "reset-password", element: <ResetPassword /> },
 ];
 
 const routes = [
-	{
-		path: "/",
-		element: <ProtectedRoute />,
-		children: [
-			{
-				path: "/",
-				element: <DashboardLayout />,
-				children: dashboardRoutes,
-			},
-		],
-	},
-	{
-		path: "/",
-		element: <AuthLayout />,
-		children: authRoutes,
-	},
-	{
-		path: "/logout",
-		action: async () => {
-			await fakeAuthProvider.signout();
-			return Navigate({ to: "/login" });
-		},
-	},
+  {
+    path: "/",
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/",
+        element: <DashboardLayout />,
+        children: dashboardRoutes,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <AuthLayout />,
+    children: authRoutes,
+  },
+  {
+    path: "/logout",
+    action: async () => {
+      return Navigate({ to: "/login" });
+    },
+  },
 ];
 
 export const router = createBrowserRouter(routes);

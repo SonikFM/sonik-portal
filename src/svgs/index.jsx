@@ -9,18 +9,18 @@ import TicketIcon from "./TicketIcon";
 import UsersIcon from "./UsersIcon";
 
 const icons = {
-	DashboardIcon: DashboardIcon,
-	EventsIcon: EventsIcon,
-	UsersIcon:UsersIcon,
-	AccountIcon:AccountIcon,
-	TicketIcon:TicketIcon,
-	BuildingIcon:BuildingIcon,
-	OrganizationIcon:OrganizationIcon,
-	ChatIcon:ChatIcon,
-	SettingsIcon:SettingsIcon
+  DashboardIcon: DashboardIcon,
+  EventsIcon: EventsIcon,
+  UsersIcon: UsersIcon,
+  AccountIcon: AccountIcon,
+  TicketIcon: TicketIcon,
+  BuildingIcon: BuildingIcon,
+  OrganizationIcon: OrganizationIcon,
+  ChatIcon: ChatIcon,
+  SettingsIcon: SettingsIcon,
 };
 const Fake = () => <></>;
-export const Icon = (props) => {
-	const Icon = icons[props.name] || Fake;
-	return <Icon {...props} />;
+export const Icon = props => {
+  const Icon = icons[props.name] || Fake;
+  return <Icon {...props} />;
 };

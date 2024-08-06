@@ -1,10 +1,7 @@
-
 import { Select } from "@/components/Select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DashboardHeader from "@/layout/DashboardHeader";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 import InputWithIcon from "@/components/InputWithIcon";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,187 +10,182 @@ import BuildingIcon from "@/svgs/BuildingIcon";
 import SearchIcon from "@/svgs/SearchIcon";
 
 const CreateVenue = () => {
-	const [t, i18n] = useTranslation("dashboard");
-	const [checked, setChecked] = useState(false);
-	const onChange = () => {
-		setChecked(!true);
-	};
-	return (
-		<>
-			<DashboardHeader
-				title="Create an Venue"
-				description="Add your venue deatails below"
-				icon={<BuildingIcon className="w-5 h-5 text-grey-100" />}
-			/>
-			<div className="px-4 py-8 md:px-8">
-				<div className="pb-4 mb-6 border-b border-grey-light">
-					<h3 className="font-medium text-white">Basic</h3>
-					<p className="text-grey-100">
-						Get started by filling in the basics about your venue.
-					</p>
-				</div>
-				<div className="space-y-8">
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="flex justify-between text-white">
-								<span>
-									Venue ID <span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter a unique Id..."
-							/>
-						</div>
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="text-white">
-								Venue name <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter place name"
-							/>
-						</div>
-					</div>
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="flex justify-between text-white">
-								<span>
-									Venue Capacity <span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="100"
-							/>
-						</div>
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="text-white">
-								Venue Email <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="example@mail.com"
-							/>
-						</div>
-					</div>
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Search Address<span className="text-primary">*</span>
-								</span>
-							</Label>
-							<InputWithIcon
-								icon={<SearchIcon />}
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Search Address"
-							/>
-						</div>
-					</div>
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="flex justify-between text-white">
-								<span>
-									Address Line 1<span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="+92-343-8831954"
-							/>
-						</div>
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="flex justify-between text-white">
-								<span>
-									Address Line 2<span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="+92-343-8831954"
-							/>
-						</div>
-					</div>
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="text-white">
-								Zip code <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter zip code"
-							/>
-						</div>
+  return (
+    <>
+      <DashboardHeader
+        title="Create an Venue"
+        description="Add your venue deatails below"
+        icon={<BuildingIcon className="w-5 h-5 text-grey-100" />}
+      />
+      <div className="px-4 py-8 md:px-8">
+        <div className="pb-4 mb-6 border-b border-grey-light">
+          <h3 className="font-medium text-white">Basic</h3>
+          <p className="text-grey-100">
+            Get started by filling in the basics about your venue.
+          </p>
+        </div>
+        <div className="space-y-8">
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Venue ID <span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="Enter a unique Id..."
+              />
+            </div>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Venue name <span className="text-primary">*</span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="Enter place name"
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Venue Capacity <span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="100"
+              />
+            </div>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Venue Email <span className="text-primary">*</span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="example@mail.com"
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Search Address<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <InputWithIcon
+                icon={<SearchIcon />}
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="Search Address"
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Address Line 1<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="+92-343-8831954"
+              />
+            </div>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Address Line 2<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="+92-343-8831954"
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Zip code <span className="text-primary">*</span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="Enter zip code"
+              />
+            </div>
 
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="text-white">
-								Region <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="Enter region"
-							/>
-						</div>
-					</div>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Region <span className="text-primary">*</span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="Enter region"
+              />
+            </div>
+          </div>
 
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="flex justify-between text-white">
-								<span>
-									Country<span className="text-primary">*</span>
-								</span>
-							</Label>
-							<Select
-								placeholder="Select Country"
-								hasSearch
-								icon={<SearchIcon />}
-								options={[{ label: "Pakistan", value: "pakistan" }]}
-							/>
-						</div>
-						<div className="flex flex-col w-full gap-1 lg:w-1/2">
-							<Label className="text-white">
-								phone number <span className="text-primary">*</span>
-							</Label>
-							<Input
-								className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-								placeholder="+12-234-5678-9"
-							/>
-						</div>
-					</div>
-					<div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-						<div className="flex flex-col w-full gap-1">
-							<Label className="flex justify-between text-white">
-								<span>
-									Venue description
-									<span className="ml-1 text-primary">*</span>
-								</span>
-								<span className="text-xs font-medium text-grey-100">
-									50/250
-								</span>
-							</Label>
-							<Textarea
-								placeholder="Type your message here."
-								className="bg-transparent border-grey-light"
-							/>
-						</div>
-					</div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Country<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Select
+                placeholder="Select Country"
+                hasSearch
+                icon={<SearchIcon />}
+                options={[{ label: "Pakistan", value: "pakistan" }]}
+              />
+            </div>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                phone number <span className="text-primary">*</span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="+12-234-5678-9"
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Venue description
+                  <span className="ml-1 text-primary">*</span>
+                </span>
+                <span className="text-xs font-medium text-grey-100">
+                  50/250
+                </span>
+              </Label>
+              <Textarea
+                placeholder="Type your message here."
+                className="bg-transparent border-grey-light"
+              />
+            </div>
+          </div>
 
-					<div className="flex flex-wrap gap-6 ">
-						<div className="flex flex-col w-full gap-1">
-							<div className="flex justify-between w-full px-4 py-4 mt-2 lg:w-1/2 bg-grey-200 rounded-2xl h-fit">
-								<div>
-									<Label className="text-white">Venue Status</Label>
-									<p className="text-xs text-grey-100">
-										Enable so that the venue will be accessiable
-									</p>
-								</div>
-								<Switch id="take-seat" />
-							</div>
-						</div>
-					</div>
-				</div>
-				{/* <div className="pb-4 mt-10 mb-6 border-b border-grey-light">
+          <div className="flex flex-wrap gap-6 ">
+            <div className="flex flex-col w-full gap-1">
+              <div className="flex justify-between w-full px-4 py-4 mt-2 lg:w-1/2 bg-grey-200 rounded-2xl h-fit">
+                <div>
+                  <Label className="text-white">Venue Status</Label>
+                  <p className="text-xs text-grey-100">
+                    Enable so that the venue will be accessiable
+                  </p>
+                </div>
+                <Switch id="take-seat" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="pb-4 mt-10 mb-6 border-b border-grey-light">
 					<h3 className="font-medium text-white">Venue Address</h3>
 					<p className="text-grey-100">Help users to find your Venue</p>
 				</div>
@@ -319,14 +311,14 @@ const CreateVenue = () => {
 						description="Specify if your venue has age limits for event attendees."
 					/>
 				</div> */}
-				<div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
-					<Button variant="outline" className="w-40">
-						Cancel
-					</Button>
-					<Button className="w-40">Done</Button>
-				</div>
-			</div>
-		</>
-	);
+        <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
+          <Button variant="outline" className="w-40">
+            Cancel
+          </Button>
+          <Button className="w-40">Done</Button>
+        </div>
+      </div>
+    </>
+  );
 };
 export default CreateVenue;
