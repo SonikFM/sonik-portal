@@ -8,8 +8,13 @@ import {
 } from "@/components/ui/table";
 import { flexRender } from "@tanstack/react-table";
 import { columns } from "./data";
+import { useNavigate } from "react-router-dom";
 
 const Content = ({ table }) => {
+  const navigate = useNavigate();
+  const handleClick = () => () => {
+    navigate("/events/1");
+  };
   return (
     <Table>
       <TableHeader className="border-0">
@@ -43,6 +48,7 @@ const Content = ({ table }) => {
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
               className="!border-b border-grey-light"
+              onClick={handleClick(row)}
             >
               {row.getVisibleCells().map(cell => (
                 <TableCell key={cell.id} className="py-3">

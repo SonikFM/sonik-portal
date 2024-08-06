@@ -9,7 +9,7 @@ import Artists from "./Artists";
 import Tickets from "./Tickets";
 
 const Info = () => {
-  const [active, setActive] = useState("artists");
+  const [active, setActive] = useState("description");
   return (
     <div>
       <Tabs defaultValue={active} className="w-full" onValueChange={setActive}>
