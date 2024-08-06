@@ -21,6 +21,7 @@ import CreateVenue from "./CreateVenue";
 import AttendeeAccounts from "./AttendeeAccounts";
 import Venues from "./Venues";
 import ResetPassword from "./ResetPassword";
+import EventDetail from "./EventDetail";
 
 // CONATINERS
 
@@ -33,6 +34,7 @@ const dashboardRoutes = [
 	{ path: "/dashboard", element: <Dashboard /> },
 	{ path: "events", element: <Events /> },
 	{ path: "events/create-event", element: <CreateEvent /> },
+	{ path: "events/:id", element: <EventDetail /> },
 	{ path: "attendees", element: <AttendeeAccounts /> },
 	{ path: "attendees/create-attendee", element: <AttendeeAccount /> },
 	{ path: "producers", element: <Producers /> },
