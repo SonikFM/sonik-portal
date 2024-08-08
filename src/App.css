@@ -36,3 +36,28 @@
 .read-the-docs {
   color: #888;
 }
+
+.hide-scroll::-webkit-scrollbar{
+  height: 0;
+  width: 0;
+}
+.hide-scroll::-webkit-scrollbar-thumb{
+  height: 0;
+  width: 0;
+  background: transparent;
+}
+.hide-scroll::-webkit-scrollbar-track{
+  height: 0;
+  width: 0;
+  background: transparent;
+}
+
+/* QUILL EDITOR STYLES */
+
+.ql-editor {
+  border: 1px solid #2B303B;
+  border-radius: 8px;
+  min-height: 72px;
+  padding: 8px;
+  color: white;
+}

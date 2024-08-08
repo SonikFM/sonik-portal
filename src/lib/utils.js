@@ -53,3 +53,16 @@ export const formatDate = date => {
     return format(parsedDate, "MMM d, yyyy 'at' h:mm a");
   }
 };
+
+export const formatFileSize = sizeInBytes => {
+  if (sizeInBytes === 0) return "0 B";
+
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  const k = 1024;
+  const i = Math.floor(Math.log(sizeInBytes) / Math.log(k));
+  const size = sizeInBytes / Math.pow(k, i);
+
+  // Format size
+  const formattedSize = size.toFixed(2);
+  return `${parseFloat(formattedSize)} ${units[i]}`;
+};
