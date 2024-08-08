@@ -1,7 +1,18 @@
 import { MapPinIcon } from "lucide-react";
-import eventMap from "@/assets/images/events/event-map.png";
+import { GoogleMap } from "@react-google-maps/api";
+import { mapOptions } from "@/contants/mapOptions";
+import MapMarker from "@/components/MapMarker";
 
 const Description = () => {
+  const mapContainerStyle = {
+    height: "100%",
+    width: "100%",
+  };
+
+  const coords = {
+    lat: 40.712776, // Example latitude
+    lng: -74.005974, // Example longitude
+  };
   return (
     <div>
       <p className="mb-4 text-sm text-grey-100">
@@ -21,11 +32,21 @@ const Description = () => {
           </strong>
         </p>
       </div>
-      <img
-        src={eventMap}
-        alt="event map"
-        className="object-cover w-full mb-6"
-      />
+      {coords && (
+        <div className="flex flex-col w-full h-56 gap-1 overflow-hidden rounded-2xl">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={coords}
+            zoom={10}
+            options={mapOptions}
+          >
+            <MapMarker
+              position={coords}
+              label={" 1087 Queen Street West · Toronto, Ontario"}
+            />
+          </GoogleMap>
+        </div>
+      )}
     </div>
   );
 };

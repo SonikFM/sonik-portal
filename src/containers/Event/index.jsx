@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import DashboardHeader from "@/layout/DashboardHeader";
 import FoldersIcon from "@/svgs/FoldersIcon";
 import InformationIcon from "@/svgs/InformationIcon";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Artist from "./elements/Artist";
 import FlashLightIcon from "@/svgs/FlashLightIcon";
 import TimerIcon from "@/svgs/TimerIcon";
@@ -23,8 +23,42 @@ import Ticket from "./elements/Ticket";
 import { Switch } from "@/components/ui/switch";
 import DollarIcon from "@/svgs/DollarIcon";
 import Guest from "./elements/Guest";
-import SearchSuggestionInput from "./elements/SearchSuggestionInput";
 import { useNavigate } from "react-router-dom";
+import { Autocomplete, GoogleMap } from "@react-google-maps/api";
+import { Controller, useForm } from "react-hook-form";
+import SearchIcon from "@/svgs/SearchIcon";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { mapOptions } from "@/contants/mapOptions";
+import MapMarker from "@/components/MapMarker";
+
+// Define schema with zod
+const schema = z.object({
+  eventId: z.string().nonempty({ message: "Venue ID is required" }),
+  venueName: z.string().nonempty({ message: "Venue name is required" }),
+  venueCapacity: z.string().nonempty({ message: "Venue capacity is required" }),
+  venueEmail: z
+    .string()
+    .email({ message: "Invalid email" })
+    .nonempty({ message: "Venue email is required" }),
+  addressLine1: z.string().nonempty({ message: "Address Line 1 is required" }),
+  addressLine2: z.string().optional(),
+  zipCode: z.string().nonempty({ message: "Zip code is required" }),
+  region: z.string().nonempty({ message: "Region is required" }),
+  city: z.string().nonempty({ message: "City is required" }),
+  country: z.string().nonempty({ message: "Country is required" }),
+  phoneNumber: z.string().nonempty({ message: "Phone number is required" }),
+  venueDescription: z
+    .string()
+    .nonempty({ message: "Venue description is required" }),
+  venueStatus: z.boolean().default(false),
+  coords: z
+    .object({
+      lat: z.string().nullable(),
+      lng: z.string().nullable(),
+    })
+    .nullable(),
+});
 
 const CreateEvent = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -36,6 +70,77 @@ const CreateEvent = () => {
   const navigate = useNavigate();
   const onIconClick = () => {
     navigate(-1);
+  };
+
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+    watch,
+  } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      eventId: "",
+      venueName: "",
+      venueCapacity: "",
+      venueEmail: "",
+      addressLine1: "",
+      addressLine2: "",
+      zipCode: "",
+      region: "",
+      country: "",
+      city: "",
+      phoneNumber: "",
+      venueDescription: "",
+      venueStatus: false,
+      coords: null,
+    },
+  });
+
+  const coords = watch("coords");
+  const venueName = watch("venueName");
+
+  const handlePlaceChanged = useCallback(
+    autocomplete => {
+      const place = autocomplete.getPlace();
+      console.log({ place });
+      if (!place.geometry) {
+        console.log("No details available for input: '" + place.name + "'");
+        return;
+      }
+
+      const addressComponents = place.address_components;
+      const getAddressComponent = type => {
+        const component = addressComponents.find(component =>
+          component.types.includes(type),
+        );
+        return component ? component.long_name : "";
+      };
+
+      setValue(
+        "addressLine1",
+        getAddressComponent("street_number")
+          ? `${getAddressComponent("street_number")} ${getAddressComponent("route")}`
+          : getAddressComponent("route"),
+      );
+      setValue("venueName", place?.formatted_address);
+      setValue("addressLine2", getAddressComponent("sublocality_level_1"));
+      setValue("zipCode", getAddressComponent("postal_code"));
+      setValue("region", getAddressComponent("administrative_area_level_1"));
+      setValue("country", getAddressComponent("country"));
+      console.log({ city: getAddressComponent("locality") });
+      setValue("city", getAddressComponent("locality"));
+      const lat = place.geometry.location.lat();
+      const lng = place.geometry.location.lng();
+      setValue("coords", { lat, lng });
+    },
+    [setValue],
+  );
+
+  const mapContainerStyle = {
+    height: "100%",
+    width: "100%",
   };
 
   return (
@@ -159,7 +264,169 @@ const CreateEvent = () => {
                 <Artist className="" />
               </div>
             </div>
-            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+
+            <div className="flex flex-wrap gap-6 lg:w-1/2">
+              <div className="flex flex-col w-full gap-1">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Venue<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Autocomplete
+                  onLoad={autocomplete => {
+                    autocomplete.addListener("place_changed", () =>
+                      handlePlaceChanged(autocomplete),
+                    );
+                  }}
+                  options={{
+                    types: ["address"],
+                    componentRestrictions: { country: "us" },
+                  }}
+                >
+                  <InputWithIcon
+                    icon={<SearchIcon />}
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="Venue name"
+                  />
+                </Autocomplete>
+              </div>
+              <div className="flex flex-col w-full gap-1">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Address Line 1<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="addressLine1"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Address Line 1"
+                      readOnly
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.addressLine1 && (
+                  <p className="text-red-500">{errors.addressLine1.message}</p>
+                )}
+              </div>
+              <div className="flex flex-col w-full gap-1">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Address Line 2<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="addressLine2"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Address Line 2"
+                      readOnly
+                      {...field}
+                    />
+                  )}
+                />
+              </div>
+              <div className="flex flex-col w-full gap-1">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    City<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="city"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="City name"
+                      readOnly
+                      {...field}
+                    />
+                  )}
+                />
+              </div>
+
+              <div className="flex flex-col w-full gap-1">
+                <Label className="text-white">
+                  Zip code <span className="text-primary">*</span>
+                </Label>
+                <Controller
+                  name="zipCode"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Enter zip code"
+                      readOnly
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.zipCode && (
+                  <p className="text-red-500">{errors.zipCode.message}</p>
+                )}
+              </div>
+              <div className="flex flex-col w-full gap-1 ">
+                <Label className="text-white">
+                  Region <span className="text-primary">*</span>
+                </Label>
+                <Controller
+                  name="region"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Enter region"
+                      readOnly
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.region && (
+                  <p className="text-red-500">{errors.region.message}</p>
+                )}
+              </div>
+              <div className="flex flex-col w-full gap-1 ">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Country<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="country"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Enter country"
+                      readOnly
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.country && (
+                  <p className="text-red-500">{errors.country.message}</p>
+                )}
+              </div>
+              {coords && (
+                <div className="flex flex-col w-full h-56 gap-1 overflow-hidden rounded-2xl">
+                  <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    center={coords}
+                    zoom={10}
+                    options={mapOptions}
+                  >
+                    <MapMarker position={coords} label={venueName} />
+                  </GoogleMap>
+                </div>
+              )}
+            </div>
+            {/* <div className="flex flex-col w-full gap-1 lg:w-1/2">
               <Label className="text-white">
                 Genre <span className="text-primary">*</span>
               </Label>
@@ -170,7 +437,7 @@ const CreateEvent = () => {
                 value={""}
                 showSuggesstions={false}
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="pb-4 mt-10 mb-6 border-b border-grey-light">
@@ -498,16 +765,155 @@ const CreateEvent = () => {
         </div>
         <div className="flex flex-wrap gap-6 mb-6 md:flex-nowrap">
           <div className="flex flex-col w-full gap-1 lg:w-1/2">
-            <Label className="text-white">
-              Genre <span className="text-primary">*</span>
-            </Label>
-            <SearchSuggestionInput
-              className="h-10 "
-              placeholder="The Great Hall"
-              onChange={event => console.log({ event })}
-              value={""}
-              showSuggesstions={false}
-            />
+            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+              <div className="flex flex-col w-full gap-1">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Search Address<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Autocomplete
+                  onLoad={autocomplete => {
+                    autocomplete.addListener("place_changed", () =>
+                      handlePlaceChanged(autocomplete),
+                    );
+                  }}
+                  options={{
+                    types: ["address"],
+                    componentRestrictions: { country: "us" },
+                  }}
+                >
+                  <InputWithIcon
+                    icon={<SearchIcon />}
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="Search Address"
+                  />
+                </Autocomplete>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+              <div className="flex flex-col w-full gap-1 lg:w-1/2">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Address Line 1<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="addressLine1"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Address Line 1"
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.addressLine1 && (
+                  <p className="text-red-500">{errors.addressLine1.message}</p>
+                )}
+              </div>
+              <div className="flex flex-col w-full gap-1 lg:w-1/2">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Address Line 2<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="addressLine2"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Address Line 2"
+                      {...field}
+                    />
+                  )}
+                />
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+              <div className="flex flex-col w-full gap-1 lg:w-1/2">
+                <Label className="text-white">
+                  Zip code <span className="text-primary">*</span>
+                </Label>
+                <Controller
+                  name="zipCode"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Enter zip code"
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.zipCode && (
+                  <p className="text-red-500">{errors.zipCode.message}</p>
+                )}
+              </div>
+              <div className="flex flex-col w-full gap-1 lg:w-1/2">
+                <Label className="text-white">
+                  Region <span className="text-primary">*</span>
+                </Label>
+                <Controller
+                  name="region"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Enter region"
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.region && (
+                  <p className="text-red-500">{errors.region.message}</p>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+              <div className="flex flex-col w-full gap-1 lg:w-1/2">
+                <Label className="flex justify-between text-white">
+                  <span>
+                    Country<span className="text-primary">*</span>
+                  </span>
+                </Label>
+                <Controller
+                  name="country"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="Enter country"
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.country && (
+                  <p className="text-red-500">{errors.country.message}</p>
+                )}
+              </div>
+              <div className="flex flex-col w-full gap-1 lg:w-1/2">
+                <Label className="text-white">
+                  Phone number <span className="text-primary">*</span>
+                </Label>
+                <Controller
+                  name="phoneNumber"
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                      placeholder="+12-234-5678-9"
+                      {...field}
+                    />
+                  )}
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500">{errors.phoneNumber.message}</p>
+                )}
+              </div>
+            </div>
           </div>
           <div className="flex flex-col w-full gap-1 lg:w-1/2">
             <Label className="flex text-white justify-betweeb">
