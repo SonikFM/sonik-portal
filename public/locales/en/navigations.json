@@ -26,6 +26,12 @@
             "icon": "AccountIcon"
         },
         {
+            "id": "admin-accounts",
+            "label": "Admin Accounts",
+            "url": "/admins",
+            "icon": "UserIcon"
+        },
+        {
             "id": "tickets",
             "label": "Tickets",
             "url": "/tickets",
