@@ -1,11 +1,9 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DashboardHeader from "@/layout/DashboardHeader";
-import { ChevronLeft, PlusIcon } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FileUpload from "@/components/FileUpload";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
 import Profile from "./elements/Profile";
 import UploadIcon from "@/svgs/UploadIcon";
 import { useNavigate } from "react-router-dom";
