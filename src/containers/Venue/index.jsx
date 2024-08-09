@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { LoadScript, Autocomplete } from "@react-google-maps/api";
+import { Autocomplete } from "@react-google-maps/api";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DashboardHeader from "@/layout/DashboardHeader";
@@ -12,9 +12,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import BuildingIcon from "@/svgs/BuildingIcon";
 import SearchIcon from "@/svgs/SearchIcon";
-
-const libraries = ["places"];
-const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 // Define schema with zod
 const schema = z.object({
@@ -194,157 +191,155 @@ const CreateVenue = () => {
               )}
             </div>
           </div>
-          <LoadScript googleMapsApiKey={googleMapsApiKey} libraries={libraries}>
-            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-              <div className="flex flex-col w-full gap-1">
-                <Label className="flex justify-between text-white">
-                  <span>
-                    Search Address<span className="text-primary">*</span>
-                  </span>
-                </Label>
-                <Autocomplete
-                  onLoad={autocomplete => {
-                    autocomplete.addListener("place_changed", () =>
-                      handlePlaceChanged(autocomplete),
-                    );
-                  }}
-                  options={{
-                    types: ["address"],
-                    componentRestrictions: { country: "us" },
-                  }}
-                >
-                  <InputWithIcon
-                    icon={<SearchIcon />}
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Search Address<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Autocomplete
+                onLoad={autocomplete => {
+                  autocomplete.addListener("place_changed", () =>
+                    handlePlaceChanged(autocomplete),
+                  );
+                }}
+                options={{
+                  types: ["address"],
+                  componentRestrictions: { country: "us" },
+                }}
+              >
+                <InputWithIcon
+                  icon={<SearchIcon />}
+                  className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                  placeholder="Search Address"
+                />
+              </Autocomplete>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Address Line 1<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Controller
+                name="addressLine1"
+                control={control}
+                render={({ field }) => (
+                  <Input
                     className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                    placeholder="Search Address"
+                    placeholder="Address Line 1"
+                    {...field}
                   />
-                </Autocomplete>
-              </div>
+                )}
+              />
+              {errors.addressLine1 && (
+                <p className="text-red-500">{errors.addressLine1.message}</p>
+              )}
             </div>
-            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-              <div className="flex flex-col w-full gap-1 lg:w-1/2">
-                <Label className="flex justify-between text-white">
-                  <span>
-                    Address Line 1<span className="text-primary">*</span>
-                  </span>
-                </Label>
-                <Controller
-                  name="addressLine1"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                      placeholder="Address Line 1"
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.addressLine1 && (
-                  <p className="text-red-500">{errors.addressLine1.message}</p>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Address Line 2<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Controller
+                name="addressLine2"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="Address Line 2"
+                    {...field}
+                  />
                 )}
-              </div>
-              <div className="flex flex-col w-full gap-1 lg:w-1/2">
-                <Label className="flex justify-between text-white">
-                  <span>
-                    Address Line 2<span className="text-primary">*</span>
-                  </span>
-                </Label>
-                <Controller
-                  name="addressLine2"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                      placeholder="Address Line 2"
-                      {...field}
-                    />
-                  )}
-                />
-              </div>
+              />
             </div>
-            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-              <div className="flex flex-col w-full gap-1 lg:w-1/2">
-                <Label className="text-white">
-                  Zip code <span className="text-primary">*</span>
-                </Label>
-                <Controller
-                  name="zipCode"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                      placeholder="Enter zip code"
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.zipCode && (
-                  <p className="text-red-500">{errors.zipCode.message}</p>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Zip code <span className="text-primary">*</span>
+              </Label>
+              <Controller
+                name="zipCode"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="Enter zip code"
+                    {...field}
+                  />
                 )}
-              </div>
-              <div className="flex flex-col w-full gap-1 lg:w-1/2">
-                <Label className="text-white">
-                  Region <span className="text-primary">*</span>
-                </Label>
-                <Controller
-                  name="region"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                      placeholder="Enter region"
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.region && (
-                  <p className="text-red-500">{errors.region.message}</p>
-                )}
-              </div>
+              />
+              {errors.zipCode && (
+                <p className="text-red-500">{errors.zipCode.message}</p>
+              )}
             </div>
-            <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
-              <div className="flex flex-col w-full gap-1 lg:w-1/2">
-                <Label className="flex justify-between text-white">
-                  <span>
-                    Country<span className="text-primary">*</span>
-                  </span>
-                </Label>
-                <Controller
-                  name="country"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                      placeholder="Enter country"
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.country && (
-                  <p className="text-red-500">{errors.country.message}</p>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Region <span className="text-primary">*</span>
+              </Label>
+              <Controller
+                name="region"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="Enter region"
+                    {...field}
+                  />
                 )}
-              </div>
-              <div className="flex flex-col w-full gap-1 lg:w-1/2">
-                <Label className="text-white">
-                  Phone number <span className="text-primary">*</span>
-                </Label>
-                <Controller
-                  name="phoneNumber"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-                      placeholder="+12-234-5678-9"
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.phoneNumber && (
-                  <p className="text-red-500">{errors.phoneNumber.message}</p>
-                )}
-              </div>
+              />
+              {errors.region && (
+                <p className="text-red-500">{errors.region.message}</p>
+              )}
             </div>
-          </LoadScript>
+          </div>
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Country<span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Controller
+                name="country"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="Enter country"
+                    {...field}
+                  />
+                )}
+              />
+              {errors.country && (
+                <p className="text-red-500">{errors.country.message}</p>
+              )}
+            </div>
+            <div className="flex flex-col w-full gap-1 lg:w-1/2">
+              <Label className="text-white">
+                Phone number <span className="text-primary">*</span>
+              </Label>
+              <Controller
+                name="phoneNumber"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                    placeholder="+12-234-5678-9"
+                    {...field}
+                  />
+                )}
+              />
+              {errors.phoneNumber && (
+                <p className="text-red-500">{errors.phoneNumber.message}</p>
+              )}
+            </div>
+          </div>
 
           <div className="flex flex-wrap gap-6 lg:flex-nowrap ">
             <div className="flex flex-col w-full gap-1">

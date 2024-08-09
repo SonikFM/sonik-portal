@@ -1,5 +1,7 @@
+import getSpotifyToken from "@/lib/getSpotifyToken";
 import https from "@/lib/https";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -76,6 +78,27 @@ export const resetPassword = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
+    }
+  },
+);
+export const searchArtists = createAsyncThunk(
+  "auth/spotifySearchArtists",
+  async (query, { rejectWithValue }) => {
+    const SPOTIFY_SEARCH_URL = "https://api.spotify.com/v1/search";
+    try {
+      const token = await getSpotifyToken();
+      const response = await axios.get(SPOTIFY_SEARCH_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          q: query.artistQuery,
+          type: "artist",
+        },
+      });
+      return response.data.artists.items;
+    } catch (err) {
+      return rejectWithValue(err?.response ? err.response?.data : err?.message);
     }
   },
 );
