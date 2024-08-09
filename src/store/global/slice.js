@@ -4,6 +4,7 @@ import {
   refreshToken,
   requestReset,
   resetPassword,
+  searchArtists,
   signup,
 } from "./actions";
 import { createSlice } from "@reduxjs/toolkit";
@@ -18,6 +19,11 @@ const initialState = {
   error: null,
   isLoading: true,
   message: "",
+  spotify: {
+    error: null,
+    artists: [],
+    isLoading: false,
+  },
 };
 
 export const globalSlice = createSlice({
@@ -105,6 +111,18 @@ export const globalSlice = createSlice({
       .addCase(requestReset.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      });
+    builder
+      .addCase(searchArtists.pending, state => {
+        state.spotify.isLoading = true;
+      })
+      .addCase(searchArtists.fulfilled, (state, action) => {
+        state.spotify.isLoading = false;
+        state.spotify.artists = action.payload;
+      })
+      .addCase(searchArtists.rejected, (state, action) => {
+        state.spotify.isLoading = false;
+        state.spotify.error = action.error.message;
       });
   },
 });
