@@ -2004,7 +2004,7 @@ export const columns = [
         className="flex items-center gap-1 min-w-fit whitespace-nowrap"
         onClick={() => row.toggleSorting(row.getIsSorted() === "asc")}
       >
-        <div className="capitalize">Producer ID</div>
+        <div className="capitalize">Account ID</div>
         <CaretUpDownIcon />
       </div>
     ),
