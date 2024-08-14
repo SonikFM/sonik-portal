@@ -31,7 +31,7 @@ const ArtistList = ({ artists, updateList, artistQuery }) => {
             <Artist
               className={
                 artists.length - 1 > ind
-                  ? "py-4 border-b border-grey-light "
+                  ? "py-4 border-b border-grey-light"
                   : ""
               }
               key={artist.id}

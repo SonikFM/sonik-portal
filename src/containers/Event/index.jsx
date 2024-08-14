@@ -11,13 +11,11 @@ import TimerIcon from "@/svgs/TimerIcon";
 import InputWithIcon from "@/components/InputWithIcon";
 import CalendarIcon from "@/svgs/CalendarIcon";
 import { AppDatePicker } from "@/components/AppDatePicker";
-import ArtistTime from "./elements/ArtistTime";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FileUpload from "@/components/FileUpload";
 import { Textarea } from "@/components/ui/textarea";
-import Ticket from "./elements/Ticket";
 import { Switch } from "@/components/ui/switch";
 import DollarIcon from "@/svgs/DollarIcon";
 import Guest from "./elements/Guest";
@@ -29,10 +27,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { mapOptions } from "@/contants/mapOptions";
 import MapMarker from "@/components/MapMarker";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchArtists } from "@/store/global/actions";
 import axios from "axios";
 import ArtistSearch from "./elements/ArtistSearch";
+import ArtistStartTimeList from "./elements/ArtistStartTimeList";
+import TicketList from "./elements/TicketList";
 
 // Define schema with zod
 const schema = z.object({
@@ -54,6 +54,12 @@ const schema = z.object({
     .string()
     .nonempty({ message: "Venue description is required" }),
   venueStatus: z.boolean().default(false),
+  artistTimings: z
+    .array({
+      name: z.string().optional(),
+      time: z.string().optional(),
+    })
+    .nonempty(),
   coords: z
     .object({
       lat: z.string().nullable(),
@@ -69,8 +75,6 @@ const CreateEvent = () => {
   const [artistQuery, setArtistQuery] = useState("");
   const dispatch = useDispatch();
   const cancelTokenSourceRef = useRef(null);
-  const spotify = useSelector(state => state?.app?.spotify);
-  console.log({ spotify });
 
   useEffect(() => {
     const handleDebounce = async () => {
@@ -126,6 +130,7 @@ const CreateEvent = () => {
       venueDescription: "",
       venueStatus: false,
       coords: null,
+      artistTimings: [],
     },
   });
 
@@ -174,12 +179,43 @@ const CreateEvent = () => {
   };
 
   const [selectedArtists, setSelectedArtists] = useState([]);
+  const [ticketList, setTicketList] = useState([
+    {
+      id: `21344${Math.floor(Math.random() * 100)}12341234`,
+      name: `ticket-21344${Math.floor(Math.random() * 100)}12341234`,
+      tickets: Math.floor(Math.random() * 100),
+    },
+    {
+      id: `21344${Math.floor(Math.random() * 100)}12341234`,
+      name: `ticket-21344${Math.floor(Math.random() * 100)}12341234`,
+      tickets: Math.floor(Math.random() * 100),
+    },
+  ]);
   const handleArtistSelect = artist => {
     if (selectedArtists.find(a => a.id === artist.id)) {
       setSelectedArtists(selectedArtists.filter(a => a.id !== artist.id));
     } else {
       setSelectedArtists([...selectedArtists, artist]);
     }
+  };
+
+  const handleAddArtistStartTime = () => {
+    setSelectedArtists([
+      ...selectedArtists,
+      {
+        id: `21344${Math.floor(Math.random() * 100)}12341234`,
+        name: "New Artist",
+      },
+    ]);
+  };
+  const handleAddTicket = () => {
+    setTicketList([
+      ...ticketList,
+      {
+        id: `21344${Math.floor(Math.random() * 100)}12341234`,
+        name: "New Artist",
+      },
+    ]);
   };
 
   return (
@@ -549,19 +585,19 @@ const CreateEvent = () => {
             <div className="flex flex-col w-full gap-1 xl:w-1/2">
               <Label className="flex justify-between text-white">
                 <span>
-                  Timezone <span className="text-primary">*</span>
+                  Artist start time <span className="text-primary">*</span>
                 </span>
               </Label>
-              <div className="px-4 py-1 bg-grey-200 rounded-2xl">
-                <ArtistTime className="py-4 border-b border-grey-light " />
-                <ArtistTime className="py-4 border-b border-grey-light " />
-                <ArtistTime className="" />
-              </div>
+              <ArtistStartTimeList
+                list={selectedArtists}
+                updateArtistStartTime={setSelectedArtists}
+              />
               <Button
                 variant="outline"
                 className="gap-1 mt-3 bg-transparent w-36"
+                onClick={handleAddArtistStartTime}
               >
-                <PlusIcon /> Add a time{" "}
+                <PlusIcon /> Add a time
               </Button>
             </div>
             <div className="flex flex-col w-full gap-1 xl:w-1/2">
@@ -763,12 +799,17 @@ const CreateEvent = () => {
           <Label className="text-white">
             Ticket Types<span className="text-primary">*</span>
           </Label>
-          <div className="px-4 py-1 mt-2 bg-grey-200 rounded-2xl">
+          <TicketList list={ticketList} updateList={setTicketList} />
+          {/* <div className="px-4 py-1 mt-2 bg-grey-200 rounded-2xl">
             <Ticket className="py-4 border-b border-grey-light " />
             <Ticket className="py-4 border-b border-grey-light " />
             <Ticket className="" />
-          </div>
-          <Button variant="outline" className="gap-1 mt-3 bg-transparent w-36">
+          </div> */}
+          <Button
+            variant="outline"
+            className="gap-1 mt-3 bg-transparent cursor-pointer w-36"
+            onClick={handleAddTicket}
+          >
             <PlusIcon />
             Add a Ticket type
           </Button>
