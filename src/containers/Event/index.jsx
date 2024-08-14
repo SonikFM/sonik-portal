@@ -1,4 +1,3 @@
-import SearchInput from "@/components/SearchInput";
 import { Select } from "@/components/Select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -6,8 +5,7 @@ import { Label } from "@/components/ui/label";
 import DashboardHeader from "@/layout/DashboardHeader";
 import FoldersIcon from "@/svgs/FoldersIcon";
 import InformationIcon from "@/svgs/InformationIcon";
-import { useCallback, useState } from "react";
-import Artist from "./elements/Artist";
+import { useCallback, useEffect, useRef, useState } from "react";
 import FlashLightIcon from "@/svgs/FlashLightIcon";
 import TimerIcon from "@/svgs/TimerIcon";
 import InputWithIcon from "@/components/InputWithIcon";
@@ -31,6 +29,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { mapOptions } from "@/contants/mapOptions";
 import MapMarker from "@/components/MapMarker";
+import { useDispatch, useSelector } from "react-redux";
+import { searchArtists } from "@/store/global/actions";
+import axios from "axios";
+import ArtistSearch from "./elements/ArtistSearch";
 
 // Define schema with zod
 const schema = z.object({
@@ -60,8 +62,38 @@ const schema = z.object({
     .nullable(),
 });
 
+const DEBOUNCE_DELAY = 500;
+
 const CreateEvent = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [artistQuery, setArtistQuery] = useState("");
+  const dispatch = useDispatch();
+  const cancelTokenSourceRef = useRef(null);
+  const spotify = useSelector(state => state?.app?.spotify);
+  console.log({ spotify });
+
+  useEffect(() => {
+    const handleDebounce = async () => {
+      if (cancelTokenSourceRef.current) {
+        cancelTokenSourceRef.current.cancel(
+          "Operation canceled due to new request.",
+        );
+      }
+      if (artistQuery) {
+        cancelTokenSourceRef.current = axios.CancelToken.source();
+        dispatch(
+          searchArtists({
+            artistQuery,
+            cancelToken: cancelTokenSourceRef.current.token,
+          }),
+        );
+      }
+    };
+
+    const debounceTimer = setTimeout(handleDebounce, DEBOUNCE_DELAY);
+
+    return () => clearTimeout(debounceTimer);
+  }, [artistQuery, dispatch]);
 
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
@@ -74,7 +106,6 @@ const CreateEvent = () => {
 
   const {
     control,
-    handleSubmit,
     setValue,
     formState: { errors },
     watch,
@@ -104,7 +135,6 @@ const CreateEvent = () => {
   const handlePlaceChanged = useCallback(
     autocomplete => {
       const place = autocomplete.getPlace();
-      console.log({ place });
       if (!place.geometry) {
         console.log("No details available for input: '" + place.name + "'");
         return;
@@ -141,6 +171,15 @@ const CreateEvent = () => {
   const mapContainerStyle = {
     height: "100%",
     width: "100%",
+  };
+
+  const [selectedArtists, setSelectedArtists] = useState([]);
+  const handleArtistSelect = artist => {
+    if (selectedArtists.find(a => a.id === artist.id)) {
+      setSelectedArtists(selectedArtists.filter(a => a.id !== artist.id));
+    } else {
+      setSelectedArtists([...selectedArtists, artist]);
+    }
   };
 
   return (
@@ -246,25 +285,14 @@ const CreateEvent = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-6 md:flex-nowrap ">
-            <div className="flex flex-col w-full gap-1 lg:w-1/2">
-              <Label className="flex text-white justify-betweeb">
-                Artist<span className="text-primary">*</span>
-              </Label>
-              <SearchInput
-                className="h-10 "
-                placeholder="Search"
-                onChange={event => console.log({ event })}
-                value={""}
-                showSuggesstions={false}
-              />
-              <div className="px-4 py-1 mt-2 bg-grey-200 rounded-2xl">
-                <Artist className="py-4 border-b border-grey-light " />
-                <Artist className="py-4 border-b border-grey-light " />
-                <Artist className="" />
-              </div>
-            </div>
-
+          <div className="flex flex-wrap items-start gap-6 md:flex-nowrap ">
+            <ArtistSearch
+              artistQuery={artistQuery}
+              setArtistQuery={setArtistQuery}
+              handleArtistSelect={handleArtistSelect}
+              selectedArtists={selectedArtists}
+              setSelectedArtists={setSelectedArtists}
+            />
             <div className="flex flex-wrap gap-6 lg:w-1/2">
               <div className="flex flex-col w-full gap-1">
                 <Label className="flex justify-between text-white">
@@ -426,18 +454,6 @@ const CreateEvent = () => {
                 </div>
               )}
             </div>
-            {/* <div className="flex flex-col w-full gap-1 lg:w-1/2">
-              <Label className="text-white">
-                Genre <span className="text-primary">*</span>
-              </Label>
-              <SearchInput
-                className="h-10 "
-                placeholder="The Great Hall"
-                onChange={event => console.log({ event })}
-                value={""}
-                showSuggesstions={false}
-              />
-            </div> */}
           </div>
         </div>
         <div className="pb-4 mt-10 mb-6 border-b border-grey-light">
