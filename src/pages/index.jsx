@@ -22,12 +22,14 @@ import AttendeeAccounts from "./AttendeeAccounts";
 import Venues from "./Venues";
 import ResetPassword from "./ResetPassword";
 import EventDetail from "./EventDetail";
+import AdminAccount from "./AdminAccount";
 
 // CONATINERS
 
 import CreateEvent from "@/containers/Event";
 import OrganizerAccount from "@/containers/OrganizerAccount";
 import Organizations from "@/containers/Organizations";
+import AdminAccounts from "@/containers/AdminAccounts";
 
 const dashboardRoutes = [
   { path: "", element: <Dashboard />, index: true },
@@ -39,6 +41,8 @@ const dashboardRoutes = [
   { path: "attendees/create-attendee", element: <AttendeeAccount /> },
   { path: "producers", element: <Producers /> },
   { path: "producers/create-producer", element: <OrganizerAccount /> },
+  { path: "admins", element: <AdminAccounts /> },
+  { path: "admins/create-admin", element: <AdminAccount /> },
   { path: "venues", element: <Venues /> },
   { path: "venues/create-venue", element: <CreateVenue /> },
   { path: "calendar", element: <Calendar /> },

@@ -6,6 +6,7 @@ import EventsIcon from "./EventsIcon";
 import OrganizationIcon from "./OrganizationIcon";
 import SettingsIcon from "./SettingsIcon";
 import TicketIcon from "./TicketIcon";
+import UserLineIcon from "./UserLineIcon";
 import UsersIcon from "./UsersIcon";
 
 const icons = {
@@ -18,6 +19,7 @@ const icons = {
   OrganizationIcon: OrganizationIcon,
   ChatIcon: ChatIcon,
   SettingsIcon: SettingsIcon,
+  UserIcon: UserLineIcon,
 };
 const Fake = () => <></>;
 export const Icon = props => {
