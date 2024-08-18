@@ -5,31 +5,46 @@ on:
     branches: [staging]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Transfer to EC2 via SSH_PRIVATE_KEY
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" #
+
+      - name: Create .env file
+        run: |
+          echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
+          echo "VITE_GOOGLE_MAPS_API_KEY=${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}" >> .env
+          echo "VITE_SPOTIFY_CLIENT_ID=${{ secrets.VITE_SPOTIFY_CLIENT_ID }}" >> .env
+          echo "VITE_SPOTIFY_SECRET=${{ secrets.VITE_SPOTIFY_SECRET }}" >> .env
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: ./dist
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+
+      - name: Deploy to EC2
         uses: easingthemes/ssh-deploy@main
         with:
-          SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-          REMOTE_HOST: ${{secrets.HOST_DNS}}
-          REMOTE_USER: ${{secrets.USERNAME}}
-          TARGET: ${{secrets.STAGING_TARGET_DIR}}
-
-      # - name: Build & Execute
-      #   run: |
-      #     echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
-      #     chmod 600 private_key.pem
-      #     ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }} << 'EOF'
-      #       cd ${{ secrets.STAGING_TARGET_DIR }}
-      #       npm install
-      #       npm run build
-      #       rm -rf ./../${{ secrets.STAGING_APP_NAME }}/dist
-      #       mv ./dist ./../${{ secrets.STAGING_APP_NAME }}/
-      #       # pm2 restart 0 --update-env
-      #     EOF
-      #     rm private_key.pem
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.STAGING_TARGET_DIR }}
