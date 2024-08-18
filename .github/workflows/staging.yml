@@ -1,4 +1,4 @@
-name: SonikFM API Staging Client Deployment
+name: SonikFM Frontend Deployment on Staging Server
 
 on:
   push:
@@ -15,11 +15,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" #
+          node-version: "18"
 
       - name: Create .env file
         run: |
-          echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
+          echo "VITE_BASE_URL=${{ secrets.VITE_STAGING_BASE_URL }}" >> .env
           echo "VITE_GOOGLE_MAPS_API_KEY=${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}" >> .env
           echo "VITE_SPOTIFY_CLIENT_ID=${{ secrets.VITE_SPOTIFY_CLIENT_ID }}" >> .env
           echo "VITE_SPOTIFY_SECRET=${{ secrets.VITE_SPOTIFY_SECRET }}" >> .env
