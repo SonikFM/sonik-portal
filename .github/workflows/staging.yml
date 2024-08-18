@@ -19,3 +19,17 @@ jobs:
           REMOTE_HOST: ${{secrets.HOST_DNS}}
           REMOTE_USER: ${{secrets.USERNAME}}
           TARGET: ${{secrets.STAGING_TARGET_DIR}}
+
+      - name: Build & Execute
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }} << 'EOF'
+            cd ${{ secrets.STAGING_TARGET_DIR }}
+            npm install
+            npm run build
+            rm -rf ./../${{ secrets.STAGING_APP_NAME }}/dist
+            mv ./dist ./../${{ secrets.STAGING_APP_NAME }}/
+            # pm2 restart 0 --update-env
+          EOF
+          rm private_key.pem
