@@ -1,4 +1,4 @@
-name: SonikFM Frontend Deployment on Staging Server
+name: SonikFM Frontend Deployment on Production Server
 
 on:
   push:
