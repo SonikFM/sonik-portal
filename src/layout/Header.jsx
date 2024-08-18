@@ -9,7 +9,7 @@ const Header = ({ actionButton }) => {
         <Avatar className="w-10 h-10">
           <AvatarImage src={logo} />
         </Avatar>
-        <p>Sonik</p>
+        <p>Sonik-update</p>
       </Link>
       <div className="flex items-center gap-2 text-sm text-grey-100">
         {actionButton}
