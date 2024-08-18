@@ -47,5 +47,5 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-          SOURCE: ./dist/
+          SOURCE: ./dist
           TARGET: ${{ secrets.STAGING_TARGET_DIR }}
