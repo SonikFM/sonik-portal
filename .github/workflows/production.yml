@@ -49,3 +49,4 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           SOURCE: ./dist
           TARGET: ${{ secrets.PRODUCTION_TARGET_DIR }}
+          SCRIPT: pm2 restart 1 --update-env
