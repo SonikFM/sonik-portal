@@ -21,7 +21,25 @@ function App() {
 
   return (
     <Suspense fallback={<AppLoader />}>
-      <LoadScript googleMapsApiKey={googleMapsApiKey} libraries={libraries}>
+      <LoadScript
+        googleMapsApiKey={googleMapsApiKey}
+        libraries={libraries}
+        render={(googleMaps, error) =>
+          googleMaps ? (
+            <div>{error ? error : <AppLoader />}</div>
+          ) : (
+            <div>
+              {error === "Network Error" ? (
+                <div className="fixed flex items-center justify-center w-full h-full gap-2 text-white bg-grey-dark">
+                  <div className="text-lg text-white">{error}</div>
+                </div>
+              ) : (
+                <AppLoader />
+              )}
+            </div>
+          )
+        }
+      >
         <DndProvider backend={HTML5Backend}>
           <RouterProvider router={router} />
         </DndProvider>

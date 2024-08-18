@@ -8,12 +8,11 @@ import {
   signup,
 } from "./actions";
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
   value: 0,
   products: [],
   sidebar: false,
-  user: null,
+  user: {},
   isAuthenticated: false,
   status: "idle",
   error: null,
@@ -45,7 +44,7 @@ export const globalSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
+        state.user = action.payload.data;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -58,7 +57,7 @@ export const globalSlice = createSlice({
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
+        state.user = action.payload.data;
       })
       .addCase(signup.rejected, (state, action) => {
         state.isLoading = false;
@@ -69,7 +68,7 @@ export const globalSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(refreshToken.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload.data;
         state.isLoading = false;
       })
       .addCase(refreshToken.rejected, state => {

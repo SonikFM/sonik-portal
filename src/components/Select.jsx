@@ -14,18 +14,26 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Select({
   icon,
   className,
   hasSearch,
   options = [],
+  onChange = e => console.log,
   placeholder,
+  value: val,
   ...rest
 }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(options?.[0] || "");
+
+  useEffect(() => {
+    if (val?.value !== value?.value) {
+      setValue(val);
+    }
+  }, [val]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -66,7 +74,7 @@ export function Select({
                   key={`item-${option.value}-${index}`}
                   onSelect={() => {
                     setOpen(false);
-                    setValue(option.value);
+                    onChange(option);
                   }}
                   value={option.value}
                 >
