@@ -30,7 +30,7 @@ import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
 
 const schema = z.object({
-  fullName: z.string(),
+  name: z.string(),
   email: z.string().email(),
   password: z
     .string()
@@ -48,7 +48,7 @@ const SignUp = () => {
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      fullName: "",
+      name: "",
       email: "",
       password: "",
     },
@@ -71,7 +71,7 @@ const SignUp = () => {
 
       return phoneNumber;
     }
-    dispatch(signup({ ...data, phone_number: generateRandomPhoneNumber() }));
+    dispatch(signup({ ...data, phone: generateRandomPhoneNumber() }));
   };
 
   const actionButton = () => (
@@ -105,16 +105,16 @@ const SignUp = () => {
               <div className="flex flex-col gap-3">
                 <FormField
                   control={form.control}
-                  name="fullName"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <Label className="font-medium" htmlFor="fullName">
+                      <Label className="font-medium" htmlFor="name">
                         {t("full_name")}
                         <span className="text-primary"> *</span>
                       </Label>
                       <InputWithIcon
                         icon={<NameIcon />}
-                        error={errors?.fullName}
+                        error={errors?.name}
                         placeholder="John doe"
                         {...field}
                       />

@@ -12,7 +12,7 @@ import Events from "./Events";
 import Tickets from "./Tickets";
 import Producers from "./ProducerAccounts";
 import Calendar from "./Calendar";
-import Organization from "./Organization";
+// import Organization from "./Organization";
 import Support from "./Support";
 import SupportAndTickets from "./SupportAndTickets";
 import Settings from "./Settings";
@@ -30,6 +30,7 @@ import CreateEvent from "@/containers/Event";
 import OrganizerAccount from "@/containers/OrganizerAccount";
 import Organizations from "@/containers/Organizations";
 import AdminAccounts from "@/containers/AdminAccounts";
+import PublicRoute from "./PublicRoute";
 
 const dashboardRoutes = [
   { path: "", element: <Dashboard />, index: true },
@@ -48,7 +49,9 @@ const dashboardRoutes = [
   { path: "calendar", element: <Calendar /> },
   { path: "tickets", element: <Tickets /> },
   { path: "organization", element: <Organizations /> },
-  { path: "organization/create-organization", element: <Organization /> },
+  { path: "organization/create-organization", element: <OrganizerAccount /> },
+  { path: "organization/:id", element: <OrganizerAccount /> },
+  // { path: "organization/create-organization", element: <Organization /> },
   { path: "support-ticketing", element: <SupportAndTickets /> },
   { path: "settings", element: <Settings /> },
   { path: "support", element: <Support /> },
@@ -76,13 +79,19 @@ const routes = [
   },
   {
     path: "/",
-    element: <AuthLayout />,
-    children: authRoutes,
+    element: <PublicRoute />,
+    children: [
+      {
+        path: "/",
+        element: <AuthLayout />,
+        children: authRoutes,
+      },
+    ],
   },
   {
     path: "/logout",
     action: async () => {
-      return Navigate({ to: "/login" });
+      return <Navigate to="/login" replace />;
     },
   },
 ];

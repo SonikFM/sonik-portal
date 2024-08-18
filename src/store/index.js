@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import globalSlice from "./global/slice";
+import app from "./global/slice";
+import organization from "./organization/slice";
 import { todosApi } from "@/apis/todos";
 
 export const store = configureStore({
   reducer: {
-    app: globalSlice,
-    [todosApi.reducerPath]: todosApi.reducer,
+    app,
+    organization,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(todosApi.middleware),

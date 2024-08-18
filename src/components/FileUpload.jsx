@@ -8,6 +8,7 @@ const FileUpload = ({
   description,
   allowedFormats = ["jpeg", "png"],
   wrapperClass,
+  onChange = e => console.log,
   ...rest
 }) => {
   const [file, setFile] = useState(null);
@@ -31,11 +32,12 @@ const FileUpload = ({
   const handleFileChange = event => {
     const selectedFile = event.target.files[0];
     if (selectedFile && validateFile(selectedFile)) {
-      setFile(
-        Object.assign(selectedFile, {
-          preview: URL.createObjectURL(selectedFile),
-        }),
-      );
+      const f = Object.assign(selectedFile, {
+        preview: URL.createObjectURL(selectedFile),
+      });
+      setFile(f);
+      onChange(f);
+
       if (error) {
         setError(null);
       }
@@ -50,11 +52,11 @@ const FileUpload = ({
     event.preventDefault();
     const droppedFile = event.dataTransfer.files[0];
     if (droppedFile && validateFile(droppedFile)) {
-      setFile(
-        Object.assign(droppedFile, {
-          preview: URL.createObjectURL(droppedFile),
-        }),
-      );
+      const f = Object.assign(droppedFile, {
+        preview: URL.createObjectURL(droppedFile),
+      });
+      setFile(f);
+      onChange(droppedFile);
       if (error) {
         setError(null);
       }

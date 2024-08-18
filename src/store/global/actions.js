@@ -1,5 +1,6 @@
 import getSpotifyToken from "@/lib/getSpotifyToken";
 import https from "@/lib/https";
+import { validateRequestError } from "@/lib/validateRequestError";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -17,28 +18,30 @@ export const login = createAsyncThunk(
     }
   },
 );
+
 export const signup = createAsyncThunk(
   "auth/signup",
   async (credentials, thunkAPI) => {
     try {
-      const response = await https.post("/auth/signup", credentials, {
+      await https.post("/auth/register", credentials, {
         withCredentials: true,
       });
-      return response.data;
+      const authResponse = await thunkAPI.dispatch(
+        login({ email: credentials.email, password: credentials.password }),
+      );
+      return authResponse.data;
     } catch (error) {
-      console.error({ error });
-      return thunkAPI.rejectWithValue(error.response.data);
+      return validateRequestError(error, thunkAPI.rejectWithValue);
     }
   },
 );
 
 export const refreshToken = createAsyncThunk(
-  "auth/refreshToken",
+  "auth/sessions",
   async (_, { rejectWithValue }) => {
     try {
-      console.log({ auth: "appi" });
-      const response = await https.post(
-        "/auth/refresh-token",
+      const response = await https.get(
+        "/auth/profile/",
         {},
         { withCredentials: true },
       );

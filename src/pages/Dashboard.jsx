@@ -1,7 +1,8 @@
-import Dashboard from "@/containers/Dashboard";
+// import Dashboard from "@/containers/Dashboard";
 
 const Index = () => {
-  return <Dashboard />;
+  return <div className="text-center text-white">Dashboard</div>;
+  // return <Dashboard />;
 };
 
 export default Index;

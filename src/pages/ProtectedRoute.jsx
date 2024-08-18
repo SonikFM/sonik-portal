@@ -5,14 +5,14 @@ import AppLoader from "@/components/AppLoader";
 const ProtectedRoute = () => {
   const { user, isLoading } = useSelector(state => state.app);
   const { pathname } = useLocation();
-  if (!user?.id && isLoading) {
+
+  if (isLoading) {
     return <AppLoader />;
   }
-  return user?._id ? (
-    <Outlet />
-  ) : (
-    <Navigate to={pathname ? `/login?redirect=${pathname}` : "/login"} />
-  );
+  if (user?._id) {
+    return <Outlet />;
+  }
+  return <Navigate to={`/login?redirect=${pathname}`} />;
 };
 
 export default ProtectedRoute;
