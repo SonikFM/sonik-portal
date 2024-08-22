@@ -16,6 +16,7 @@ const Content = ({ table, view = "list", columns = [], grid = [] }) => {
   const { isLoading, isFetching } = useSelector(
     state => state.organization.organizations,
   );
+  console.log({ isLoading, isFetching });
   if (view === "list") {
     if (isLoading) {
       return (

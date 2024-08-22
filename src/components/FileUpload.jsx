@@ -36,7 +36,7 @@ const FileUpload = ({
         preview: URL.createObjectURL(selectedFile),
       });
       setFile(f);
-      onChange(f);
+      onChange(event, f);
 
       if (error) {
         setError(null);
@@ -56,7 +56,7 @@ const FileUpload = ({
         preview: URL.createObjectURL(droppedFile),
       });
       setFile(f);
-      onChange(droppedFile);
+      onChange(event, droppedFile);
       if (error) {
         setError(null);
       }

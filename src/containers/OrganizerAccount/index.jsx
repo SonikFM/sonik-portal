@@ -10,8 +10,7 @@ import UploadIcon from "@/svgs/UploadIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import { Autocomplete } from "@react-google-maps/api";
 import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useCallback, useEffect, useRef, useState } from "react";
 import InputWithIcon from "@/components/InputWithIcon";
 import SearchIcon from "@/svgs/SearchIcon";
@@ -19,8 +18,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createOrganization,
   fetchOrganization,
+  updateOrganization,
 } from "@/store/organization/actions";
 import { Select } from "@/components/Select";
+import { updateState } from "@/store/organization/slice";
+import { createOrg, createOrgInit } from "@/constants/organizationSchemas";
+import https from "@/lib/https";
 
 const statusOptions = [
   {
@@ -35,29 +38,6 @@ const statusOptions = [
   },
 ];
 
-const schema = z.object({
-  name: z.string().nonempty({ message: "This field is required" }),
-  website: z.string().optional({ message: "This field is required" }),
-  _created_by: z.string().optional(),
-  street_address: z.string().nonempty({ message: "This field is required" }),
-  addressLine2: z.string().optional(),
-  postal_code: z.string().nonempty({ message: "This field is required" }),
-  administrative_area: z.string().optional(),
-  locality: z.string().nonempty({ message: "This field is required" }),
-  country: z.string().nonempty({ message: "This field is required" }),
-  description: z.string().optional(),
-  bio: z.string().optional(),
-  facebookID: z.string().optional(),
-  instagramID: z.string().optional(),
-  twitterID: z.string().optional(),
-  geocode: z
-    .object({
-      latitude: z.number().nullable(),
-      longitude: z.number().nullable(),
-    })
-    .nullable(),
-});
-
 const OrganizerAccount = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -65,7 +45,7 @@ const OrganizerAccount = () => {
   const { id } = useParams();
 
   const [file, setFile] = useState(null);
-  const [status, setStatus] = useState(statusOptions[1]);
+  const [status, setStatus] = useState(statusOptions[0]);
   const { user } = useSelector(state => state.app);
   const {
     isLoading,
@@ -75,42 +55,56 @@ const OrganizerAccount = () => {
   } = useSelector(state => state.organization);
 
   useEffect(() => {
-    if (!isLoading && apiStatus === "fulfilled") {
+    dispatch(updateState({ key: "data", value: {} }));
+    initialValuesRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading && (apiStatus === "created" || apiStatus === "updated")) {
+      dispatch(updateState({ key: "status", value: "idle" }));
       navigate("/organization");
     }
   }, [apiStatus, isLoading]);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchOrganization(id));
+    }
+  }, [id]);
+
   const onIconClick = () => {
     navigate(-1);
   };
 
-  useEffect(() => {
-    dispatch(fetchOrganization(id));
-  }, [id]);
-
   const fillUpFields = values => {
-    setValue("name", values.name || "");
-    setValue("website", values.website || "");
-    setValue("_created_by", values._created_by?._id || user?._id || "");
-    setValue("street_address", values?.address?.street_address || "");
+    setValue("name", values?.name || "");
+    setValue("website", values?.website || "");
+    setValue("_created_by", values?._created_by?._id || user?._id || "");
+    setValue("address_line_one", values?.address?.address_line_one || "");
+    setValue("address_line_two", values?.address?.address_line_two || "");
     setValue("postal_code", values?.address?.postal_code || "");
     setValue("administrative_area", values?.address?.administrative_area || "");
     setValue("country", values?.address?.country || "");
     setValue("locality", values?.address?.locality || "");
     setValue("description", values.description || "");
-    const st = (statusOptions || []).find(i => i.key === values.status);
-    setStatus(st);
+    setValue("query", values?.address?.query || "");
+    setValue("bio", values?._created_by?.bio || "");
+    setValue("description", values?.description || "");
+    const st = (statusOptions || []).find(i => i.key === values?.status);
+    setStatus(st || statusOptions[1]);
 
     initialValuesRef.current = {
       name: values.name || "",
       website: values.website || "",
       _created_by: values._created_by?._id || user?._id || "",
-      street_address: values?.address?.street_address || "",
       postal_code: values?.address?.postal_code || "",
       administrative_area: values?.address?.administrative_area || "",
       country: values?.address?.country || "",
       locality: values?.address?.locality || "",
       description: values.description || "",
-      bio: values.bio || "",
+      bio: values._created_by?.bio || "",
+      address_line_one: values?.address?.address_line_one,
+      address_line_two: values?.address?.address_line_two,
       status: st,
     };
   };
@@ -128,21 +122,8 @@ const OrganizerAccount = () => {
     formState: { errors },
     watch,
   } = useForm({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      name: "",
-      website: "",
-      _created_by: user?._id,
-      street_address: "",
-      addressLine2: "",
-      postal_code: "",
-      administrative_area: "",
-      country: "",
-      locality: "",
-      description: "",
-      bio: "",
-      geocode: null,
-    },
+    resolver: yupResolver(createOrg),
+    defaultValues: createOrgInit,
   });
 
   const handlePlaceChanged = useCallback(
@@ -161,14 +142,16 @@ const OrganizerAccount = () => {
         return component ? component.long_name : "";
       };
 
+      setValue("query", place?.formatted_address);
+
       setValue(
-        "street_address",
+        "address_line_one",
         getAddressComponent("street_number")
           ? `${getAddressComponent("street_number")} ${getAddressComponent("route")}`
           : getAddressComponent("route"),
       );
       setValue("query", place?.formatted_address);
-      setValue("addressLine2", getAddressComponent("sublocality_level_1"));
+      setValue("address_line_two", getAddressComponent("sublocality_level_1"));
       setValue("postal_code", getAddressComponent("postal_code"));
       setValue(
         "administrative_area",
@@ -183,33 +166,74 @@ const OrganizerAccount = () => {
     [setValue],
   );
 
-  const onSubmit = data => {
-    const formData = new FormData();
-    formData.append("name", data.name || "");
-    formData.append("website", data.website || "");
-    formData.append("_created_by", data._created_by || user?._id || "");
-    formData.append("street_address", data.street_address || "");
-    formData.append("postal_code", data.postal_code || "");
-    formData.append("administrative_area", data.administrative_area || "");
-    formData.append("country", data.country || "");
-    formData.append("locality", data.locality || "");
-    formData.append("description", data.description || "");
-    formData.append("bio", data.bio || "");
-    formData.append("facebookID", data.facebookID || "");
-    formData.append("twitterID", data.twitterID || "");
-    formData.append("instagramID", data.instagramID || "");
-    formData.append("status", status.key || "");
+  const handleFileUpload = async file => {
+    try {
+      const response = await https.get(
+        "/api/v1/uploads/generate-presigned-url",
+        {
+          params: {
+            fileName: file.name,
+            fileType: file.type,
+            imageType: "organizations",
+          },
+        },
+      );
+      const { url } = response.data;
 
-    // formData.append("addressLine2", data.addressLine2 || "");
-    // formData.append("bio", data.bio || "");
-    // formData.append(
-    //   "geocode",
-    //   data.geocode ? JSON.stringify(data.geocode) : null,
-    // );
+      await https.put(url, file, {
+        headers: {
+          "Content-Type": file.type,
+        },
+      });
+
+      return url.split("?")[0]; // URL without query parameters
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      return null;
+    }
+  };
+
+  const onSubmit = async form => {
+    const formData = {
+      _created_by: form._created_by || user?._id || "",
+      address: {
+        query: form.query || "",
+        address_line_one: form.address_line_one || "",
+        address_line_two: form.address_line_two || "",
+        locality: form.locality || "",
+        administrative_area: form.administrative_area || "",
+        postal_code: form.postal_code || "",
+        country: form.country || "",
+      },
+      geocode: form.geocode || { latitude: 0, longitude: 0 },
+      image: {
+        url: "",
+        caption: "Tech Innovators Logo",
+      },
+      name: form.name || "",
+      description: form.description || "",
+      website: form.website || "",
+      facebookID: form.facebookID || "",
+      instagramID: form.instagramID || "",
+      twitterID: form.twitterID || "",
+      status: status.key || false,
+    };
     if (file) {
       formData.append("image", file);
     }
-    dispatch(createOrganization(formData));
+    if (data?._id) {
+      dispatch(updateOrganization({ id, payload: formData }))
+        .unwrap()
+        .then(err => console.log({ mesage: "success", err }))
+        .catch(err => console.log({ mesage: "error", err }));
+      handleFileUpload(file);
+    } else {
+      dispatch(createOrganization(formData))
+        .unwrap()
+        .then(err => console.log({ mesage: "success", err }))
+        .catch(err => console.log({ mesage: "error", err }));
+      handleFileUpload(file);
+    }
   };
 
   const currentValues = watch();
@@ -223,7 +247,7 @@ const OrganizerAccount = () => {
       initialValues.name !== currentValues.name ||
       initialValues.website !== currentValues.website ||
       initialValues._created_by !== currentValues._created_by ||
-      initialValues.street_address !== currentValues.street_address ||
+      initialValues.address_line_one !== currentValues.address_line_one ||
       initialValues.postal_code !== currentValues.postal_code ||
       initialValues.administrative_area !== currentValues.administrative_area ||
       initialValues.country !== currentValues.country ||
@@ -256,30 +280,32 @@ const OrganizerAccount = () => {
         {/* <Button variant="outline"> Cancel </Button> */}
         <Button type="submit" disabled={!isFormChanged() || isLoading}>
           {isLoading
-            ? data._id
+            ? data?._id
               ? "Updating"
               : "Loading"
-            : data._id
+            : data?._id
               ? "Update"
               : "Save"}
         </Button>
       </DashboardHeader>
       <div className="px-4 py-8 space-y-6 md:px-8">
-        <div className="grid grid-cols-1 ">
-          <div className="grid gap-1">
-            <Label className="flex justify-between text-white">
-              <span>
-                Organization ID <span className="text-primary">*</span>
-              </span>
-            </Label>
-            <Input
-              className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-              placeholder="Organization ID"
-              readOnly
-              value={data?._id}
-            />
+        {data?._id && (
+          <div className="grid grid-cols-1 ">
+            <div className="grid gap-1">
+              <Label className="flex justify-between text-white">
+                <span>
+                  Organization ID <span className="text-primary">*</span>
+                </span>
+              </Label>
+              <Input
+                className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+                placeholder="Organization ID"
+                readOnly
+                value={data?._id}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 ">
           <div className="grid gap-1">
             <Label className="flex justify-between text-white">
@@ -294,6 +320,7 @@ const OrganizerAccount = () => {
                 <Input
                   className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
                   placeholder="66bec62763496d5ee89d7fbd"
+                  readOnly
                   {...field}
                 />
               )}
@@ -356,6 +383,7 @@ const OrganizerAccount = () => {
                 icon={<SearchIcon />}
                 className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
                 placeholder="Search here"
+                {...control.register("query")}
               />
             </Autocomplete>
           </div>
@@ -368,7 +396,7 @@ const OrganizerAccount = () => {
               </span>
             </Label>
             <Controller
-              name="street_address"
+              name="address_line_one"
               control={control}
               render={({ field }) => (
                 <Input
@@ -379,8 +407,8 @@ const OrganizerAccount = () => {
                 />
               )}
             />
-            {errors.street_address && (
-              <p className="text-red-500">{errors.street_address.message}</p>
+            {errors.address_line_one && (
+              <p className="text-red-500">{errors.address_line_one.message}</p>
             )}
           </div>
           <div className="grid gap-1">
@@ -390,7 +418,7 @@ const OrganizerAccount = () => {
               </span>
             </Label>
             <Controller
-              name="addressLine2"
+              name="address_line_two"
               control={control}
               render={({ field }) => (
                 <Input
@@ -492,7 +520,13 @@ const OrganizerAccount = () => {
         </div>
         <Profile url={file?.preview || data?.image?.url} />
         <div>
-          <FileUpload className="h-20" onChange={setFile}>
+          <FileUpload
+            className="h-20"
+            onChange={(e, file) => {
+              e.preventDefault();
+              setFile(file);
+            }}
+          >
             <div className="flex items-center justify-between w-full h-full">
               <div className="flex w-full gap-4 shrink">
                 <div className="flex items-center justify-center w-10 h-10 border rounded-full border-grey-light shrink-0 bg-grey-light">
@@ -509,6 +543,7 @@ const OrganizerAccount = () => {
               </div>
               <Button
                 size="xs"
+                type="button"
                 variant="outline"
                 className="text-grey-100 bg-grey-dark"
               >

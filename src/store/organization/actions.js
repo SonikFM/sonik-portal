@@ -3,11 +3,29 @@ import { validateRequestError } from "@/lib/validateRequestError";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 let source;
+
 export const createOrganization = createAsyncThunk(
-  "organization/create",
+  "app/organization/createOrganization",
   async (payload, thunkAPI) => {
     try {
       const response = await https.post("/organizations", payload, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error({ error });
+      return validateRequestError(error, thunkAPI.rejectWithValue);
+    }
+  },
+);
+export const updateOrganization = createAsyncThunk(
+  "app/organization/updateOrganization",
+  async ({ id, payload }, thunkAPI) => {
+    try {
+      const response = await https.put(`/organizations/${id}`, payload, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",

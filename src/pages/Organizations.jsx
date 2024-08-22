@@ -1,11 +1,7 @@
 import Organizations from "@/containers/Organizations";
 
 const Index = () => {
-  return (
-    <div>
-      <Organizations />
-    </div>
-  );
+  return <Organizations />;
 };
 
 export default Index;

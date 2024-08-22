@@ -3,36 +3,40 @@ import {
   deleteOrganization,
   fetchOrganization,
   fetchOrganizations,
+  updateOrganization,
 } from "./actions";
 import { createSlice } from "@reduxjs/toolkit";
+
+const initialOrgs = {
+  data: [],
+  isLoading: false,
+  error: null,
+  isDeleting: false,
+  selectedID: "",
+  message: "",
+  view: "list",
+  query: "",
+  grid: [],
+  gridMeta: {
+    page: 0,
+    limit: 12,
+    total: 8,
+  },
+  page: 1,
+  meta: {
+    page: 0,
+    limit: 12,
+    total: 8,
+  },
+};
+
 const initialState = {
   status: "idle",
   error: null,
   isLoading: false,
   message: "",
   data: {},
-  organizations: {
-    data: [],
-    isLoading: false,
-    error: null,
-    isDeleting: false,
-    selectedID: "",
-    message: "",
-    view: "list",
-    query: "",
-    grid: [],
-    gridMeta: {
-      page: 0,
-      limit: 12,
-      total: 8,
-    },
-    page: 1,
-    meta: {
-      page: 0,
-      limit: 12,
-      total: 8,
-    },
-  },
+  organizations: initialOrgs,
 };
 
 export const globalSlice = createSlice({
@@ -49,6 +53,12 @@ export const globalSlice = createSlice({
     toggleView: (state, { payload }) => {
       state.organizations.view = payload;
     },
+    updateState: (state, { payload }) => {
+      state[payload.key] = state.value;
+    },
+    resetState: (state, { payload }) => {
+      state[payload.key] = payload.value;
+    },
   },
   extraReducers: builder => {
     builder
@@ -59,9 +69,24 @@ export const globalSlice = createSlice({
       })
       .addCase(createOrganization.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.status = "fulfilled";
+        state.status = "created";
       })
       .addCase(createOrganization.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload.errors;
+        state.status = "rejected";
+      });
+    builder
+      .addCase(updateOrganization.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+        state.status = "pending";
+      })
+      .addCase(updateOrganization.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.status = "updated";
+      })
+      .addCase(updateOrganization.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload.errors;
         state.status = "rejected";
@@ -92,8 +117,8 @@ export const globalSlice = createSlice({
         const view = state.organizations.view;
         const page = state.organizations.meta.page;
         const { data, meta, search } = payload;
+        state.organizations.isLoading = false;
         if (meta.page !== page) {
-          state.organizations.isLoading = false;
           state.organizations.searchTerm = search;
           if (view === "list" || meta.page === 1) {
             state.organizations.meta = meta;
@@ -134,6 +159,6 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { updateMeta, toggleView } = globalSlice.actions;
+export const { updateMeta, toggleView, updateState } = globalSlice.actions;
 
 export default globalSlice.reducer;
