@@ -79,7 +79,7 @@ const Roles = () => {
             >
               <ChevronLefttIcon />
             </PaginationItem>
-            {generatePageNumbers(table).map((page, index) =>
+            {generatePageNumbers(totalPages, currentPage).map((page, index) =>
               page === "..." ? (
                 <PaginationItem key={index} className={pc}>
                   <PaginationEllipsis />
