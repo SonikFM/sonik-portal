@@ -5,7 +5,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import RolesContent from "./RolesContent";
 import {
   Pagination,
@@ -30,8 +30,8 @@ const Roles = () => {
   });
 
   const table = useReactTable({
-    data,
-    columns,
+    data: useMemo(() => data, [data]),
+    columns: useMemo(() => columns, [columns]),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),

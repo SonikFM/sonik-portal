@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   getCoreRowModel,
   getFilteredRowModel,
@@ -39,8 +39,8 @@ const AdminAccounts = () => {
   });
 
   const table = useReactTable({
-    data,
-    columns,
+    data: useMemo(() => data, [data]),
+    columns: useMemo(() => columns, [columns]),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),

@@ -110,8 +110,8 @@ const Organizations = () => {
   });
 
   const table = useReactTable({
-    data,
-    columns,
+    data: useMemo(() => data, [data]),
+    columns: useMemo(() => columns, [columns]),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
