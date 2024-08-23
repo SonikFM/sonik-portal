@@ -126,24 +126,25 @@ const ProducerAccounts = () => {
               >
                 <ChevronLefttIcon />
               </PaginationItem>
-              {generatePageNumbers(table).map((page, index) =>
-                page === "..." ? (
-                  <PaginationItem key={index} className={pc}>
-                    <PaginationEllipsis />
-                  </PaginationItem>
-                ) : (
-                  <PaginationItem
-                    key={index}
-                    className={`${pc} ${
-                      table.getState().pagination.pageIndex + 1 === page
-                        ? "bg-grey-light"
-                        : ""
-                    }`}
-                    onClick={() => table.setPageIndex(page - 1)}
-                  >
-                    {page}
-                  </PaginationItem>
-                ),
+              {generatePageNumbers(totalPages, currentPage).map(
+                (page, index) =>
+                  page === "..." ? (
+                    <PaginationItem key={index} className={pc}>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  ) : (
+                    <PaginationItem
+                      key={index}
+                      className={`${pc} ${
+                        table.getState().pagination.pageIndex + 1 === page
+                          ? "bg-grey-light"
+                          : ""
+                      }`}
+                      onClick={() => table.setPageIndex(page - 1)}
+                    >
+                      {page}
+                    </PaginationItem>
+                  ),
               )}
               <PaginationItem
                 className={pbc}
