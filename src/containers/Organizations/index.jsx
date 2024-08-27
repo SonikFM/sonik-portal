@@ -120,14 +120,14 @@ const Organizations = () => {
     getFilteredRowModel: getFilteredRowModel(),
     onRowSelectionChange: setRowSelection,
     onPaginationChange: setPagination,
+    initialState: {
+      pagination,
+    },
     state: {
       sorting,
       columnFilters,
       rowSelection,
-      pagination: {
-        pageIndex: pagination.pageIndex,
-        pageSize: pagination.pageSize,
-      },
+      pagination,
     },
   });
 

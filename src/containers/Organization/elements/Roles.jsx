@@ -7,18 +7,8 @@ import {
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import RolesContent from "./RolesContent";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-} from "@/components/ui/pagination";
-import ChevronLeftDoubletIcon from "@/svgs/ChevronLeftDoubletIcon";
-import { generatePageNumbers } from "@/lib/utils";
 import { data, columns } from "./data";
-import ChevronRightDoubletIcon from "@/svgs/ChevronRightDoubletIcon";
-import ChevronRightIcon from "@/svgs/ChevronRightIcon";
-import ChevronLefttIcon from "@/svgs/ChevronLefttIcon";
+import AppPagnization from "@/components/AppPagnization";
 
 const Roles = () => {
   const [sorting, setSorting] = useState([]);
@@ -40,88 +30,41 @@ const Roles = () => {
     getFilteredRowModel: getFilteredRowModel(),
     onPaginationChange: setPagination,
     initialState: {
-      pagination: {
-        pageIndex: 2,
-        pageSize: 25,
-      },
+      pagination,
     },
     state: {
       sorting,
       pagination,
+      columnFilters,
     },
   });
 
-  const pc =
-    "h-8 w-8 rounded-lg border border-grey-light flex items-center justify-center text-grey-100 cursor-pointer hover:bg-grey-light/50 ";
-  const pbc =
-    "h-8 w-8 flex items-center justify-center text-grey-100 cursor-pointer hover:bg-grey-light/50 rounded-lg";
+  const handlePageChange = value => {
+    setPagination(prev => {
+      return { pageSize: pagination.pageSize, pageIndex: value };
+    });
+    if (typeof value === "number") {
+      /* API CALL  */
+    }
+  };
+
+  const handlePageSizeChange = value => {
+    setPagination({ pageIndex: 0, pageSize: parseInt(value) });
+    /* API CALL  */
+  };
 
   return (
     <div>
       <RolesContent table={table} />
-      <div className="flex items-center justify-end gap-3 mt-6">
-        <div className="text-sm text-grey-100">
-          {/* Page {currentPage} of {totalPages} */}
-        </div>
-        <Pagination className="w-auto">
-          <PaginationContent className="gap-2">
-            <PaginationItem
-              className={pbc}
-              onClick={() =>
-                table.getCanPreviousPage() && table.setPageIndex(0)
-              }
-            >
-              <ChevronLeftDoubletIcon />
-            </PaginationItem>
-            <PaginationItem
-              className={pbc}
-              onClick={() => table.getCanPreviousPage() && table.previousPage()}
-            >
-              <ChevronLefttIcon />
-            </PaginationItem>
-            {generatePageNumbers(totalPages, currentPage).map((page, index) =>
-              page === "..." ? (
-                <PaginationItem key={index} className={pc}>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              ) : (
-                <PaginationItem
-                  key={index}
-                  className={`${pc} ${
-                    table.getState().pagination.pageIndex + 1 === page
-                      ? "bg-grey-light"
-                      : ""
-                  }`}
-                  onClick={() => table.setPageIndex(page - 1)}
-                >
-                  {page}
-                </PaginationItem>
-              ),
-            )}
-            <PaginationItem
-              className={pbc}
-              onClick={() => table.getCanNextPage() && table.nextPage()}
-            >
-              <ChevronRightIcon />
-            </PaginationItem>
-            <PaginationItem
-              className={pbc}
-              onClick={() =>
-                table.getCanNextPage() &&
-                table.setPageIndex(table.getPageCount() - 1)
-              }
-            >
-              <ChevronRightDoubletIcon />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-        <div>
-          {/* <PaginationMenu
-						handleChange={(value) => table.setPageSize(Number(value))}
-						pagination={table.getState().pagination}
-					/> */}
-        </div>
-      </div>
+      <AppPagnization
+        meta={{
+          pageSize: pagination.pageSize,
+          pageIndex: pagination.pageIndex,
+          total: data.length,
+        }}
+        onPageChange={handlePageChange}
+        onPageSizeChange={handlePageSizeChange}
+      />
     </div>
   );
 };
