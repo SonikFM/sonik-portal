@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   getCoreRowModel,
   getFilteredRowModel,
@@ -9,76 +9,153 @@ import {
 import { Button } from "@/components/ui/button";
 import Content from "./elements/Content";
 import Header from "./elements/Header";
-import { data, columns } from "./elements/data";
+import { getColumns, transformOrganizationData } from "./elements/data";
 import DashboardHeader from "@/layout/DashboardHeader";
 import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "lucide-react";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-} from "@/components/ui/pagination";
-import ChevronLeftDoubletIcon from "@/svgs/ChevronLeftDoubletIcon";
-import ChevronRightDoubletIcon from "@/svgs/ChevronRightDoubletIcon";
-import ChevronRightIcon from "@/svgs/ChevronRightIcon";
-import ChevronLefttIcon from "@/svgs/ChevronLefttIcon";
-import { generatePageNumbers } from "@/lib/utils";
-import { PaginationMenu } from "./elements/PaginationMenu";
 import OrganizationIcon from "@/svgs/OrganizationIcon";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteOrganization,
+  fetchOrganizations,
+} from "@/store/organization/actions";
+import AppPagnization from "@/components/AppPagnization";
+import { updateMeta } from "@/store/organization/slice";
+
+const SCROLL_THRESHOLD = 400;
 
 const Organizations = () => {
+  const dispatch = useDispatch();
+
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
-  const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 8,
+    pageSize: 12,
   });
-  const [view, setView] = useState("list");
+  const [open, setIsOpen] = useState(false);
+
+  const {
+    data: apiData,
+    meta,
+    isLoading,
+    searchTerm,
+    view,
+    grid: apiGridData,
+    gridMeta,
+    isFetching,
+  } = useSelector(state => state.organization.organizations);
+  const { isLoading: loading } = useSelector(state => state.organization);
+
+  const fetchRecords = useCallback(
+    (page, limit, s) => {
+      return dispatch(
+        fetchOrganizations({
+          page,
+          limit,
+          searchTerm: s || searchTerm,
+        }),
+      );
+    },
+    [dispatch, searchTerm],
+  );
+
+  useEffect(() => {
+    fetchRecords(pagination.pageIndex + 1, pagination.pageSize);
+  }, []);
+
+  const handlePageChange = value => {
+    setPagination(prev => {
+      return { pageSize: meta.limit, pageIndex: value };
+    });
+    if (typeof value === "number") {
+      fetchRecords(value, pagination.pageSize, searchTerm);
+    }
+  };
+
+  const handlePageSizeChange = value => {
+    setPagination({ page: 0, pageSize: value });
+    fetchRecords(1, value, searchTerm);
+    dispatch(updateMeta({ key: "limit", value }));
+  };
+
+  useEffect(() => {
+    if (open && !loading) {
+      setIsOpen(false);
+    }
+  }, [loading]);
+
+  const handleDelete = e => {
+    dispatch(deleteOrganization(e.id));
+  };
+  const handleEdit = e => {
+    console.log({ e });
+    navigate(`/organization/${e.id}`);
+  };
+
+  const data = useMemo(() => transformOrganizationData(apiData), [apiData]);
+  const grid = useMemo(
+    () => transformOrganizationData(apiGridData),
+    [apiGridData],
+  );
+
+  const columns = getColumns({
+    onDelete: handleDelete,
+    onEdit: handleEdit,
+    isLoading,
+    open,
+    toggleOpen: setIsOpen,
+    loading: loading,
+  });
 
   const table = useReactTable({
-    data,
-    columns,
+    data: useMemo(() => data, [data]),
+    columns: useMemo(() => columns, [columns]),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     onPaginationChange: setPagination,
     initialState: {
-      pagination: {
-        pageIndex: 2,
-        pageSize: 25,
-      },
+      pagination,
     },
     state: {
       sorting,
       columnFilters,
-      columnVisibility,
       rowSelection,
       pagination,
     },
   });
+
   const navigate = useNavigate();
   const redirectToCreateEvent = () => {
     navigate("/organization/create-organization");
   };
-  const toggleView = v => {
-    setView(v);
-  };
 
-  const pc =
-    "h-8 w-8 rounded-lg border border-grey-light flex items-center justify-center text-grey-100 cursor-pointer hover:bg-grey-light/50 ";
-  const pbc =
-    "h-8 w-8 flex items-center justify-center text-grey-100 cursor-pointer hover:bg-grey-light/50 rounded-lg";
+  const loadMoreData = useCallback(() => {
+    if (gridMeta.page >= gridMeta.total / gridMeta.limit) return;
 
-  const totalPages = table.getPageCount();
-  const currentPage = table.getState().pagination.pageIndex + 1;
+    dispatch(fetchRecords(gridMeta.page + 1, pagination.pageSize, searchTerm));
+  }, [dispatch, gridMeta, isFetching, gridMeta.total, view]);
+
+  useEffect(() => {
+    if (view === "grid" && !isFetching) {
+      const handleScroll = () => {
+        if (
+          window.innerHeight + document.documentElement.scrollTop >=
+          document.documentElement.offsetHeight - SCROLL_THRESHOLD
+        ) {
+          loadMoreData();
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [loadMoreData, view]);
 
   return (
     <>
@@ -91,77 +168,26 @@ const Organizations = () => {
           <PlusIcon /> New Organizer Profile
         </Button>
       </DashboardHeader>
-      <div className="w-full px-4 py-6 md:px-8">
-        <Header toggleView={toggleView} view={view} />
+      {loading ? (
+        <div className="box-border absolute z-10 flex items-center justify-center w-full h-[calc(100%-88px)]">
+          <div className="border-4 rounded-full w-7 h-7 animate-spin border-t-primary border-primary/30"></div>
+        </div>
+      ) : null}
+      <div className="box-border relative w-full px-4 py-6 md:px-8 ">
+        <Header pagination={pagination} />
         <div className="">
-          <Content table={table} view={view} />
+          <Content table={table} view={view} columns={columns} grid={grid} />
         </div>
         {view === "list" && (
-          <div className="flex items-center justify-end gap-3 py-3">
-            <div className="text-sm text-grey-100">
-              Page {currentPage} of {totalPages}
-            </div>
-            <Pagination className="w-auto">
-              <PaginationContent className="gap-2">
-                <PaginationItem
-                  className={pbc}
-                  onClick={() =>
-                    table.getCanPreviousPage() && table.setPageIndex(0)
-                  }
-                >
-                  <ChevronLeftDoubletIcon />
-                </PaginationItem>
-                <PaginationItem
-                  className={pbc}
-                  onClick={() =>
-                    table.getCanPreviousPage() && table.previousPage()
-                  }
-                >
-                  <ChevronLefttIcon />
-                </PaginationItem>
-                {generatePageNumbers(table).map((page, index) =>
-                  page === "..." ? (
-                    <PaginationItem key={index} className={pc}>
-                      <PaginationEllipsis />
-                    </PaginationItem>
-                  ) : (
-                    <PaginationItem
-                      key={index}
-                      className={`${pc} ${
-                        table.getState().pagination.pageIndex + 1 === page
-                          ? "bg-grey-light"
-                          : ""
-                      }`}
-                      onClick={() => table.setPageIndex(page - 1)}
-                    >
-                      {page}
-                    </PaginationItem>
-                  ),
-                )}
-                <PaginationItem
-                  className={pbc}
-                  onClick={() => table.getCanNextPage() && table.nextPage()}
-                >
-                  <ChevronRightIcon />
-                </PaginationItem>
-                <PaginationItem
-                  className={pbc}
-                  onClick={() =>
-                    table.getCanNextPage() &&
-                    table.setPageIndex(table.getPageCount() - 1)
-                  }
-                >
-                  <ChevronRightDoubletIcon />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-            <div>
-              <PaginationMenu
-                handleChange={value => table.setPageSize(Number(value))}
-                pagination={table.getState().pagination}
-              />
-            </div>
-          </div>
+          <AppPagnization
+            meta={{
+              pageSize: pagination.pageSize,
+              pageIndex: meta.page - 1,
+              total: meta.total,
+            }}
+            onPageChange={handlePageChange}
+            onPageSizeChange={handlePageSizeChange}
+          />
         )}
       </div>
     </>

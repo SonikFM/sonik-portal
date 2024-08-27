@@ -6,9 +6,7 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-export const generatePageNumbers = table => {
-  const totalPages = table.getPageCount();
-  const currentPage = table.getState().pagination.pageIndex + 1;
+export const generatePageNumbers = (totalPages, currentPage) => {
   const pages = [];
 
   if (totalPages <= 5) {

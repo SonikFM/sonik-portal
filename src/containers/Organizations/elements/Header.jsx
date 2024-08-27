@@ -4,11 +4,41 @@ import FilterIcon from "@/svgs/FilterIcon";
 import GridIcon from "@/svgs/GridIcon";
 import SettingsIcon from "@/svgs/SettingsIcon";
 import UnOrderListIcon from "@/svgs/UnOrderListIcon";
+import { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { debounce } from "lodash";
+import { fetchOrganizations } from "@/store/organization/actions";
+import { toggleView } from "@/store/organization/slice";
 
-const Header = ({ view, toggleView }) => {
+const Header = ({ pagination }) => {
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const { meta, view } = useSelector(state => state.organization.organizations);
+
+  const debouncedSearch = useCallback(
+    debounce(query => {
+      console.log({ query, a: "ASdfasdf" });
+      if (query) {
+        dispatch(
+          fetchOrganizations({
+            page: 1,
+            limit: pagination.pageSize,
+            searchTerm: query,
+          }),
+        );
+      }
+    }, 500),
+    [pagination],
+  );
+
   const toggleListView = v => e => {
-    toggleView(v);
+    if (v !== view) {
+      dispatch(toggleView(v));
+    }
   };
+
+  console.log({ meta, pagination });
+
   return (
     <div className="flex flex-wrap items-center gap-4 py-4 xl:flex-nowrap xl:justify-between">
       <div className="flex gap-3">
@@ -26,7 +56,14 @@ const Header = ({ view, toggleView }) => {
         >
           <UnOrderListIcon />
         </Button>
-        <SearchInput className="h-9" />
+        <SearchInput
+          className="h-9"
+          value={query}
+          onChange={e => {
+            setQuery(e.target.value);
+            debouncedSearch(e.target.value);
+          }}
+        />
       </div>
       <div className="flex gap-3">
         <Button variant="outline" size="sm" className="gap-1">
