@@ -1987,9 +1987,11 @@ export const columns = [
           </div>
           <div>
             <h3 className="font-medium truncate shrink">
-              {row.original.admin.name}
+              {row?.original?.admin?.name}
             </h3>
-            <p className="text-xs text-grey-100">{row.original.admin.email}</p>
+            <p className="text-xs text-grey-100">
+              {row?.original?.admin?.email}
+            </p>
           </div>
         </div>
       );

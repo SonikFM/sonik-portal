@@ -110,8 +110,8 @@ const Organizations = () => {
   });
 
   const table = useReactTable({
-    data,
-    columns,
+    data: useMemo(() => data, [data]),
+    columns: useMemo(() => columns, [columns]),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -120,14 +120,14 @@ const Organizations = () => {
     getFilteredRowModel: getFilteredRowModel(),
     onRowSelectionChange: setRowSelection,
     onPaginationChange: setPagination,
+    initialState: {
+      pagination,
+    },
     state: {
       sorting,
       columnFilters,
       rowSelection,
-      pagination: {
-        pageIndex: pagination.pageIndex,
-        pageSize: pagination.pageSize,
-      },
+      pagination,
     },
   });
 
