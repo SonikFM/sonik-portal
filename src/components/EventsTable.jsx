@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 import SearchInput from "./SearchInput";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import CheckedIcon from "@/svgs/CheckedIcon";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const data = [
   {
@@ -192,8 +192,8 @@ export function EventsTable({ icon, title, buttonLabel, hasSearch }) {
   const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
-    data,
-    columns,
+    data: useMemo(() => data, [data]),
+    columns: useMemo(() => columns, [columns]),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),

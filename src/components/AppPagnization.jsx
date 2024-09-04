@@ -19,6 +19,7 @@ const AppPagnization = ({ meta, onPageChange, onPageSizeChange }) => {
 
   const currentPage = meta.pageIndex + 1;
   const totalPages = Math.ceil(meta.total / meta.pageSize);
+
   return (
     <div className="flex items-center justify-end gap-3 py-3">
       <div className="text-sm text-grey-100">

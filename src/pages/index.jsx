@@ -25,7 +25,6 @@ import EventDetail from "./EventDetail";
 import AdminAccount from "./AdminAccount";
 
 // CONATINERS
-
 import CreateEvent from "@/containers/Event";
 import OrganizerAccount from "@/containers/OrganizerAccount";
 import Organizations from "@/containers/Organizations";
