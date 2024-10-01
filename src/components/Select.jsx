@@ -45,6 +45,7 @@ export function Select({
           className={cn(
             "justify-between w-full h-auto gap-3 p-2.5 text-grey-light !hover:text-white hover:bg-grey-200 border border-grey-light h-10 font-normal",
             className,
+            open && "border-[#E1E4EA]",
           )}
           {...rest}
         >
@@ -53,7 +54,7 @@ export function Select({
             {value?.label ? (
               <p className="text-sm text-white ">{value?.label}</p>
             ) : (
-              <p className="text-sm text-grey-100 ">
+              <p className={cn("text-sm text-grey-100 ", open && "text-white")}>
                 {placeholder || "Select"}
               </p>
             )}
