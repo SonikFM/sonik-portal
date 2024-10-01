@@ -1,4 +1,5 @@
-#root {
+body {
+  font-family: "Inter", sans-serif;
 }
 
 .logo {
@@ -37,16 +38,16 @@
   color: #888;
 }
 
-.hide-scroll::-webkit-scrollbar{
+.hide-scroll::-webkit-scrollbar {
   height: 0;
   width: 0;
 }
-.hide-scroll::-webkit-scrollbar-thumb{
+.hide-scroll::-webkit-scrollbar-thumb {
   height: 0;
   width: 0;
   background: transparent;
 }
-.hide-scroll::-webkit-scrollbar-track{
+.hide-scroll::-webkit-scrollbar-track {
   height: 0;
   width: 0;
   background: transparent;
@@ -55,7 +56,7 @@
 /* QUILL EDITOR STYLES */
 
 .ql-editor {
-  border: 1px solid #2B303B;
+  border: 1px solid #2b303b;
   border-radius: 8px;
   min-height: 72px;
   padding: 8px;
