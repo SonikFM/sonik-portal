@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { twMerge } from "tailwind-merge";
@@ -14,25 +14,45 @@ const TextField = forwardRef(
       Icon,
       required,
       placeholder,
-      hasError,
       value,
       errorMessage,
-      hasCharacterLimit,
+      characterLimit,
       ...props
     },
     ref,
   ) => {
     const InputField = type !== "textarea" ? Input : Textarea;
+    const [hasError, error] = useMemo(() => {
+      const characterLimitExceeded = value?.length === characterLimit;
+      if (errorMessage || characterLimitExceeded)
+        return [
+          true,
+          characterLimitExceeded
+            ? "You’ve reached the character limit"
+            : errorMessage,
+        ];
+      return [false, ""];
+    }, [value, characterLimit, errorMessage]);
+
     return (
       <div className="w-full flex flex-col gap-3">
         <div className="flex justify-between items-center">
-          <Label className="text-[#f6f6f6]">
+          <Label
+            className={twMerge("text-[#f6f6f6]", hasError && "text-error-dark")}
+          >
             {label} {required && <span className="text-primary"> *</span>}
           </Label>
-          {hasCharacterLimit && (
+          {characterLimit && (
             <div className="flex items-center gap-1">
-              <span className="text-grey-100 text-xs">{value.length}/100</span>
-              <InformationIcon className="w-5 text-grey" />
+              <span
+                className={twMerge(
+                  "text-grey-100 text-xs flex gap-1 items-center",
+                  hasError && "text-error-dark",
+                )}
+              >
+                {value.length}/{characterLimit}
+                <InformationIcon className="w-5 " />
+              </span>
             </div>
           )}
         </div>
@@ -56,7 +76,7 @@ const TextField = forwardRef(
         {hasError && (
           <span className="flex gap-1 text-xs text-error-dark">
             <InformationIcon />
-            {errorMessage}
+            {error}
           </span>
         )}
       </div>
