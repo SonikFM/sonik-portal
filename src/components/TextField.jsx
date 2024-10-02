@@ -6,7 +6,20 @@ import InformationIcon from "@/svgs/InformationIcon";
 import { Textarea } from "./ui/textarea";
 
 const TextField = forwardRef(
-  ({ className, type, label, Icon, required, placeholder, ...props }, ref) => {
+  (
+    {
+      className,
+      type,
+      label,
+      Icon,
+      required,
+      placeholder,
+      hasError,
+      errorMessage,
+      ...props
+    },
+    ref,
+  ) => {
     const InputField = type !== "textarea" ? Input : Textarea;
     return (
       <div className="w-full flex flex-col gap-2">
@@ -29,10 +42,12 @@ const TextField = forwardRef(
             <Icon className="absolute top-1/2 -translate-y-1/2 left-3 w-4 text-grey" />
           )}
         </div>
-        <span className="flex gap-1 text-xs text-error-dark">
-          <InformationIcon />
-          Must include a special character
-        </span>
+        {hasError && (
+          <span className="flex gap-1 text-xs text-error-dark">
+            <InformationIcon />
+            {errorMessage}
+          </span>
+        )}
       </div>
     );
   },

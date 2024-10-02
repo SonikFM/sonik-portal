@@ -5,7 +5,17 @@ import InformationIcon from "@/svgs/InformationIcon";
 
 const SelectField = forwardRef(
   (
-    { className, Icon, label, placeholder, options, required, ...props },
+    {
+      className,
+      Icon,
+      label,
+      placeholder,
+      options,
+      hasError,
+      errorMessage,
+      required,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -14,17 +24,19 @@ const SelectField = forwardRef(
           {label} {required && <span className="text-primary"> *</span>}
         </Label>
         <Select
-          className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+          className="text-white bg-transparent  border-grey-light placeholder:text-grey-100"
           placeholder={placeholder}
           options={options}
           Icon={Icon}
           {...props}
           ref={ref}
         />
-        <span className="flex gap-1 text-xs text-error-dark">
-          <InformationIcon />
-          Must include a special character
-        </span>
+        {hasError && (
+          <span className="flex gap-1 text-xs text-error-dark">
+            <InformationIcon />
+            {errorMessage}
+          </span>
+        )}
       </div>
     );
   },
