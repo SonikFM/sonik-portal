@@ -22,7 +22,7 @@ const TextField = forwardRef(
   ) => {
     const InputField = type !== "textarea" ? Input : Textarea;
     return (
-      <div className="w-full flex flex-col gap-2">
+      <div className="w-full flex flex-col gap-3">
         <Label className="text-[#f6f6f6]">
           {label} {required && <span className="text-primary"> *</span>}
         </Label>
@@ -30,7 +30,7 @@ const TextField = forwardRef(
         <div className="w-full relative">
           <InputField
             className={twMerge(
-              "text-white bg-transparent border-grey-light placeholder:text-grey-100 rounded-lg",
+              "text-grey-50 bg-transparent border-grey-light placeholder:text-grey-100 rounded-lg",
               Icon && "px-10",
             )}
             type={type}
