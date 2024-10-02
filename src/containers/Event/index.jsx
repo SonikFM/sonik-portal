@@ -14,6 +14,7 @@ import Timeline from "./elements/Timeline";
 import Lineup from "./elements/Lineup";
 import Image from "./elements/Image";
 import Settings from "./elements/Settings";
+import Tickets from "./elements/Tickets";
 
 // Define schema with zod
 const schema = z.object({
@@ -78,7 +79,7 @@ const tabs = [
     id: "5",
     label: "Tickets",
     desc: "Create ticket types, set prices, and limit the number of tickets each person can purchase.",
-    component: () => <div>Option 1</div>,
+    component: <Tickets />,
     checked: false,
   },
   {
