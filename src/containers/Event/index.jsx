@@ -35,6 +35,7 @@ import axios from "axios";
 import ArtistSearch from "./elements/ArtistSearch";
 import TabMenu from "@/components/TabMenu";
 import BasicInfo from "./elements/BasicInfo";
+import Timeline from "./elements/Timeline";
 
 // Define schema with zod
 const schema = z.object({
@@ -71,14 +72,14 @@ const tabs = [
     id: "1",
     label: "Basics",
     desc: "Start by entering the basic details of your event",
-    component: () => <div>Option 1</div>,
+    component: <BasicInfo />,
     checked: false,
   },
   {
     id: "2",
     label: "Timeline",
     desc: "Set the event schedule, sales start time, and performance order.",
-    component: () => <div>Option 1</div>,
+    component: <Timeline />,
     checked: false,
   },
   {
@@ -252,7 +253,7 @@ const CreateEvent = () => {
               <h3 className="font-medium text-white">{activeTab.label}</h3>
               <p className="text-grey-100">{activeTab.desc}</p>
             </div>
-            <BasicInfo />
+            {activeTab.component}
           </div>
         </div>
       </div>
