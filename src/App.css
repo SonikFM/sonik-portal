@@ -62,3 +62,11 @@ body {
   padding: 8px;
   color: white;
 }
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="datetime-local"] {
+  -moz-appearance: textfield;
+}
