@@ -1,5 +1,6 @@
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
+import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 
 const Timeline = () => {
@@ -36,6 +37,14 @@ const Timeline = () => {
         placeholder="Choose date and time"
         Icon={Calendar}
       />
+      <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
+        <Button variant="outline" className="w-40">
+          Cancel
+        </Button>
+        <Button className="w-40" disabled={true}>
+          Continue
+        </Button>
+      </div>
     </div>
   );
 };

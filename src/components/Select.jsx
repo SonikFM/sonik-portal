@@ -42,7 +42,7 @@ export const Select = forwardRef(
                 "justify-between text-sm w-full text-grey-100 h-auto gap-3 p-2.5 !hover:text-white hover:bg-grey-200 border border-grey-light h-10 font-normal",
                 className,
                 open &&
-                  "border-[#E1E4EA] border-2 text-white placeholder:text-white",
+                  "border-grey-50 border-2 text-white placeholder:text-grey-50",
                 Icon && "pl-10",
               )}
               value={val}
@@ -92,7 +92,7 @@ export const Select = forwardRef(
                         ) : (
                           <div
                             className={cn(
-                              "flex gap-3 font-400 text-white cursor-pointer text-sm px-2 py-2.5",
+                              "flex gap-3 font-400 text-grey-50 cursor-pointer text-sm px-2 py-2.5",
                               index !== 0 && "border-t border-grey-light",
                             )}
                           >

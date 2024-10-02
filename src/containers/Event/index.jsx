@@ -36,6 +36,7 @@ import ArtistSearch from "./elements/ArtistSearch";
 import TabMenu from "@/components/TabMenu";
 import BasicInfo from "./elements/BasicInfo";
 import Timeline from "./elements/Timeline";
+import Lineup from "./elements/Lineup";
 
 // Define schema with zod
 const schema = z.object({
@@ -86,7 +87,7 @@ const tabs = [
     id: "3",
     label: "Lineup",
     desc: "Set the schedule and performance order for your event, from start to finish",
-    component: () => <div>Option 1</div>,
+    component: <Lineup />,
     checked: false,
   },
   {
