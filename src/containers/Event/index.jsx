@@ -38,6 +38,7 @@ import BasicInfo from "./elements/BasicInfo";
 import Timeline from "./elements/Timeline";
 import Lineup from "./elements/Lineup";
 import Image from "./elements/Image";
+import Settings from "./elements/Settings";
 
 // Define schema with zod
 const schema = z.object({
@@ -109,7 +110,7 @@ const tabs = [
     id: "6",
     label: "Settings",
     desc: "Assign contact details and grant reporting access",
-    component: () => <div>Option 1</div>,
+    component: <Settings />,
     checked: false,
   },
 ];
