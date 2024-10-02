@@ -37,6 +37,7 @@ import TabMenu from "@/components/TabMenu";
 import BasicInfo from "./elements/BasicInfo";
 import Timeline from "./elements/Timeline";
 import Lineup from "./elements/Lineup";
+import Image from "./elements/Image";
 
 // Define schema with zod
 const schema = z.object({
@@ -94,7 +95,7 @@ const tabs = [
     id: "4",
     label: "Image",
     desc: "Upload an image for your event.",
-    component: () => <div>Option 1</div>,
+    component: <Image />,
     checked: false,
   },
   {
