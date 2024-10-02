@@ -1,9 +1,13 @@
 import { forwardRef } from "react";
 import { Label } from "./ui/label";
 import { Select } from "./Select";
+import InformationIcon from "@/svgs/InformationIcon";
 
 const SelectField = forwardRef(
-  ({ className, label, options, required, ...props }, ref) => {
+  (
+    { className, Icon, label, placeholder, options, required, ...props },
+    ref,
+  ) => {
     return (
       <div className="w-full flex flex-col gap-2">
         <Label className="text-white">
@@ -11,9 +15,16 @@ const SelectField = forwardRef(
         </Label>
         <Select
           className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
-          placeholder="Choose the type of event"
+          placeholder={placeholder}
           options={options}
+          Icon={Icon}
+          {...props}
+          ref={ref}
         />
+        <span className="flex gap-1 text-xs text-error-dark">
+          <InformationIcon />
+          Must include a special character
+        </span>
       </div>
     );
   },

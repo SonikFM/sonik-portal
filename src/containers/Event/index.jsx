@@ -239,19 +239,21 @@ const CreateEvent = () => {
         onIconClick={onIconClick}
         toggleDrawer={toggleDrawer}
       ></DashboardHeader>
-      <div className="flex p-4 md:p-8 gap-32">
-        <TabMenu
-          tabs={tabs}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          title="SELECT MENU"
-        />
-        <div className="w-full max-w-[680px]">
-          <div className="pb-4 mb-6 border-b border-grey-light">
-            <h3 className="font-medium text-white">{activeTab.label}</h3>
-            <p className="text-grey-100">{activeTab.desc}</p>
+      <div className="max-w-[1100px]">
+        <div className="flex p-4 md:p-8 justify-between">
+          <TabMenu
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            title="SELECT MENU"
+          />
+          <div className="w-full max-w-[680px]">
+            <div className="pb-4 mb-6 border-b border-grey-light">
+              <h3 className="font-medium text-white">{activeTab.label}</h3>
+              <p className="text-grey-100">{activeTab.desc}</p>
+            </div>
+            <BasicInfo />
           </div>
-          <BasicInfo />
         </div>
       </div>
     </>
