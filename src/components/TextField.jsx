@@ -23,7 +23,8 @@ const TextField = forwardRef(
   ) => {
     const InputField = type !== "textarea" ? Input : Textarea;
     const [hasError, error] = useMemo(() => {
-      const characterLimitExceeded = value?.length === characterLimit;
+      const characterLimitExceeded =
+        characterLimit && value?.length === characterLimit;
       if (errorMessage || characterLimitExceeded)
         return [
           true,
@@ -50,7 +51,7 @@ const TextField = forwardRef(
                   hasError && "text-error-dark",
                 )}
               >
-                {value.length}/{characterLimit}
+                {value?.length || 0}/{characterLimit}
                 <InformationIcon className="w-5 " />
               </span>
             </div>
