@@ -23,7 +23,7 @@ const TextField = forwardRef(
     const InputField = type !== "textarea" ? Input : Textarea;
     return (
       <div className="w-full flex flex-col gap-2">
-        <Label className="text-white">
+        <Label className="text-[#f6f6f6]">
           {label} {required && <span className="text-primary"> *</span>}
         </Label>
 
