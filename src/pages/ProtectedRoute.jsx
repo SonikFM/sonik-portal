@@ -9,10 +9,10 @@ const ProtectedRoute = () => {
   if (isLoading) {
     return <AppLoader />;
   }
-  if (user?._id) {
-    return <Outlet />;
-  }
-  return <Navigate to={`/login?redirect=${pathname}`} />;
+  // if (user?._id) {
+  return <Outlet />;
+  // }
+  // return <Navigate to={`/login?redirect=${pathname}`} />;
 };
 
 export default ProtectedRoute;
