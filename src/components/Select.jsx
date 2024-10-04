@@ -1,7 +1,6 @@
-import { useState, useRef, forwardRef } from "react";
+import { useState, useRef } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, LoaderCircle } from "lucide-react";
-import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 

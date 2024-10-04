@@ -4,7 +4,6 @@ import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 
 const BasicInfo = ({ register, setValue, getValues, errors }) => {
-  console.log(errors);
   return (
     <div className="space-y-5 w-full">
       <TextField
