@@ -15,7 +15,6 @@ const TextField = forwardRef(
       required,
       placeholder,
       value,
-      register,
       errorMessage,
       characterLimit,
       ...props
@@ -68,8 +67,6 @@ const TextField = forwardRef(
             type={type}
             placeholder={placeholder}
             value={value}
-            register={register} // Register the input
-            {...register(name, { required })} // Register the input
             {...props}
             ref={ref}
           />

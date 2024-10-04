@@ -9,6 +9,7 @@ const CreateEventForm = ({ children }) => {
     formState: { errors },
     watch, // This will allow us to track real-time changes
     getValues,
+    setValue,
   } = useForm({
     defaultValues: defaultFormValues,
   });
@@ -23,7 +24,7 @@ const CreateEventForm = ({ children }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {React.cloneElement(children, { register, errors })}
+      {React.cloneElement(children, { register, errors, setValue, getValues })}
     </form>
   );
 };

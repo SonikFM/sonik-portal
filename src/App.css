@@ -1,3 +1,9 @@
+:root {
+  --grey-light: #2b303b;
+  --grey-50: #e1e4ea;
+  --grey-200: #181b25;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }
@@ -56,7 +62,7 @@ body {
 /* QUILL EDITOR STYLES */
 
 .ql-editor {
-  border: 1px solid #2b303b;
+  border: 1px solid var(--grey-light);
   border-radius: 8px;
   min-height: 72px;
   padding: 8px;
@@ -87,4 +93,30 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.pac-container {
+  margin-top: 0.5rem;
+  background-color: var(--grey-200);
+  border: 1px solid var(--grey-50);
+  border-radius: 0.5rem;
+}
+
+.pac-item {
+  padding: 10px;
+  color: var(--grey-50);
+}
+
+.pac-item:hover {
+  background: transparent;
+  cursor: pointer;
+}
+
+.pac-item-query {
+  color: var(--grey-50);
+  font-family: "Inter", sans-serif;
+}
+
+.pac-item:not(:first-child) {
+  border-top: 1px solid var(--grey-light);
 }

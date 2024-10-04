@@ -1,17 +1,17 @@
+import PlacesSelectField from "@/components/PlacesSelectField";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
-import { MapPin, Search } from "lucide-react";
 
-const BasicInfo = ({ register }) => {
+const BasicInfo = ({ register, setValue, getValues }) => {
   return (
     <div className="space-y-5 w-full">
       <TextField
         label="Title"
         required={true}
         placeholder="Add Title"
-        register={register}
         name="title"
+        {...register("title", true)}
       />
       <SelectField
         label="Type"
@@ -22,15 +22,16 @@ const BasicInfo = ({ register }) => {
           { value: "dj", label: "DJ" },
           { value: "party", label: "Party" },
         ]}
-        register={register}
         name="type"
+        setValue={setValue}
+        getValues={getValues}
       />
       <TextField
         label="Description"
         type="textarea"
         placeholder="Add Description"
         name="description"
-        register={register}
+        {...register("description", true)}
       />
       <SelectField
         label="Privacy"
@@ -41,35 +42,16 @@ const BasicInfo = ({ register }) => {
           { value: "hidden", label: "Hidden" },
           { value: "private", label: "Private" },
         ]}
+        getValues={getValues}
         name="privacy"
-        register={register}
+        setValue={setValue}
       />
-      <SelectField
+
+      <PlacesSelectField
         label="Venue"
-        required={true}
-        hasSearch={true}
-        placeholder="Find a venue"
-        OptionIcon={MapPin}
-        name="venue"
-        register={register}
-        options={[
-          {
-            value: "Celebrational Central",
-            subValue: "street 18, NY",
-            label: "Celebrational Central",
-          },
-          {
-            value: "Celebrational Central",
-            subValue: "street 18, NY",
-            label: "Celebrational Central",
-          },
-          {
-            value: "Celebrational Central",
-            subValue: "street 18, NY",
-            label: "Celebrational Central",
-          },
-        ]}
-        Icon={Search}
+        setValue={setValue}
+        placeholder="Search for a venue"
+        {...register("venue", true)}
       />
 
       <TextField
@@ -78,6 +60,7 @@ const BasicInfo = ({ register }) => {
         placeholder="Presenter"
         name="presenter"
         register={register}
+        {...register("presenter", true)}
       />
 
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
