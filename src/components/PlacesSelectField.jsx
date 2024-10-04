@@ -3,6 +3,7 @@ import InputWithIcon from "./InputWithIcon";
 import { Autocomplete } from "@react-google-maps/api";
 import { Label } from "./ui/label";
 import { useCallback } from "react";
+import InformationIcon from "@/svgs/InformationIcon";
 
 const PlacesSelectField = ({
   className,
@@ -10,7 +11,6 @@ const PlacesSelectField = ({
   label,
   placeholder,
   options,
-  hasError,
   errorMessage,
   required,
   setValue,
@@ -76,6 +76,12 @@ const PlacesSelectField = ({
           {...props}
         />
       </Autocomplete>
+      {errorMessage && (
+        <span className="flex gap-1 text-xs text-error-dark">
+          <InformationIcon />
+          {errorMessage}
+        </span>
+      )}
     </div>
   );
 };

@@ -12,7 +12,6 @@ const SelectField = forwardRef(
       label,
       placeholder,
       options,
-      hasError,
       errorMessage,
       required,
       getValues,
@@ -39,7 +38,7 @@ const SelectField = forwardRef(
           {...props}
           ref={ref}
         />
-        {hasError && (
+        {errorMessage && (
           <span className="flex gap-1 text-xs text-error-dark">
             <InformationIcon />
             {errorMessage}

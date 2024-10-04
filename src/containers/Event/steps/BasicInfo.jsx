@@ -3,7 +3,8 @@ import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 
-const BasicInfo = ({ register, setValue, getValues }) => {
+const BasicInfo = ({ register, setValue, getValues, errors }) => {
+  console.log(errors);
   return (
     <div className="space-y-5 w-full">
       <TextField
@@ -12,6 +13,7 @@ const BasicInfo = ({ register, setValue, getValues }) => {
         placeholder="Add Title"
         name="title"
         {...register("title", true)}
+        errorMessage={errors.title?.message}
       />
       <SelectField
         label="Type"
@@ -32,6 +34,7 @@ const BasicInfo = ({ register, setValue, getValues }) => {
         placeholder="Add Description"
         name="description"
         {...register("description", true)}
+        errorMessage={errors.description?.message}
       />
       <SelectField
         label="Privacy"
@@ -52,6 +55,7 @@ const BasicInfo = ({ register, setValue, getValues }) => {
         setValue={setValue}
         placeholder="Search for a venue"
         {...register("venue", true)}
+        errorMessage={errors.venue?.formatted_address?.message}
       />
 
       <TextField

@@ -4,6 +4,7 @@ import Lineup from "./Lineup";
 import Image from "./Image";
 import Tickets from "./Tickets";
 import Settings from "./Settings";
+import { basicsSchema } from "../config/schemas";
 
 const steps = [
   {
@@ -12,6 +13,7 @@ const steps = [
     desc: "Start by entering the basic details of your event",
     component: <BasicInfo />,
     checked: false,
+    validationSchema: basicsSchema,
   },
   {
     id: "2",

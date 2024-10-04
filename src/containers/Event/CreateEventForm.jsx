@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import defaultFormValues from "./config/defaultFormValues";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { defaultBasicsValues } from "./config/defaultFormValues";
 
-const CreateEventForm = ({ children }) => {
+const CreateEventForm = ({ children, currentStep }) => {
   const {
     register,
     handleSubmit,
@@ -11,7 +12,8 @@ const CreateEventForm = ({ children }) => {
     getValues,
     setValue,
   } = useForm({
-    defaultValues: defaultFormValues,
+    resolver: zodResolver(currentStep.validationSchema),
+    defaultValues: defaultBasicsValues,
   });
 
   // Track all form fields in real-time
