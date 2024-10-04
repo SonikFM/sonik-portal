@@ -37,16 +37,16 @@
   color: #888;
 }
 
-.hide-scroll::-webkit-scrollbar{
+.hide-scroll::-webkit-scrollbar {
   height: 0;
   width: 0;
 }
-.hide-scroll::-webkit-scrollbar-thumb{
+.hide-scroll::-webkit-scrollbar-thumb {
   height: 0;
   width: 0;
   background: transparent;
 }
-.hide-scroll::-webkit-scrollbar-track{
+.hide-scroll::-webkit-scrollbar-track {
   height: 0;
   width: 0;
   background: transparent;
@@ -55,9 +55,35 @@
 /* QUILL EDITOR STYLES */
 
 .ql-editor {
-  border: 1px solid #2B303B;
+  border: 1px solid #2b303b;
   border-radius: 8px;
   min-height: 72px;
   padding: 8px;
   color: white;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="datetime-local"] {
+  -moz-appearance: textfield;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="time"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
