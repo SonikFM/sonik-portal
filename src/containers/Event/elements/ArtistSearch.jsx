@@ -17,7 +17,7 @@ const ArtistSearch = ({
   setArtistQuery,
   handleArtistSelect,
   selectedArtists,
-  setSelectedArtists,
+  setValue,
 }) => {
   const commandRef = useRef();
   const { artists, isLoading, error } = useSelector(state => state.app.spotify);
@@ -38,14 +38,13 @@ const ArtistSearch = ({
     artist.name.toLowerCase().includes(artistQuery.toLowerCase()),
   );
 
-  console.log({ filteredArtists });
   return (
-    <div className="relative flex flex-col w-full gap-1 lg:w-1/2">
-      <Label className="flex text-white justify-betweeb">
+    <div className="relative flex flex-col w-full gap-3">
+      <Label className="flex text-white justify-between">
         Artist<span className="text-primary">*</span>
       </Label>
       <SearchInput
-        className="h-10 "
+        className="h-10"
         placeholder="Search"
         onChange={e => setArtistQuery(e.target.value)}
         value={artistQuery}
@@ -66,14 +65,11 @@ const ArtistSearch = ({
                 </CommandEmpty>
               ) : filteredArtists.length !== 0 ? (
                 filteredArtists.map(artist => (
-                  <CommandItem
-                    key={artist.id}
-                    onSelect={() => handleArtistSelect(artist)}
-                  >
+                  <CommandItem key={artist.id}>
                     <Checkbox
                       checked={selectedArtists.some(a => a.id === artist.id)}
                       className="mr-2"
-                      onChange={() => handleArtistSelect(artist)}
+                      onClick={() => handleArtistSelect(artist)}
                     />
                     <div className="flex gap-3">
                       <Avatar className="w-10 h-10 overflow-hidden rounded-full">
@@ -100,7 +96,7 @@ const ArtistSearch = ({
       <ArtistList
         artistQuery={artistQuery}
         artists={selectedArtists}
-        updateList={setSelectedArtists}
+        setValue={setValue}
       />
     </div>
   );

@@ -32,24 +32,26 @@ const PlacesSelectField = ({
         return component ? component.long_name : "";
       };
 
+      setValue("venue.google_place_id", place.place_id);
       setValue(
-        "addressLine1",
+        "venue.formatted_address",
         getAddressComponent("street_number")
           ? `${getAddressComponent("street_number")} ${getAddressComponent("route")}`
           : getAddressComponent("route"),
       );
-      setValue("venueName", place?.formatted_address);
-      setValue("addressLine2", getAddressComponent("sublocality_level_1"));
-      setValue("zipCode", getAddressComponent("postal_code"));
-      setValue("region", getAddressComponent("administrative_area_level_1"));
-      setValue("country", getAddressComponent("country"));
-      setValue("city", getAddressComponent("locality"));
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
-      setValue("coords", { lat, lng });
+      setValue("venue.location", { type: "point", coordinates: [lat, lng] });
+      setValue(
+        "venue.region",
+        getAddressComponent("administrative_area_level_1"),
+      );
+      setValue("venue.country", getAddressComponent("country"));
+      setValue("venue.city", getAddressComponent("locality"));
     },
     [setValue],
   );
+
   return (
     <div className="w-full flex flex-col gap-3">
       <Label className="flex justify-between text-white">

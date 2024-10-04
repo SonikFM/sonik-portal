@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import Artist from "./Artist";
 import { useSelector } from "react-redux";
 
-const ArtistList = ({ artists, updateList, artistQuery }) => {
+const ArtistList = ({ artists, updateList, artistQuery, setValue }) => {
   const { isLoading } = useSelector(state => state.app.spotify);
   const moveArtist = useCallback(
     (dragIndex, hoverIndex) => {
@@ -15,7 +15,10 @@ const ArtistList = ({ artists, updateList, artistQuery }) => {
   );
 
   const onDelete = artist => {
-    updateList(artists.filter(a => a.id !== artist.id));
+    setValue(
+      "artists",
+      artists.filter(a => a.id !== artist.id),
+    );
   };
 
   if (!isLoading && !artistQuery && !artists.length) {

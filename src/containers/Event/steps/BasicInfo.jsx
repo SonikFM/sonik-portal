@@ -2,8 +2,68 @@ import PlacesSelectField from "@/components/PlacesSelectField";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
+import ArtistSearch from "../elements/ArtistSearch";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchArtists } from "@/store/global/actions";
+import axios from "axios";
+
+const DEBOUNCE_DELAY = 500;
 
 const BasicInfo = ({ register, setValue, getValues, errors }) => {
+  const cancelTokenSourceRef = useRef(null);
+  const dispatch = useDispatch();
+  const [artistQuery, setArtistQuery] = useState("");
+
+  const selectedArtists = useMemo(
+    () => getValues("artists") || [],
+    [getValues("artists")],
+  );
+
+  useEffect(() => {
+    const handleDebounce = async () => {
+      if (cancelTokenSourceRef.current) {
+        cancelTokenSourceRef.current.cancel(
+          "Operation canceled due to new request.",
+        );
+      }
+      if (artistQuery) {
+        cancelTokenSourceRef.current = axios.CancelToken.source();
+        dispatch(
+          searchArtists({
+            artistQuery,
+            cancelToken: cancelTokenSourceRef.current.token,
+          }),
+        );
+      }
+    };
+
+    const debounceTimer = setTimeout(handleDebounce, DEBOUNCE_DELAY);
+
+    return () => clearTimeout(debounceTimer);
+  }, [artistQuery, dispatch]);
+
+  const handleArtistSelect = artist => {
+    if (selectedArtists.find(a => a.id === artist.id)) {
+      setValue(
+        "artists",
+        selectedArtists.filter(a => a.id !== artist.id),
+      );
+    } else {
+      setValue("artists", [...selectedArtists, artist]);
+    }
+  };
+
+  const allowNextStep = () => {
+    return (
+      !getValues("title") ||
+      !getValues("description") ||
+      !getValues("venue") ||
+      !getValues("presented_by") ||
+      selectedArtists.length < 1
+    );
+  };
+
   return (
     <div className="space-y-5 w-full">
       <TextField
@@ -58,19 +118,28 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
       />
 
       <TextField
-        label="Presenter"
+        label="presented_by"
         required={true}
         placeholder="Presenter"
-        name="presenter"
+        name="presented_by"
         register={register}
-        {...register("presenter", true)}
+        {...register("presented_by", true)}
+      />
+
+      <ArtistSearch
+        artistQuery={artistQuery}
+        setArtistQuery={setArtistQuery}
+        handleArtistSelect={handleArtistSelect}
+        selectedArtists={selectedArtists}
+        setValue={setValue}
+        className="w-full"
       />
 
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
-        <Button variant="outline" className="w-40">
+        <Button variant="outline" className="w-40" type="button">
           Cancel
         </Button>
-        <Button className="w-40" disabled={true}>
+        <Button className="w-40" disabled={allowNextStep()} type="submit">
           Continue
         </Button>
       </div>

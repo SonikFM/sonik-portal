@@ -14,7 +14,7 @@ const SearchInput = ({
       <Input
         placeholder={placeholder || "Search"}
         className={cn(
-          "h-8 pl-8 pr-12 text-sm font-normal text-white placeholder:text-grey bg-grey-dark border-grey-light",
+          " h-8 pl-8 pr-12 text-sm font-normal text-white placeholder:text-grey bg-grey-dark border-grey-light",
           className,
         )}
         {...rest}

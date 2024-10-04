@@ -1,32 +1,40 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { defaultBasicsValues } from "./config/defaultFormValues";
+import { useSelector } from "react-redux";
 
 const CreateEventForm = ({ children, currentStep }) => {
+  const { basics } = useSelector(state => state.event);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch, // This will allow us to track real-time changes
     getValues,
     setValue,
   } = useForm({
     resolver: zodResolver(currentStep.validationSchema),
-    defaultValues: defaultBasicsValues,
+    defaultValues: basics,
   });
 
-  // Track all form fields in real-time
-  const title = watch(); // Watch the title input in real-time
-  console.log("Real-time form values:", title); // Log real-time form values
-
   const onSubmit = data => {
-    console.log("Form Submitted:", data); // Log the form values on submission
+    console.log("Form Submitted:", data);
+  };
+
+  const onError = errors => {
+    console.log(errors);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit, onError)}>
       {React.cloneElement(children, { register, errors, setValue, getValues })}
+      <button
+        className="bg-white"
+        type="submit"
+        onClick={handleSubmit(onSubmit)}
+      >
+        dkdk
+      </button>
     </form>
   );
 };
