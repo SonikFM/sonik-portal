@@ -14,6 +14,7 @@ const SelectField = forwardRef(
       hasError,
       errorMessage,
       required,
+      register,
       ...props
     },
     ref,
@@ -28,6 +29,8 @@ const SelectField = forwardRef(
           placeholder={placeholder}
           options={options}
           Icon={Icon}
+          register={register}
+          {...register(name, { required })}
           {...props}
           ref={ref}
         />
