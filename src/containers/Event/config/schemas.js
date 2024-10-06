@@ -32,3 +32,12 @@ export const lineupSchema = z.object({
   _artists: z.array(z.record(z.any())),
   door_open: z.string().min(1, { message: "Door open is required" }),
 });
+
+export const imageSchema = z.object({
+  images: z.object({
+    primaryImage: z.union([
+      z.string().min(1, { message: "Primary image is required" }),
+      z.instanceof(File, { message: "Primary image must be a file" }),
+    ]),
+  }),
+});

@@ -4,7 +4,12 @@ import Lineup from "./Lineup";
 import Image from "./Image";
 import Tickets from "./Tickets";
 import Settings from "./Settings";
-import { basicsSchema, lineupSchema, timelineSchema } from "../config/schemas";
+import {
+  basicsSchema,
+  imageSchema,
+  lineupSchema,
+  timelineSchema,
+} from "../config/schemas";
 
 const steps = [
   {
@@ -37,6 +42,7 @@ const steps = [
     desc: "Upload an image for your event.",
     component: <Image />,
     checked: false,
+    validationSchema: imageSchema,
   },
   {
     id: 5,

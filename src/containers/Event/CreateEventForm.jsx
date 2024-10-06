@@ -32,12 +32,16 @@ const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
     submitEvent(data);
   };
 
+  const onError = error => {
+    console.log(error);
+  };
+
   useEffect(() => {
     if (isSuccess && currentStep.id < 5) setCurrentStep(steps[currentStep.id]);
   }, [isSuccess]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit, onError)}>
       {React.cloneElement(children, { register, errors, setValue, getValues })}
     </form>
   );

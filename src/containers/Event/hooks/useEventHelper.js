@@ -23,6 +23,7 @@ const useEventHelper = () => {
     event_start,
     event_end,
     door_open,
+    images,
   } = eventData;
 
   const getInitialState = () => {
@@ -56,6 +57,13 @@ const useEventHelper = () => {
           ],
         };
 
+      case 4:
+        return {
+          images: {
+            primaryImage: images.primaryImage,
+          },
+        };
+
       default:
         break;
     }
@@ -78,6 +86,9 @@ const useEventHelper = () => {
       updateEvent({ _event: eventData._id, body: data });
     } else if (currentStep === 3) {
       updateEvent({ _event: eventData._id, body: data });
+    } else if (currentStep === 4) {
+      // Upload Image
+      console.log(data);
     }
   };
 

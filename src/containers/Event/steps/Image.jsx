@@ -1,23 +1,27 @@
 import { useDropzone } from "react-dropzone";
 import { Label } from "@/components/ui/label";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import uploadCloud from "@/assets/images/events/uploadCloud.png";
 import { twMerge } from "tailwind-merge";
 
-const Image = () => {
+const Image = ({ getValues, ...props }) => {
+  const disableNextStep = () => {
+    return !getValues("images.primaryImage");
+  };
+
   return (
     <div className="flex flex-col gap-3">
       <Label className="text-[#f6f6f6]">
         Upload Image <span className="text-primary">*</span>
       </Label>
-      <Upload />
+      <Upload getValues={getValues} {...props} />
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
         <Button variant="outline" className="w-40">
           Cancel
         </Button>
-        <Button className="w-40" disabled={true}>
+        <Button className="w-40" disabled={disableNextStep}>
           Continue
         </Button>
       </div>
@@ -25,10 +29,16 @@ const Image = () => {
   );
 };
 
-const Upload = () => {
+const Upload = ({ getValues, setValue }) => {
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    setImage(getValues("images.primaryImage"));
+  }, []);
+
   const onDrop = useCallback(acceptedFiles => {
     setImage(acceptedFiles[0]);
+    setValue("images.primaryImage", acceptedFiles[0]);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (

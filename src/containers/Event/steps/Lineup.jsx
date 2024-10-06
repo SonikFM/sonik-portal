@@ -9,7 +9,7 @@ const Lineup = ({ register, errors, getValues, ...props }) => {
   };
   return (
     <div className="space-y-5 w-full">
-      {/* <TicketTierAndArtist errors={errors} {...props} /> */}
+      <TicketTierAndArtist errors={errors} {...props} />
       <TextField
         label="Door Open"
         required={true}

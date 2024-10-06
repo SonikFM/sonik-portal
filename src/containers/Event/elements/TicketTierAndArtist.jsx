@@ -4,11 +4,13 @@ import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const TicketTierAndArtist = ({ getValues, setValue, errors }) => {
+  const { data } = useSelector(state => state.event);
   const [artistFieldsOpen, setArtistFieldsOpen] = useState(false);
   const [artists, setArtists] = useState([{ artist: "", startTime: "" }]);
-
+  console.log(data);
   const addArtist = () =>
     setArtists([...artists, { artist: "", startTime: "" }]);
   return (
