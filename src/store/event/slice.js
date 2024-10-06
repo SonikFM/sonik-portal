@@ -67,9 +67,22 @@ const eventSlice = createSlice({
     );
     builder.addMatcher(
       eventApi.endpoints.createDraftEvent.matchRejected,
-      (state, { payload }) => {
+      (_state, { payload }) => {
         if (payload.data.message)
           toast.error(payload.data.message || "Event creation failed!");
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.updateEvent.matchFulfilled,
+      (state, { payload }) => {
+        if (payload.message) toast.success(payload.message);
+        return { ...state, data: payload.data };
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.updateEvent.matchRejected,
+      (_state, { payload }) => {
+        if (payload.data.message) toast.success(payload.data.message);
       },
     );
   },
@@ -77,6 +90,6 @@ const eventSlice = createSlice({
 
 export const { setEventInfo } = eventSlice.actions;
 
-export const selectEvent = state => state.auth;
+export const selectEvent = state => state.event;
 
 export default eventSlice.reducer;

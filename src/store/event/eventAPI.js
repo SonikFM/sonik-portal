@@ -10,8 +10,15 @@ export const eventApi = apiSlice.injectEndpoints({
           body,
         }),
       }),
+      updateEvent: builder.mutation({
+        query: ({ _event, body }) => ({
+          url: `events/${_event}`,
+          method: "PUT",
+          body,
+        }),
+      }),
     };
   },
 });
 
-export const { useCreateDraftEventMutation } = eventApi;
+export const { useCreateDraftEventMutation, useUpdateEventMutation } = eventApi;
