@@ -20,7 +20,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: [event],
+  whitelist: ["event"],
 };
 
 const combinedReducer = combineReducers({

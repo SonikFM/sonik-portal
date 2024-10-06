@@ -18,5 +18,5 @@ export const basicsSchema = z.object({
     country: z.string().nullable(),
   }),
   presented_by: z.string().min(1, { message: "Presenter is required" }),
-  artists: z.array(z.record(z.any())).nonempty(),
+  artists: z.array(z.record(z.any())),
 });

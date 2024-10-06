@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSelector } from "react-redux";
+import useEventHelper from "./hooks/useEventHelper";
+import steps from "./steps/config";
 
-const CreateEventForm = ({ children, currentStep }) => {
-  const { basics } = useSelector(state => state.event);
+const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
+  const { getInitialState, submitEvent, isSuccess } = useEventHelper();
 
   const {
     register,
@@ -12,29 +13,26 @@ const CreateEventForm = ({ children, currentStep }) => {
     formState: { errors },
     getValues,
     setValue,
+    watch,
   } = useForm({
     resolver: zodResolver(currentStep.validationSchema),
-    defaultValues: basics,
+    defaultValues: getInitialState(currentStep),
   });
 
+  watch();
+
   const onSubmit = data => {
-    console.log("Form Submitted:", data);
+    console.log("Submitted data", data);
+    submitEvent(data);
   };
 
-  const onError = errors => {
-    console.log(errors);
-  };
+  useEffect(() => {
+    if (isSuccess && currentStep.id < 5) setCurrentStep(steps[currentStep.id]);
+  }, [isSuccess]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {React.cloneElement(children, { register, errors, setValue, getValues })}
-      <button
-        className="bg-white"
-        type="submit"
-        onClick={handleSubmit(onSubmit)}
-      >
-        dkdk
-      </button>
     </form>
   );
 };

@@ -59,8 +59,8 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
       !getValues("title") ||
       !getValues("description") ||
       !getValues("venue") ||
-      !getValues("presented_by") ||
-      selectedArtists.length < 1
+      !getValues("presented_by")
+      // selectedArtists.length < 1
     );
   };
 
@@ -126,14 +126,14 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
         {...register("presented_by", true)}
       />
 
-      <ArtistSearch
+      {/* <ArtistSearch
         artistQuery={artistQuery}
         setArtistQuery={setArtistQuery}
         handleArtistSelect={handleArtistSelect}
         selectedArtists={selectedArtists}
         setValue={setValue}
         className="w-full"
-      />
+      /> */}
 
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
         <Button variant="outline" className="w-40" type="button">

@@ -2,13 +2,11 @@ import { twMerge } from "tailwind-merge";
 
 const TabMenu = ({
   tabs = [],
+  onSelect,
   activeTab,
-  setActiveTab,
   title,
   align = "column",
 }) => {
-  const selectTab = tab => setActiveTab(tab);
-
   return (
     <div className="flex h-fit flex-col gap-2 border border-grey-light rounded-2xl p-2.5">
       <h6 className="text-grey px-2.5 font-500 text-xs w-[238px]">{title}</h6>
@@ -23,7 +21,7 @@ const TabMenu = ({
             key={index}
             tab={tab}
             isActive={activeTab.id === tab.id}
-            onClick={selectTab}
+            onClick={() => onSelect(tab)}
           />
         ))}
       </div>

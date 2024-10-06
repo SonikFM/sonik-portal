@@ -41,7 +41,7 @@ const PlacesSelectField = ({
       );
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
-      setValue("venue.location", { type: "point", coordinates: [lat, lng] });
+      setValue("venue.location", { type: "Point", coordinates: [lng, lat] });
       setValue(
         "venue.region",
         getAddressComponent("administrative_area_level_1"),
