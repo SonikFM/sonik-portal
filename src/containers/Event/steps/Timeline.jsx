@@ -2,20 +2,20 @@ import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
+import { timezones } from "../config/options";
 
-const Timeline = ({ register, errors }) => {
+const Timeline = ({ register, errors, getValues, setValue }) => {
   return (
     <div className="space-y-5 w-full">
       <SelectField
         label="Timezone"
-        value="COT (Colombia Time) - UTC-5"
+        value={[timezones[0].value]}
         required={true}
-        options={[
-          { value: "concert", label: "Concert" },
-          { value: "dj", label: "DJ" },
-          { value: "party", label: "Party" },
-        ]}
-        register={register}
+        options={timezones}
+        getValues={getValues}
+        name="privacy"
+        setValue={setValue}
+        errorMessage={errors.timezone?.message}
       />
       <TextField
         label="Announcement"
@@ -23,7 +23,9 @@ const Timeline = ({ register, errors }) => {
         type="datetime-local"
         placeholder="Choose date and time"
         Icon={Calendar}
-        register={register}
+        name="announcement"
+        {...register("announcement", true)}
+        errorMessage={errors.announcement?.message}
       />
       <TextField
         label="Event Start"
@@ -31,7 +33,9 @@ const Timeline = ({ register, errors }) => {
         type="datetime-local"
         placeholder="Choose date and time"
         Icon={Calendar}
-        register={register}
+        name="event_start"
+        {...register("event_start", true)}
+        errorMessage={errors.event_start?.message}
       />
       <TextField
         label="Event End"
@@ -39,7 +43,9 @@ const Timeline = ({ register, errors }) => {
         type="datetime-local"
         placeholder="Choose date and time"
         Icon={Calendar}
-        register={register}
+        name="event_end"
+        {...register("event_end", true)}
+        errorMessage={errors.event_end?.message}
       />
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
         <Button variant="outline" className="w-40">

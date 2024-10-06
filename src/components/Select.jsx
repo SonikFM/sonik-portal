@@ -59,7 +59,7 @@ export const Select = ({
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className="p-0 mt-1 overflow-hidden min-w-full border border-[#E1E4EA] rounded-md"
+          className="p-0 mt-1 overflow-hidden min-w-full border border-[#E1E4EA] rounded-md max-h-[350px] overflow-y-auto"
           align="right"
           style={{ width: triggerRef.current?.offsetWidth }}
         >

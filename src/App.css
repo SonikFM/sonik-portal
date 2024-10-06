@@ -120,3 +120,24 @@ input[type="number"] {
 .pac-item:not(:first-child) {
   border-top: 1px solid var(--grey-light);
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #181b25;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eaecf0;
+  border-radius: 0.5rem;
+  width: 0.25rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #eaecf0;
+}

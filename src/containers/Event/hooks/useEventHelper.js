@@ -2,7 +2,7 @@ import { useCreateDraftEventMutation } from "@/store/event/eventAPI";
 import { useSelector } from "react-redux";
 
 const useEventHelper = () => {
-  const { data: eventData } = useSelector(state => state.event);
+  const { data: eventData, currentStep } = useSelector(state => state.event);
   const [createDraftEvent, { isSuccess, isLoading }] =
     useCreateDraftEventMutation();
 
@@ -25,6 +25,7 @@ const useEventHelper = () => {
 
   const submitEvent = data => {
     data.artists = [];
+
     // data.artists = data.artists?.map(artist => ({
     //   spotify_id: artist.id,
     //   name: artist.name,
