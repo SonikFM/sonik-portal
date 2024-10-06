@@ -25,6 +25,11 @@ const useEventHelper = () => {
     event_end,
     door_open,
     images,
+    ticket_tiers,
+    currency,
+    age_limit,
+    re_entry_allowed,
+    ticket_limit_per_user,
   } = eventData;
 
   const getInitialState = () => {
@@ -60,6 +65,14 @@ const useEventHelper = () => {
           images: {
             primaryImage: images.primaryImage,
           },
+        };
+      case 5:
+        return {
+          ticket_tiers: ticket_tiers,
+          currency,
+          age_limit,
+          re_entry_allowed,
+          ticket_limit_per_user,
         };
 
       default:

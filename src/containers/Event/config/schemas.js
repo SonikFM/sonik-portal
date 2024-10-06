@@ -41,3 +41,13 @@ export const imageSchema = z.object({
     ]),
   }),
 });
+
+export const ticketsSchema = z.object({
+  age_limit: z.string().min(1, { message: "Age limit is required" }),
+  re_entry_allowed: z.boolean().nullable(),
+  currency: z.string().min(1, { message: "Currency is required" }),
+  ticket_limit_per_user: z
+    .string()
+    .min(1, { message: "Ticket limit is required" }),
+  ticket_tiers: z.array(z.record(z.any())),
+});

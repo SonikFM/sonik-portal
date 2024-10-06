@@ -3,6 +3,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, LoaderCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { twMerge } from "tailwind-merge";
 
 export const Select = ({
   Icon,
@@ -42,10 +43,16 @@ export const Select = ({
           {...rest}
           ref={triggerRef}
         >
-          <div className="flex text-left w-[calc(100%-80px)] truncate shrink gap-2">
+          <div
+            className={twMerge(
+              "flex text-left w-[calc(100%-80px)] truncate shrink gap-2",
+              Icon && "pl-8",
+            )}
+          >
             {Icon && (
               <Icon className="absolute top-1/2 -translate-y-1/2 left-3 w-4 text-grey-100" />
             )}
+
             {valueLabel ? (
               <p className="text-sm text-white">{valueLabel}</p>
             ) : (

@@ -80,3 +80,26 @@ export const timezones = [
     label: "NZDT (New Zealand Daylight Time) - UTC+13",
   },
 ];
+
+export const currencies = [
+  {
+    label: "Colombian Peso",
+    value: "COL",
+  },
+  {
+    label: "US Dollar",
+    value: "USD",
+  },
+  {
+    label: "Saudi Riyal",
+    value: "SAR",
+  },
+  {
+    label: "UAE Dirham",
+    value: "UED",
+  },
+  {
+    label: "British Pound",
+    value: "POUND",
+  },
+];

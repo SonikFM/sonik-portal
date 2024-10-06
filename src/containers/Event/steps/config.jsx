@@ -8,6 +8,7 @@ import {
   basicsSchema,
   imageSchema,
   lineupSchema,
+  ticketsSchema,
   timelineSchema,
 } from "../config/schemas";
 
@@ -50,6 +51,7 @@ const steps = [
     desc: "Create ticket types, set prices, and limit the number of tickets each person can purchase.",
     component: <Tickets />,
     checked: false,
+    validationSchema: ticketsSchema,
   },
   {
     id: 6,
