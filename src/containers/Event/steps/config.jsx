@@ -4,7 +4,7 @@ import Lineup from "./Lineup";
 import Image from "./Image";
 import Tickets from "./Tickets";
 import Settings from "./Settings";
-import { basicsSchema, timelineSchema } from "../config/schemas";
+import { basicsSchema, lineupSchema, timelineSchema } from "../config/schemas";
 
 const steps = [
   {
@@ -29,6 +29,7 @@ const steps = [
     desc: "Set the schedule and performance order for your event, from start to finish",
     component: <Lineup />,
     checked: false,
+    validationSchema: lineupSchema,
   },
   {
     id: 4,

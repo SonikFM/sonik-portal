@@ -20,8 +20,11 @@ const SelectField = forwardRef(
     ref,
   ) => {
     const valueLabel = useMemo(() => {
-      return options.find(option => option.value === getValues(name))?.label;
-    }, [getValues(name)]);
+      if (getValues) {
+        return options.find(option => option.value === getValues(name))?.label;
+      }
+      return null;
+    }, [getValues, name, options]);
 
     return (
       <div className="w-full flex flex-col gap-3">

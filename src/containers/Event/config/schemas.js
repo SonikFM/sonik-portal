@@ -27,3 +27,8 @@ export const timelineSchema = z.object({
   event_start: z.string().min(1, { message: "Event start is required" }),
   event_end: z.string().min(1, { message: "Event end is required" }),
 });
+
+export const lineupSchema = z.object({
+  _artists: z.array(z.record(z.any())),
+  door_open: z.string().min(1, { message: "Door open is required" }),
+});

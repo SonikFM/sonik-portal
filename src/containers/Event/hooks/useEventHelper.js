@@ -22,6 +22,7 @@ const useEventHelper = () => {
     announcement,
     event_start,
     event_end,
+    door_open,
   } = eventData;
 
   const getInitialState = () => {
@@ -44,6 +45,17 @@ const useEventHelper = () => {
           event_end,
         };
 
+      case 3:
+        return {
+          door_open,
+          lineup: [
+            {
+              _artist: "67026575f6c50fa77ec716d8",
+              start_time: "2024-09-25T02:28:53.208Z",
+            },
+          ],
+        };
+
       default:
         break;
     }
@@ -63,6 +75,8 @@ const useEventHelper = () => {
         })) || [];
       createDraftEvent(data);
     } else if (currentStep === 2) {
+      updateEvent({ _event: eventData._id, body: data });
+    } else if (currentStep === 3) {
       updateEvent({ _event: eventData._id, body: data });
     }
   };

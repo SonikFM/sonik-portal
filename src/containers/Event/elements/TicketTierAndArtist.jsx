@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import { useState } from "react";
 
-const TicketTierAndArtist = () => {
+const TicketTierAndArtist = ({ getValues, setValue, errors }) => {
   const [artistFieldsOpen, setArtistFieldsOpen] = useState(false);
   const [artists, setArtists] = useState([{ artist: "", startTime: "" }]);
 
