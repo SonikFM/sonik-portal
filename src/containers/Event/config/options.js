@@ -103,3 +103,8 @@ export const currencies = [
     value: "POUND",
   },
 ];
+
+export const ticketPrivacyOptions = [
+  { value: "free", label: "Free" },
+  { value: "public", label: "Public" },
+];

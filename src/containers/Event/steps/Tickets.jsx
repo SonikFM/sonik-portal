@@ -6,6 +6,7 @@ import { useState } from "react";
 import TicketTierAndArtist from "../elements/TicketTierAndArtist";
 import { currencies } from "../config/options";
 import { Button } from "@/components/ui/button";
+import TicketTier from "../elements/TicketTier";
 
 const ageCharacterLimit = 50;
 const Tickets = ({ register, errors, getValues, setValue }) => {
@@ -75,12 +76,12 @@ const Tickets = ({ register, errors, getValues, setValue }) => {
         {...register("ticket_limit_per_user", true)}
         errorMessage={errors.ticket_limit_per_user?.message}
       />
-      {/* <TicketTierAndArtist
+      <TicketTier
         setValue={setValue}
         getValues={getValues}
         errors={errors}
-      /> */}
-
+        register={register}
+      />
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
         <Button variant="outline" className="w-40">
           Cancel

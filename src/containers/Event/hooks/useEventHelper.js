@@ -30,6 +30,7 @@ const useEventHelper = () => {
     age_limit,
     re_entry_allowed,
     ticket_limit_per_user,
+    tickets,
   } = eventData;
 
   const getInitialState = () => {
@@ -73,6 +74,7 @@ const useEventHelper = () => {
           age_limit,
           re_entry_allowed,
           ticket_limit_per_user,
+          tickets,
         };
 
       default:
