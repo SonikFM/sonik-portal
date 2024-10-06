@@ -34,7 +34,7 @@ export const Select = ({
           role="combobox"
           aria-expanded={open}
           className={cn(
-            "justify-between relative w-full h-auto gap-3 p-2.5 text-grey-light !hover:text-white hover:bg-grey-200 border border-grey-light h-10 font-normal",
+            "justify-between relative w-full  gap-3 p-2.5 text-grey-light !hover:text-white hover:bg-grey-200 border border-grey-light h-10 font-normal",
             open &&
               "border-grey-50 border-2 text-white placeholder:text-grey-50",
             className,

@@ -2,7 +2,6 @@ import PlacesSelectField from "@/components/PlacesSelectField";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
-import { useDispatch } from "react-redux";
 
 const BasicInfo = ({ register, setValue, getValues, errors }) => {
   const allowNextStep = () => {

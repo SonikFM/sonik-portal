@@ -3,7 +3,6 @@ import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import ArtistSearch from "./ArtistSearch";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { searchArtists } from "@/store/global/actions";
@@ -14,7 +13,7 @@ const DEBOUNCE_DELAY = 500;
 
 const TicketTierAndArtist = ({ getValues, setValue }) => {
   const [openedContainerType, setOpenedContainerType] = useState(null);
-  const { artists, isLoading, error } = useSelector(state => state.app.spotify);
+  const { artists, isLoading } = useSelector(state => state.app.spotify);
 
   const selectedArtists = useMemo(
     () => getValues("artists") || [],
@@ -42,6 +41,7 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
           selectedArtists={selectedArtists}
           setValue={setValue}
           setOpenedContainerType={setOpenedContainerType}
+          isLoading={isLoading}
         />
       ) : openedContainerType === "list" ? (
         <ArtistList
@@ -82,6 +82,7 @@ const ArtistForm = ({
   artists,
   selectedArtists,
   setOpenedContainerType,
+  isLoading,
 }) => {
   const cancelTokenSourceRef = useRef(null);
   const dispatch = useDispatch();
@@ -156,6 +157,7 @@ const ArtistForm = ({
               onSearch={e => setArtistQuery(e.target.value)}
               onChange={option => onSelect(option, index)}
               hasSearch={true}
+              isLoading={isLoading}
             />
 
             <TextField

@@ -1,3 +1,4 @@
+import { getPresignedUrl, uploadFile } from "@/helper/uploads";
 import {
   useCreateDraftEventMutation,
   useUpdateEventMutation,
@@ -66,19 +67,9 @@ const useEventHelper = () => {
     }
   };
 
-  const submitEvent = data => {
+  const submitEvent = async data => {
     data.artists = [];
     if (currentStep === 1) {
-      //   data.artists =
-      //     data.artists?.map(artist => ({
-      //       spotify_id: artist.id,
-      //       name: artist.name,
-      //       photo: artist.images[0]?.url,
-      //       description: artist.genres.join(", "),
-      //       genre: artist.genres,
-      //       spotify_url: artist.external_urls.spotify,
-      //     })) || [];
-
       createDraftEvent(data);
     } else if (currentStep === 2) {
       updateEvent({ _event: eventData._id, body: data });
@@ -86,7 +77,18 @@ const useEventHelper = () => {
       updateEvent({ _event: eventData._id, body: data });
     } else if (currentStep === 4) {
       // Upload Image
-      console.log(data);
+      const { url, key } = await getPresignedUrl(
+        data.images.primaryImage,
+        "events",
+      );
+
+      const response = await uploadFile(data.images.primaryImage, url);
+      if (response.status === 200) {
+        updateEvent({
+          _event: eventData._id,
+          body: { images: { primaryImage: key } },
+        });
+      }
     }
   };
 
