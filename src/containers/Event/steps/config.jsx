@@ -4,7 +4,7 @@ import Lineup from "./Lineup";
 import Image from "./Image";
 import Tickets from "./Tickets";
 import Settings from "./Settings";
-import { basicsSchema } from "../config/schemas";
+import { basicsSchema, timelineSchema } from "../config/schemas";
 
 const steps = [
   {
@@ -21,6 +21,7 @@ const steps = [
     desc: "Set the event schedule, sales start time, and performance order.",
     component: <Timeline />,
     checked: false,
+    validationSchema: timelineSchema,
   },
   {
     id: 3,

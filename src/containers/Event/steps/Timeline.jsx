@@ -5,6 +5,15 @@ import { Calendar } from "lucide-react";
 import { timezones } from "../config/options";
 
 const Timeline = ({ register, errors, getValues, setValue }) => {
+  const disableNextStep = () => {
+    return (
+      !getValues("timezone") ||
+      !getValues("announcement") ||
+      !getValues("event_start") ||
+      !getValues("event_end")
+    );
+  };
+
   return (
     <div className="space-y-5 w-full">
       <SelectField
@@ -13,7 +22,7 @@ const Timeline = ({ register, errors, getValues, setValue }) => {
         required={true}
         options={timezones}
         getValues={getValues}
-        name="privacy"
+        name="timezone"
         setValue={setValue}
         errorMessage={errors.timezone?.message}
       />
@@ -51,7 +60,7 @@ const Timeline = ({ register, errors, getValues, setValue }) => {
         <Button variant="outline" className="w-40">
           Cancel
         </Button>
-        <Button className="w-40" disabled={true}>
+        <Button className="w-40" disabled={disableNextStep}>
           Continue
         </Button>
       </div>

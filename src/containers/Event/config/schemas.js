@@ -20,3 +20,10 @@ export const basicsSchema = z.object({
   presented_by: z.string().min(1, { message: "Presenter is required" }),
   artists: z.array(z.record(z.any())),
 });
+
+export const timelineSchema = z.object({
+  timezone: z.string().min(1, { message: "Timezone is required" }),
+  announcement: z.string().min(1, { message: "Announcement is required" }),
+  event_start: z.string().min(1, { message: "Event start is required" }),
+  event_end: z.string().min(1, { message: "Event end is required" }),
+});

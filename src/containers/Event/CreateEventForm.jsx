@@ -14,12 +14,18 @@ const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
     getValues,
     setValue,
     watch,
+    reset,
   } = useForm({
     resolver: zodResolver(currentStep.validationSchema),
-    defaultValues: getInitialState(currentStep),
+    defaultValues: getInitialState(),
   });
 
-  watch();
+  useEffect(() => {
+    reset(getInitialState());
+  }, [currentStep]);
+
+  const data = watch();
+  console.log(data, "Form Data");
 
   const onSubmit = data => {
     console.log("Submitted data", data);

@@ -10,20 +10,42 @@ const useEventHelper = () => {
     useCreateDraftEventMutation();
   const [updateEvent] = useUpdateEventMutation();
 
-  const getInitialState = currentStep => {
-    const { title, privacy, type, description, venue, presented_by, artists } =
-      eventData;
+  const {
+    title,
+    privacy,
+    type,
+    description,
+    venue,
+    presented_by,
+    artists,
+    timezone,
+    announcement,
+    event_start,
+    event_end,
+  } = eventData;
 
-    if (currentStep.id === 1) {
-      return {
-        title,
-        privacy,
-        type,
-        description,
-        venue,
-        presented_by,
-        artists,
-      };
+  const getInitialState = () => {
+    switch (currentStep) {
+      case 1:
+        return {
+          title,
+          privacy,
+          type,
+          description,
+          venue,
+          presented_by,
+          artists,
+        };
+      case 2:
+        return {
+          timezone,
+          announcement,
+          event_start,
+          event_end,
+        };
+
+      default:
+        break;
     }
   };
 
@@ -40,6 +62,8 @@ const useEventHelper = () => {
           spotify_url: artist.external_urls.spotify,
         })) || [];
       createDraftEvent(data);
+    } else if (currentStep === 2) {
+      updateEvent({ _event: eventData._id, body: data });
     }
   };
 
