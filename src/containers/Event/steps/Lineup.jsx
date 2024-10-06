@@ -3,13 +3,18 @@ import TicketTierAndArtist from "../elements/TicketTierAndArtist";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Lineup = ({ register, errors, getValues, ...props }) => {
+const Lineup = ({ register, errors, getValues, setValue, ...props }) => {
   const disableNextStep = () => {
     return !getValues("door_open");
   };
   return (
     <div className="space-y-5 w-full">
-      <TicketTierAndArtist errors={errors} {...props} />
+      <TicketTierAndArtist
+        errors={errors}
+        getValues={getValues}
+        setValue={setValue}
+        {...props}
+      />
       <TextField
         label="Door Open"
         required={true}

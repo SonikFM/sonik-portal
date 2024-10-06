@@ -18,7 +18,7 @@ const Timeline = ({ register, errors, getValues, setValue }) => {
     <div className="space-y-5 w-full">
       <SelectField
         label="Timezone"
-        value={[timezones[0].value]}
+        value={getValues("timezone") || timezones[0].value}
         required={true}
         options={timezones}
         getValues={getValues}

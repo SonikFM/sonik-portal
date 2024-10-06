@@ -21,7 +21,6 @@ const ArtistSearch = ({
 }) => {
   const commandRef = useRef();
   const { artists, isLoading, error } = useSelector(state => state.app.spotify);
-
   const handleClickOutside = event => {
     if (commandRef.current && !commandRef.current.contains(event.target)) {
       setArtistQuery(""); // Close the command by clearing the query

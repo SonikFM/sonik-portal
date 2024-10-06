@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import Artist from "./Artist";
 import { useSelector } from "react-redux";
 
-const ArtistList = ({ artists, updateList, artistQuery, setValue }) => {
+const ArtistList = ({ artists, updateList, artistQuery, onEdit, onDelete }) => {
   const { isLoading } = useSelector(state => state.app.spotify);
   const moveArtist = useCallback(
     (dragIndex, hoverIndex) => {
@@ -14,20 +14,13 @@ const ArtistList = ({ artists, updateList, artistQuery, setValue }) => {
     [artists],
   );
 
-  const onDelete = artist => {
-    setValue(
-      "artists",
-      artists.filter(a => a.id !== artist.id),
-    );
-  };
-
   if (!isLoading && !artistQuery && !artists.length) {
     return null;
   }
   if (artistQuery && artists.length === 0)
     return <div className="p-2">No Results Found</div>;
   return (
-    <div className="px-4 py-1 mt-2 bg-grey-200 rounded-2xl">
+    <div className="px-4 w-full py-1 mt-2 bg-grey-200 rounded-2xl">
       {Array.isArray(artists) &&
         artists.map((artist, ind) => {
           return (
@@ -43,6 +36,7 @@ const ArtistList = ({ artists, updateList, artistQuery, setValue }) => {
               index={ind}
               moveArtist={moveArtist}
               onDelete={() => onDelete(artist)}
+              onEdit={onEdit}
             />
           );
         })}

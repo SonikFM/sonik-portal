@@ -14,17 +14,14 @@ const SelectField = forwardRef(
       options,
       errorMessage,
       required,
-      getValues,
+      value,
       ...props
     },
     ref,
   ) => {
     const valueLabel = useMemo(() => {
-      if (getValues) {
-        return options.find(option => option.value === getValues(name))?.label;
-      }
-      return null;
-    }, [getValues, name, options]);
+      return options.find(option => option.value === value)?.label;
+    }, [value]);
 
     return (
       <div className="w-full flex flex-col gap-3">

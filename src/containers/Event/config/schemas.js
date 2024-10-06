@@ -18,7 +18,7 @@ export const basicsSchema = z.object({
     country: z.string().nullable(),
   }),
   presented_by: z.string().min(1, { message: "Presenter is required" }),
-  artists: z.array(z.record(z.any())),
+  // artists: z.array(z.record(z.any())),
 });
 
 export const timelineSchema = z.object({
@@ -29,7 +29,7 @@ export const timelineSchema = z.object({
 });
 
 export const lineupSchema = z.object({
-  _artists: z.array(z.record(z.any())),
+  artists: z.array(z.record(z.any())),
   door_open: z.string().min(1, { message: "Door open is required" }),
 });
 

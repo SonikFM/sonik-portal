@@ -36,7 +36,6 @@ const useEventHelper = () => {
           description,
           venue,
           presented_by,
-          artists,
         };
       case 2:
         return {
@@ -49,12 +48,10 @@ const useEventHelper = () => {
       case 3:
         return {
           door_open,
-          lineup: [
-            {
-              _artist: "67026575f6c50fa77ec716d8",
-              start_time: "2024-09-25T02:28:53.208Z",
-            },
-          ],
+          artists:
+            artists.length < 1
+              ? [{ spotify_id: "", start_time: "00:00" }]
+              : artists,
         };
 
       case 4:
@@ -72,15 +69,16 @@ const useEventHelper = () => {
   const submitEvent = data => {
     data.artists = [];
     if (currentStep === 1) {
-      data.artists =
-        data.artists?.map(artist => ({
-          spotify_id: artist.id,
-          name: artist.name,
-          photo: artist.images[0]?.url,
-          description: artist.genres.join(", "),
-          genre: artist.genres,
-          spotify_url: artist.external_urls.spotify,
-        })) || [];
+      //   data.artists =
+      //     data.artists?.map(artist => ({
+      //       spotify_id: artist.id,
+      //       name: artist.name,
+      //       photo: artist.images[0]?.url,
+      //       description: artist.genres.join(", "),
+      //       genre: artist.genres,
+      //       spotify_url: artist.external_urls.spotify,
+      //     })) || [];
+
       createDraftEvent(data);
     } else if (currentStep === 2) {
       updateEvent({ _event: eventData._id, body: data });
