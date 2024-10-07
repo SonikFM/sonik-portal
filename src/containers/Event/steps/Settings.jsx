@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 
 const characterLimit = 100;
 
-const Settings = ({ register, errors, setValue }) => {
-  const [notes, setNotes] = useState("");
+const Settings = ({ setValue, getValues }) => {
+  const [notes, setNotes] = useState(getValues("internal_notes") || "");
 
   const changeHandler = event => {
     const { value } = event.target;

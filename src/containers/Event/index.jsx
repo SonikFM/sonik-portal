@@ -3,12 +3,14 @@ import FoldersIcon from "@/svgs/FoldersIcon";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CreateEventForm from "./CreateEventForm";
-import steps from "./steps/config";
 import TabMenu from "@/components/TabMenu";
 import { useSelector } from "react-redux";
+import steps from "./steps/config";
 
 const CreateEventContainer = () => {
-  const { currentStep: currStep } = useSelector(state => state.event);
+  const { currentStep: currStep, steps: currentSteps } = useSelector(
+    state => state.event,
+  );
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(steps[0]);
 
@@ -25,7 +27,8 @@ const CreateEventContainer = () => {
   };
 
   const onTabSelect = tab => {
-    if (tab.id <= currentStep.id) setCurrentStep(tab);
+    if (tab.id <= currStep)
+      setCurrentStep({ ...tab, component: steps[tab.id - 1].component });
   };
 
   return (
@@ -40,7 +43,7 @@ const CreateEventContainer = () => {
       <div className="max-w-[1100px]">
         <div className="flex p-4 md:p-8 justify-between">
           <TabMenu
-            tabs={steps}
+            tabs={currentSteps || steps}
             activeTab={currentStep}
             onSelect={onTabSelect}
             title="EVENT CREATION STEPS"

@@ -16,7 +16,7 @@ const TabMenu = ({
           align === "row" && "flex-row",
         )}
       >
-        {tabs.map((tab, index) => (
+        {tabs?.map((tab, index) => (
           <MenuItem
             key={index}
             tab={tab}

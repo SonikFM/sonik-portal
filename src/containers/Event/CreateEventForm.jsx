@@ -21,7 +21,7 @@ const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
   });
 
   useEffect(() => {
-    reset(getInitialState());
+    reset(getInitialState(currentStep.id));
   }, [currentStep]);
 
   const data = watch();

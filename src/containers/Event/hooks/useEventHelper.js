@@ -38,7 +38,7 @@ const useEventHelper = () => {
     internal_notes,
   } = eventData;
 
-  const getInitialState = () => {
+  const getInitialState = currentStep => {
     switch (currentStep) {
       case 1:
         return {
