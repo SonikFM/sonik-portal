@@ -7,6 +7,7 @@ export const basicsSchema = z.object({
   description: z.string().min(1, { message: "Description is required" }),
   privacy: z.string().min(1, { message: "Privacy is required" }),
   venue: z.object({
+    name: z.string().min(1, { message: "Venue is required" }),
     google_place_id: z
       .string()
       .min(1, { message: "Google Place ID is required" }),

@@ -20,6 +20,7 @@ const PlacesSelectField = ({
   const handlePlaceChanged = useCallback(
     autocomplete => {
       const place = autocomplete.getPlace();
+
       if (!place.geometry) {
         console.log("No details available for input: '" + place.name + "'");
         return;
@@ -33,6 +34,7 @@ const PlacesSelectField = ({
         return component ? component.long_name : "";
       };
 
+      setValue("venue.name", place.name);
       setValue("venue.google_place_id", place.place_id);
       setValue(
         "venue.formatted_address",

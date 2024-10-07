@@ -17,6 +17,7 @@ const initialState = {
     description: "",
     privacy: "public",
     venue: {
+      name: "",
       _venue: "",
       google_place_id: "",
       formatted_address: "",
@@ -35,7 +36,7 @@ const initialState = {
     },
     age_limit: "",
     re_entry_allowed: false,
-    currency: "",
+    currency: "COL",
     ticket_limit_per_user: 0,
     _id: "",
     artists: [],

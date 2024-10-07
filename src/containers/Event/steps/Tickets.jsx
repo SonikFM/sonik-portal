@@ -3,7 +3,6 @@ import TextField from "@/components/TextField";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Currency } from "lucide-react";
 import { useState } from "react";
-import TicketTierAndArtist from "../elements/TicketTierAndArtist";
 import { currencies } from "../config/options";
 import { Button } from "@/components/ui/button";
 import TicketTier from "../elements/TicketTier";

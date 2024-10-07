@@ -26,16 +26,10 @@ const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
     reset(getInitialState(activeStep.id));
   }, [activeStep]);
 
-  const data = watch();
-  console.log(data, "Form Data");
+  watch();
 
   const onSubmit = data => {
-    console.log("Submitted data", data);
     submitEvent(data);
-  };
-
-  const onError = error => {
-    console.log(error);
   };
 
   useEffect(() => {
@@ -43,7 +37,7 @@ const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
   }, [isSuccess]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {React.cloneElement(children, { register, errors, setValue, getValues })}
     </form>
   );

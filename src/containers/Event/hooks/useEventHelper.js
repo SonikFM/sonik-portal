@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const useEventHelper = ({ activeStep }) => {
-  console.log(activeStep, "Current Step");
   const { data: eventData } = useSelector(state => state.event);
   const [createDraftEvent, { isSuccess, isLoading }] =
     useCreateDraftEventMutation();
