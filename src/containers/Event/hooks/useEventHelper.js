@@ -1,15 +1,19 @@
 import { getPresignedUrl, uploadFile } from "@/helper/uploads";
 import {
   useCreateDraftEventMutation,
+  useFinalizeEventMutation,
   useUpdateEventMutation,
 } from "@/store/event/eventAPI";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const useEventHelper = () => {
   const { data: eventData, currentStep } = useSelector(state => state.event);
   const [createDraftEvent, { isSuccess, isLoading }] =
     useCreateDraftEventMutation();
   const [updateEvent] = useUpdateEventMutation();
+  const [finalizeEvent] = useFinalizeEventMutation();
+  const navigate = useNavigate();
 
   const {
     title,
@@ -31,6 +35,7 @@ const useEventHelper = () => {
     re_entry_allowed,
     ticket_limit_per_user,
     _tickettiers,
+    internal_notes,
   } = eventData;
 
   const getInitialState = () => {
@@ -76,6 +81,10 @@ const useEventHelper = () => {
           ticket_limit_per_user,
           _tickettiers,
         };
+      case 6:
+        return {
+          internal_notes,
+        };
 
       default:
         break;
@@ -104,6 +113,15 @@ const useEventHelper = () => {
           body: { images: { primaryImage: key } },
         });
       }
+    } else if (currentStep === 5) {
+      const payload = {
+        ...data,
+        _tickettiers: _tickettiers.map(t => t._id),
+      };
+      updateEvent({ _event: eventData._id, body: payload });
+    } else {
+      await finalizeEvent({ _event: eventData._id, body: data });
+      navigate("/");
     }
   };
 

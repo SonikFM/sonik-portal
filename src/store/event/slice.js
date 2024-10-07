@@ -82,7 +82,7 @@ const eventSlice = createSlice({
             ? { ...step, checked: true }
             : step,
         );
-        if (payload.success && state.currentStep < 5) {
+        if (payload.success && state.currentStep < 6) {
           newEvent.currentStep += 1;
         }
         return newEvent;
@@ -122,6 +122,14 @@ const eventSlice = createSlice({
       eventApi.endpoints.updateTicketTier.matchRejected,
       (_state, { payload }) => {
         if (payload.data.message) toast.success(payload.data.message);
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.finalizeEvent.matchFulfilled,
+      (state, { payload }) => {
+        if (payload.message) toast.success(payload.message);
+        Object.assign(state, initialState);
+        return state;
       },
     );
   },

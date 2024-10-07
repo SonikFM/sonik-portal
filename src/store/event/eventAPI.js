@@ -31,6 +31,13 @@ export const eventApi = apiSlice.injectEndpoints({
           body,
         }),
       }),
+      finalizeEvent: builder.mutation({
+        query: ({ _event, body }) => ({
+          url: `events/finalize/${_event}`,
+          method: "PUT",
+          body,
+        }),
+      }),
     };
   },
 });
@@ -40,4 +47,5 @@ export const {
   useUpdateEventMutation,
   useAddTicketTierMutation,
   useUpdateTicketTierMutation,
+  useFinalizeEventMutation,
 } = eventApi;

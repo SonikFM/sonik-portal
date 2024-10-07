@@ -49,5 +49,9 @@ export const ticketsSchema = z.object({
   ticket_limit_per_user: z
     .string()
     .min(1, { message: "Ticket limit is required" }),
-  ticket_tiers: z.array(z.record(z.any())),
+  _tickettiers: z.array(z.record(z.any())),
+});
+
+export const settingsSchema = z.object({
+  internal_notes: z.string(),
 });

@@ -8,6 +8,7 @@ import {
   basicsSchema,
   imageSchema,
   lineupSchema,
+  settingsSchema,
   ticketsSchema,
   timelineSchema,
 } from "../config/schemas";
@@ -59,6 +60,7 @@ const steps = [
     desc: "Assign contact details and grant reporting access",
     component: <Settings />,
     checked: false,
+    validationSchema: settingsSchema,
   },
 ];
 
