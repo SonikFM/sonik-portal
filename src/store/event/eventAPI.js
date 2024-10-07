@@ -17,8 +17,19 @@ export const eventApi = apiSlice.injectEndpoints({
           body,
         }),
       }),
+      addTicketTier: builder.mutation({
+        query: body => ({
+          url: "ticket-tiers",
+          method: "POST",
+          body,
+        }),
+      }),
     };
   },
 });
 
-export const { useCreateDraftEventMutation, useUpdateEventMutation } = eventApi;
+export const {
+  useCreateDraftEventMutation,
+  useUpdateEventMutation,
+  useAddTicketTierMutation,
+} = eventApi;

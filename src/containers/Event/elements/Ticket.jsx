@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import DeleteIcon from "@/svgs/DeleteIcon";
@@ -6,7 +5,7 @@ import EditIcon from "@/svgs/EditIcon";
 import MenuIcon from "@/svgs/MenuIcon";
 import TicketIcon from "@/svgs/TicketIcon";
 
-const Ticket = ({ className, onDelete, onEdit, ...rest }) => {
+const Ticket = ({ className, ticket, onDelete, onEdit, ...rest }) => {
   return (
     <div
       className={cn(
@@ -26,7 +25,7 @@ const Ticket = ({ className, onDelete, onEdit, ...rest }) => {
               Ticket name
             </Label>
             <span className="text-sm text-white font-medium">
-              General admission presale
+              {ticket.name}
             </span>
           </div>
         </div>
@@ -36,13 +35,17 @@ const Ticket = ({ className, onDelete, onEdit, ...rest }) => {
             <Label className="w-full text-xs font-medium text-grey-100 shrink">
               Quantity
             </Label>
-            <span className="text-sm text-white font-medium">500</span>
+            <span className="text-sm text-white font-medium">
+              {ticket.total_ticket_quantity}
+            </span>
           </div>
           <div className="flex justify-start flex-col gap-1">
             <Label className="w-full text-xs font-medium text-grey-100 shrink">
               Price
             </Label>
-            <span className="text-sm text-white font-medium">5</span>
+            <span className="text-sm text-white font-medium">
+              {ticket.price}
+            </span>
           </div>
         </div>
       </div>

@@ -1,11 +1,13 @@
 import pinkRoundQuestionMark from "@/assets/images/events/pinkRoundQuestionMark.svg";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
-import { ticketPrivacyOptions } from "../config/options";
+import { ticketPrivacyOptions, ticketTypeOptions } from "../config/options";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import TicketList from "./TicketList";
+import { useAddTicketTierMutation } from "@/store/event/eventAPI";
+import { useSelector } from "react-redux";
 
 const TicketTier = ({ errors, register, setValue, getValues }) => {
   const [activeTicketTier, setActiveTicketTier] = useState("list");
@@ -21,7 +23,7 @@ const TicketTier = ({ errors, register, setValue, getValues }) => {
         />
       ) : activeTicketTier === "list" ? (
         <TicketList
-          tickets={getValues("tickets") || [{}, {}]}
+          tickets={getValues("_tickettiers") || []}
           setActiveTicketTier={setActiveTicketTier}
         />
       ) : (
@@ -53,32 +55,60 @@ const TicketTier = ({ errors, register, setValue, getValues }) => {
   );
 };
 
-const TicketTierForm = ({
-  register,
-  errors,
-  setValue,
-  getValues,
-  setActiveTicketTier,
-}) => {
+const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
+  const { data: eventData } = useSelector(state => state.event);
+  const [addTicketTier] = useAddTicketTierMutation();
   const [ticket, setTicket] = useState({
     name: "",
     description: "",
-    quantity: "",
-    privacy: "",
+    total_ticket_quantity: "",
+    privacy: "free",
     redemption_code: "",
-    pricingType: "",
+    pricingType: "free",
     price: "",
     start_availability: "",
     end_availability: "",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const changeHandler = e => {
     const { name, value } = e.target;
-    console.log(name, value);
+
     setTicket({
       ...ticket,
       [name]: value,
     });
+  };
+
+  const validateTicket = () => {
+    return (
+      ticket.name &&
+      ticket.description &&
+      ticket.total_ticket_quantity &&
+      ticket.privacy &&
+      ticket.pricingType &&
+      ticket.price &&
+      ticket.start_availability &&
+      ticket.end_availability
+    );
+  };
+
+  const createTicket = async () => {
+    setIsSubmitted(true);
+
+    if (!validateTicket()) return;
+
+    const response = await addTicketTier({
+      _event: eventData._id,
+      ...ticket,
+    });
+    if (response.data.success) {
+      setValue("_tickettiers", [
+        ...getValues("_tickettiers"),
+        response.data.data._id,
+      ]);
+      setActiveTicketTier("list");
+    }
   };
 
   const onSelectPrivacy = privacy => {
@@ -88,8 +118,11 @@ const TicketTierForm = ({
     });
   };
 
-  const createTicket = async () => {
-    // createTicket("list");
+  const onSelectType = type => {
+    setTicket({
+      ...ticket,
+      pricingType: type.value,
+    });
   };
 
   return (
@@ -99,26 +132,40 @@ const TicketTierForm = ({
         className="w-full"
         placeholder="Add name"
         name="name"
+        value={ticket.name}
         required={true}
         onChange={changeHandler}
+        errorMessage={isSubmitted && !ticket.name && "Name is required"}
       />
       <TextField
         label="Description"
         type="textarea"
         required={true}
+        value={ticket.description}
         className="w-full"
         placeholder="Write a description for your Tickets"
         name="description"
         onChange={changeHandler}
+        errorMessage={
+          isSubmitted && !ticket.description && "Description is required"
+        }
       />
       <div className="flex gap-3 w-full">
         <TextField
           label="Quantity"
+          type="number"
+          min="1"
           required={true}
+          value={ticket.total_ticket_quantity}
           className="w-full"
           placeholder="Add quantity"
-          name="quantity"
+          name="total_ticket_quantity"
           onChange={changeHandler}
+          errorMessage={
+            isSubmitted &&
+            !ticket.total_ticket_quantity &&
+            "Quantity is required"
+          }
         />
         <SelectField
           name="privacy"
@@ -127,6 +174,7 @@ const TicketTierForm = ({
           options={ticketPrivacyOptions}
           required={true}
           onChange={onSelectPrivacy}
+          errorMessage={isSubmitted && !ticket.privacy && "Privacy is required"}
         />
       </div>
       <TextField
@@ -137,21 +185,31 @@ const TicketTierForm = ({
         name="redemption_code"
         onChange={changeHandler}
       />
-      <TextField
-        label="Pricing Type"
-        required={true}
-        className="w-full"
-        placeholder="Add price"
+
+      <SelectField
         name="pricingType"
-        onChange={changeHandler}
+        className="w-full"
+        options={ticketTypeOptions}
+        label="Pricing Type"
+        value={ticket.pricingType}
+        required={true}
+        onChange={onSelectType}
+        errorMessage={
+          isSubmitted && !ticket.pricingType && "Privacy is required"
+        }
       />
+
       <TextField
         name="price"
-        label="price"
+        label="Price"
+        type="number"
+        value={ticket.price}
+        min={1}
         className="w-full"
         required={true}
         placeholder="Add price"
         onChange={changeHandler}
+        errorMessage={isSubmitted && !ticket.price && "Price is required"}
       />
       <div className="w-full flex gap-3">
         <TextField
@@ -162,6 +220,11 @@ const TicketTierForm = ({
           placeholder="Choose date and time"
           name="start_availability"
           onChange={changeHandler}
+          errorMessage={
+            isSubmitted &&
+            !ticket.start_availability &&
+            "Start availability is required"
+          }
         />
         <TextField
           label="End Availablity"
@@ -171,13 +234,22 @@ const TicketTierForm = ({
           placeholder="Choose date and time"
           name="end_availability"
           onChange={changeHandler}
+          errorMessage={
+            isSubmitted &&
+            !ticket.end_availability &&
+            "End availability is required"
+          }
         />
       </div>
       <div className="flex gap-3  items-center w-full mt-6">
         <Button variant="outline" className="w-40 bg-transparent">
           Cancel
         </Button>
-        <Button className="w-40 bg-pink text-grey-dark" type={createTicket}>
+        <Button
+          className="w-40 bg-pink text-grey-dark"
+          type="button"
+          onClick={createTicket}
+        >
           Save
         </Button>
       </div>

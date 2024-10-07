@@ -94,6 +94,12 @@ const eventSlice = createSlice({
         if (payload.data.message) toast.success(payload.data.message);
       },
     );
+    builder.addMatcher(
+      eventApi.endpoints.addTicketTier.matchFulfilled,
+      (state, { payload }) => {
+        if (payload.message) toast.success(payload.message);
+      },
+    );
   },
 });
 

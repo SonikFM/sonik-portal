@@ -107,4 +107,11 @@ export const currencies = [
 export const ticketPrivacyOptions = [
   { value: "free", label: "Free" },
   { value: "public", label: "Public" },
+  { value: "private", label: "Private" },
+];
+
+export const ticketTypeOptions = [
+  { value: "free", label: "Free" },
+  { value: "paid", label: "Paid" },
+  { value: "reserve", label: "Reserve" },
 ];
