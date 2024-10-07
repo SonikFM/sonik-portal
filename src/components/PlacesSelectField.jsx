@@ -14,6 +14,7 @@ const PlacesSelectField = ({
   errorMessage,
   required,
   setValue,
+  defaultValue,
   ...props
 }) => {
   const handlePlaceChanged = useCallback(
@@ -64,6 +65,12 @@ const PlacesSelectField = ({
           autocomplete.addListener("place_changed", () =>
             handlePlaceChanged(autocomplete),
           );
+          if (defaultValue) {
+            const input = autocomplete.inputField;
+            if (input) {
+              input.value = defaultValue;
+            }
+          }
         }}
         options={{
           types: ["address"],
@@ -75,6 +82,7 @@ const PlacesSelectField = ({
           name="venue"
           className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
           placeholder={placeholder}
+          defaultValue={defaultValue}
           {...props}
         />
       </Autocomplete>

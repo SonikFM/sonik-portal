@@ -34,7 +34,7 @@ export const eventApi = apiSlice.injectEndpoints({
       finalizeEvent: builder.mutation({
         query: ({ _event, body }) => ({
           url: `events/finalize/${_event}`,
-          method: "PUT",
+          method: "POST",
           body,
         }),
       }),

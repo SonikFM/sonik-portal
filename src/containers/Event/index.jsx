@@ -12,10 +12,10 @@ const CreateEventContainer = () => {
     state => state.event,
   );
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const [currentStep, setCurrentStep] = useState(steps[0]);
+  const [activeStep, setActiveTab] = useState(steps[0]);
 
   useEffect(() => {
-    setCurrentStep(steps[currStep - 1]);
+    setActiveTab(steps[currStep - 1]);
   }, [currStep]);
 
   const toggleDrawer = () => {
@@ -28,7 +28,11 @@ const CreateEventContainer = () => {
 
   const onTabSelect = tab => {
     if (tab.id <= currStep)
-      setCurrentStep({ ...tab, component: steps[tab.id - 1].component });
+      setActiveTab({
+        ...tab,
+        component: steps[tab.id - 1].component,
+        validationSchema: steps[tab.id - 1].validationSchema,
+      });
   };
 
   return (
@@ -44,20 +48,20 @@ const CreateEventContainer = () => {
         <div className="flex p-4 md:p-8 justify-between">
           <TabMenu
             tabs={currentSteps || steps}
-            activeTab={currentStep}
+            activeTab={activeStep}
             onSelect={onTabSelect}
             title="EVENT CREATION STEPS"
           />
           <div className="w-full max-w-[680px]">
             <div className="pb-4 mb-6 border-b border-grey-light">
-              <h3 className="font-medium text-white">{currentStep.label}</h3>
-              <p className="text-grey-100">{currentStep.desc}</p>
+              <h3 className="font-medium text-white">{activeStep.label}</h3>
+              <p className="text-grey-100">{activeStep.desc}</p>
             </div>
             <CreateEventForm
-              currentStep={currentStep}
-              setCurrentStep={setCurrentStep}
+              activeStep={activeStep}
+              setActiveTab={setActiveTab}
             >
-              {currentStep.component}
+              {activeStep.component}
             </CreateEventForm>
           </div>
         </div>

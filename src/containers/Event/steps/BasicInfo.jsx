@@ -13,6 +13,13 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
     );
   };
 
+  const getDefaultAddress = () => {
+    const venue = getValues("venue");
+    return venue?.formatted_address
+      ? `${venue.formatted_address}, ${venue.city}, ${venue.region}, ${venue.country}`
+      : "";
+  };
+
   return (
     <div className="space-y-5 w-full">
       <TextField
@@ -27,6 +34,7 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
         label="Type"
         placeholder="Choose the type of event"
         required={true}
+        value={getValues("type")}
         options={[
           { value: "concert", label: "Concert" },
           { value: "dj", label: "DJ" },
@@ -48,6 +56,7 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
         label="Privacy"
         required={true}
         placeholder="Select type"
+        value={getValues("privacy")}
         options={[
           { value: "public", label: "Public" },
           { value: "hidden", label: "Hidden" },
@@ -62,6 +71,7 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
         label="Venue"
         setValue={setValue}
         placeholder="Search for a venue"
+        defaultValue={getDefaultAddress()}
         {...register("venue", true)}
         errorMessage={errors.venue?.formatted_address?.message}
       />

@@ -7,8 +7,9 @@ import {
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const useEventHelper = () => {
-  const { data: eventData, currentStep } = useSelector(state => state.event);
+const useEventHelper = ({ activeStep }) => {
+  console.log(activeStep, "Current Step");
+  const { data: eventData } = useSelector(state => state.event);
   const [createDraftEvent, { isSuccess, isLoading }] =
     useCreateDraftEventMutation();
   const [updateEvent] = useUpdateEventMutation();
@@ -16,6 +17,7 @@ const useEventHelper = () => {
   const navigate = useNavigate();
 
   const {
+    _id,
     title,
     privacy,
     type,
@@ -38,8 +40,8 @@ const useEventHelper = () => {
     internal_notes,
   } = eventData;
 
-  const getInitialState = currentStep => {
-    switch (currentStep) {
+  const getInitialState = () => {
+    switch (activeStep) {
       case 1:
         return {
           title,
@@ -93,13 +95,17 @@ const useEventHelper = () => {
 
   const submitEvent = async data => {
     data.artists = [];
-    if (currentStep === 1) {
-      createDraftEvent(data);
-    } else if (currentStep === 2) {
-      updateEvent({ _event: eventData._id, body: data });
-    } else if (currentStep === 3) {
-      updateEvent({ _event: eventData._id, body: data });
-    } else if (currentStep === 4) {
+    if (activeStep === 1) {
+      // Create or Update Event
+      // If _id is present, then it is an update event => Basic information is saved in redux on successful draft creation
+      _id
+        ? updateEvent({ _event: eventData._id, body: data, activeStep })
+        : createDraftEvent(data);
+    } else if (activeStep === 2) {
+      updateEvent({ _event: eventData._id, body: data, activeStep });
+    } else if (activeStep === 3) {
+      updateEvent({ _event: eventData._id, body: data, activeStep });
+    } else if (activeStep === 4) {
       // Upload Image
       const { url, key } = await getPresignedUrl(
         data.images.primaryImage,
@@ -111,14 +117,15 @@ const useEventHelper = () => {
         updateEvent({
           _event: eventData._id,
           body: { images: { primaryImage: key } },
+          activeStep,
         });
       }
-    } else if (currentStep === 5) {
+    } else if (activeStep === 5) {
       const payload = {
         ...data,
         _tickettiers: _tickettiers.map(t => t._id),
       };
-      updateEvent({ _event: eventData._id, body: payload });
+      updateEvent({ _event: eventData._id, body: payload, activeStep });
     } else {
       await finalizeEvent({ _event: eventData._id, body: data });
       navigate("/");

@@ -74,17 +74,22 @@ const eventSlice = createSlice({
     );
     builder.addMatcher(
       eventApi.endpoints.updateEvent.matchFulfilled,
-      (state, { payload }) => {
+      (state, { payload, meta }) => {
         if (payload.message) toast.success(payload.message);
+        const activeStep = meta.arg.originalArgs.activeStep;
+        console.log(activeStep, "<)000");
         const newEvent = { ...state, data: payload.data };
         newEvent.steps = newEvent.steps.map((step, index) =>
-          index === newEvent.currentStep - 1
-            ? { ...step, checked: true }
-            : step,
+          index === activeStep - 1 ? { ...step, checked: true } : step,
         );
-        if (payload.success && state.currentStep < 6) {
+        if (
+          payload.success &&
+          activeStep === state.currentStep &&
+          state.currentStep < 6
+        ) {
           newEvent.currentStep += 1;
         }
+
         return newEvent;
       },
     );

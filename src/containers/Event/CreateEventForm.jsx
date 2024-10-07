@@ -4,8 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import useEventHelper from "./hooks/useEventHelper";
 import steps from "./steps/config";
 
-const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
-  const { getInitialState, submitEvent, isSuccess } = useEventHelper();
+const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
+  const { getInitialState, submitEvent, isSuccess } = useEventHelper({
+    activeStep: activeStep.id,
+  });
 
   const {
     register,
@@ -16,13 +18,13 @@ const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
     watch,
     reset,
   } = useForm({
-    resolver: zodResolver(currentStep.validationSchema),
+    resolver: zodResolver(activeStep.validationSchema),
     defaultValues: getInitialState(),
   });
 
   useEffect(() => {
-    reset(getInitialState(currentStep.id));
-  }, [currentStep]);
+    reset(getInitialState(activeStep.id));
+  }, [activeStep]);
 
   const data = watch();
   console.log(data, "Form Data");
@@ -37,7 +39,7 @@ const CreateEventForm = ({ children, currentStep, setCurrentStep }) => {
   };
 
   useEffect(() => {
-    if (isSuccess && currentStep.id < 5) setCurrentStep(steps[currentStep.id]);
+    if (isSuccess && activeStep.id < 5) setActiveStep(steps[activeStep.id]);
   }, [isSuccess]);
 
   return (
