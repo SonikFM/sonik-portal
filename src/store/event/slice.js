@@ -98,6 +98,30 @@ const eventSlice = createSlice({
       eventApi.endpoints.addTicketTier.matchFulfilled,
       (state, { payload }) => {
         if (payload.message) toast.success(payload.message);
+        state.data._tickettiers.push(payload.data);
+        return state;
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.addTicketTier.matchRejected,
+      (_state, { payload }) => {
+        if (payload.data.message) toast.success(payload.data.message);
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.updateTicketTier.matchFulfilled,
+      (state, { payload }) => {
+        if (payload.message) toast.success(payload.message);
+        state.data._tickettiers = state.data._tickettiers.map(tier =>
+          tier._id === payload.data._id ? payload.data : tier,
+        );
+        return state;
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.updateTicketTier.matchRejected,
+      (_state, { payload }) => {
+        if (payload.data.message) toast.success(payload.data.message);
       },
     );
   },

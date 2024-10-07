@@ -36,7 +36,7 @@ const TicketList = ({
             index={ind}
             moveTicket={moveTicket}
             onDelete={() => onDelete(ticket)}
-            onEdit={onEdit}
+            onEdit={() => onEdit(ticket)}
           />
         );
       })}

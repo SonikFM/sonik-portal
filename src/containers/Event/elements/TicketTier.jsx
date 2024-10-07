@@ -4,17 +4,49 @@ import TextField from "@/components/TextField";
 import { ticketPrivacyOptions, ticketTypeOptions } from "../config/options";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TicketList from "./TicketList";
-import { useAddTicketTierMutation } from "@/store/event/eventAPI";
-import { useSelector } from "react-redux";
+import {
+  useAddTicketTierMutation,
+  useUpdateTicketTierMutation,
+} from "@/store/event/eventAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { setEventInfo } from "@/store/event/slice";
 
 const TicketTier = ({ errors, register, setValue, getValues }) => {
+  const event = useSelector(state => state.event);
+  const dispatch = useDispatch();
   const [activeTicketTier, setActiveTicketTier] = useState("list");
+  const [selectedTicket, setSelectedTicket] = useState();
+
+  const deleteTicket = ticket => {
+    dispatch(
+      setEventInfo({
+        ...event,
+        data: {
+          ...event.data,
+          currency: getValues("currency"),
+          _tickettiers: event.data._tickettiers.filter(
+            t => t._id !== ticket._id,
+          ),
+        },
+      }),
+    );
+    setValue(
+      "_tickettiers",
+      getValues("_tickettiers").filter(t => t._id !== ticket._id),
+    );
+  };
+  const editTicket = ticket => {
+    setSelectedTicket(ticket);
+    setActiveTicketTier("form");
+  };
+
   return (
     <div className="w-full bg-grey-200  px-4 py-5 shadow-[#0A0D1408] rounded-xl">
       {activeTicketTier === "form" ? (
         <TicketTierForm
+          selectedTicket={selectedTicket}
           register={register}
           errors={errors}
           setValue={setValue}
@@ -25,6 +57,8 @@ const TicketTier = ({ errors, register, setValue, getValues }) => {
         <TicketList
           tickets={getValues("_tickettiers") || []}
           setActiveTicketTier={setActiveTicketTier}
+          onDelete={deleteTicket}
+          onEdit={editTicket}
         />
       ) : (
         <div className="flex justify-between items-center">
@@ -55,9 +89,15 @@ const TicketTier = ({ errors, register, setValue, getValues }) => {
   );
 };
 
-const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
+const TicketTierForm = ({
+  selectedTicket,
+  setValue,
+  getValues,
+  setActiveTicketTier,
+}) => {
   const { data: eventData } = useSelector(state => state.event);
   const [addTicketTier] = useAddTicketTierMutation();
+  const [updateTicketTier] = useUpdateTicketTierMutation();
   const [ticket, setTicket] = useState({
     name: "",
     description: "",
@@ -71,6 +111,10 @@ const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  useEffect(() => {
+    setTicket(selectedTicket);
+  }, [selectedTicket]);
+  console.log(ticket);
   const changeHandler = e => {
     const { name, value } = e.target;
 
@@ -93,20 +137,33 @@ const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
     );
   };
 
-  const createTicket = async () => {
+  const submitHandler = async () => {
     setIsSubmitted(true);
 
     if (!validateTicket()) return;
+    const isUpdate = !!selectedTicket;
 
-    const response = await addTicketTier({
-      _event: eventData._id,
-      ...ticket,
-    });
+    const response = await (isUpdate
+      ? updateTicketTier({
+          _tickettier: ticket._id,
+          body: { currency: getValues("currency"), ...ticket },
+        })
+      : addTicketTier({
+          _event: eventData._id,
+          currency: getValues("currency"),
+          ...ticket,
+        }));
     if (response.data.success) {
-      setValue("_tickettiers", [
-        ...getValues("_tickettiers"),
-        response.data.data._id,
-      ]);
+      if (isUpdate) {
+        const index = getValues("_tickettiers").findIndex(
+          t => t._id === ticket._id,
+        );
+        getValues("_tickettiers")[index] = response.data.data;
+      } else
+        setValue("_tickettiers", [
+          ...getValues("_tickettiers"),
+          response.data.data._id,
+        ]);
       setActiveTicketTier("list");
     }
   };
@@ -216,6 +273,11 @@ const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
           label="Start Availablity"
           required={true}
           Icon={Calendar}
+          value={
+            ticket.start_availability
+              ? new Date(ticket.start_availability).toISOString().slice(0, 16)
+              : ""
+          }
           type="datetime-local"
           placeholder="Choose date and time"
           name="start_availability"
@@ -231,6 +293,11 @@ const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
           required={true}
           Icon={Calendar}
           type="datetime-local"
+          value={
+            ticket.end_availability
+              ? new Date(ticket.end_availability).toISOString().slice(0, 16)
+              : ""
+          }
           placeholder="Choose date and time"
           name="end_availability"
           onChange={changeHandler}
@@ -242,13 +309,13 @@ const TicketTierForm = ({ setValue, getValues, setActiveTicketTier }) => {
         />
       </div>
       <div className="flex gap-3  items-center w-full mt-6">
-        <Button variant="outline" className="w-40 bg-transparent">
+        <Button variant="outline" className="w-40 bg-transparent" type="button">
           Cancel
         </Button>
         <Button
           className="w-40 bg-pink text-grey-dark"
           type="button"
-          onClick={createTicket}
+          onClick={submitHandler}
         >
           Save
         </Button>
