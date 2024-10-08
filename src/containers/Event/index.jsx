@@ -45,7 +45,7 @@ const CreateEventContainer = () => {
         toggleDrawer={toggleDrawer}
       />
       <div className="max-w-[1100px]">
-        <div className="flex p-4 md:p-8 justify-between">
+        <div className="flex p-4 md:p-8 justify-between gap-3">
           <TabMenu
             tabs={currentSteps || steps}
             activeTab={activeStep}
