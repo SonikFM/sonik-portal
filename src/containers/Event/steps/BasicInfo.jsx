@@ -1,9 +1,10 @@
+import Loading from "@/components/Loading";
 import PlacesSelectField from "@/components/PlacesSelectField";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 
-const BasicInfo = ({ register, setValue, getValues, errors }) => {
+const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
   const allowNextStep = () => {
     return (
       !getValues("title") ||
@@ -19,6 +20,8 @@ const BasicInfo = ({ register, setValue, getValues, errors }) => {
       ? `${venue.formatted_address}, ${venue.city}, ${venue.region}, ${venue.country}`
       : "";
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="space-y-5 w-full">

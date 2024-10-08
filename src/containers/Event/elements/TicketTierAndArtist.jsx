@@ -47,7 +47,10 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
     setOpenedContainerType("form");
   };
 
-  const addArtist = () => {};
+  const addArtist = () => {
+    selectedArtists.push({ spotify_id: "", start_time: "00:00" });
+    setValue("artists", selectedArtists);
+  };
 
   const openForm = () => {
     selectedArtists.push({ spotify_id: "", start_time: "00:00" });
@@ -197,12 +200,14 @@ const ArtistForm = ({
           variant="outline"
           className="w-40 bg-transparent"
           onClick={addArtist}
+          type="button"
         >
           Add Artist
         </Button>
         <Button
           className="w-40 bg-pink text-grey-dark"
           onClick={() => setOpenedContainerType("list")}
+          type="button"
         >
           Save
         </Button>

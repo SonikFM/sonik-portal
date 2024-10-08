@@ -13,6 +13,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setEventInfo } from "@/store/event/slice";
 import { openInputPicker } from "../config/helpers";
+import Loading from "@/components/Loading";
 
 const TicketTier = ({ errors, register, setValue, getValues }) => {
   const event = useSelector(state => state.event);
@@ -119,6 +120,7 @@ const TicketTierForm = ({
     end_availability: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setTicket(selectedTicket);
@@ -150,6 +152,7 @@ const TicketTierForm = ({
     setIsSubmitted(true);
 
     if (!validateTicket()) return;
+    setIsLoading(true);
     const isUpdate = !!selectedTicket;
 
     const response = await (isUpdate
@@ -177,6 +180,7 @@ const TicketTierForm = ({
         ]);
       setActiveTicketTier("list");
     }
+    setIsLoading(false);
   };
 
   const onSelectPrivacy = privacy => {
@@ -192,6 +196,8 @@ const TicketTierForm = ({
       pricingType: type.value,
     });
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="flex flex-col gap-6">

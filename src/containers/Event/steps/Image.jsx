@@ -5,11 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import uploadCloud from "@/assets/images/events/uploadCloud.png";
 import { twMerge } from "tailwind-merge";
+import Loading from "@/components/Loading";
 
-const Image = ({ getValues, ...props }) => {
+const Image = ({ getValues, isLoading, ...props }) => {
   const disableNextStep = () => {
     return !getValues("images.primaryImage");
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="flex flex-col gap-3">

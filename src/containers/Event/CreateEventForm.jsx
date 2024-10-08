@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import useEventHelper from "./hooks/useEventHelper";
 
 const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
-  const { getInitialState, submitEvent } = useEventHelper({
+  const { getInitialState, submitEvent, isLoading } = useEventHelper({
     activeStep: activeStep.id,
   });
 
@@ -33,7 +33,13 @@ const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {React.cloneElement(children, { register, errors, setValue, getValues })}
+      {React.cloneElement(children, {
+        register,
+        errors,
+        setValue,
+        getValues,
+        isLoading,
+      })}
     </form>
   );
 };

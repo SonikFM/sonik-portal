@@ -1,10 +1,11 @@
+import Loading from "@/components/Loading";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 const characterLimit = 100;
 
-const Settings = ({ setValue, getValues }) => {
+const Settings = ({ setValue, getValues, isLoading }) => {
   const [notes, setNotes] = useState(getValues("internal_notes") || "");
 
   const changeHandler = event => {
@@ -15,6 +16,8 @@ const Settings = ({ setValue, getValues }) => {
   useEffect(() => {
     setValue("internal_notes", notes);
   }, [notes]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="space-y-5 w-full">

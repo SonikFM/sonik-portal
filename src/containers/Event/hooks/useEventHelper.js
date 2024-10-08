@@ -4,8 +4,10 @@ import {
   useFinalizeEventMutation,
   useUpdateEventMutation,
 } from "@/store/event/eventAPI";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const useEventHelper = ({ activeStep }) => {
   const { data: eventData } = useSelector(state => state.event);
@@ -13,6 +15,7 @@ const useEventHelper = ({ activeStep }) => {
   const [updateEvent] = useUpdateEventMutation();
   const [finalizeEvent] = useFinalizeEventMutation();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     title,
@@ -89,40 +92,47 @@ const useEventHelper = ({ activeStep }) => {
 
   const submitEvent = async data => {
     const eventId = eventData._id;
-
-    const handleUpdateEvent = async body => {
-      await updateEvent({ _event: eventId, body, activeStep });
-    };
-
-    if (activeStep === 1) {
-      if (eventId) {
-        await handleUpdateEvent(data);
-      } else {
-        await createDraftEvent({ body: data, activeStep });
-      }
-    } else if (activeStep === 2 || activeStep === 3) {
-      await handleUpdateEvent(data);
-    } else if (activeStep === 4) {
-      const { response, key } = await uploadFile(
-        data.images.primaryImage,
-        "events",
-      );
-      if (response.status === 200) {
-        await handleUpdateEvent({ images: { primaryImage: key } });
-      }
-    } else if (activeStep === 5) {
-      const payload = {
-        ...data,
-        _tickettiers: _tickettiers.map(t => t._id),
+    if (isLoading) return;
+    setIsLoading(true);
+    try {
+      const handleUpdateEvent = async body => {
+        await updateEvent({ _event: eventId, body, activeStep });
       };
-      await handleUpdateEvent(payload);
-    } else {
-      await finalizeEvent({ _event: eventId, body: data });
-      navigate("/");
+
+      if (activeStep === 1) {
+        if (eventId) {
+          await handleUpdateEvent(data);
+        } else {
+          await createDraftEvent({ body: data, activeStep });
+        }
+      } else if (activeStep === 2 || activeStep === 3) {
+        await handleUpdateEvent(data);
+      } else if (activeStep === 4) {
+        const { response, key } = await uploadFile(
+          data.images.primaryImage,
+          "events",
+        );
+        if (response.status === 200) {
+          await handleUpdateEvent({ images: { primaryImage: key } });
+        }
+      } else if (activeStep === 5) {
+        const payload = {
+          ...data,
+          _tickettiers: _tickettiers.map(t => t._id),
+        };
+        await handleUpdateEvent(payload);
+      } else {
+        await finalizeEvent({ _event: eventId, body: data });
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("Something went wrong, please try again!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return { getInitialState, submitEvent };
+  return { getInitialState, submitEvent, isLoading, setIsLoading };
 };
 
 export default useEventHelper;

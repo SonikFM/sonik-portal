@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { timezones } from "../config/options";
 import { openInputPicker } from "../config/helpers";
+import Loading from "@/components/Loading";
 
-const Timeline = ({ register, errors, getValues, setValue }) => {
+const Timeline = ({ errors, getValues, setValue, isLoading }) => {
   const disableNextStep = () => {
     return (
       !getValues("timezone") ||
@@ -19,6 +20,8 @@ const Timeline = ({ register, errors, getValues, setValue }) => {
     const { name, value } = event.target;
     setValue(name, value);
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="space-y-5 w-full">

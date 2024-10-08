@@ -6,9 +6,10 @@ import { useState } from "react";
 import { currencies } from "../config/options";
 import { Button } from "@/components/ui/button";
 import TicketTier from "../elements/TicketTier";
+import Loading from "@/components/Loading";
 
 const ageCharacterLimit = 50;
-const Tickets = ({ register, errors, getValues, setValue }) => {
+const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
   const [ageLimit, setAgeLimit] = useState("");
   const changeHandler = event => {
     const { value } = event.target;
@@ -22,6 +23,8 @@ const Tickets = ({ register, errors, getValues, setValue }) => {
       !getValues("ticket_limit_per_user")
     );
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="space-y-5 w-full">

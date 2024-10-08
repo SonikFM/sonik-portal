@@ -3,13 +3,23 @@ import TicketTierAndArtist from "../elements/TicketTierAndArtist";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { openInputPicker } from "../config/helpers";
+import Loading from "@/components/Loading";
 
-const Lineup = ({ register, errors, getValues, setValue, ...props }) => {
+const Lineup = ({
+  register,
+  errors,
+  getValues,
+  setValue,
+  isLoading,
+  ...props
+}) => {
   const disableNextStep = () => {
     return !getValues("door_open");
   };
 
   const changeHandler = e => setValue("door_open", e.target.value);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="space-y-5 w-full">
@@ -37,7 +47,7 @@ const Lineup = ({ register, errors, getValues, setValue, ...props }) => {
         onIconClick={() => openInputPicker("door_open")}
       />
       <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
-        <Button variant="outline" className="w-40">
+        <Button variant="outline" className="w-40" type="button">
           Cancel
         </Button>
         <Button className="w-40" disabled={disableNextStep()}>
