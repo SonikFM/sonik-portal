@@ -80,7 +80,7 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
       />
 
       <TextField
-        label="presented_by"
+        label="Presented by"
         required={true}
         placeholder="Presenter"
         name="presented_by"
