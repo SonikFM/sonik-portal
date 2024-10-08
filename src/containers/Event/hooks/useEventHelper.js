@@ -1,4 +1,4 @@
-import { getPresignedUrl, uploadFile } from "@/helper/uploads";
+import { uploadFile } from "@/helper/uploads";
 import {
   useCreateDraftEventMutation,
   useFinalizeEventMutation,
@@ -15,7 +15,6 @@ const useEventHelper = ({ activeStep }) => {
   const navigate = useNavigate();
 
   const {
-    _id,
     title,
     privacy,
     type,
@@ -89,41 +88,41 @@ const useEventHelper = ({ activeStep }) => {
   };
 
   const submitEvent = async data => {
-    // data.artists = [];
+    const eventId = eventData._id;
+
+    const handleUpdateEvent = async body => {
+      await updateEvent({ _event: eventId, body, activeStep });
+    };
+
     if (activeStep === 1) {
-      // Create or Update Event
-      // If _id is present, then it is an update event => Basic information is saved in redux on successful draft creation
-      _id
-        ? updateEvent({ _event: eventData._id, body: data, activeStep })
-        : createDraftEvent({ body: data, activeStep });
+      if (eventId) {
+        await handleUpdateEvent(data);
+      } else {
+        await createDraftEvent({ body: data, activeStep });
+      }
     } else if (activeStep === 2 || activeStep === 3) {
-      updateEvent({ _event: eventData._id, body: data, activeStep });
+      await handleUpdateEvent(data);
     } else if (activeStep === 4) {
-      // Upload Image
       const { response, key } = await uploadFile(
         data.images.primaryImage,
         "events",
       );
-
-      if (response.status === 200)
-        updateEvent({
-          _event: eventData._id,
-          body: { images: { primaryImage: key } },
-          activeStep,
-        });
+      if (response.status === 200) {
+        await handleUpdateEvent({ images: { primaryImage: key } });
+      }
     } else if (activeStep === 5) {
       const payload = {
         ...data,
         _tickettiers: _tickettiers.map(t => t._id),
       };
-      updateEvent({ _event: eventData._id, body: payload, activeStep });
+      await handleUpdateEvent(payload);
     } else {
-      await finalizeEvent({ _event: eventData._id, body: data });
+      await finalizeEvent({ _event: eventId, body: data });
       navigate("/");
     }
   };
 
-  return { getInitialState, submitEvent, isSuccess, isLoading };
+  return { getInitialState, submitEvent };
 };
 
 export default useEventHelper;
