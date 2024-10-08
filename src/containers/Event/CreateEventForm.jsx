@@ -33,6 +33,7 @@ const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
   };
 
   useEffect(() => {
+    console.log(isSuccess, "isSuccess");
     if (isSuccess && activeStep.id < 5) setActiveStep(steps[activeStep.id]);
   }, [isSuccess]);
 

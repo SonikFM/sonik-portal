@@ -4,7 +4,7 @@ export const eventApi = apiSlice.injectEndpoints({
   endpoints: builder => {
     return {
       createDraftEvent: builder.mutation({
-        query: body => ({
+        query: ({ body }) => ({
           url: "events/draft",
           method: "POST",
           body,

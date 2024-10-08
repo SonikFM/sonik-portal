@@ -61,10 +61,7 @@ const useEventHelper = ({ activeStep }) => {
       case 3:
         return {
           door_open,
-          artists:
-            artists.length < 1
-              ? [{ spotify_id: "", start_time: "00:00" }]
-              : artists,
+          artists: artists.length < 1 ? [] : artists,
         };
 
       case 4:
@@ -93,16 +90,14 @@ const useEventHelper = ({ activeStep }) => {
   };
 
   const submitEvent = async data => {
-    data.artists = [];
+    // data.artists = [];
     if (activeStep === 1) {
       // Create or Update Event
       // If _id is present, then it is an update event => Basic information is saved in redux on successful draft creation
       _id
         ? updateEvent({ _event: eventData._id, body: data, activeStep })
-        : createDraftEvent(data);
-    } else if (activeStep === 2) {
-      updateEvent({ _event: eventData._id, body: data, activeStep });
-    } else if (activeStep === 3) {
+        : createDraftEvent({ body: data, activeStep });
+    } else if (activeStep === 2 || activeStep === 3) {
       updateEvent({ _event: eventData._id, body: data, activeStep });
     } else if (activeStep === 4) {
       // Upload Image

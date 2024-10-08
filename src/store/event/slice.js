@@ -57,12 +57,21 @@ const eventSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       eventApi.endpoints.createDraftEvent.matchFulfilled,
-      (state, { payload }) => {
+      (state, { payload, meta }) => {
         if (payload.message) toast.success(payload.message);
         const newEvent = { ...state, data: payload.data };
-        if (payload.success && state.currentStep < 5) {
+        const activeStep = meta.arg.originalArgs.activeStep;
+        newEvent.steps = newEvent.steps.map((step, index) =>
+          index === activeStep - 1 ? { ...step, checked: true } : step,
+        );
+        if (
+          payload.success &&
+          activeStep === state.currentStep &&
+          state.currentStep < 6
+        ) {
           newEvent.currentStep += 1;
         }
+
         return newEvent;
       },
     );
@@ -78,7 +87,6 @@ const eventSlice = createSlice({
       (state, { payload, meta }) => {
         if (payload.message) toast.success(payload.message);
         const activeStep = meta.arg.originalArgs.activeStep;
-        console.log(activeStep, "<)000");
         const newEvent = { ...state, data: payload.data };
         newEvent.steps = newEvent.steps.map((step, index) =>
           index === activeStep - 1 ? { ...step, checked: true } : step,

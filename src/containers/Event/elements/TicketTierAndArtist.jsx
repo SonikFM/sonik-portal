@@ -8,11 +8,12 @@ import axios from "axios";
 import { searchArtists } from "@/store/global/actions";
 import SelectField from "@/components/SelectField";
 import ArtistList from "./ArtistList";
+import { openInputPicker } from "../config/helpers";
 
 const DEBOUNCE_DELAY = 500;
 
 const TicketTierAndArtist = ({ getValues, setValue }) => {
-  const [openedContainerType, setOpenedContainerType] = useState(null);
+  const [openedContainerType, setOpenedContainerType] = useState("list");
   const { artists, isLoading } = useSelector(state => state.app.spotify);
 
   const selectedArtists = useMemo(
@@ -20,7 +21,20 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
     [getValues("artists")],
   );
 
+  useEffect(() => {
+    if (selectedArtists.length === 0) setOpenedContainerType(null);
+  }, [selectedArtists]);
+
+  useEffect(() => {
+    if (openedContainerType === "list" && selectedArtists.length === 0)
+      setOpenedContainerType(null);
+  }, [openedContainerType]);
+
   const onDelete = artist => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this artist?",
+    );
+    if (!confirm) return;
     if (selectedArtists.length === 1) setOpenedContainerType(null);
     setValue(
       "artists",
@@ -33,6 +47,13 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
     setOpenedContainerType("form");
   };
 
+  const addArtist = () => {};
+
+  const openForm = () => {
+    selectedArtists.push({ spotify_id: "", start_time: "00:00" });
+    setOpenedContainerType("form");
+  };
+
   return (
     <div className="w-full bg-grey-200 items-center flex gap-4 px-4 py-5 shadow-[#0A0D1408] rounded-xl">
       {openedContainerType === "form" ? (
@@ -42,6 +63,7 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
           setValue={setValue}
           setOpenedContainerType={setOpenedContainerType}
           isLoading={isLoading}
+          addArtist={addArtist}
         />
       ) : openedContainerType === "list" ? (
         <ArtistList
@@ -49,6 +71,8 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
           setValue={setValue}
           onEdit={onEdit}
           onDelete={onDelete}
+          setOpenedContainerType={setOpenedContainerType}
+          addArtist={addArtist}
         />
       ) : (
         <>
@@ -65,10 +89,7 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
               Schedule the start times for each artist performing at the event
             </p>
           </div>
-          <Button
-            className="w-40 bg-pink text-grey-dark"
-            onClick={() => setOpenedContainerType("form")}
-          >
+          <Button className="w-40 bg-pink text-grey-dark" onClick={openForm}>
             Add Artist
           </Button>
         </>
@@ -83,6 +104,7 @@ const ArtistForm = ({
   selectedArtists,
   setOpenedContainerType,
   isLoading,
+  addArtist,
 }) => {
   const cancelTokenSourceRef = useRef(null);
   const dispatch = useDispatch();
@@ -121,7 +143,7 @@ const ArtistForm = ({
       photo: selectedArtist.images[0].url,
       description: selectedArtist.genres.join(", "),
       genre: selectedArtist.genres,
-      spotifyUrl: selectedArtist.external_urls.spotify,
+      spotify_url: selectedArtist.external_urls.spotify,
       start_time: "00:00",
     };
     setValue("artists", selectedArtists);
@@ -131,10 +153,6 @@ const ArtistForm = ({
     const { value } = event.target;
     selectedArtists[artistIndex].start_time = value;
     setValue("artists", selectedArtists);
-  };
-
-  const addArtist = () => {
-    selectedArtists.push({ spotify_id: "", start_time: "00:00" });
   };
 
   const filteredArtists = artists.map(artist => ({
@@ -166,6 +184,8 @@ const ArtistForm = ({
               required={true}
               placeholder="Choose Time"
               Icon={Clock}
+              id={`start_time_${index}`}
+              onIconClick={() => openInputPicker(`start_time_${index}`)}
               value={artist.start_time || "00:00"} // Default time value
               onChange={event => timeChangeHandler(event, index)}
             />

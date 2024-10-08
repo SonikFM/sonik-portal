@@ -4,6 +4,7 @@ const TabMenu = ({
   tabs = [],
   onSelect,
   activeTab,
+  currentTab,
   title,
   align = "column",
 }) => {
@@ -21,6 +22,7 @@ const TabMenu = ({
             key={index}
             tab={tab}
             isActive={activeTab.id === tab.id}
+            isCurrentTab={currentTab === tab.id}
             onClick={() => onSelect(tab)}
           />
         ))}
@@ -29,7 +31,7 @@ const TabMenu = ({
   );
 };
 
-const MenuItem = ({ tab, isActive, onClick }) => {
+const MenuItem = ({ tab, isActive, onClick, isCurrentTab }) => {
   return (
     <div
       className={twMerge(
@@ -45,7 +47,7 @@ const MenuItem = ({ tab, isActive, onClick }) => {
           "fa-solid fa-circle-check hidden",
           tab.checked
             ? "text-success-light inline"
-            : isActive && "text-[#525866] inline",
+            : isCurrentTab && "text-[#525866] inline",
         )}
       ></i>
     </div>

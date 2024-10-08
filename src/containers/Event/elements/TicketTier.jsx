@@ -12,6 +12,7 @@ import {
 } from "@/store/event/eventAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { setEventInfo } from "@/store/event/slice";
+import { openInputPicker } from "../config/helpers";
 
 const TicketTier = ({ errors, register, setValue, getValues }) => {
   const event = useSelector(state => state.event);
@@ -19,7 +20,15 @@ const TicketTier = ({ errors, register, setValue, getValues }) => {
   const [activeTicketTier, setActiveTicketTier] = useState("list");
   const [selectedTicket, setSelectedTicket] = useState();
 
+  useEffect(() => {
+    if (getValues("_tickettiers")?.length < 1) setActiveTicketTier("form");
+  }, [getValues("_tickettiers")]);
+
   const deleteTicket = ticket => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this ticket?",
+    );
+    if (!confirm) return;
     dispatch(
       setEventInfo({
         ...event,
@@ -114,7 +123,7 @@ const TicketTierForm = ({
   useEffect(() => {
     setTicket(selectedTicket);
   }, [selectedTicket]);
-  console.log(ticket);
+
   const changeHandler = e => {
     const { name, value } = e.target;
 
@@ -158,11 +167,13 @@ const TicketTierForm = ({
         const index = getValues("_tickettiers").findIndex(
           t => t._id === ticket._id,
         );
+
         getValues("_tickettiers")[index] = response.data.data;
+        setValue("_tickettiers", getValues("_tickettiers"));
       } else
         setValue("_tickettiers", [
           ...getValues("_tickettiers"),
-          response.data.data._id,
+          response.data.data,
         ]);
       setActiveTicketTier("list");
     }
@@ -189,22 +200,22 @@ const TicketTierForm = ({
         className="w-full"
         placeholder="Add name"
         name="name"
-        value={ticket.name}
+        value={ticket?.name}
         required={true}
         onChange={changeHandler}
-        errorMessage={isSubmitted && !ticket.name && "Name is required"}
+        errorMessage={isSubmitted && !ticket?.name && "Name is required"}
       />
       <TextField
         label="Description"
         type="textarea"
         required={true}
-        value={ticket.description}
+        value={ticket?.description}
         className="w-full"
         placeholder="Write a description for your Tickets"
         name="description"
         onChange={changeHandler}
         errorMessage={
-          isSubmitted && !ticket.description && "Description is required"
+          isSubmitted && !ticket?.description && "Description is required"
         }
       />
       <div className="flex gap-3 w-full">
@@ -213,25 +224,27 @@ const TicketTierForm = ({
           type="number"
           min="1"
           required={true}
-          value={ticket.total_ticket_quantity}
+          value={ticket?.total_ticket_quantity}
           className="w-full"
           placeholder="Add quantity"
           name="total_ticket_quantity"
           onChange={changeHandler}
           errorMessage={
             isSubmitted &&
-            !ticket.total_ticket_quantity &&
+            !ticket?.total_ticket_quantity &&
             "Quantity is required"
           }
         />
         <SelectField
           name="privacy"
           label="Privacy"
-          value={ticket.privacy}
+          value={ticket?.privacy}
           options={ticketPrivacyOptions}
           required={true}
           onChange={onSelectPrivacy}
-          errorMessage={isSubmitted && !ticket.privacy && "Privacy is required"}
+          errorMessage={
+            isSubmitted && !ticket?.privacy && "Privacy is required"
+          }
         />
       </div>
       <TextField
@@ -248,11 +261,11 @@ const TicketTierForm = ({
         className="w-full"
         options={ticketTypeOptions}
         label="Pricing Type"
-        value={ticket.pricingType}
+        value={ticket?.pricingType}
         required={true}
         onChange={onSelectType}
         errorMessage={
-          isSubmitted && !ticket.pricingType && "Privacy is required"
+          isSubmitted && !ticket?.pricingType && "Privacy is required"
         }
       />
 
@@ -260,13 +273,13 @@ const TicketTierForm = ({
         name="price"
         label="Price"
         type="number"
-        value={ticket.price}
+        value={ticket?.price}
         min={1}
         className="w-full"
         required={true}
         placeholder="Add price"
         onChange={changeHandler}
-        errorMessage={isSubmitted && !ticket.price && "Price is required"}
+        errorMessage={isSubmitted && !ticket?.price && "Price is required"}
       />
       <div className="w-full flex gap-3">
         <TextField
@@ -274,7 +287,7 @@ const TicketTierForm = ({
           required={true}
           Icon={Calendar}
           value={
-            ticket.start_availability
+            ticket?.start_availability
               ? new Date(ticket.start_availability).toISOString().slice(0, 16)
               : ""
           }
@@ -282,9 +295,11 @@ const TicketTierForm = ({
           placeholder="Choose date and time"
           name="start_availability"
           onChange={changeHandler}
+          id="start_availability"
+          onIconClick={() => openInputPicker("start_availability")}
           errorMessage={
             isSubmitted &&
-            !ticket.start_availability &&
+            !ticket?.start_availability &&
             "Start availability is required"
           }
         />
@@ -293,9 +308,11 @@ const TicketTierForm = ({
           required={true}
           Icon={Calendar}
           type="datetime-local"
+          id="end_availability"
+          onIconClick={() => openInputPicker("end_availability")}
           value={
-            ticket.end_availability
-              ? new Date(ticket.end_availability).toISOString().slice(0, 16)
+            ticket?.end_availability
+              ? new Date(ticket?.end_availability).toISOString().slice(0, 16)
               : ""
           }
           placeholder="Choose date and time"
@@ -303,7 +320,7 @@ const TicketTierForm = ({
           onChange={changeHandler}
           errorMessage={
             isSubmitted &&
-            !ticket.end_availability &&
+            !ticket?.end_availability &&
             "End availability is required"
           }
         />

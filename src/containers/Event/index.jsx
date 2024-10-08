@@ -49,6 +49,7 @@ const CreateEventContainer = () => {
           <TabMenu
             tabs={currentSteps || steps}
             activeTab={activeStep}
+            currentTab={currStep}
             onSelect={onTabSelect}
             title="EVENT CREATION STEPS"
           />
