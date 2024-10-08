@@ -23,11 +23,21 @@ export const getPresignedUrl = async (file, fileType) => {
   }
 };
 
-export const uploadFile = async (file, presignedUrl) => {
+export const uploadFileWithPreSignedUrl = async (file, presignedUrl) => {
   const response = await axios.put(presignedUrl, file, {
     headers: {
       "Content-Type": file.type,
     },
   });
   return response;
+};
+
+export const uploadFile = async (file, fileType) => {
+  try {
+    const { url, key } = await getPresignedUrl(file, fileType);
+    const response = await uploadFileWithPreSignedUrl(file, url);
+    return { response, key };
+  } catch (error) {
+    toast.error("Failed to upload image. Please try again.");
+  }
 };

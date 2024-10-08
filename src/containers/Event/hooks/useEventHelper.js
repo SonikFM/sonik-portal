@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const useEventHelper = ({ activeStep }) => {
   const { data: eventData } = useSelector(state => state.event);
-  const [createDraftEvent, { isSuccess, isLoading }] =
-    useCreateDraftEventMutation();
+  const [createDraftEvent] = useCreateDraftEventMutation();
   const [updateEvent] = useUpdateEventMutation();
   const [finalizeEvent] = useFinalizeEventMutation();
   const navigate = useNavigate();
@@ -101,19 +100,17 @@ const useEventHelper = ({ activeStep }) => {
       updateEvent({ _event: eventData._id, body: data, activeStep });
     } else if (activeStep === 4) {
       // Upload Image
-      const { url, key } = await getPresignedUrl(
+      const { response, key } = await uploadFile(
         data.images.primaryImage,
         "events",
       );
 
-      const response = await uploadFile(data.images.primaryImage, url);
-      if (response.status === 200) {
+      if (response.status === 200)
         updateEvent({
           _event: eventData._id,
           body: { images: { primaryImage: key } },
           activeStep,
         });
-      }
     } else if (activeStep === 5) {
       const payload = {
         ...data,
