@@ -78,6 +78,9 @@ module.exports = {
           DEFAULT: "#E93544",
           dark: "#DF1C41",
         },
+        disabled: {
+          300: "#525866",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -30,6 +30,7 @@ const CreateEventContainer = () => {
     if (tab.id <= currStep)
       setActiveTab({
         ...tab,
+        desc: steps[tab.id - 1].desc,
         component: steps[tab.id - 1].component,
         validationSchema: steps[tab.id - 1].validationSchema,
       });
@@ -45,7 +46,7 @@ const CreateEventContainer = () => {
         toggleDrawer={toggleDrawer}
       />
       <div className="max-w-[1100px]">
-        <div className="flex p-4 md:p-8 justify-between gap-3">
+        <div className="flex flex-col md:flex-row p-4 md:p-8 md:justify-between gap-3">
           <TabMenu
             tabs={currentSteps || steps}
             activeTab={activeStep}
@@ -54,7 +55,7 @@ const CreateEventContainer = () => {
             title="EVENT CREATION STEPS"
           />
           <div className="w-full max-w-[680px]">
-            <div className="pb-4 mb-6 border-b border-grey-light">
+            <div className="hidden md:block pb-4 mb-6 border-b border-grey-light">
               <h3 className="font-medium text-white">{activeStep.label}</h3>
               <p className="text-grey-100">{activeStep.desc}</p>
             </div>
