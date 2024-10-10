@@ -112,7 +112,7 @@ const TicketTierForm = ({
     name: "",
     description: "",
     total_ticket_quantity: "",
-    privacy: "free",
+    privacy: "public",
     redemption_code: "",
     pricingType: "free",
     price: "",

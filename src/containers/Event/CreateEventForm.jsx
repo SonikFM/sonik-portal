@@ -31,8 +31,12 @@ const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
     submitEvent(data);
   };
 
+  const onError = error => {
+    console.log(error);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit, onError)}>
       {React.cloneElement(children, {
         register,
         errors,
