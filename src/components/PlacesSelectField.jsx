@@ -2,8 +2,9 @@ import SearchIcon from "@/svgs/SearchIcon";
 import InputWithIcon from "./InputWithIcon";
 import { Autocomplete } from "@react-google-maps/api";
 import { Label } from "./ui/label";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import InformationIcon from "@/svgs/InformationIcon";
+import { medellinBounds } from "@/contants/mapOptions";
 
 const PlacesSelectField = ({
   className,
@@ -67,6 +68,7 @@ const PlacesSelectField = ({
           autocomplete.addListener("place_changed", () =>
             handlePlaceChanged(autocomplete),
           );
+
           if (defaultValue) {
             const input = autocomplete.inputField;
             if (input) {
@@ -76,18 +78,22 @@ const PlacesSelectField = ({
         }}
         options={{
           types: ["address"],
-          componentRestrictions: { country: "us" },
+          componentRestrictions: { country: "co" },
+          bounds: medellinBounds,
+          strictBounds: true,
         }}
       >
         <InputWithIcon
           icon={<SearchIcon />}
           name="venue"
-          className="text-white bg-transparent border-grey-light placeholder:text-grey-100"
+          className="text-white w-full bg-transparent border-grey-light placeholder:text-grey-100"
           placeholder={placeholder}
           defaultValue={defaultValue}
+          onInput={va => console.log("input", va)}
           {...props}
         />
       </Autocomplete>
+
       {errorMessage && (
         <span className="flex gap-1 text-xs text-error-dark">
           <InformationIcon />

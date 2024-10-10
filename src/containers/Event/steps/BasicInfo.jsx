@@ -24,7 +24,7 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="space-y-5 w-full">
+    <div className="space-y-5 w-full mt-6 md:mt-0">
       <TextField
         label="Title"
         required={true}
