@@ -167,7 +167,10 @@ const ArtistForm = ({
     <div className="w-full flex flex-col gap-16">
       <div className="flex flex-col gap-5">
         {selectedArtists.map((artist, index) => (
-          <div className="flex gap-3 items-center " key={index}>
+          <div
+            className="flex pb-3 border-b border-grey-light md:border-none flex-col md:flex-row gap-3 items-center "
+            key={index}
+          >
             <SelectField
               label="Artist"
               placeholder="Choose Artist"

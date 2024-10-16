@@ -15,16 +15,19 @@ const Image = ({ getValues, isLoading, ...props }) => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="flex flex-col gap-3">
-      <Label className="text-[#f6f6f6]">
+    <div className="flex flex-col gap-3 mt-3 md:mt-0">
+      <Label className="text-[#f6f6f6] text-sm">
         Upload Image <span className="text-primary">*</span>
       </Label>
       <Upload getValues={getValues} {...props} />
-      <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
-        <Button variant="outline" className="w-40">
+      <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
+        <Button variant="outline" className="w-full md:w-40">
           Cancel
         </Button>
-        <Button className="w-40" disabled={disableNextStep}>
+        <Button
+          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
+          disabled={disableNextStep}
+        >
           Continue
         </Button>
       </div>
@@ -47,7 +50,7 @@ const Upload = ({ getValues, setValue }) => {
   return (
     <div
       {...getRootProps()}
-      className="border border-dashed border-[#525866] rounded-lg  text-center h-[400px] sm:h-[680px] flex flex-col justify-center"
+      className=" border border-dashed border-[#525866] rounded-lg  text-center h-[300px] md:h-[400px] sm:h-[680px] flex flex-col justify-center"
     >
       <input {...getInputProps()} />
       {image ? (

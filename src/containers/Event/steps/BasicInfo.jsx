@@ -88,11 +88,14 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
         {...register("presented_by", true)}
       />
 
-      <div className="flex justify-end gap-3 py-8 mb-4 border-t mt-14 border-grey-light">
-        <Button variant="outline" className="w-40" type="button">
+      <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
+        <Button variant="outline" className="w-full md:w-40">
           Cancel
         </Button>
-        <Button className="w-40" disabled={allowNextStep()} type="submit">
+        <Button
+          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
+          disabled={allowNextStep()}
+        >
           Continue
         </Button>
       </div>

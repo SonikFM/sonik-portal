@@ -2,7 +2,7 @@ import SearchIcon from "@/svgs/SearchIcon";
 import InputWithIcon from "./InputWithIcon";
 import { Autocomplete } from "@react-google-maps/api";
 import { Label } from "./ui/label";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import InformationIcon from "@/svgs/InformationIcon";
 import { medellinBounds } from "@/contants/mapOptions";
 
@@ -83,15 +83,17 @@ const PlacesSelectField = ({
           strictBounds: true,
         }}
       >
-        <InputWithIcon
-          icon={<SearchIcon />}
-          name="venue"
-          className="text-white w-full bg-transparent border-grey-light placeholder:text-grey-100"
-          placeholder={placeholder}
-          defaultValue={defaultValue}
-          onInput={va => console.log("input", va)}
-          {...props}
-        />
+        <div className="relative">
+          <InputWithIcon
+            icon={<SearchIcon />}
+            name="venue"
+            className="text-white w-full bg-transparent border-grey-light placeholder:text-grey-100"
+            placeholder={placeholder}
+            defaultValue={defaultValue}
+            {...props}
+          />
+          <i className="fa-solid fa-circle-xmark absolute right-3 top-1/2 text-white -translate-y-1/2"></i>
+        </div>
       </Autocomplete>
 
       {errorMessage && (
