@@ -1,4 +1,11 @@
-#root {
+:root {
+  --grey-light: #2b303b;
+  --grey-50: #e1e4ea;
+  --grey-200: #181b25;
+}
+
+body {
+  font-family: "Inter", sans-serif;
 }
 
 .logo {
@@ -37,16 +44,16 @@
   color: #888;
 }
 
-.hide-scroll::-webkit-scrollbar{
+.hide-scroll::-webkit-scrollbar {
   height: 0;
   width: 0;
 }
-.hide-scroll::-webkit-scrollbar-thumb{
+.hide-scroll::-webkit-scrollbar-thumb {
   height: 0;
   width: 0;
   background: transparent;
 }
-.hide-scroll::-webkit-scrollbar-track{
+.hide-scroll::-webkit-scrollbar-track {
   height: 0;
   width: 0;
   background: transparent;
@@ -55,9 +62,82 @@
 /* QUILL EDITOR STYLES */
 
 .ql-editor {
-  border: 1px solid #2B303B;
+  border: 1px solid var(--grey-light);
   border-radius: 8px;
   min-height: 72px;
   padding: 8px;
   color: white;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="datetime-local"] {
+  -moz-appearance: textfield;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="time"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.pac-container {
+  margin-top: 0.5rem;
+  background-color: var(--grey-200);
+  border: 1px solid var(--grey-50);
+  border-radius: 0.5rem;
+}
+
+.pac-item {
+  padding: 10px;
+  color: var(--grey-50);
+}
+
+.pac-item:hover {
+  background: transparent;
+  cursor: pointer;
+}
+
+.pac-item-query {
+  color: var(--grey-50);
+  font-family: "Inter", sans-serif;
+}
+
+.pac-item:not(:first-child) {
+  border-top: 1px solid var(--grey-light);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #181b25;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eaecf0;
+  border-radius: 0.5rem;
+  width: 0.25rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #eaecf0;
 }

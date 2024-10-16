@@ -237,14 +237,6 @@ const OrganizerAccount = () => {
     );
   };
 
-  console.log({
-    isLoading,
-    status,
-    data,
-    current: initialValuesRef?.current,
-    currentValues,
-  });
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <DashboardHeader
