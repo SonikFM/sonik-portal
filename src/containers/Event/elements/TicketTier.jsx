@@ -53,7 +53,7 @@ const TicketTier = ({ errors, register, setValue, getValues }) => {
   };
 
   return (
-    <div className="w-full bg-grey-200  px-4 py-5 shadow-[#0A0D1408] rounded-xl">
+    <div className="w-full bg-grey-200  px-2 md:px-4 py-5 shadow-[#0A0D1408] rounded-xl">
       {activeTicketTier === "form" ? (
         <TicketTierForm
           selectedTicket={selectedTicket}
@@ -224,7 +224,7 @@ const TicketTierForm = ({
           isSubmitted && !ticket?.description && "Description is required"
         }
       />
-      <div className="flex gap-3 w-full">
+      <div className="flex flex-col md:flex-row gap-3 w-full">
         <TextField
           label="Quantity"
           type="number"
@@ -287,7 +287,7 @@ const TicketTierForm = ({
         onChange={changeHandler}
         errorMessage={isSubmitted && !ticket?.price && "Price is required"}
       />
-      <div className="w-full flex gap-3">
+      <div className="w-full flex flex-col md:flex-row gap-3">
         <TextField
           label="Start Availablity"
           required={true}

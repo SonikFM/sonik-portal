@@ -40,7 +40,10 @@ const TextField = forwardRef(
       <div className="w-full flex flex-col gap-3">
         <div className="flex justify-between items-center">
           <Label
-            className={twMerge("text-[#f6f6f6]", hasError && "text-error-dark")}
+            className={twMerge(
+              "text-[#f6f6f6] text-sm",
+              hasError && "text-error-dark",
+            )}
           >
             {label} {required && <span className="text-primary"> *</span>}
           </Label>

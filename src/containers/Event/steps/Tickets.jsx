@@ -28,7 +28,7 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
 
   return (
     <div className="space-y-5 w-full">
-      <div className="flex gap-5">
+      <div className="flex flex-col md:flex-row gap-2 md:gap-5">
         <TextField
           label="Age Limit"
           name="age_limit"
@@ -41,7 +41,7 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
           {...register("age_limit", true)}
           errorMessage={errors.age_limit?.message}
         />
-        <div className="flex w-full gap-2 mt-7">
+        <div className="flex w-full gap-2 ml-3 md:ml-0 mt-2 md:mt-7">
           <Checkbox
             className="border-[#F5F7FA] peer-checked:border-primary"
             name="re_entry_allowed"

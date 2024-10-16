@@ -24,7 +24,7 @@ const TicketList = ({
     return <div className="p-2 text-white text-center">No Results Found</div>;
 
   return (
-    <div className="px-4 flex flex-col gap-3 w-full py-1 mt-2 bg-grey-200 rounded-2xl">
+    <div className=" px-2 md:px-4 flex flex-col gap-3 w-full py-1 mt-2 bg-grey-200 rounded-2xl">
       {tickets.map((ticket, ind) => {
         return (
           <Ticket
@@ -43,7 +43,7 @@ const TicketList = ({
 
       <Button
         variant="outline"
-        className="w-[200px] flex gap-3 font-medium bg-transparent"
+        className="w-[200px] ml-6 md:ml-0 flex gap-3 font-medium bg-transparent"
         type="button"
         onClick={() => setActiveTicketTier("form")}
       >

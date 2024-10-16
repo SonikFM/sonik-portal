@@ -25,7 +25,7 @@ const SelectField = forwardRef(
 
     return (
       <div className="w-full flex flex-col gap-3">
-        <Label className="text-white">
+        <Label className="text-white text-sm">
           {label} {required && <span className="text-primary"> *</span>}
         </Label>
         <Select
