@@ -34,10 +34,10 @@ const initialState = {
     images: {
       additionalImages: [],
     },
-    age_limit: "",
+    age_limit: 18,
     re_entry_allowed: false,
     currency: "COL",
-    ticket_limit_per_user: 0,
+    ticket_limit_per_user: 1,
     _id: "",
     artists: [],
     lineup: [],
