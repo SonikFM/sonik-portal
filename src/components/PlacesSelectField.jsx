@@ -51,7 +51,6 @@ const PlacesSelectField = ({
         getAddressComponent("administrative_area_level_1"),
       );
 
-      console.log(place, "<---");
       setValue("venue.country", getAddressComponent("country"));
       setValue("venue.city", getAddressComponent("locality"));
     },
