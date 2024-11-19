@@ -33,7 +33,9 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
           label="Age Limit"
           name="age_limit"
           required={true}
-          value={getValues("age_limit") || ageLimit}
+          value={
+            getValues("age_limit") ? parseInt(getValues("age_limit")) : ageLimit
+          }
           className="w-full"
           characterLimit={ageCharacterLimit}
           placeholder="This event is for 18+"
