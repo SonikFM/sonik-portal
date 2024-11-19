@@ -70,14 +70,14 @@ export const Select = ({
           align="right"
           style={{ width: triggerRef.current?.offsetWidth }}
         >
-          <div className="bg-[#181B25]">
+          <div className="bg-[#181B25] ">
             {hasSearch && (
               <input
                 type="text"
                 placeholder="Search..."
                 onChange={onSearch}
                 autoFocus
-                className="w-full mx-2 p-2.5 border-b outline-none border-grey-light text-sm text-grey-100 bg-[#181B25] placeholder:text-grey-100"
+                className="w-full px-4 py-2.5 border-b outline-none border-grey-light text-sm text-grey-100 bg-[#181B25] placeholder:text-grey-100"
               />
             )}
             {isLoading ? (
@@ -88,7 +88,7 @@ export const Select = ({
             ) : (
               <div>
                 {options.length === 0 ? (
-                  <div className="px-4.5 py-2.5 text-grey-50">
+                  <div className="px-5 py-2.5 text-grey-50">
                     No results found.
                   </div>
                 ) : (

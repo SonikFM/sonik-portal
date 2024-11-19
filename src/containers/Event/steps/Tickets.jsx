@@ -10,7 +10,7 @@ import Loading from "@/components/Loading";
 
 const ageCharacterLimit = 50;
 const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
-  const [ageLimit, setAgeLimit] = useState("");
+  const [ageLimit, setAgeLimit] = useState(18);
   const changeHandler = event => {
     const { value } = event.target;
     if (value.length <= ageCharacterLimit) setAgeLimit(value);
