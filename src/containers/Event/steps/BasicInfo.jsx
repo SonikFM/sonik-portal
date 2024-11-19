@@ -17,7 +17,7 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
   const getDefaultAddress = () => {
     const venue = getValues("venue");
     return venue?.formatted_address
-      ? `${venue.formatted_address}, ${venue.city}, ${venue.region}, ${venue.country}`
+      ? `${venue.formatted_address}, ${venue.city ? venue.city + ", " : ""}${venue.region ? venue.region + ", " : ""}${venue.country}`
       : "";
   };
 

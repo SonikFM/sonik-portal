@@ -18,7 +18,7 @@ export const basicsSchema = z.object({
         .array(z.number())
         .min(1, { message: "Coordinates are required" }),
     }),
-    city: z.string().min(1, { message: "City is required" }),
+    city: z.string(),
     region: z.string().min(1, { message: "Region is required" }),
     country: z.string().min(1, { message: "Country is required" }),
   }),

@@ -2,7 +2,7 @@ import SearchIcon from "@/svgs/SearchIcon";
 import InputWithIcon from "./InputWithIcon";
 import { Autocomplete } from "@react-google-maps/api";
 import { Label } from "./ui/label";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback } from "react";
 import InformationIcon from "@/svgs/InformationIcon";
 import { medellinBounds } from "@/contants/mapOptions";
 
@@ -50,6 +50,8 @@ const PlacesSelectField = ({
         "venue.region",
         getAddressComponent("administrative_area_level_1"),
       );
+
+      console.log(place, "<---");
       setValue("venue.country", getAddressComponent("country"));
       setValue("venue.city", getAddressComponent("locality"));
     },

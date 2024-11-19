@@ -70,25 +70,27 @@ export const Select = ({
           align="right"
           style={{ width: triggerRef.current?.offsetWidth }}
         >
-          <div className="bg-[#181B25] px-2">
+          <div className="bg-[#181B25]">
             {hasSearch && (
               <input
                 type="text"
                 placeholder="Search..."
                 onChange={onSearch}
                 autoFocus
-                className="w-full p-2.5 border-b outline-none border-grey-light text-sm text-grey-100 bg-[#181B25] placeholder:text-grey-100"
+                className="w-full mx-2 p-2.5 border-b outline-none border-grey-light text-sm text-grey-100 bg-[#181B25] placeholder:text-grey-100"
               />
             )}
             {isLoading ? (
-              <div className="flex p-2.5 items-center gap-2 text-grey-50">
+              <div className="flex px-5 py-2.5 items-center gap-2 text-grey-50">
                 <LoaderCircle className="w-5" />
                 <span className="text-sm text-grey-50">Searching...</span>
               </div>
             ) : (
               <div>
                 {options.length === 0 ? (
-                  <div className="p-2.5 text-grey-50">No results found.</div>
+                  <div className="px-4.5 py-2.5 text-grey-50">
+                    No results found.
+                  </div>
                 ) : (
                   options.map((option, index) => (
                     <div
@@ -105,7 +107,7 @@ export const Select = ({
                       ) : (
                         <div
                           className={cn(
-                            "flex gap-3 font-400 text-grey-50 cursor-pointer text-sm px-2 py-2.5",
+                            "flex  gap-3 font-400 text-grey-50 cursor-pointer text-sm px-5 py-2.5 hover:bg-[#242630]",
                             index !== 0 && "border-t border-grey-light",
                           )}
                         >
