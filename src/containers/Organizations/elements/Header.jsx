@@ -17,6 +17,7 @@ const Header = ({ pagination }) => {
 
   const debouncedSearch = useCallback(
     debounce(query => {
+      console.log({ query, a: "ASdfasdf" });
       if (query) {
         dispatch(
           fetchOrganizations({
@@ -35,6 +36,8 @@ const Header = ({ pagination }) => {
       dispatch(toggleView(v));
     }
   };
+
+  console.log({ meta, pagination });
 
   return (
     <div className="flex flex-wrap items-center gap-4 py-4 xl:flex-nowrap xl:justify-between">

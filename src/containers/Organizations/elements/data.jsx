@@ -129,6 +129,8 @@ export const getColumns = ({
           <DialogOverlay className="bg-transparent" />
           <DeleteConfirmationModal
             toggleOpen={a => {
+              console.log({ a, open });
+
               toggleOpen(a);
             }}
             loading={loading}

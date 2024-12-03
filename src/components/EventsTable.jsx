@@ -95,6 +95,7 @@ export const columns = [
       <div className="text-sm font-normal text-grey-100">Organizer</div>
     ),
     cell: ({ row }) => {
+      console.log({ row }, "org");
       const org = row.original.organizer;
       return (
         <div className="flex gap-3">
