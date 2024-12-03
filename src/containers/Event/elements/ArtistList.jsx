@@ -1,18 +1,8 @@
 import { useCallback } from "react";
 import Artist from "./Artist";
 import { useSelector } from "react-redux";
-import { Button } from "@/components/ui/button";
-import { PlusIcon } from "lucide-react";
 
-const ArtistList = ({
-  artists,
-  updateList,
-  setOpenedContainerType,
-  artistQuery,
-  onEdit,
-  onDelete,
-  addArtist,
-}) => {
+const ArtistList = ({ artists, updateList, artistQuery }) => {
   const { isLoading } = useSelector(state => state.app.spotify);
   const moveArtist = useCallback(
     (dragIndex, hoverIndex) => {
@@ -24,14 +14,17 @@ const ArtistList = ({
     [artists],
   );
 
+  const onDelete = artist => {
+    updateList(artists.filter(a => a.id !== artist.id));
+  };
+
   if (!isLoading && !artistQuery && !artists.length) {
     return null;
   }
   if (artistQuery && artists.length === 0)
     return <div className="p-2">No Results Found</div>;
-
   return (
-    <div className="px-4 w-full py-1 mt-2 bg-grey-200 rounded-2xl">
+    <div className="px-4 py-1 mt-2 bg-grey-200 rounded-2xl">
       {Array.isArray(artists) &&
         artists.map((artist, ind) => {
           return (
@@ -41,29 +34,15 @@ const ArtistList = ({
                   ? "py-4 border-b border-grey-light "
                   : ""
               }
-              key={artist.id || ind}
+              key={artist.id}
               id={artist.id}
               artist={artist}
               index={ind}
               moveArtist={moveArtist}
               onDelete={() => onDelete(artist)}
-              onEdit={onEdit}
             />
           );
         })}
-
-      <div className="flex">
-        <Button
-          variant="outline"
-          className="flex bg-transparent w-40 gap-1"
-          onClick={() => {
-            addArtist();
-            setOpenedContainerType("form");
-          }}
-        >
-          <PlusIcon className="w-4" /> Add Artist
-        </Button>
-      </div>
     </div>
   );
 };

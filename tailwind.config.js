@@ -58,7 +58,6 @@ module.exports = {
           DEFAULT: "#717784",
           light: "#2B303B",
           dark: "#0E121B",
-          50: "#E1E4EA",
           100: "#99A0AE",
           200: "#181B25",
           300: "#222530",
@@ -77,9 +76,6 @@ module.exports = {
         error: {
           DEFAULT: "#E93544",
           dark: "#DF1C41",
-        },
-        disabled: {
-          300: "#525866",
         },
       },
       borderRadius: {

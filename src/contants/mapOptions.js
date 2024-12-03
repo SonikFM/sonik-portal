@@ -188,10 +188,3 @@ export const mapOptions = {
   disableDefaultUI: true, // Disable default UI elements
   zoomControl: false, // Enable zoom control
 };
-
-export const medellinBounds = {
-  north: 6.457,
-  south: 6.001,
-  east: -75.271,
-  west: -75.691,
-};

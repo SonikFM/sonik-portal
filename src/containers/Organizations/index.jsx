@@ -90,6 +90,7 @@ const Organizations = () => {
     dispatch(deleteOrganization(e.id));
   };
   const handleEdit = e => {
+    console.log({ e });
     navigate(`/organization/${e.id}`);
   };
 

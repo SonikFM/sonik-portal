@@ -9,7 +9,7 @@ const PublicRoute = () => {
   if (isLoading) {
     return <AppLoader />;
   }
-
+  console.log({ user });
   if (user?._id) {
     const queryParams = new URLSearchParams(location.search);
     const redirectTo = queryParams.get("redirect") || "/dashboard";
