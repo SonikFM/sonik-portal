@@ -1,43 +1,68 @@
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import DeleteIcon from "@/svgs/DeleteIcon";
+import EditIcon from "@/svgs/EditIcon";
 import MenuIcon from "@/svgs/MenuIcon";
 import TicketIcon from "@/svgs/TicketIcon";
 
-const Ticket = ({ className, ...rest }) => {
+const Ticket = ({ className, ticket, onDelete, onEdit, ...rest }) => {
   return (
-    <div
-      className={cn(
-        "flex gap-2 md:gap-3 items-center justify-between py-4",
-        className,
-      )}
-      {...rest}
-    >
-      <MenuIcon className="text-grey-100 shrink-0" />
-      <div className="flex items-center gap-2 w-[calc(100%-60px)]">
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-grey-dark shrink-0">
-          <TicketIcon className="w-5 h-5 text-pink" />
-        </div>
-        <div className="flex flex-col gap-2 overflow-hidden shrink ">
-          <Label className="w-full font-medium text-white truncate ">
-            General admission presale
-          </Label>
-          <div className="flex gap-2">
-            <div className="flex items-center w-20 gap-2">
-              <p className="text-xs text-grey-100">Quality</p>
-              <Label className="font-medium text-white">500</Label>
+    <div className="flex flex-col">
+      <MenuIcon className="block md:hidden text-grey-100 shrink-0" />
+      <div
+        className={cn(
+          "flex gap-2 md:gap-4 items-center justify-between py-4",
+          className,
+        )}
+        {...rest}
+      >
+        <MenuIcon className="hidden md:inline-block text-grey-100 shrink-0" />
+        <div className="flex justify-between items-center gap-3 w-[calc(100%-60px)]">
+          <div className="flex gap-3 items-center">
+            <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-grey-dark shrink-0">
+              <TicketIcon className="w-5 h-5 text-pink" />
             </div>
-            <div className="flex items-center w-20 gap-2">
-              <p className="text-xs text-grey-100">Price</p>
-              <Label className="font-medium text-white">100$</Label>
+            <div className="flex flex-col gap-1 overflow-hidden shrink">
+              <Label className="w-full text-xs font-medium text-grey-100 truncate ">
+                Ticket name
+              </Label>
+              <span className="text-sm text-white font-medium">
+                {ticket.name}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex gap-3">
+            <div className="flex justify-start flex-col gap-1">
+              <Label className="w-full text-xs font-medium text-grey-100 shrink">
+                Quantity
+              </Label>
+              <span className="text-sm text-white font-medium">
+                {ticket.total_ticket_quantity}
+              </span>
+            </div>
+            <div className="flex justify-start flex-col gap-1">
+              <Label className="w-full text-xs font-medium text-grey-100 shrink">
+                Price
+              </Label>
+              <span className="text-sm text-white font-medium">
+                {ticket.price}
+              </span>
             </div>
           </div>
         </div>
+
+        <div className="flex gap-2 items-center ml-5">
+          <EditIcon
+            className="cursor-pointer text-[#525866] shrink-0 hover:text-warning"
+            onClick={onEdit}
+          />
+          <DeleteIcon
+            className="cursor-pointer text-grey-100 shrink-0 hover:text-error"
+            onClick={onDelete}
+          />
+        </div>
       </div>
-      <Button variant="destructive" className="flex gap-2 p-2 shrink-0">
-        <DeleteIcon className="text-white" />
-      </Button>
     </div>
     // <div className={cn("flex gap-2  md:gap-3 items-center py-4", className)} {...rest}>
     // 	<MenuIcon className="text-grey-100 shrink-0" />
