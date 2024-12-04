@@ -5,8 +5,10 @@ import { Calendar } from "lucide-react";
 import { timezones } from "../config/options";
 import { openInputPicker } from "../config/helpers";
 import Loading from "@/components/Loading";
+import { useTranslation } from "react-i18next";
 
 const Timeline = ({ errors, getValues, setValue, isLoading }) => {
+  const { t } = useTranslation("events");
   const disableNextStep = () => {
     return (
       !getValues("timezone") ||
@@ -26,7 +28,7 @@ const Timeline = ({ errors, getValues, setValue, isLoading }) => {
   return (
     <div className="space-y-5 w-full">
       <SelectField
-        label="Timezone"
+        label={t("timezone")}
         value={getValues("timezone") || timezones[0].value}
         required={true}
         options={timezones}
@@ -37,10 +39,10 @@ const Timeline = ({ errors, getValues, setValue, isLoading }) => {
         onChange={e => setValue("timezone", e.target.value)}
       />
       <TextField
-        label="Announcement"
+        label={t("announcement")}
         required={true}
         type="datetime-local"
-        placeholder="Choose date and time"
+        placeholder={t("chooseDateAndTime")}
         Icon={Calendar}
         id="announcement"
         onIconClick={() => openInputPicker("announcement")}
@@ -54,10 +56,10 @@ const Timeline = ({ errors, getValues, setValue, isLoading }) => {
         }
       />
       <TextField
-        label="Event Start"
+        label={t("startEvent")}
         required={true}
         type="datetime-local"
-        placeholder="Choose date and time"
+        placeholder={t("chooseDateAndTime")}
         Icon={Calendar}
         name="event_start"
         id="event_start"
@@ -71,10 +73,10 @@ const Timeline = ({ errors, getValues, setValue, isLoading }) => {
         }
       />
       <TextField
-        label="Event End"
+        label={t("eventEnd")}
         required={true}
         type="datetime-local"
-        placeholder="Choose date and time"
+        placeholder={t("chooseDateAndTime")}
         Icon={Calendar}
         id="event_end"
         name="event_end"
@@ -90,13 +92,13 @@ const Timeline = ({ errors, getValues, setValue, isLoading }) => {
 
       <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
         <Button variant="outline" className="w-full md:w-40">
-          Cancel
+          {t("cancel")}
         </Button>
         <Button
           className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
           disabled={disableNextStep}
         >
-          Continue
+          {t("continue")}
         </Button>
       </div>
     </div>

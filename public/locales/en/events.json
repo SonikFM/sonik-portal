@@ -43,6 +43,13 @@
   "public": "Public",
   "private": "Private",
   "hidden": "Hidden",
+
+  "timezone": "Timezone",
+  "announcement": "Announcement",
+  "chooseDateAndTime": "Choose the date and time",
+  "startEvent": "Event start",
+  "eventEnd": "Event end",
+
   "cancel": "Cancelar",
   "continue": "Continuar"
 }

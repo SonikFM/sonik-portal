@@ -46,6 +46,13 @@
   "concert": "Concierto",
   "dj": "DJ",
   "party": "Fiesta",
+
+  "timezone": "Zona horaria",
+  "announcement": "Anuncio",
+  "chooseDateAndTime": "Elige la fecha y la hora",
+  "startEvent": "Inicio del evento",
+  "eventEnd": "Fin del evento",
+
   "cancel": "Cancelar",
   "continue": "Continuar"
 }
