@@ -53,6 +53,22 @@
   "startEvent": "Inicio del evento",
   "eventEnd": "Fin del evento",
 
+  "doorOpen": "Puerta abierta",
+  "artistStartTime": "Hora de inicio del artista",
+  "scheduleTheStartTime": "Programa las horas de inicio para cada artista que se presentará en el evento",
+  "addArtist": "Agregar Artista",
+  "artist": "Artista",
+  "startTime": "Hora de inicio",
+  "chooseTime": "Elegir Hora",
+  "save": "Guardar",
+  "chooseArtist": "Elegir Artista",
+  "search": "Buscar",
+  "noResultsFound": "No se encontraron resultados",
+  "searching": "Buscando",
+  "areYouSureToDeleteArtist": "¿Estás seguro de eliminar este artista?",
+  "artistName": "Nombre del Artista",
+  "time": "Hora",
+
   "cancel": "Cancelar",
   "continue": "Continuar"
 }

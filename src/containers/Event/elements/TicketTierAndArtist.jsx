@@ -9,10 +9,12 @@ import { searchArtists } from "@/store/global/actions";
 import SelectField from "@/components/SelectField";
 import ArtistList from "./ArtistList";
 import { openInputPicker } from "../config/helpers";
+import { useTranslation } from "react-i18next";
 
 const DEBOUNCE_DELAY = 500;
 
 const TicketTierAndArtist = ({ getValues, setValue }) => {
+  const { t } = useTranslation("events");
   const [openedContainerType, setOpenedContainerType] = useState("list");
   const { artists, isLoading } = useSelector(state => state.app.spotify);
 
@@ -31,9 +33,7 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
   }, [openedContainerType]);
 
   const onDelete = artist => {
-    const confirm = window.confirm(
-      "Are you sure you want to delete this artist?",
-    );
+    const confirm = window.confirm(t("areYouSureToDeleteArtist"));
     if (!confirm) return;
     if (selectedArtists.length === 1) setOpenedContainerType(null);
     setValue(
@@ -86,14 +86,12 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
           />
           <div className="flex flex-col">
             <h6 className="text-base text-white font-medium tracking-tight">
-              Artist start time
+              {t("artistStartTime")}
             </h6>
-            <p className="text-grey-100 text-sm">
-              Schedule the start times for each artist performing at the event
-            </p>
+            <p className="text-grey-100 text-sm">{t("scheduleTheStartTime")}</p>
           </div>
           <Button className="w-40 bg-pink text-grey-dark" onClick={openForm}>
-            Add Artist
+            {t("addArtist")}
           </Button>
         </>
       )}
@@ -109,6 +107,7 @@ const ArtistForm = ({
   isLoading,
   addArtist,
 }) => {
+  const { t } = useTranslation("events");
   const cancelTokenSourceRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -172,8 +171,8 @@ const ArtistForm = ({
             key={index}
           >
             <SelectField
-              label="Artist"
-              placeholder="Choose Artist"
+              label={t("artist")}
+              placeholder={t("chooseArtist")}
               required={true}
               value={artist.spotify_id}
               options={filteredArtists}
@@ -185,10 +184,10 @@ const ArtistForm = ({
             />
 
             <TextField
-              label="Start Time"
+              label={t("startTime")}
               type="time"
               required={true}
-              placeholder="Choose Time"
+              placeholder={t("chooseTime")}
               Icon={Clock}
               id={`start_time_${index}`}
               onIconClick={() => openInputPicker(`start_time_${index}`)}
@@ -205,14 +204,14 @@ const ArtistForm = ({
           onClick={addArtist}
           type="button"
         >
-          Add Artist
+          {t("addArtist")}
         </Button>
         <Button
           className="w-40 bg-pink text-grey-dark"
           onClick={() => setOpenedContainerType("list")}
           type="button"
         >
-          Save
+          {t("save")}
         </Button>
       </div>
     </div>

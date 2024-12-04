@@ -4,6 +4,7 @@ import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { openInputPicker } from "../config/helpers";
 import Loading from "@/components/Loading";
+import { useTranslation } from "react-i18next";
 
 const Lineup = ({
   register,
@@ -13,6 +14,7 @@ const Lineup = ({
   isLoading,
   ...props
 }) => {
+  const { t } = useTranslation("events");
   const disableNextStep = () => {
     return !getValues("door_open");
   };
@@ -30,10 +32,10 @@ const Lineup = ({
         {...props}
       />
       <TextField
-        label="Door Open"
+        label={t("doorOpen")}
         required={true}
         type="datetime-local"
-        placeholder="Choose date and time"
+        placeholder={t("chooseDateAndTime")}
         Icon={Calendar}
         id="door_open"
         name="door_open"
@@ -48,13 +50,13 @@ const Lineup = ({
       />
       <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
         <Button variant="outline" className="w-full md:w-40">
-          Cancel
+          {t("cancel")}
         </Button>
         <Button
           className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
           disabled={disableNextStep}
         >
-          Continue
+          {t("continue")}
         </Button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { ChevronDown, LoaderCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { twMerge } from "tailwind-merge";
+import { useTranslation } from "react-i18next";
 
 export const Select = ({
   Icon,
@@ -24,6 +25,7 @@ export const Select = ({
   value: val,
   ...rest
 }) => {
+  const { t } = useTranslation("events");
   const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -74,7 +76,7 @@ export const Select = ({
             {hasSearch && (
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder={`${t("search")}...`}
                 onChange={onSearch}
                 autoFocus
                 className="w-full px-4 py-2.5 border-b outline-none border-grey-light text-sm text-grey-100 bg-[#181B25] placeholder:text-grey-100"
@@ -83,13 +85,15 @@ export const Select = ({
             {isLoading ? (
               <div className="flex px-5 py-2.5 items-center gap-2 text-grey-50">
                 <LoaderCircle className="w-5" />
-                <span className="text-sm text-grey-50">Searching...</span>
+                <span className="text-sm text-grey-50">
+                  {t("searching")}...
+                </span>
               </div>
             ) : (
               <div>
                 {options.length === 0 ? (
                   <div className="px-5 py-2.5 text-grey-50">
-                    No results found.
+                    {t("noResultsFound")}
                   </div>
                 ) : (
                   options.map((option, index) => (

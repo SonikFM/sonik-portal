@@ -50,6 +50,22 @@
   "startEvent": "Event start",
   "eventEnd": "Event end",
 
-  "cancel": "Cancelar",
-  "continue": "Continuar"
+  "doorOpen": "Door open",
+  "artistStartTime": "Artist start time",
+  "scheduleTheStartTime": "Schedule the start times for each artist performing at the event",
+  "addArtist": "Add Artist",
+  "artist": "Artist",
+  "startTime": "Start Time",
+  "chooseTime": "Choose Time",
+  "save": "Save",
+  "chooseArtist": "Choose Artist",
+  "search": "Search",
+  "noResultsFound": "No results found",
+  "searching": "Searching...",
+  "areYouSureToDeleteArtist": "Are you sure you want to delete this artist?",
+  "artistName": "Artist Name",
+  "time": "Time",
+
+  "cancel": "Cancel",
+  "continue": "Continue"
 }
