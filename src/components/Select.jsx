@@ -59,7 +59,7 @@ export const Select = ({
               <p className="text-sm text-white">{valueLabel}</p>
             ) : (
               <p className="text-sm text-grey-100 ">
-                {placeholder || "Select"}
+                {placeholder || t("select")}
               </p>
             )}
           </div>
