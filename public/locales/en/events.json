@@ -27,5 +27,22 @@
   },
   "eventCreationSteps": "EVENTS CREATION STEPS",
   "createAnEvent": "Create an event",
-  "addYourEventDetailsBellow": "Add your event details below"
+  "addYourEventDetailsBellow": "Add your event details below",
+  "addTitle": "Add Title",
+  "title": "Title",
+  "type": "Type",
+  "chooseTypeOfEvent": "Choose the type of event",
+  "description": "Description",
+  "addDescription": "Add Description",
+  "privacy": "Privacy",
+  "selectType": "Select Type",
+  "venue": "Venue",
+  "searchForAVenue": "Search for a venue",
+  "presentedBy": "Presented by",
+  "presenter": "Presenter",
+  "public": "Public",
+  "private": "Private",
+  "hidden": "Hidden",
+  "cancel": "Cancelar",
+  "continue": "Continuar"
 }
