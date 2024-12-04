@@ -100,6 +100,9 @@
   "addATicketType": "Agregar un tipo de entrada",
   "ticketName": "Nombre de la Entrada",
 
+  "internalNotes": "Notas Internas",
+  "leaveYourNotes": "Deja tus notas",
+
   "isRequired": "Este campo es obligatorio",
   "cancel": "Cancelar",
   "continue": "Continuar"

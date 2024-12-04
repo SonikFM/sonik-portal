@@ -97,6 +97,9 @@
   "addATicketType": "Add a ticket type",
   "ticketName": "Ticket Name",
 
+  "internalNotes": "Internal Notes",
+  "leaveYourNotes": "Leave your notes",
+
   "isRequired": "is required",
   "cancel": "Cancel",
   "continue": "Continue"
