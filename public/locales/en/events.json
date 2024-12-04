@@ -1,0 +1,31 @@
+{
+  "steps": {
+    "basics": {
+      "title": "Basics",
+      "desc": "Start by entering the basic details of your event"
+    },
+    "timeline": {
+      "title": "Timeline",
+      "desc": "Set the event schedule, sales start time, and performance order."
+    },
+    "lineup": {
+      "title": "Lineup",
+      "desc": "Set the schedule and performance order for your event, from start to finish."
+    },
+    "image": {
+      "title": "Image",
+      "desc": "Upload an image for your event."
+    },
+    "tickets": {
+      "title": "Tickets",
+      "desc": "Create ticket types, set prices, and limit the number of tickets each person can purchase."
+    },
+    "settings": {
+      "title": "Settings",
+      "desc": "Assign contact details and grant reporting access."
+    }
+  },
+  "eventCreationSteps": "EVENTS CREATION STEPS",
+  "createAnEvent": "Create an event",
+  "addYourEventDetailsBellow": "Add your event details below"
+}

@@ -1,0 +1,31 @@
+{
+  "steps": {
+    "basics": {
+      "title": "Básicos",
+      "desc": "Comienza ingresando los detalles básicos de tu evento"
+    },
+    "timeline": {
+      "title": "Cronograma",
+      "desc": "Establece el horario del evento, la hora de inicio de ventas y el orden de las presentaciones."
+    },
+    "lineup": {
+      "title": "Programa",
+      "desc": "Establece el horario y el orden de las presentaciones de tu evento, de principio a fin."
+    },
+    "image": {
+      "title": "Imagen",
+      "desc": "Sube una imagen para tu evento."
+    },
+    "tickets": {
+      "title": "Entradas",
+      "desc": "Crea tipos de entradas, establece precios y limita la cantidad de entradas que cada persona puede comprar."
+    },
+    "settings": {
+      "title": "Configuraciones",
+      "desc": "Asigna detalles de contacto y otorga acceso a informes."
+    }
+  },
+  "eventCreationSteps": "PASOS DE CREACIÓN DE EVENTOS",
+  "createAnEvent": "Crear un evento",
+  "addYourEventDetailsBellow": "Agrega los detalles de tu evento a continuación"
+}
