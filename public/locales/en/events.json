@@ -66,6 +66,11 @@
   "artistName": "Artist Name",
   "time": "Time",
 
+  "imageUpload": "Upload Image",
+  "chooseAFile": "Choose a file or drag & drop it here",
+  "imageNeedsToBe": "The image needs to be 768x768 pixels in size and in JPG format only.",
+  "browseFiles": "Browse Files",
+
   "cancel": "Cancel",
   "continue": "Continue"
 }

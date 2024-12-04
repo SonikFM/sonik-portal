@@ -69,6 +69,11 @@
   "artistName": "Nombre del Artista",
   "time": "Hora",
 
+  "uploadImage": "Subir Imagen",
+  "chooseAFile": "Elige un archivo o arrástralo aquí",
+  "imageNeedsToBe": "La imagen debe tener un tamaño de 768x768 píxeles y estar en formato JPG únicamente.",
+  "browseFiles": "Explorar Archivos",
+
   "cancel": "Cancelar",
   "continue": "Continuar"
 }
