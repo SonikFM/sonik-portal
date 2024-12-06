@@ -93,6 +93,8 @@
   "private": "Private",
   "hidden": "Hidden",
   "concert": "Concert",
+  "dj": "DJ",
+  "party": "Party",
   "areYouSureToDeleteTicket": "Are you sure you want to delete this ticket?",
   "addATicketType": "Add a ticket type",
   "ticketName": "Ticket Name",
