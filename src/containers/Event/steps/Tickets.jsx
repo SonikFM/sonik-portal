@@ -98,7 +98,7 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
         </Button>
         <Button
           className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
-          disabled={disableNextStep}
+          disabled={disableNextStep()}
         >
           {t("continue")}
         </Button>

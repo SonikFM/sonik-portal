@@ -25,7 +25,7 @@ const Settings = ({ setValue, getValues, isLoading }) => {
     <div className="space-y-5 w-full">
       <TextField
         label={t("internalNotes")}
-        required={true}
+        required={false}
         name="internal_notes"
         placeholder={t("leaveYourNotes")}
         characterLimit={characterLimit}
