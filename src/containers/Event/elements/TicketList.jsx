@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import Ticket from "./Ticket";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const TicketList = ({
   tickets,
@@ -10,6 +11,7 @@ const TicketList = ({
   onEdit,
   setActiveTicketTier,
 }) => {
+  const { t } = useTranslation("events");
   const moveTicket = useCallback(
     (dragIndex, hoverIndex) => {
       const updatedTickets = [...tickets];
@@ -43,11 +45,11 @@ const TicketList = ({
 
       <Button
         variant="outline"
-        className="w-[200px] ml-6 md:ml-0 flex gap-3 font-medium bg-transparent"
+        className="w-[220px] ml-6 md:ml-0 flex gap-3 font-medium bg-transparent"
         type="button"
         onClick={() => setActiveTicketTier("form")}
       >
-        <Plus className="w-3.5 text-white" /> Add a Ticket type
+        <Plus className="w-3.5 text-white" /> {t("addATicketType")}
       </Button>
     </div>
   );

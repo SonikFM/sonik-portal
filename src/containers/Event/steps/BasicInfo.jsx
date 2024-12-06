@@ -3,8 +3,10 @@ import PlacesSelectField from "@/components/PlacesSelectField";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
+  const { t } = useTranslation("events");
   const allowNextStep = () => {
     return (
       !getValues("title") ||
@@ -26,44 +28,44 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
   return (
     <div className="space-y-5 w-full mt-6 md:mt-0">
       <TextField
-        label="Title"
+        label={t("title")}
         required={true}
-        placeholder="Add Title"
+        placeholder={t("addTitle")}
         name="title"
         {...register("title", true)}
         errorMessage={errors.title?.message}
       />
       <SelectField
-        label="Type"
-        placeholder="Choose the type of event"
+        label={t("type")}
+        placeholder={t("chooseTypeOfEvent")}
         required={true}
         value={getValues("type")}
         options={[
-          { value: "concert", label: "Concert" },
-          { value: "dj", label: "DJ" },
-          { value: "party", label: "Party" },
+          { value: "concert", label: t("concert") },
+          { value: "dj", label: t("dj") },
+          { value: "party", label: t("party") },
         ]}
         name="type"
         setValue={setValue}
         getValues={getValues}
       />
       <TextField
-        label="Description"
+        label={t("description")}
         type="textarea"
-        placeholder="Add Description"
+        placeholder={t("addDescription")}
         name="description"
         {...register("description", true)}
         errorMessage={errors.description?.message}
       />
       <SelectField
-        label="Privacy"
+        label={t("privacy")}
         required={true}
-        placeholder="Select type"
+        placeholder={t("selectType")}
         value={getValues("privacy")}
         options={[
-          { value: "public", label: "Public" },
-          { value: "hidden", label: "Hidden" },
-          { value: "private", label: "Private" },
+          { value: "public", label: t("public") },
+          { value: "hidden", label: t("hidden") },
+          { value: "private", label: t("private") },
         ]}
         getValues={getValues}
         name="privacy"
@@ -71,18 +73,18 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
       />
 
       <PlacesSelectField
-        label="Venue"
+        label={t("venue")}
         setValue={setValue}
-        placeholder="Search for a venue"
+        placeholder={t("searchForAVenue")}
         defaultValue={getDefaultAddress()}
         {...register("venue", true)}
         errorMessage={errors.venue?.formatted_address?.message}
       />
 
       <TextField
-        label="Presented by"
+        label={t("presentedBy")}
         required={true}
-        placeholder="Presenter"
+        placeholder={t("presenter")}
         name="presented_by"
         register={register}
         {...register("presented_by", true)}
@@ -90,13 +92,13 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
 
       <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
         <Button variant="outline" className="w-full md:w-40">
-          Cancel
+          {t("cancel")}
         </Button>
         <Button
           className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
           disabled={allowNextStep()}
         >
-          Continue
+          {t("continue")}
         </Button>
       </div>
     </div>

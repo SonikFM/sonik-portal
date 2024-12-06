@@ -1,5 +1,6 @@
 import * as Popover from "@radix-ui/react-popover";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 const TabMenu = ({
@@ -10,6 +11,7 @@ const TabMenu = ({
   title,
   align = "column",
 }) => {
+  const { t } = useTranslation("events");
   return (
     <>
       <div className="md:hidden">
@@ -20,11 +22,13 @@ const TabMenu = ({
               aria-label="Update dimensions"
             >
               <i className="fa-solid fa-circle-check text-disabled-300 text-[1.5rem]"></i>
-              <div className="flex flex-col text-start max-w-60">
+              <div className="flex flex-col text-start pr-3 sm:pr-0 md:max-w-60">
                 <h3 className="text-[20px] leading-8 text-white">
-                  {activeTab.label}
+                  {t(`steps.${activeTab.label}.title`)}
                 </h3>
-                <p className="text-xs text-[#FFFFFF99]">{activeTab.desc}</p>
+                <p className="text-xs text-[#FFFFFF99]">
+                  {t(`steps.${activeTab.label}.desc`)}
+                </p>
               </div>
               <ChevronDown className="w-5 h-5 absolute right-3 text-grey-100 shrink-0 border-grey-100" />
             </button>
@@ -96,6 +100,7 @@ const MenuItem = ({
   currentTab,
   activeTab,
 }) => {
+  const { t } = useTranslation("events");
   return (
     <div
       className={twMerge(
@@ -107,7 +112,9 @@ const MenuItem = ({
       )}
       onClick={() => onClick(tab)}
     >
-      <span className="text-sm text-inherit">{tab.label}</span>
+      <span className="text-sm text-inherit">
+        {t(`steps.${tab.label}.title`)}
+      </span>
 
       <i
         className={twMerge(

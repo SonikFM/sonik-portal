@@ -3,6 +3,7 @@ import Artist from "./Artist";
 import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const ArtistList = ({
   artists,
@@ -13,6 +14,7 @@ const ArtistList = ({
   onDelete,
   addArtist,
 }) => {
+  const { t } = useTranslation("events");
   const { isLoading } = useSelector(state => state.app.spotify);
   const moveArtist = useCallback(
     (dragIndex, hoverIndex) => {
@@ -61,7 +63,7 @@ const ArtistList = ({
             setOpenedContainerType("form");
           }}
         >
-          <PlusIcon className="w-4" /> Add Artist
+          <PlusIcon className="w-4" /> {t("addArtist")}
         </Button>
       </div>
     </div>
