@@ -88,9 +88,7 @@ const CreateVenue = () => {
     [setValue],
   );
 
-  const onSubmit = data => {
-    console.log("Form Data:", data);
-  };
+  const onSubmit = data => {};
 
   return (
     <>
