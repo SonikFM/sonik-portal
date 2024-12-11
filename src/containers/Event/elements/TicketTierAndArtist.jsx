@@ -10,6 +10,8 @@ import SelectField from "@/components/SelectField";
 import ArtistList from "./ArtistList";
 import { openInputPicker } from "../config/helpers";
 import { useTranslation } from "react-i18next";
+import { getRandomNumber } from "@/helper/general";
+import { resetArtists } from "@/store/global/slice";
 
 const DEBOUNCE_DELAY = 500;
 
@@ -138,14 +140,23 @@ const ArtistForm = ({
 
   const onSelect = (option, artistIndex) => {
     const selectedArtist = artists.find(artist => artist.id === option.value);
+    dispatch(resetArtists());
+    if (selectedArtist) {
+      selectedArtists[artistIndex] = {
+        spotify_id: option.value,
+        name: option.label,
+        photo: selectedArtist.images[0].url,
+        description: selectedArtist.genres.join(", "),
+        genre: selectedArtist.genres,
+        spotify_url: selectedArtist.external_urls.spotify,
+        start_time: "00:00",
+      };
+      return setValue("artists", selectedArtists);
+    }
 
     selectedArtists[artistIndex] = {
-      spotify_id: option.value,
-      name: option.label,
-      photo: selectedArtist.images[0].url,
-      description: selectedArtist.genres.join(", "),
-      genre: selectedArtist.genres,
-      spotify_url: selectedArtist.external_urls.spotify,
+      id: getRandomNumber(0, 10000),
+      name: option,
       start_time: "00:00",
     };
     setValue("artists", selectedArtists);
@@ -157,10 +168,12 @@ const ArtistForm = ({
     setValue("artists", selectedArtists);
   };
 
-  const filteredArtists = artists.map(artist => ({
-    label: artist.name,
-    value: artist.id,
-  }));
+  const filteredArtists = useMemo(() => {
+    return artists.map(artist => ({
+      label: artist.name,
+      value: artist.id,
+    }));
+  }, [artists]);
 
   return (
     <div className="w-full flex flex-col gap-16">
@@ -174,11 +187,12 @@ const ArtistForm = ({
               label={t("artist")}
               placeholder={t("chooseArtist")}
               required={true}
-              value={artist.spotify_id}
+              value={artist.name}
               options={filteredArtists}
               name="type"
               onSearch={e => setArtistQuery(e.target.value)}
               onChange={option => onSelect(option, index)}
+              onClose={() => dispatch(resetArtists())}
               hasSearch={true}
               isLoading={isLoading}
             />

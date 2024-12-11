@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, LoaderCircle } from "lucide-react";
+import { ChevronDown, LoaderCircle, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
+import TextField from "./TextField";
 
 export const Select = ({
   Icon,
@@ -23,14 +24,30 @@ export const Select = ({
   setValue,
   valueLabel,
   value: val,
+  onClose,
   ...rest
 }) => {
   const { t } = useTranslation("events");
   const triggerRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [customTitle, setCustomTitle] = useState("");
+  const [customInputOpen, setCustomInputOpen] = useState(false);
+
+  const toggleTitleInput = () => setCustomInputOpen(!customInputOpen);
+
+  const selectOption = option => {
+    setValue ? setValue(name, option.value) : onChange(option);
+    setCustomInputOpen(false);
+    setOpen(false);
+  };
+
+  const onOpenChange = () => {
+    onClose?.();
+    setOpen(!open);
+  };
 
   return (
-    <DropdownMenu.Root open={open} onOpenChange={setOpen}>
+    <DropdownMenu.Root open={open} onOpenChange={onOpenChange}>
       <DropdownMenu.Trigger asChild>
         <Button
           variant="ghost"
@@ -76,7 +93,7 @@ export const Select = ({
             {hasSearch && (
               <input
                 type="text"
-                placeholder={`${t("search")}...`}
+                placeholder={`${t("search")}`}
                 onChange={onSearch}
                 autoFocus
                 className="w-full px-4 py-2.5 border-b outline-none border-grey-light text-sm text-grey-100 bg-[#181B25] placeholder:text-grey-100"
@@ -94,17 +111,72 @@ export const Select = ({
                 {options.length === 0 ? (
                   <div className="px-5 py-2.5 text-grey-50">
                     {t("noResultsFound")}
+
+                    <div className="py-2 relative mt-4">
+                      {!customInputOpen ? (
+                        <>
+                          <span className="font-medium leading-5 text-sm text-white">
+                            Don’t see what you are looking for ?
+                          </span>
+                          <div
+                            className="flex items-center gap-4 cursor-pointer"
+                            onClick={toggleTitleInput}
+                          >
+                            <Button
+                              variant="outline"
+                              className="mt-2 p-0 flex items-center justify-center w-[32px] h-[32px] text-sm bg-transparent border-2 border-grey-50"
+                              onClick={() => setOpen(false)}
+                            >
+                              <Plus
+                                className="w-4 h-4 text-grey-100"
+                                size={32}
+                              />
+                            </Button>
+                            <span className="text-sm font-medium text-grey-100 mt-1">
+                              Add custom value
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <TextField
+                            label={t("title")}
+                            required={true}
+                            type="text"
+                            placeholder={t("addTitle")}
+                            id="customTitle"
+                            name="customTitle"
+                            onChange={e => setCustomTitle(e.target.value)}
+                          />
+
+                          <div className="flex mt-8 gap-3  items-center w-full">
+                            <Button
+                              variant="outline"
+                              className="w-40 bg-transparent"
+                              type="button"
+                              size="sm"
+                              onClick={toggleTitleInput}
+                            >
+                              {t("cancel")}
+                            </Button>
+                            <Button
+                              className="w-40 bg-pink text-grey-dark"
+                              onClick={() => selectOption(customTitle)}
+                              type="button"
+                              size="sm"
+                            >
+                              {t("save")}
+                            </Button>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   options.map((option, index) => (
                     <div
                       key={`item-${option.value}-${index}`}
-                      onClick={() => {
-                        setOpen(false);
-                        setValue
-                          ? setValue(name, option.value)
-                          : onChange(option);
-                      }}
+                      onClick={() => selectOption(option)}
                     >
                       {Option ? (
                         Option

@@ -35,6 +35,9 @@ export const globalSlice = createSlice({
     resetError: state => {
       state.error = null;
     },
+    resetArtists: state => {
+      state.spotify.artists = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -126,6 +129,6 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { toggleSidebar, resetError } = globalSlice.actions;
+export const { toggleSidebar, resetError, resetArtists } = globalSlice.actions;
 
 export default globalSlice.reducer;

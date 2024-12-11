@@ -1,26 +1,26 @@
 {
   "steps": {
-    "basics": {
+    "Basics": {
       "title": "Básicos",
       "desc": "Comienza ingresando los detalles básicos de tu evento"
     },
-    "timeline": {
+    "Timeline": {
       "title": "Cronograma",
       "desc": "Establece el horario del evento, la hora de inicio de ventas y el orden de las presentaciones."
     },
-    "lineup": {
+    "Lineup": {
       "title": "Programa",
       "desc": "Establece el horario y el orden de las presentaciones de tu evento, de principio a fin."
     },
-    "image": {
+    "Image": {
       "title": "Imagen",
       "desc": "Sube una imagen para tu evento."
     },
-    "tickets": {
+    "Tickets": {
       "title": "Entradas",
       "desc": "Crea tipos de entradas, establece precios y limita la cantidad de entradas que cada persona puede comprar."
     },
-    "settings": {
+    "Settings": {
       "title": "Configuraciones",
       "desc": "Asigna detalles de contacto y otorga acceso a informes."
     }
