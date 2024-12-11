@@ -25,6 +25,10 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
     [getValues("artists")],
   );
 
+  useEffect(() => {
+    if (selectedArtists.length < 1) setOpenedContainerType(null);
+  }, [selectedArtists]);
+
   const onDelete = index => {
     const confirm = window.confirm(t("areYouSureToDeleteArtist"));
     if (!confirm) return;

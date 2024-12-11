@@ -263,7 +263,7 @@ const TicketTierForm = ({
         <SelectField
           name="privacy"
           label={t("privacy")}
-          value={ticket?.privacy}
+          value={t(ticket?.privacy)}
           options={privacyOptions}
           required={true}
           onChange={onSelectPrivacy}
@@ -288,7 +288,7 @@ const TicketTierForm = ({
         className="w-full"
         options={ticketTypes}
         label={t("pricingType")}
-        value={ticket?.pricingType}
+        value={t(ticket?.pricingType)}
         required={true}
         onChange={onSelectType}
         errorMessage={

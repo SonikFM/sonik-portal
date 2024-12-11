@@ -39,7 +39,7 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
         label={t("type")}
         placeholder={t("chooseTypeOfEvent")}
         required={true}
-        value={getValues("type")}
+        value={t(getValues("type"))}
         options={[
           { value: "concert", label: t("concert") },
           { value: "dj", label: t("dj") },
@@ -61,7 +61,7 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
         label={t("privacy")}
         required={true}
         placeholder={t("selectType")}
-        value={getValues("privacy")}
+        value={t(getValues("privacy"))}
         options={[
           { value: "public", label: t("public") },
           { value: "hidden", label: t("hidden") },
