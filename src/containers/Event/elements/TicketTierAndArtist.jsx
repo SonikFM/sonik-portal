@@ -25,23 +25,12 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
     [getValues("artists")],
   );
 
-  useEffect(() => {
-    if (selectedArtists.length === 0) setOpenedContainerType(null);
-  }, [selectedArtists]);
-
-  useEffect(() => {
-    if (openedContainerType === "list" && selectedArtists.length === 0)
-      setOpenedContainerType(null);
-  }, [openedContainerType]);
-
-  const onDelete = artist => {
+  const onDelete = index => {
     const confirm = window.confirm(t("areYouSureToDeleteArtist"));
     if (!confirm) return;
     if (selectedArtists.length === 1) setOpenedContainerType(null);
-    setValue(
-      "artists",
-      selectedArtists.filter(a => a.spotify_id !== artist.spotify_id),
-    );
+    selectedArtists.splice(index, 1);
+    setValue("artists", selectedArtists);
   };
 
   const onEdit = () => {
@@ -168,6 +157,12 @@ const ArtistForm = ({
     setValue("artists", selectedArtists);
   };
 
+  const saveArtists = () => {
+    selectedArtists = selectedArtists.filter(artist => artist.name);
+    setValue("artists", selectedArtists);
+    setOpenedContainerType("list");
+  };
+
   const filteredArtists = useMemo(() => {
     return artists.map(artist => ({
       label: artist.name,
@@ -222,7 +217,7 @@ const ArtistForm = ({
         </Button>
         <Button
           className="w-40 bg-pink text-grey-dark"
-          onClick={() => setOpenedContainerType("list")}
+          onClick={saveArtists}
           type="button"
         >
           {t("save")}

@@ -48,7 +48,7 @@ const ArtistList = ({
               artist={artist}
               index={ind}
               moveArtist={moveArtist}
-              onDelete={() => onDelete(artist)}
+              onDelete={() => onDelete(ind)}
               onEdit={onEdit}
             />
           );
