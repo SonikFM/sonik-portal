@@ -6,8 +6,10 @@ import CreateEventForm from "./CreateEventForm";
 import TabMenu from "@/components/TabMenu";
 import { useSelector } from "react-redux";
 import steps from "./steps/config";
+import { useTranslation } from "react-i18next";
 
 const CreateEventContainer = () => {
+  const { t } = useTranslation("events");
   const { currentStep: currStep, steps: currentSteps } = useSelector(
     state => state.event,
   );
@@ -39,8 +41,8 @@ const CreateEventContainer = () => {
   return (
     <>
       <DashboardHeader
-        title="Create an Event"
-        description="Add your event deatails below"
+        title={t("createAnEvent")}
+        description={t("addYourEventDetailsBellow")}
         icon={<FoldersIcon className="w-5 h-5 text-grey-100" />}
         onIconClick={onIconClick}
         toggleDrawer={toggleDrawer}
@@ -52,11 +54,13 @@ const CreateEventContainer = () => {
             activeTab={activeStep}
             currentTab={currStep}
             onSelect={onTabSelect}
-            title="EVENT CREATION STEPS"
+            title={t("eventCreationSteps")}
           />
           <div className="w-full max-w-[680px]">
             <div className="hidden md:block pb-4 mb-6 border-b border-grey-light">
-              <h3 className="font-medium text-white">{activeStep.label}</h3>
+              <h3 className="font-medium text-white">
+                {t(`steps.${activeStep.label}.title`)}
+              </h3>
               <p className="text-grey-100">{activeStep.desc}</p>
             </div>
             <CreateEventForm

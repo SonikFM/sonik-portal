@@ -7,9 +7,11 @@ import { currencies } from "../config/options";
 import { Button } from "@/components/ui/button";
 import TicketTier from "../elements/TicketTier";
 import Loading from "@/components/Loading";
+import { useTranslation } from "react-i18next";
 
 const ageCharacterLimit = 50;
 const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
+  const { t } = useTranslation("events");
   const [ageLimit, setAgeLimit] = useState(18);
   const changeHandler = event => {
     const { value } = event.target;
@@ -30,15 +32,18 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
     <div className="space-y-5 w-full">
       <div className="flex flex-col md:flex-row gap-2 md:gap-5">
         <TextField
-          label="Age Limit"
+          label={t("ageLimit")}
           name="age_limit"
           required={true}
+          type="number"
           value={
-            getValues("age_limit") ? parseInt(getValues("age_limit")) : ageLimit
+            getValues("age_limit")
+              ? getValues("age_limit")
+              : ageLimit.toString()
           }
           className="w-full"
           characterLimit={ageCharacterLimit}
-          placeholder="This event is for 18+"
+          placeholder={t("thisEventIsFor")}
           onChange={changeHandler}
           {...register("age_limit", true)}
           errorMessage={errors.age_limit?.message}
@@ -52,15 +57,15 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
             }
           />
           <div className="flex flex-col">
-            <span className="text-white text-sm">Re-entry allowed</span>
+            <span className="text-white text-sm">{t("reentryAllowed")}</span>
             <span className="text-grey-100 text-xs">
-              Allow multiple entries
+              {t("allowMultipleEntries")}
             </span>
           </div>
         </div>
       </div>
       <SelectField
-        label="Currency"
+        label={t("currency")}
         value={getValues("currency") || currencies[0].value}
         options={currencies}
         Icon={Currency}
@@ -71,11 +76,12 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
         getValues={getValues}
       />
       <TextField
-        label="Ticket Limit per person"
+        label={t("ticketLimitPerPerson")}
         type="number"
         min={1}
+        defaultValue={1}
         className="w-full"
-        placeholder="Ticket Limit per person"
+        placeholder={t("ticketLimitPerPerson")}
         name="ticket_limit_per_user"
         {...register("ticket_limit_per_user", true)}
         errorMessage={errors.ticket_limit_per_user?.message}
@@ -88,13 +94,13 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
       />
       <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
         <Button variant="outline" className="w-full md:w-40">
-          Cancel
+          {t("cancel")}
         </Button>
         <Button
           className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
-          disabled={disableNextStep}
+          disabled={disableNextStep()}
         >
-          Continue
+          {t("continue")}
         </Button>
       </div>
     </div>

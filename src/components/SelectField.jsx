@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from "react";
+import { forwardRef } from "react";
 import { Label } from "./ui/label";
 import { Select } from "./Select";
 import InformationIcon from "@/svgs/InformationIcon";
@@ -19,10 +19,6 @@ const SelectField = forwardRef(
     },
     ref,
   ) => {
-    const valueLabel = useMemo(() => {
-      return options.find(option => option.value === value)?.label;
-    }, [value]);
-
     return (
       <div className="w-full flex flex-col gap-3">
         <Label className="text-white text-sm">
@@ -34,7 +30,7 @@ const SelectField = forwardRef(
           options={options}
           Icon={Icon}
           name={name}
-          valueLabel={valueLabel}
+          valueLabel={value}
           {...props}
           ref={ref}
         />

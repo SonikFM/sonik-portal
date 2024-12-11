@@ -1,0 +1,108 @@
+{
+  "steps": {
+    "Basics": {
+      "title": "Basics",
+      "desc": "Start by entering the basic details of your event"
+    },
+    "Timeline": {
+      "title": "Timeline",
+      "desc": "Set the event schedule, sales start time, and performance order."
+    },
+    "Lineup": {
+      "title": "Lineup",
+      "desc": "Set the schedule and performance order for your event, from start to finish."
+    },
+    "Image": {
+      "title": "Image",
+      "desc": "Upload an image for your event."
+    },
+    "Tickets": {
+      "title": "Tickets",
+      "desc": "Create ticket types, set prices, and limit the number of tickets each person can purchase."
+    },
+    "Settings": {
+      "title": "Settings",
+      "desc": "Assign contact details and grant reporting access."
+    }
+  },
+  "eventCreationSteps": "EVENTS CREATION STEPS",
+  "createAnEvent": "Create an event",
+  "addYourEventDetailsBellow": "Add your event details below",
+  "addTitle": "Add Title",
+  "title": "Title",
+  "type": "Type",
+  "chooseTypeOfEvent": "Choose the type of event",
+  "description": "Description",
+  "addDescription": "Add Description",
+  "privacy": "Privacy",
+  "selectType": "Select Type",
+  "venue": "Venue",
+  "searchForAVenue": "Search for a venue",
+  "presentedBy": "Presented by",
+  "presenter": "Presenter",
+  "public": "Public",
+  "timezone": "Timezone",
+  "announcement": "Announcement",
+  "chooseDateAndTime": "Choose the date and time",
+  "startEvent": "Event start",
+  "eventEnd": "Event end",
+
+  "doorOpen": "Door open",
+  "artistStartTime": "Artist start time",
+  "scheduleTheStartTime": "Schedule the start times for each artist performing at the event",
+  "addArtist": "Add Artist",
+  "artist": "Artist",
+  "startTime": "Start Time",
+  "chooseTime": "Choose Time",
+  "save": "Save",
+  "chooseArtist": "Choose Artist",
+  "search": "Search",
+  "noResultsFound": "No results found",
+  "searching": "Searching...",
+  "areYouSureToDeleteArtist": "Are you sure you want to delete this artist?",
+  "artistName": "Artist Name",
+  "time": "Time",
+
+  "uploadImage": "Upload Image",
+  "chooseAFile": "Choose a file or drag & drop it here",
+  "imageNeedsToBe": "The image needs to be 768x768 pixels in size and in JPG format only.",
+  "browseFiles": "Browse Files",
+
+  "ageLimit": "Age Limit",
+  "thisEventIsFor": "This event is for 18+",
+  "reentryAllowed": "Reentry Allowed",
+  "allowMultipleEntries": "Allow Multiple Entries",
+  "currency": "Currency",
+  "ticketLimitPerPerson": "Ticket Limit Per Person",
+  "name": "Name",
+  "addName": "Add Name",
+  "writeADescriptionForYourTickets": "Write a description for your tickets",
+  "quantity": "Quantity",
+  "addQuantity": "Add Quantity",
+  "select": "Select",
+  "redemptionCode": "Redemption Code",
+  "addRedemptionCode": "Add Redemption Code",
+  "pricingType": "Pricing Type",
+  "price": "Price",
+  "addPrice": "Add Price",
+  "startAvailability": "Start Availability",
+  "endAvailability": "End Availability",
+  "free": "Free",
+  "paid": "Paid",
+  "reserve": "Reserve",
+  "private": "Private",
+  "hidden": "Hidden",
+  "concert": "Concert",
+  "dj": "DJ",
+  "party": "Party",
+  "areYouSureToDeleteTicket": "Are you sure you want to delete this ticket?",
+  "addATicketType": "Add a ticket type",
+  "ticketName": "Ticket Name",
+
+  "internalNotes": "Internal Notes",
+  "leaveYourNotes": "Leave your notes",
+
+  "isRequired": "is required",
+  "cancel": "Cancel",
+  "continue": "Continue"
+}

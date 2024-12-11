@@ -9,10 +9,14 @@ import { searchArtists } from "@/store/global/actions";
 import SelectField from "@/components/SelectField";
 import ArtistList from "./ArtistList";
 import { openInputPicker } from "../config/helpers";
+import { useTranslation } from "react-i18next";
+import { getRandomNumber } from "@/helper/general";
+import { resetArtists } from "@/store/global/slice";
 
 const DEBOUNCE_DELAY = 500;
 
 const TicketTierAndArtist = ({ getValues, setValue }) => {
+  const { t } = useTranslation("events");
   const [openedContainerType, setOpenedContainerType] = useState("list");
   const { artists, isLoading } = useSelector(state => state.app.spotify);
 
@@ -21,25 +25,12 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
     [getValues("artists")],
   );
 
-  useEffect(() => {
-    if (selectedArtists.length === 0) setOpenedContainerType(null);
-  }, [selectedArtists]);
-
-  useEffect(() => {
-    if (openedContainerType === "list" && selectedArtists.length === 0)
-      setOpenedContainerType(null);
-  }, [openedContainerType]);
-
-  const onDelete = artist => {
-    const confirm = window.confirm(
-      "Are you sure you want to delete this artist?",
-    );
+  const onDelete = index => {
+    const confirm = window.confirm(t("areYouSureToDeleteArtist"));
     if (!confirm) return;
     if (selectedArtists.length === 1) setOpenedContainerType(null);
-    setValue(
-      "artists",
-      selectedArtists.filter(a => a.spotify_id !== artist.spotify_id),
-    );
+    selectedArtists.splice(index, 1);
+    setValue("artists", selectedArtists);
   };
 
   const onEdit = () => {
@@ -86,14 +77,12 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
           />
           <div className="flex flex-col">
             <h6 className="text-base text-white font-medium tracking-tight">
-              Artist start time
+              {t("artistStartTime")}
             </h6>
-            <p className="text-grey-100 text-sm">
-              Schedule the start times for each artist performing at the event
-            </p>
+            <p className="text-grey-100 text-sm">{t("scheduleTheStartTime")}</p>
           </div>
           <Button className="w-40 bg-pink text-grey-dark" onClick={openForm}>
-            Add Artist
+            {t("addArtist")}
           </Button>
         </>
       )}
@@ -109,6 +98,7 @@ const ArtistForm = ({
   isLoading,
   addArtist,
 }) => {
+  const { t } = useTranslation("events");
   const cancelTokenSourceRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -139,14 +129,23 @@ const ArtistForm = ({
 
   const onSelect = (option, artistIndex) => {
     const selectedArtist = artists.find(artist => artist.id === option.value);
+    dispatch(resetArtists());
+    if (selectedArtist) {
+      selectedArtists[artistIndex] = {
+        spotify_id: option.value,
+        name: option.label,
+        photo: selectedArtist.images[0].url,
+        description: selectedArtist.genres.join(", "),
+        genre: selectedArtist.genres,
+        spotify_url: selectedArtist.external_urls.spotify,
+        start_time: "00:00",
+      };
+      return setValue("artists", selectedArtists);
+    }
 
     selectedArtists[artistIndex] = {
-      spotify_id: option.value,
-      name: option.label,
-      photo: selectedArtist.images[0].url,
-      description: selectedArtist.genres.join(", "),
-      genre: selectedArtist.genres,
-      spotify_url: selectedArtist.external_urls.spotify,
+      id: getRandomNumber(0, 10000),
+      name: option,
       start_time: "00:00",
     };
     setValue("artists", selectedArtists);
@@ -158,10 +157,18 @@ const ArtistForm = ({
     setValue("artists", selectedArtists);
   };
 
-  const filteredArtists = artists.map(artist => ({
-    label: artist.name,
-    value: artist.id,
-  }));
+  const saveArtists = () => {
+    selectedArtists = selectedArtists.filter(artist => artist.name);
+    setValue("artists", selectedArtists);
+    setOpenedContainerType("list");
+  };
+
+  const filteredArtists = useMemo(() => {
+    return artists.map(artist => ({
+      label: artist.name,
+      value: artist.id,
+    }));
+  }, [artists]);
 
   return (
     <div className="w-full flex flex-col gap-16">
@@ -172,23 +179,24 @@ const ArtistForm = ({
             key={index}
           >
             <SelectField
-              label="Artist"
-              placeholder="Choose Artist"
+              label={t("artist")}
+              placeholder={t("chooseArtist")}
               required={true}
-              value={artist.spotify_id}
+              value={artist.name}
               options={filteredArtists}
               name="type"
               onSearch={e => setArtistQuery(e.target.value)}
               onChange={option => onSelect(option, index)}
+              onClose={() => dispatch(resetArtists())}
               hasSearch={true}
               isLoading={isLoading}
             />
 
             <TextField
-              label="Start Time"
+              label={t("startTime")}
               type="time"
               required={true}
-              placeholder="Choose Time"
+              placeholder={t("chooseTime")}
               Icon={Clock}
               id={`start_time_${index}`}
               onIconClick={() => openInputPicker(`start_time_${index}`)}
@@ -205,14 +213,14 @@ const ArtistForm = ({
           onClick={addArtist}
           type="button"
         >
-          Add Artist
+          {t("addArtist")}
         </Button>
         <Button
           className="w-40 bg-pink text-grey-dark"
-          onClick={() => setOpenedContainerType("list")}
+          onClick={saveArtists}
           type="button"
         >
-          Save
+          {t("save")}
         </Button>
       </div>
     </div>

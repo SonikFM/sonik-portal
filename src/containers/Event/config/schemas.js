@@ -47,12 +47,16 @@ export const imageSchema = z.object({
 });
 
 export const ticketsSchema = z.object({
-  age_limit: z.string().min(1, { message: "Age limit is required" }),
+  age_limit: z.union([
+    z.string().min(1, { message: "Age limit is required" }),
+    z.number().min(1, { message: "Age limit is required" }),
+  ]),
   re_entry_allowed: z.boolean().nullable(),
   currency: z.string().min(1, { message: "Currency is required" }),
-  ticket_limit_per_user: z
-    .string()
-    .min(1, { message: "Ticket limit is required" }),
+  ticket_limit_per_user: z.union([
+    z.string().min(1, { message: "Ticket limit is required" }),
+    z.number().min(1, { message: "Ticket limit is required" }),
+  ]),
   _tickettiers: z.array(z.record(z.any())),
 });
 

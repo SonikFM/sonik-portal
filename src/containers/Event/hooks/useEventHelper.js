@@ -105,7 +105,10 @@ const useEventHelper = ({ activeStep }) => {
         } else {
           await createDraftEvent({ body: data, activeStep });
         }
-      } else if (activeStep === 2 || activeStep === 3) {
+      } else if (activeStep === 2) {
+        await handleUpdateEvent(data);
+      } else if (activeStep === 3) {
+        data.artists = data.artists.filter(artist => artist.name);
         await handleUpdateEvent(data);
       } else if (activeStep === 4) {
         const { response, key } = await uploadFile(

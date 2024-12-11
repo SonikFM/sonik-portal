@@ -12,8 +12,10 @@ import {
 } from "./ui/dropdown-menu";
 import { logout } from "@/store/global/actions";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function UserDropdown() {
+  const { t } = useTranslation("navigations");
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const handleLogout = e => {
@@ -45,10 +47,12 @@ export function UserDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[200px]">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuItem>Porfile</DropdownMenuItem>
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+        <DropdownMenuLabel>{t("myAccount")}</DropdownMenuLabel>
+        <DropdownMenuItem>{t("profile")}</DropdownMenuItem>
+        <DropdownMenuItem>{t("settings")}</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>
+          {t("logout")}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -6,6 +6,7 @@ import DeleteIcon from "@/svgs/DeleteIcon";
 import MenuIcon from "@/svgs/MenuIcon";
 import { useRef } from "react";
 import EditIcon from "@/svgs/EditIcon";
+import { useTranslation } from "react-i18next";
 
 const ItemType = "ARTIST";
 
@@ -19,6 +20,7 @@ const Artist = ({
   className,
 }) => {
   const ref = useRef(null);
+  const { t } = useTranslation("events");
 
   const [, drop] = useDrop({
     accept: ItemType,
@@ -79,7 +81,7 @@ const Artist = ({
         )}{" "}
         <div className="flex flex-col gap-1">
           <Label className="w-full text-xs font-medium text-grey-100 shrink">
-            Artist name
+            {t("artistName")}
           </Label>
           <span className="text-sm text-white font-medium">{artist.name}</span>
         </div>
@@ -88,7 +90,7 @@ const Artist = ({
         {artist.start_time && (
           <div className="flex justify-start flex-col gap-1">
             <Label className="w-full text-xs font-medium text-grey-100 shrink">
-              Time
+              {t("time")}
             </Label>
             <span className="text-sm text-white font-medium">
               {artist.start_time}

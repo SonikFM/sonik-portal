@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useEventHelper from "./hooks/useEventHelper";
 
-const CreateEventForm = ({ children, activeStep, setActiveStep }) => {
+const CreateEventForm = ({ children, activeStep }) => {
   const { getInitialState, submitEvent, isLoading } = useEventHelper({
     activeStep: activeStep.id,
   });

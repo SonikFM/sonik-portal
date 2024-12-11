@@ -1,0 +1,109 @@
+{
+  "steps": {
+    "Basics": {
+      "title": "Básicos",
+      "desc": "Comienza ingresando los detalles básicos de tu evento"
+    },
+    "Timeline": {
+      "title": "Cronograma",
+      "desc": "Establece el horario del evento, la hora de inicio de ventas y el orden de las presentaciones."
+    },
+    "Lineup": {
+      "title": "Programa",
+      "desc": "Establece el horario y el orden de las presentaciones de tu evento, de principio a fin."
+    },
+    "Image": {
+      "title": "Imagen",
+      "desc": "Sube una imagen para tu evento."
+    },
+    "Tickets": {
+      "title": "Entradas",
+      "desc": "Crea tipos de entradas, establece precios y limita la cantidad de entradas que cada persona puede comprar."
+    },
+    "Settings": {
+      "title": "Configuraciones",
+      "desc": "Asigna detalles de contacto y otorga acceso a informes."
+    }
+  },
+  "eventCreationSteps": "PASOS DE CREACIÓN DE EVENTOS",
+  "createAnEvent": "Crear un evento",
+  "addYourEventDetailsBellow": "Agrega los detalles de tu evento a continuación",
+  "addTitle": "Agregar Título",
+  "title": "Título",
+  "type": "Tipo",
+  "chooseTypeOfEvent": "Elige el tipo de evento",
+  "description": "Descripción",
+  "addDescription": "Agregar Descripción",
+  "privacy": "Privacidad",
+  "selectType": "Seleccionar Tipo",
+  "venue": "Lugar",
+  "searchForAVenue": "Buscar un lugar",
+  "presentedBy": "Presentado por",
+  "presenter": "Presentador",
+  "public": "Público",
+  "private": "Privado",
+  "hidden": "Oculto",
+  "concert": "Concierto",
+  "dj": "DJ",
+  "party": "Fiesta",
+
+  "timezone": "Zona horaria",
+  "announcement": "Anuncio",
+  "chooseDateAndTime": "Elige la fecha y la hora",
+  "startEvent": "Inicio del evento",
+  "eventEnd": "Fin del evento",
+
+  "doorOpen": "Puerta abierta",
+  "artistStartTime": "Hora de inicio del artista",
+  "scheduleTheStartTime": "Programa las horas de inicio para cada artista que se presentará en el evento",
+  "addArtist": "Agregar Artista",
+  "artist": "Artista",
+  "startTime": "Hora de inicio",
+  "chooseTime": "Elegir Hora",
+  "save": "Guardar",
+  "chooseArtist": "Elegir Artista",
+  "search": "Buscar",
+  "noResultsFound": "No se encontraron resultados",
+  "searching": "Buscando",
+  "areYouSureToDeleteArtist": "¿Estás seguro de eliminar este artista?",
+  "artistName": "Nombre del Artista",
+  "time": "Hora",
+
+  "uploadImage": "Subir Imagen",
+  "chooseAFile": "Elige un archivo o arrástralo aquí",
+  "imageNeedsToBe": "La imagen debe tener un tamaño de 768x768 píxeles y estar en formato JPG únicamente.",
+  "browseFiles": "Explorar Archivos",
+
+  "ageLimit": "Límite de Edad",
+  "thisEventIsFor": "Este evento es para mayores de 18 años",
+  "reentryAllowed": "Reingreso Permitido",
+  "allowMultipleEntries": "Permitir Múltiples Entradas",
+  "currency": "Moneda",
+  "ticketLimitPerPerson": "Límite de Entradas por Persona",
+  "name": "Nombre",
+  "addName": "Agregar Nombre",
+  "writeADescriptionForYourTickets": "Escribe una descripción para tus entradas",
+  "quantity": "Cantidad",
+  "addQuantity": "Agregar Cantidad",
+  "select": "Seleccionar",
+  "redemptionCode": "Código de Redención",
+  "addRedemptionCode": "Agregar Código de Redención",
+  "pricingType": "Tipo de Precio",
+  "price": "Precio",
+  "addPrice": "Agregar Precio",
+  "startAvailability": "Inicio de Disponibilidad",
+  "endAvailability": "Fin de Disponibilidad",
+  "free": "Gratis",
+  "paid": "Pagado",
+  "reserve": "Reservar",
+  "areYouSureToDeleteTicket": "¿Estás seguro de eliminar esta entrada?",
+  "addATicketType": "Agregar un tipo de entrada",
+  "ticketName": "Nombre de la Entrada",
+
+  "internalNotes": "Notas Internas",
+  "leaveYourNotes": "Deja tus notas",
+
+  "isRequired": "Este campo es obligatorio",
+  "cancel": "Cancelar",
+  "continue": "Continuar"
+}

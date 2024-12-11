@@ -4,8 +4,10 @@ import DeleteIcon from "@/svgs/DeleteIcon";
 import EditIcon from "@/svgs/EditIcon";
 import MenuIcon from "@/svgs/MenuIcon";
 import TicketIcon from "@/svgs/TicketIcon";
+import { useTranslation } from "react-i18next";
 
 const Ticket = ({ className, ticket, onDelete, onEdit, ...rest }) => {
+  const { t } = useTranslation("events");
   return (
     <div className="flex flex-col">
       <MenuIcon className="block md:hidden text-grey-100 shrink-0" />
@@ -24,7 +26,7 @@ const Ticket = ({ className, ticket, onDelete, onEdit, ...rest }) => {
             </div>
             <div className="flex flex-col gap-1 overflow-hidden shrink">
               <Label className="w-full text-xs font-medium text-grey-100 truncate ">
-                Ticket name
+                {t("ticketName")}
               </Label>
               <span className="text-sm text-white font-medium">
                 {ticket.name}
@@ -35,7 +37,7 @@ const Ticket = ({ className, ticket, onDelete, onEdit, ...rest }) => {
           <div className="flex gap-3">
             <div className="flex justify-start flex-col gap-1">
               <Label className="w-full text-xs font-medium text-grey-100 shrink">
-                Quantity
+                {t("quantity")}
               </Label>
               <span className="text-sm text-white font-medium">
                 {ticket.total_ticket_quantity}
@@ -43,7 +45,7 @@ const Ticket = ({ className, ticket, onDelete, onEdit, ...rest }) => {
             </div>
             <div className="flex justify-start flex-col gap-1">
               <Label className="w-full text-xs font-medium text-grey-100 shrink">
-                Price
+                {t("price")}
               </Label>
               <span className="text-sm text-white font-medium">
                 {ticket.price}
