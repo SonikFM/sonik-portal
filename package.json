@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "serve -s dist",
     "preview": "vite preview",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
@@ -63,6 +64,7 @@
     "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.5",
     "redux-persist": "^6.0.0",
+    "serve": "^14.2.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.1",
