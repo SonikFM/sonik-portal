@@ -24,8 +24,8 @@ function App() {
       <LoadScript
         googleMapsApiKey={googleMapsApiKey}
         libraries={libraries}
-        render={(googleMaps, error) => {
-          return googleMaps ? (
+        render={(googleMaps, error) =>
+          googleMaps ? (
             <div>{error ? error : <AppLoader />}</div>
           ) : (
             <div>
@@ -37,8 +37,8 @@ function App() {
                 <AppLoader />
               )}
             </div>
-          );
-        }}
+          )
+        }
       >
         <DndProvider backend={HTML5Backend}>
           <RouterProvider router={router} />
