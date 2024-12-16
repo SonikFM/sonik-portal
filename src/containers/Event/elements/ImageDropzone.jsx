@@ -44,7 +44,7 @@ const ImageDropzone = ({
             </h6>
           </div>
         ) : (
-          <div className="flex flex-col gap-3 items-center min-h-[300px] md:min-h-[400px] sm:min-h-[680px]">
+          <div className="flex flex-col justify-center gap-3 items-center min-h-[300px] md:min-h-[400px] sm:min-h-[680px]">
             <img src={uploadCloud} alt="" className="w-6 h-6" />
             <div className="flex flex-col gap-2">
               <h6 className="text-grey-50 text-sm font-medium">
