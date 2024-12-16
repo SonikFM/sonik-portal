@@ -27,6 +27,7 @@ const TicketTierAndArtist = ({ getValues, setValue }) => {
 
   useEffect(() => {
     if (selectedArtists.length < 1) setOpenedContainerType(null);
+    else if (openedContainerType !== "form") setOpenedContainerType("list");
   }, [selectedArtists]);
 
   const onDelete = index => {
