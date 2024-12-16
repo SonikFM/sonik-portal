@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import useImageCrop from "@/hooks/useImageCrop";
 import uploadCloud from "@/assets/images/events/uploadCloud.png";
 import { Plus } from "lucide-react";
 import { useCallback } from "react";
