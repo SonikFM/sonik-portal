@@ -22,7 +22,8 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
     return (
       !getValues("age_limit") ||
       !getValues("currency") ||
-      !getValues("ticket_limit_per_user")
+      !getValues("ticket_limit_per_user") ||
+      getValues("_tickettiers")?.length < 1
     );
   };
 
