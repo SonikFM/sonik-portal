@@ -25,7 +25,7 @@ const ImageDropzone = ({
     <>
       <div
         {...getRootProps()}
-        className=" border border-dashed border-[#525866] rounded-lg  text-center  flex flex-col justify-center"
+        className=" border border-dashed border-[#525866] rounded-lg min-h-[300px] text-center  flex flex-col justify-center"
       >
         <input {...getInputProps()} />
         {image ? (
