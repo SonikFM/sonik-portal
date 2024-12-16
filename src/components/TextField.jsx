@@ -76,7 +76,7 @@ const TextField = forwardRef(
           />
           {Icon && (
             <Icon
-              className="absolute top-1/2 -translate-y-1/2 left-3 w-4 text-grey"
+              className="absolute top-1/2 cursor-pointer -translate-y-1/2 left-3 w-4 text-grey"
               onClick={onIconClick}
             />
           )}
