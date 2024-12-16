@@ -9,10 +9,7 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
   const { t } = useTranslation("events");
   const allowNextStep = () => {
     return (
-      !getValues("title") ||
-      !getValues("description") ||
-      !getValues("venue") ||
-      !getValues("presented_by")
+      !getValues("title") || !getValues("venue") || !getValues("presented_by")
     );
   };
 
