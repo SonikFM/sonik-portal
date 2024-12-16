@@ -2,7 +2,7 @@ import SearchIcon from "@/svgs/SearchIcon";
 import InputWithIcon from "./InputWithIcon";
 import { Autocomplete } from "@react-google-maps/api";
 import { Label } from "./ui/label";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import InformationIcon from "@/svgs/InformationIcon";
 import { medellinBounds } from "@/contants/mapOptions";
 
@@ -18,6 +18,8 @@ const PlacesSelectField = ({
   defaultValue,
   ...props
 }) => {
+  const autocompleteRef = useRef(null);
+
   const handlePlaceChanged = useCallback(
     autocomplete => {
       const place = autocomplete.getPlace();
@@ -57,6 +59,17 @@ const PlacesSelectField = ({
     [setValue],
   );
 
+  const handleClearInput = () => {
+    if (autocompleteRef.current) {
+      const input = autocompleteRef.current.inputField;
+      if (input) {
+        input.value = "";
+        const event = new Event("input", { bubbles: true });
+        input.dispatchEvent(event);
+      }
+    }
+  };
+
   return (
     <div className="w-full flex flex-col gap-3">
       <Label className="flex justify-between text-white">
@@ -66,6 +79,7 @@ const PlacesSelectField = ({
       </Label>
       <Autocomplete
         onLoad={autocomplete => {
+          autocompleteRef.current = autocomplete;
           autocomplete.addListener("place_changed", () =>
             handlePlaceChanged(autocomplete),
           );
@@ -93,7 +107,10 @@ const PlacesSelectField = ({
             defaultValue={defaultValue}
             {...props}
           />
-          <i className="fa-solid fa-circle-xmark absolute right-3 top-1/2 text-white -translate-y-1/2"></i>
+          <i
+            className="fa-solid fa-circle-xmark absolute right-3 top-1/2 text-white -translate-y-1/2 cursor-pointer"
+            onClick={handleClearInput}
+          ></i>
         </div>
       </Autocomplete>
 
