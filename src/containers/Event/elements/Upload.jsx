@@ -66,7 +66,6 @@ const Upload = ({ getValues, setValue }) => {
           image={image}
           onCropChange={onCropChange}
           onCropComplete={onCropComplete}
-          completedCrop={completedCrop}
           cropImage={cropImage}
           cancelCrop={cancelCrop}
           ref={imgRef}

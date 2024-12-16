@@ -6,15 +6,7 @@ import { forwardRef } from "react";
 
 const ImageCropper = forwardRef(
   (
-    {
-      image,
-      crop,
-      onCropChange,
-      onCropComplete,
-      completedCrop,
-      cropImage,
-      cancelCrop,
-    },
+    { image, crop, onCropChange, onCropComplete, cropImage, cancelCrop },
     ref,
   ) => {
     const { t } = useTranslation("events");
