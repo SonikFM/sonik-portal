@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { base64ToFile } from "@/helper/images";
 
 const useEventHelper = ({ activeStep }) => {
   const { data: eventData } = useSelector(state => state.event);
@@ -98,7 +99,6 @@ const useEventHelper = ({ activeStep }) => {
       const handleUpdateEvent = async body => {
         await updateEvent({ _event: eventId, body, activeStep });
       };
-
       if (activeStep === 1) {
         if (eventId) {
           await handleUpdateEvent(data);
@@ -111,10 +111,12 @@ const useEventHelper = ({ activeStep }) => {
         data.artists = data.artists.filter(artist => artist.name);
         await handleUpdateEvent(data);
       } else if (activeStep === 4) {
-        const { response, key } = await uploadFile(
-          data.images.primaryImage,
-          "events",
-        );
+        let image = data.images.primaryImage;
+
+        if (!image.includes("data:image")) return;
+        image = base64ToFile(image, "image.jpg", "image/jpeg");
+
+        const { response, key } = await uploadFile(image, "events");
         if (response.status === 200) {
           await handleUpdateEvent({ images: { primaryImage: key } });
         }
