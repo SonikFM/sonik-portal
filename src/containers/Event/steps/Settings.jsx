@@ -8,16 +8,11 @@ const characterLimit = 100;
 
 const Settings = ({ setValue, getValues, isLoading }) => {
   const { t } = useTranslation("events");
-  const [notes, setNotes] = useState(getValues("internal_notes") || "");
 
   const changeHandler = event => {
     const { value } = event.target;
-    if (value.length <= characterLimit) setNotes(value);
+    if (value.length <= characterLimit) setValue("internal_notes", value);
   };
-
-  useEffect(() => {
-    setValue("internal_notes", notes);
-  }, [notes]);
 
   if (isLoading) return <Loading />;
 
@@ -29,7 +24,7 @@ const Settings = ({ setValue, getValues, isLoading }) => {
         name="internal_notes"
         placeholder={t("leaveYourNotes")}
         characterLimit={characterLimit}
-        value={notes}
+        value={getValues("internal_notes")}
         onChange={changeHandler}
       />
       <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
