@@ -4,9 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import useEventHelper from "./hooks/useEventHelper";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 const EventForm = ({ children, activeStep }) => {
   const { t } = useTranslation("events");
+  const location = useLocation();
   const { getInitialState, submitEvent, isLoading } = useEventHelper({
     activeStep: activeStep.id,
   });
@@ -59,7 +61,7 @@ const EventForm = ({ children, activeStep }) => {
           className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
           disabled={isSubmitDisabled()}
         >
-          {t("continue")}
+          {t(location.pathname.includes("edit-event") ? "update" : "continue")}
         </Button>
       </div>
     </form>
