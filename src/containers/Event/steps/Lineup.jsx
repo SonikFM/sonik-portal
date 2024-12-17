@@ -1,7 +1,6 @@
 import TextField from "@/components/TextField";
 import TicketTierAndArtist from "../elements/TicketTierAndArtist";
 import { Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { openInputPicker } from "../config/helpers";
 import Loading from "@/components/Loading";
 import { useTranslation } from "react-i18next";
@@ -15,9 +14,6 @@ const Lineup = ({
   ...props
 }) => {
   const { t } = useTranslation("events");
-  const disableNextStep = () => {
-    return !getValues("door_open");
-  };
 
   const changeHandler = e => setValue("door_open", e.target.value);
 
@@ -48,17 +44,6 @@ const Lineup = ({
         errorMessage={errors.door_open?.message}
         onIconClick={() => openInputPicker("door_open")}
       />
-      <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
-        <Button variant="outline" className="w-full md:w-40">
-          {t("cancel")}
-        </Button>
-        <Button
-          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
-          disabled={disableNextStep()}
-        >
-          {t("continue")}
-        </Button>
-      </div>
     </div>
   );
 };

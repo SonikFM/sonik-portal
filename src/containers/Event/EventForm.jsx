@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useEventHelper from "./hooks/useEventHelper";
+import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const EventForm = ({ children, activeStep }) => {
+  const { t } = useTranslation("events");
   const { getInitialState, submitEvent, isLoading } = useEventHelper({
     activeStep: activeStep.id,
   });
@@ -19,6 +22,10 @@ const EventForm = ({ children, activeStep }) => {
   } = useForm({
     resolver: zodResolver(activeStep.validationSchema),
     defaultValues: getInitialState(),
+  });
+  const { isSubmitDisabled } = useEventHelper({
+    activeStep: activeStep.id,
+    getValues,
   });
 
   useEffect(() => {
@@ -44,6 +51,17 @@ const EventForm = ({ children, activeStep }) => {
         getValues,
         isLoading,
       })}
+      <div className="flex justify-center md:justify-end gap-3 md:py-12 mb-4">
+        <Button variant="outline" className="w-full md:w-40" type="button">
+          {t("cancel")}
+        </Button>
+        <Button
+          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
+          disabled={isSubmitDisabled()}
+        >
+          {t("continue")}
+        </Button>
+      </div>
     </form>
   );
 };

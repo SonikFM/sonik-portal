@@ -11,7 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { base64ToFile } from "@/helper/images";
 
-const useEventHelper = ({ activeStep }) => {
+const useEventHelper = ({ activeStep, getValues }) => {
   const { id: _event } = useParams();
   const { data: eventData } = useSelector(state => state.event);
   const [createDraftEvent] = useCreateDraftEventMutation();
@@ -143,7 +143,46 @@ const useEventHelper = ({ activeStep }) => {
     }
   };
 
-  return { getInitialState, submitEvent, isLoading, setIsLoading };
+  const isSubmitDisabled = () => {
+    switch (activeStep) {
+      case 1:
+        return (
+          !getValues("title") ||
+          !getValues("venue") ||
+          !getValues("presented_by")
+        );
+      case 2:
+        return (
+          !getValues("timezone") ||
+          !getValues("announcement") ||
+          !getValues("event_start") ||
+          !getValues("event_end")
+        );
+      case 3:
+        return !getValues("door_open");
+      case 4:
+        return !getValues("images.primaryImage");
+      case 5:
+        return (
+          !getValues("age_limit") ||
+          !getValues("currency") ||
+          !getValues("ticket_limit_per_user") ||
+          getValues("_tickettiers")?.length < 1
+        );
+      case 6:
+        return false;
+      default:
+        break;
+    }
+  };
+
+  return {
+    getInitialState,
+    submitEvent,
+    isLoading,
+    setIsLoading,
+    isSubmitDisabled,
+  };
 };
 
 export default useEventHelper;

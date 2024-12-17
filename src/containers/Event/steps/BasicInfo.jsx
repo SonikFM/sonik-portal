@@ -2,16 +2,10 @@ import Loading from "@/components/Loading";
 import PlacesSelectField from "@/components/PlacesSelectField";
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
-import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
 const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
   const { t } = useTranslation("events");
-  const allowNextStep = () => {
-    return (
-      !getValues("title") || !getValues("venue") || !getValues("presented_by")
-    );
-  };
 
   const getDefaultAddress = () => {
     const venue = getValues("venue");
@@ -86,18 +80,6 @@ const BasicInfo = ({ register, setValue, getValues, errors, isLoading }) => {
         register={register}
         {...register("presented_by", true)}
       />
-
-      <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
-        <Button variant="outline" className="w-full md:w-40">
-          {t("cancel")}
-        </Button>
-        <Button
-          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
-          disabled={allowNextStep()}
-        >
-          {t("continue")}
-        </Button>
-      </div>
     </div>
   );
 };

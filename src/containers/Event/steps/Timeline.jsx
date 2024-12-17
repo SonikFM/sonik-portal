@@ -1,6 +1,5 @@
 import SelectField from "@/components/SelectField";
 import TextField from "@/components/TextField";
-import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { timezones } from "../config/options";
 import { openInputPicker } from "../config/helpers";
@@ -9,14 +8,6 @@ import { useTranslation } from "react-i18next";
 
 const Timeline = ({ errors, getValues, setValue, isLoading }) => {
   const { t } = useTranslation("events");
-  const disableNextStep = () => {
-    return (
-      !getValues("timezone") ||
-      !getValues("announcement") ||
-      !getValues("event_start") ||
-      !getValues("event_end")
-    );
-  };
 
   const datesChangeHandler = event => {
     const { name, value } = event.target;
@@ -89,18 +80,6 @@ const Timeline = ({ errors, getValues, setValue, isLoading }) => {
         onIconClick={() => openInputPicker("event_end")}
         errorMessage={errors.event_end?.message}
       />
-
-      <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
-        <Button variant="outline" className="w-full md:w-40">
-          {t("cancel")}
-        </Button>
-        <Button
-          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
-          disabled={disableNextStep()}
-        >
-          {t("continue")}
-        </Button>
-      </div>
     </div>
   );
 };
