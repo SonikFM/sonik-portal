@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { eventApi } from "./eventAPI";
 import { toast } from "react-toastify";
-import { componentFilteredSteps } from "@/containers/Event/steps/config";
+import { getComponentFilteredSteps } from "@/containers/Event/steps/config";
 
 const initialState = {
   currentStep: 1,
-  steps: componentFilteredSteps,
+  steps: getComponentFilteredSteps(false),
   data: {
     _created_by: "",
     _organization: "",
@@ -144,6 +144,16 @@ const eventSlice = createSlice({
         if (payload.message) toast.success(payload.message);
         Object.assign(state, initialState);
         return state;
+      },
+    );
+    builder.addMatcher(
+      eventApi.endpoints.getSingleEvent.matchFulfilled,
+      (state, { payload }) => {
+        state.data = payload.data;
+        if (payload.data.event_status !== "draft") {
+          state.currentStep = 1;
+          state.steps = getComponentFilteredSteps(true);
+        }
       },
     );
   },

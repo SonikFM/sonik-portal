@@ -17,6 +17,12 @@ export const eventApi = apiSlice.injectEndpoints({
           body,
         }),
       }),
+      getSingleEvent: builder.query({
+        query: _event => ({
+          url: `events/${_event}`,
+          method: "GET",
+        }),
+      }),
       addTicketTier: builder.mutation({
         query: body => ({
           url: "ticket-tiers",
@@ -45,6 +51,7 @@ export const eventApi = apiSlice.injectEndpoints({
 export const {
   useCreateDraftEventMutation,
   useUpdateEventMutation,
+  useGetSingleEventQuery,
   useAddTicketTierMutation,
   useUpdateTicketTierMutation,
   useFinalizeEventMutation,

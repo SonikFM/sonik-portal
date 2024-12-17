@@ -1,6 +1,7 @@
 import * as Popover from "@radix-ui/react-popover";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 const TabMenu = ({
@@ -100,13 +101,16 @@ const MenuItem = ({
   currentTab,
   activeTab,
 }) => {
+  const location = useLocation();
   const { t } = useTranslation("events");
   return (
     <div
       className={twMerge(
         "flex w-full md:w-auto min-w-[238px] items-center cursor-pointer justify-between text p-2.5 text-sm rounded-lg text-grey-100",
         isActive && "bg-[#242630] md:bg-grey-200 text-white cursor-auto",
-        tab.id < currentTab || activeTab.id !== currentTab
+        tab.id < currentTab ||
+          activeTab.id !== currentTab ||
+          location.pathname.includes("edit-event")
           ? "cursor-pointer"
           : "cursor-auto",
       )}

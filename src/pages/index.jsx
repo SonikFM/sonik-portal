@@ -25,7 +25,7 @@ import EventDetail from "./EventDetail";
 import AdminAccount from "./AdminAccount";
 
 // CONATINERS
-import CreateEvent from "@/containers/Event";
+import ModifyEvent from "@/containers/Event";
 import OrganizerAccount from "@/containers/OrganizerAccount";
 import Organizations from "@/containers/Organizations";
 import AdminAccounts from "@/containers/AdminAccounts";
@@ -35,7 +35,8 @@ const dashboardRoutes = [
   { path: "", element: <Dashboard />, index: true },
   { path: "/dashboard", element: <Dashboard /> },
   { path: "events", element: <Events /> },
-  { path: "events/create-event", element: <CreateEvent /> },
+  { path: "events/create-event", element: <ModifyEvent /> },
+  { path: "events/edit-event/:id", element: <ModifyEvent /> },
   { path: "events/:id", element: <EventDetail /> },
   { path: "attendees", element: <AttendeeAccounts /> },
   { path: "attendees/create-attendee", element: <AttendeeAccount /> },

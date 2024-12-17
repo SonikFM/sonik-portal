@@ -2,19 +2,23 @@ import { uploadFile } from "@/helper/uploads";
 import {
   useCreateDraftEventMutation,
   useFinalizeEventMutation,
+  useGetSingleEventQuery,
   useUpdateEventMutation,
 } from "@/store/event/eventAPI";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { base64ToFile } from "@/helper/images";
 
 const useEventHelper = ({ activeStep }) => {
+  const { id: _event } = useParams();
   const { data: eventData } = useSelector(state => state.event);
   const [createDraftEvent] = useCreateDraftEventMutation();
   const [updateEvent] = useUpdateEventMutation();
   const [finalizeEvent] = useFinalizeEventMutation();
+  // Only get Event Details if it's update page
+  if (_event) useGetSingleEventQuery(_event);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -127,8 +131,10 @@ const useEventHelper = ({ activeStep }) => {
         };
         await handleUpdateEvent(payload);
       } else {
-        await finalizeEvent({ _event: eventId, body: data });
-        navigate("/");
+        _event
+          ? await handleUpdateEvent(data)
+          : await finalizeEvent({ _event: eventId, body: data });
+        !_event && navigate("/");
       }
     } catch (error) {
       toast.error("Something went wrong, please try again!");

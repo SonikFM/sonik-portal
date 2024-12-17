@@ -1,7 +1,7 @@
 import DashboardHeader from "@/layout/DashboardHeader";
 import FoldersIcon from "@/svgs/FoldersIcon";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import EventForm from "./EventForm";
 import TabMenu from "@/components/TabMenu";
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const ModifyEventContainer = () => {
   const { t } = useTranslation("events");
+  const location = useLocation();
   const { currentStep: currStep, steps: currentSteps } = useSelector(
     state => state.event,
   );
@@ -29,7 +30,7 @@ const ModifyEventContainer = () => {
   };
 
   const onTabSelect = tab => {
-    if (tab.id <= currStep)
+    if (tab.id <= currStep || location.pathname.includes("edit-event"))
       setActiveTab({
         ...tab,
         desc: steps[tab.id - 1].desc,

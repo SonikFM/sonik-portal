@@ -57,10 +57,12 @@ const steps = [
     validationSchema: settingsSchema,
   },
 ];
-export const componentFilteredSteps = steps.map(step => ({
-  id: step.id,
-  label: step.label,
-  checked: false,
-}));
+
+export const getComponentFilteredSteps = checked =>
+  steps.map(step => ({
+    id: step.id,
+    label: step.label,
+    checked: !!checked,
+  }));
 
 export default steps;
