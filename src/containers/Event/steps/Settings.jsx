@@ -1,7 +1,6 @@
 import Loading from "@/components/Loading";
 import TextField from "@/components/TextField";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const characterLimit = 100;
