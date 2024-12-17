@@ -2,13 +2,13 @@ import DashboardHeader from "@/layout/DashboardHeader";
 import FoldersIcon from "@/svgs/FoldersIcon";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CreateEventForm from "./CreateEventForm";
+import EventForm from "./EventForm";
 import TabMenu from "@/components/TabMenu";
 import { useSelector } from "react-redux";
 import steps from "./steps/config";
 import { useTranslation } from "react-i18next";
 
-const CreateEventContainer = () => {
+const ModifyEventContainer = () => {
   const { t } = useTranslation("events");
   const { currentStep: currStep, steps: currentSteps } = useSelector(
     state => state.event,
@@ -63,12 +63,9 @@ const CreateEventContainer = () => {
               </h3>
               <p className="text-grey-100">{activeStep.desc}</p>
             </div>
-            <CreateEventForm
-              activeStep={activeStep}
-              setActiveTab={setActiveTab}
-            >
+            <EventForm activeStep={activeStep} setActiveTab={setActiveTab}>
               {activeStep.component}
-            </CreateEventForm>
+            </EventForm>
           </div>
         </div>
       </div>
@@ -76,4 +73,4 @@ const CreateEventContainer = () => {
   );
 };
 
-export default CreateEventContainer;
+export default ModifyEventContainer;
