@@ -4,7 +4,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Currency } from "lucide-react";
 import { useState } from "react";
 import { currencies } from "../config/options";
-import { Button } from "@/components/ui/button";
 import TicketTier from "../elements/TicketTier";
 import Loading from "@/components/Loading";
 import { useTranslation } from "react-i18next";
@@ -16,15 +15,6 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
   const changeHandler = event => {
     const { value } = event.target;
     if (value.length <= ageCharacterLimit) setAgeLimit(value);
-  };
-
-  const disableNextStep = () => {
-    return (
-      !getValues("age_limit") ||
-      !getValues("currency") ||
-      !getValues("ticket_limit_per_user") ||
-      getValues("_tickettiers")?.length < 1
-    );
   };
 
   if (isLoading) return <Loading />;
@@ -93,17 +83,6 @@ const Tickets = ({ register, errors, getValues, setValue, isLoading }) => {
         errors={errors}
         register={register}
       />
-      <div className="flex justify-center md:justify-end gap-3 md:py-8 mb-4 md:border-t mt-3 md:mt-14 border-grey-light">
-        <Button variant="outline" className="w-full md:w-40">
-          {t("cancel")}
-        </Button>
-        <Button
-          className="w-full md:w-40 bg-[#CDD0D5] md:bg-primary"
-          disabled={disableNextStep()}
-        >
-          {t("continue")}
-        </Button>
-      </div>
     </div>
   );
 };
