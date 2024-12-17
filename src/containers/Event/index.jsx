@@ -1,6 +1,6 @@
 import DashboardHeader from "@/layout/DashboardHeader";
 import FoldersIcon from "@/svgs/FoldersIcon";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import EventForm from "./EventForm";
 import TabMenu from "@/components/TabMenu";
@@ -17,6 +17,11 @@ const ModifyEventContainer = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [activeStep, setActiveTab] = useState(steps[0]);
 
+  const isEditPage = useMemo(
+    () => location.pathname.includes("edit-event"),
+    [location.pathname],
+  );
+
   useEffect(() => {
     setActiveTab(steps[currStep - 1]);
   }, [currStep]);
@@ -30,7 +35,7 @@ const ModifyEventContainer = () => {
   };
 
   const onTabSelect = tab => {
-    if (tab.id <= currStep || location.pathname.includes("edit-event"))
+    if (tab.id <= currStep || isEditPage)
       setActiveTab({
         ...tab,
         desc: steps[tab.id - 1].desc,
@@ -42,8 +47,12 @@ const ModifyEventContainer = () => {
   return (
     <>
       <DashboardHeader
-        title={t("createAnEvent")}
-        description={t("addYourEventDetailsBellow")}
+        title={t(isEditPage ? "editEvent" : "createAnEvent")}
+        description={t(
+          isEditPage
+            ? "modifyYourEventDetailsBellow"
+            : "addYourEventDetailsBellow",
+        )}
         icon={<FoldersIcon className="w-5 h-5 text-grey-100" />}
         onIconClick={onIconClick}
         toggleDrawer={toggleDrawer}

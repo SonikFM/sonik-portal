@@ -27,6 +27,8 @@
   },
   "eventCreationSteps": "PASOS DE CREACIÓN DE EVENTOS",
   "createAnEvent": "Crear un evento",
+  "editEvent": "Editar Evento",
+  "modifyYourEventDetailsBellow": "Modifica los detalles de tu evento a continuación",
   "addYourEventDetailsBellow": "Agrega los detalles de tu evento a continuación",
   "addTitle": "Agregar Título",
   "title": "Título",
