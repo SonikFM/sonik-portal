@@ -4,6 +4,7 @@ import {
   logout,
   refreshToken,
   requestReset,
+  resendOTP,
   resetPassword,
   searchArtists,
   signup,
@@ -153,6 +154,19 @@ export const globalSlice = createSlice({
       state.verificationInProgress.verified = true;
     });
     builder.addCase(verifyOTP.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(resendOTP.pending, state => {
+      state.isLoading = true;
+      state.error = "";
+    });
+    builder.addCase(resendOTP.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.message = action.payload.data.message;
+      state.error = "";
+    });
+    builder.addCase(resendOTP.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

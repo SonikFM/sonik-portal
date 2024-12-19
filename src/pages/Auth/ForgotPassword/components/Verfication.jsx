@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   InputOTP,
   InputOTPGroup,
@@ -18,7 +18,7 @@ import {
 import ConfirmEmailIcon from "@/svgs/ConfirmEmailIcon";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { verifyOTP } from "@/store/global/actions";
+import { resendOTP, verifyOTP } from "@/store/global/actions";
 import { twMerge } from "tailwind-merge";
 
 const Verfication = () => {
@@ -37,6 +37,10 @@ const Verfication = () => {
         requestId: verificationInProgress.requestId,
       }),
     );
+  };
+
+  const resendOTPCode = async () => {
+    dispatch(resendOTP({ requestId: verificationInProgress.requestId }));
   };
 
   return (
@@ -81,7 +85,7 @@ const Verfication = () => {
           <CardDescription className="mt-6 mb-1 text-sm text-center text-grey-100">
             {t("experiencing_issues_receiving_the_code")}
           </CardDescription>
-          <Link to="#" className="border-b">
+          <Link to="#" className="border-b" onClick={resendOTPCode}>
             {t("resend_code")}
           </Link>
         </CardFooter>

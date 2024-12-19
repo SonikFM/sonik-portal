@@ -100,6 +100,19 @@ export const resetPassword = createAsyncThunk(
     }
   },
 );
+
+export const resendOTP = createAsyncThunk(
+  "auth/resend-otp",
+  async (body, { rejectWithValue }) => {
+    try {
+      const response = await https.post("/auth/resend-otp", body);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
 export const searchArtists = createAsyncThunk(
   "auth/spotifySearchArtists",
   async (query, { rejectWithValue }) => {
