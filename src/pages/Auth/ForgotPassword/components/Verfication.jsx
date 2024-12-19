@@ -24,7 +24,7 @@ import { twMerge } from "tailwind-merge";
 const Verfication = () => {
   const inputOtpRef = useRef(null);
   const dispatch = useDispatch();
-  const { verificationInProgress, isLoading, error } = useSelector(
+  const { verificationInProgress, message, error } = useSelector(
     state => state.app,
   );
   const { t } = useTranslation("auth");
@@ -76,7 +76,16 @@ const Verfication = () => {
               </InputOTPGroup>
             ))}
           </InputOTP>
-          {error && <p className="text-xs text-[red]">{error.message}</p>}
+          {(error || message) && (
+            <p
+              className={twMerge(
+                "text-xs text-[red]",
+                message && "text-success-dark",
+              )}
+            >
+              {error.message || message}
+            </p>
+          )}
         </CardContent>
         <CardFooter className="flex flex-col p-0">
           <Button className="w-full h-10" type="submit">

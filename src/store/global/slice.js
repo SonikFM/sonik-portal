@@ -122,7 +122,6 @@ export const globalSlice = createSlice({
           email: action.payload.email,
           active: true,
         };
-        state.message = "We have sent a reset link to your email";
       })
       .addCase(requestReset.rejected, (state, action) => {
         state.isLoading = false;
@@ -163,7 +162,7 @@ export const globalSlice = createSlice({
     });
     builder.addCase(resendOTP.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.message = action.payload.data.message;
+      state.message = action.payload.message;
       state.error = "";
     });
     builder.addCase(resendOTP.rejected, (state, action) => {
