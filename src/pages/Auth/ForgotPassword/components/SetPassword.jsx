@@ -44,7 +44,6 @@ const schema = z
 
 const SetPassword = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const { t } = useTranslation("auth");
   const { isLoading, message, error } = useSelector(state => state.app);
   const form = useForm({
@@ -57,28 +56,13 @@ const SetPassword = () => {
 
   const { formState, errors } = form;
 
-  const searchParams = new URLSearchParams(location.search);
-  const token = searchParams.get("token");
-
   const onSubmit = async data => {
-    dispatch(resetPassword({ ...data, token }));
+    console.log(data);
+    // dispatch(resetPassword({ ...data }));
   };
 
-  const actionButton = () => (
-    <>
-      <p>{t("changed_your_mind")}</p>
-      <Link to="/login" className="border-b text-primary border-primary">
-        {t("go_back")}
-      </Link>
-    </>
-  );
-  if (!token) {
-    <Navigate to="/login" />;
-  }
   return (
     <div className="">
-      <Header actionButton={actionButton()}></Header>
-
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full p-4">
           <Card className="p-8 space-y-6 text-white bg-grey-dark rounded-5 border-grey-light">
