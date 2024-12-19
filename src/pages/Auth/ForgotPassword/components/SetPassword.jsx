@@ -12,53 +12,41 @@ import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { Link, Navigate, useLocation } from "react-router-dom";
-import Header from "@/layout/Header";
+import { Link } from "react-router-dom";
+
 import InputWithIcon from "@/components/InputWithIcon";
 import DoorLockIcon from "@/svgs/DoorLockIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { resetPassword } from "@/store/global/actions";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import ErrorIcon from "@/svgs/ErrorIcon";
 import LockIcon from "@/svgs/LockIcon";
-
-const schema = z
-  .object({
-    password: z
-      .string()
-      .min(8, { message: "Password must be at least 8 characters." })
-      .regex(/[A-Z]/, {
-        message: "Password must contain at least one uppercase letter.",
-      })
-      .regex(/[0-9]/, {
-        message: "Password must contain at least one number.",
-      }),
-    confirmPassword: z.string(),
-  })
-  .refine(data => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  });
+import { resetPasswordSchema } from "../../schemas/resetPassword.schema";
+import { resetPassword } from "@/store/global/actions";
 
 const SetPassword = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("auth");
-  const { isLoading, message, error } = useSelector(state => state.app);
+  const { isLoading, message, error, verificationInProgress } = useSelector(
+    state => state.app,
+  );
   const form = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       password: "",
       confirmPassword: "",
     },
   });
 
-  const { formState, errors } = form;
+  const { errors } = form;
 
   const onSubmit = async data => {
-    console.log(data);
-    // dispatch(resetPassword({ ...data }));
+    dispatch(
+      resetPassword({
+        password: data.password,
+        requestId: verificationInProgress.requestId,
+      }),
+    );
   };
 
   return (
@@ -167,7 +155,7 @@ const SetPassword = () => {
                   <Button
                     className="w-full h-10"
                     type="submit"
-                    disabled={!formState.isValid || isLoading}
+                    disabled={isLoading}
                   >
                     {isLoading && (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />

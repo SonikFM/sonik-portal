@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import {
   login,
   logout,
@@ -100,9 +101,9 @@ export const globalSlice = createSlice({
         state.isLoading = true;
         state.error = "";
       })
-      .addCase(resetPassword.fulfilled, state => {
-        state.isLoading = false;
-        state.message = "success";
+      .addCase(resetPassword.fulfilled, _ => {
+        window.location.href = "/login";
+        toast.success("Password reset successful");
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;

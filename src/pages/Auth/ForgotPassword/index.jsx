@@ -22,8 +22,14 @@ const ResetPassword = () => {
   return (
     <div className="">
       <Header actionButton={actionButton()}></Header>
-      <SetPassword />
-      {/* {verificationInProgress.active ? <Verfication /> : <ForgotPassword />} */}
+
+      {verificationInProgress.verified ? (
+        <SetPassword />
+      ) : verificationInProgress.active ? (
+        <Verfication />
+      ) : (
+        <ForgotPassword />
+      )}
     </div>
   );
 };
