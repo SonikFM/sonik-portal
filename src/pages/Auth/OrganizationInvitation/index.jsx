@@ -1,6 +1,6 @@
 import Loading from "@/components/Loading";
 import { verifyOrganizationInvitationToken } from "@/store/global/actions";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";

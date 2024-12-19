@@ -8,6 +8,7 @@ import {
   resetPassword,
   searchArtists,
   signup,
+  switchOrganization,
   verifyOrganizationInvitationToken,
   verifyOTP,
 } from "./actions";
@@ -190,6 +191,20 @@ export const globalSlice = createSlice({
         toast.error(action.payload.message);
       },
     );
+    builder.addCase(switchOrganization.pending, state => {
+      state.isLoading = true;
+      state.error = "";
+    });
+    builder.addCase(switchOrganization.fulfilled, (state, action) => {
+      state.isLoading = false;
+      toast.success(action.payload.response.message);
+      state.error = "";
+      state.user = action.payload.response.data;
+    });
+    builder.addCase(switchOrganization.rejected, (state, action) => {
+      state.isLoading = false;
+      toast.error(action.payload.message);
+    });
   },
 });
 

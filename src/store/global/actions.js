@@ -125,6 +125,20 @@ export const verifyOrganizationInvitationToken = createAsyncThunk(
   },
 );
 
+export const switchOrganization = createAsyncThunk(
+  "auth/switch-organization",
+  async ({ _organization }, { rejectWithValue }) => {
+    try {
+      const response = await https.get(
+        `auth/organization/switch/${_organization}`,
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
 export const searchArtists = createAsyncThunk(
   "auth/spotifySearchArtists",
   async (query, { rejectWithValue }) => {

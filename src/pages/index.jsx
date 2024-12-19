@@ -64,10 +64,6 @@ const authRoutes = [
   { path: "reset-password", element: <ResetPassword /> },
 ];
 
-const publicRoutes = [
-  { path: "invitation/:token", element: <OrganizationInvitation /> },
-];
-
 const routes = [
   {
     path: "/",

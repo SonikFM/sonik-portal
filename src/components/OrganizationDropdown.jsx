@@ -16,14 +16,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { switchOrganization } from "@/store/global/actions";
 
 export function OrganizationDropdown() {
   const { user } = useSelector(state => state.app);
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
 
-  const switchOrganization = organization => {
-    console.log(organization);
+  const switchOrganizationNow = organization => {
+    dispatch(
+      switchOrganization({ _organization: organization.organization._id }),
+    );
   };
 
   return (
@@ -62,7 +66,7 @@ export function OrganizationDropdown() {
               {user?.organizations.map(organization => (
                 <CommandItem
                   key={organization.organization._id}
-                  onSelect={() => switchOrganization(organization)}
+                  onSelect={() => switchOrganizationNow(organization)}
                   className="cursor-pointer"
                 >
                   {organization.organization.name}
