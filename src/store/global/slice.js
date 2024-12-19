@@ -8,6 +8,7 @@ import {
   resetPassword,
   searchArtists,
   signup,
+  verifyOrganizationInvitationToken,
   verifyOTP,
 } from "./actions";
 import { createSlice } from "@reduxjs/toolkit";
@@ -169,6 +170,26 @@ export const globalSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     });
+    builder.addCase(verifyOrganizationInvitationToken.pending, state => {
+      state.isLoading = true;
+      state.error = "";
+    });
+    builder.addCase(
+      verifyOrganizationInvitationToken.fulfilled,
+      (state, action) => {
+        state.isLoading = false;
+        toast.success(action.payload.message);
+        state.error = "";
+        state.user = action.payload.user;
+      },
+    );
+    builder.addCase(
+      verifyOrganizationInvitationToken.rejected,
+      (state, action) => {
+        state.isLoading = false;
+        toast.error(action.payload.message);
+      },
+    );
   },
 });
 

@@ -2,7 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AppLoader from "@/components/AppLoader";
 
-const PublicRoute = () => {
+const AuthRoute = () => {
   const { isLoading, user } = useSelector(state => state.app);
   const location = useLocation();
 
@@ -19,4 +19,4 @@ const PublicRoute = () => {
   return <Outlet />;
 };
 
-export default PublicRoute;
+export default AuthRoute;

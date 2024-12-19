@@ -2,7 +2,7 @@ import { BadgeCheckIcon, ChevronRight } from "lucide-react";
 import profile from "@/assets/images/profile.png";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,6 +18,7 @@ export function UserDropdown() {
   const { t } = useTranslation("navigations");
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const { user } = useSelector(state => state.app);
   const handleLogout = e => {
     e.stopPropagation();
     dispatch(logout());
@@ -38,10 +39,10 @@ export function UserDropdown() {
           </Avatar>
           <div className="flex flex-col text-left w-[calc(100%-80px)] truncate shrink">
             <h3 className="flex text-sm font-medium gap-1.5 ">
-              Sophia Williams
+              {user.firstName} {user.lastName}
               <BadgeCheckIcon className="w-5 h-5 stroke-grey-dark fill-pink" />
             </h3>
-            <p className="mt-1 text-xs text-grey-100">sophia@alignui.com</p>
+            <p className="mt-1 text-xs text-grey-100">{user.email}</p>
           </div>
           <ChevronRight className="w-6 h-6 p-[2px] text-grey-100 shrink-0" />
         </Button>

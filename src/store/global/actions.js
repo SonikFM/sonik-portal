@@ -113,6 +113,18 @@ export const resendOTP = createAsyncThunk(
   },
 );
 
+export const verifyOrganizationInvitationToken = createAsyncThunk(
+  "auth/verify-organization-invitation-token",
+  async ({ token }, { rejectWithValue }) => {
+    try {
+      const response = await https.get(`/auth/organization-verify/${token}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
 export const searchArtists = createAsyncThunk(
   "auth/spotifySearchArtists",
   async (query, { rejectWithValue }) => {

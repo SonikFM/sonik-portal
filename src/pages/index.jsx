@@ -28,7 +28,8 @@ import ModifyEvent from "@/containers/Event";
 import OrganizerAccount from "@/containers/OrganizerAccount";
 import Organizations from "@/containers/Organizations";
 import AdminAccounts from "@/containers/AdminAccounts";
-import PublicRoute from "./PublicRoute";
+import AuthRoute from "./AuthRoute";
+import OrganizationInvitation from "./Auth/OrganizationInvitation";
 
 const dashboardRoutes = [
   { path: "", element: <Dashboard />, index: true },
@@ -63,6 +64,10 @@ const authRoutes = [
   { path: "reset-password", element: <ResetPassword /> },
 ];
 
+const publicRoutes = [
+  { path: "invitation/:token", element: <OrganizationInvitation /> },
+];
+
 const routes = [
   {
     path: "/",
@@ -77,7 +82,7 @@ const routes = [
   },
   {
     path: "/",
-    element: <PublicRoute />,
+    element: <AuthRoute />,
     children: [
       {
         path: "/",
@@ -85,6 +90,10 @@ const routes = [
         children: authRoutes,
       },
     ],
+  },
+  {
+    path: "invitation/:token",
+    element: <OrganizationInvitation />,
   },
   {
     path: "/logout",
