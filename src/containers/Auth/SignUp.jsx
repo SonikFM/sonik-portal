@@ -30,7 +30,8 @@ import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
 
 const schema = z.object({
-  name: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
   email: z.string().email(),
   password: z
     .string()
@@ -48,7 +49,8 @@ const SignUp = () => {
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     },
@@ -105,17 +107,36 @@ const SignUp = () => {
               <div className="flex flex-col gap-3">
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="firstName"
                   render={({ field }) => (
                     <FormItem>
                       <Label className="font-medium" htmlFor="name">
-                        {t("full_name")}
+                        {t("first_name")}
                         <span className="text-primary"> *</span>
                       </Label>
                       <InputWithIcon
                         icon={<NameIcon />}
                         error={errors?.name}
-                        placeholder="John doe"
+                        placeholder="John"
+                        {...field}
+                      />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Label className="font-medium" htmlFor="name">
+                        {t("last_name")}
+                        <span className="text-primary"> *</span>
+                      </Label>
+                      <InputWithIcon
+                        icon={<NameIcon />}
+                        error={errors?.name}
+                        placeholder="Doe"
                         {...field}
                       />
                       <FormMessage />
