@@ -21,33 +21,20 @@ import LockIcon from "@/svgs/LockIcon";
 import InformationIcon from "@/svgs/InformationIcon";
 import NameIcon from "@/svgs/NameIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { signup } from "@/store/global/actions";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorIcon from "@/svgs/ErrorIcon";
 import { resetError } from "@/store/global/slice";
 import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
-
-const schema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters." })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter.",
-    })
-    .regex(/[0-9]/, { message: "Password must contain at least one number." }),
-});
+import { registerSchema } from "../schemas/signup.schema";
 
 const SignUp = () => {
   const { error, isLoading } = useSelector(state => state.app);
   const dispatch = useDispatch();
   const { t } = useTranslation("auth");
   const form = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       firstName: "",
       lastName: "",

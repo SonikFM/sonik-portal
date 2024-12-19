@@ -2,7 +2,7 @@ import pattren from "@/assets/images/bg-pattren.png";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 
-export const AuthLayout = ({ children }) => {
+export const AuthLayout = () => {
   return (
     <div className="relative flex items-center justify-center w-full h-auto min-h-screen bg-grey-dark ">
       <img

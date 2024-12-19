@@ -5,7 +5,7 @@ import ProtectedRoute from "./ProtectedRoute";
 // PAGES
 import Dashboard from "./Dashboard";
 import Login from "./Login";
-import SignUp from "./SignUp";
+import SignUp from "./Auth/SignUp";
 import ForgetPassword from "./ForgetPassword";
 import Verification from "./Verification";
 import Events from "./Events";
