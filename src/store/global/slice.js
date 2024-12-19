@@ -6,6 +6,7 @@ import {
   resetPassword,
   searchArtists,
   signup,
+  verifyOTP,
 } from "./actions";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
@@ -22,6 +23,12 @@ const initialState = {
     error: null,
     artists: [],
     isLoading: false,
+  },
+  verificationInProgress: {
+    requestId: "",
+    email: "",
+    active: false,
+    verified: false,
   },
 };
 
@@ -106,8 +113,13 @@ export const globalSlice = createSlice({
         state.isLoading = true;
         state.error = "";
       })
-      .addCase(requestReset.fulfilled, state => {
+      .addCase(requestReset.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.verificationInProgress = {
+          requestId: action.payload.data.requestId,
+          email: action.payload.email,
+          active: true,
+        };
         state.message = "We have sent a reset link to your email";
       })
       .addCase(requestReset.rejected, (state, action) => {
@@ -126,6 +138,23 @@ export const globalSlice = createSlice({
         state.spotify.isLoading = false;
         state.spotify.error = action.error.message;
       });
+    builder.addCase(verifyOTP.pending, state => {
+      state.isLoading = true;
+      state.error = "";
+    });
+    builder.addCase(verifyOTP.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.message = "OTP verification successful";
+      state.verificationInProgress.active = false;
+      state.verificationInProgress.requestId = action.payload.data.requestId;
+      state.verificationInProgress.email = "";
+      state.verificationInProgress.active = false;
+      state.verificationInProgress.verified = true;
+    });
+    builder.addCase(verifyOTP.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
   },
 });
 

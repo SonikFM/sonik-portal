@@ -6,8 +6,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import SignUp from "./Auth/SignUp";
-import ForgetPassword from "./ForgetPassword";
-import Verification from "./Verification";
+import ForgotPassword from "./Auth/ForgotPassword";
 import Events from "./Events";
 import Tickets from "./Tickets";
 import Producers from "./ProducerAccounts";
@@ -60,8 +59,7 @@ const dashboardRoutes = [
 const authRoutes = [
   { path: "login", element: <Login /> },
   { path: "register", element: <SignUp /> },
-  { path: "forget-password", element: <ForgetPassword /> },
-  { path: "verification", element: <Verification /> },
+  { path: "forgot-password", element: <ForgotPassword /> },
   { path: "reset-password", element: <ResetPassword /> },
 ];
 

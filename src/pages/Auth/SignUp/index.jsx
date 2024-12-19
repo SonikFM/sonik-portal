@@ -197,7 +197,7 @@ const SignUp = () => {
               <CardDescription className="mt-6 mb-1 text-sm">
                 {t("by_clicking_register_you_agree_to_accept_apex_financials")}
               </CardDescription>
-              <Link to="/forget-password" className="border-b">
+              <Link to="/forgot-password" className="border-b">
                 {t("forget_password")}
               </Link>
             </CardFooter>

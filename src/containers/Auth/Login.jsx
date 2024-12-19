@@ -130,7 +130,7 @@ const Login = () => {
                   </label>
                 </div>
                 <Link
-                  to="/forget-password"
+                  to="/forgot-password"
                   className="text-sm border-b h-max text-grey-100 border-grey-100 min-w-max"
                 >
                   {t("forget_password")}

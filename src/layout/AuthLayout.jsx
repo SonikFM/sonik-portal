@@ -10,7 +10,7 @@ export const AuthLayout = () => {
         src={pattren}
         alt="bg-pattren"
       ></img>
-      <div className="relative w-full max-w-md py-16 z-1">
+      <div className="relative w-full flex flex-col items-center py-16 z-1">
         <Outlet />
       </div>
       <Footer />

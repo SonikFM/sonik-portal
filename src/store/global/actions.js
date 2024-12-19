@@ -67,12 +67,28 @@ export const requestReset = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const response = await https.post("/auth/request-reset-password", body);
+      return { ...response.data, email: body.email };
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const verifyOTP = createAsyncThunk(
+  "auth/verify-reset-password-otp",
+  async (body, { rejectWithValue }) => {
+    try {
+      const response = await https.post(
+        "/auth/verify-reset-password-otp",
+        body,
+      );
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
   },
 );
+
 export const resetPassword = createAsyncThunk(
   "auth/reset_password",
   async (body, { rejectWithValue }) => {

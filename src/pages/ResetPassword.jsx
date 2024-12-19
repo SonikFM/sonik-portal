@@ -1,4 +1,4 @@
-import ResetPassword from "@/containers/Auth/ResetPassword";
+import ResetPassword from "@/pages/Auth/ForgotPassword/index";
 
 const Index = () => {
   return <ResetPassword />;
