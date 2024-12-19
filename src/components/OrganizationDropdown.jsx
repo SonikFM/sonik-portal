@@ -16,12 +16,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { portals } from "@/contants/portals";
+import { useSelector } from "react-redux";
 
 export function OrganizationDropdown() {
+  const { user } = useSelector(state => state.app);
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("internal");
-  const currentPortal = portals.find(i => i.value === value) || {};
+
+  const switchOrganization = organization => {
+    console.log(organization);
+  };
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -32,13 +36,18 @@ export function OrganizationDropdown() {
           className="justify-between w-full h-auto gap-3 p-3 text-white hover:bg-grey-200 hover:text-white "
         >
           <Avatar className="w-10 h-10 rounded-full">
-            <AvatarImage src={logo} />
+            <AvatarImage
+              src={user.organization?.image || logo}
+              className="object-cover"
+            />
             <AvatarFallback>SO</AvatarFallback>
           </Avatar>
           <div className="flex flex-col text-left w-[calc(100%-80px)] truncate shrink">
-            <h3 className="text-sm font-medium">{currentPortal.label}</h3>
+            <h3 className="text-sm font-medium">
+              {user.defaultOrganization?.name}
+            </h3>
             <p className="mt-1 text-xs capitalize text-grey-100">
-              {currentPortal.value}
+              {user.defaultRole?.name}
             </p>
           </div>
           <ChevronsUpDown className="w-6 h-6 p-[2px] border rounded-md text-grey-100 shrink-0 border-grey-100" />
@@ -50,16 +59,14 @@ export function OrganizationDropdown() {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
-              {portals.map(portal => (
+              {user?.organizations.map(organization => (
                 <CommandItem
-                  key={portal.value}
-                  onSelect={() => {
-                    setValue(portal.value);
-                    setOpen(false);
-                  }}
+                  key={organization.organization._id}
+                  onSelect={() => switchOrganization(organization)}
+                  className="cursor-pointer"
                 >
-                  {portal.label}
-                  <span className="capitalize">({portal.key})</span>
+                  {organization.organization.name}
+                  <span className="capitalize">({organization.role.name})</span>
                 </CommandItem>
               ))}
             </CommandGroup>
