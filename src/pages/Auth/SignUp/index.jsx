@@ -52,7 +52,7 @@ const SignUp = () => {
     function generateRandomPhoneNumber() {
       const getRandomDigit = () => Math.floor(Math.random() * 10);
 
-      let phoneNumber = "";
+      let phoneNumber = "+1";
 
       for (let i = 0; i < 10; i++) {
         phoneNumber += getRandomDigit();
@@ -60,7 +60,7 @@ const SignUp = () => {
 
       return phoneNumber;
     }
-    dispatch(signup({ ...data, phone: generateRandomPhoneNumber() }));
+    dispatch(signup({ ...data, phoneNumber: generateRandomPhoneNumber() }));
   };
 
   const actionButton = () => (
